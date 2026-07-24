@@ -37,6 +37,9 @@ const translations: Record<string, Record<Lang, string>> = {
   'booking.message': { th: 'ข้อความเพิ่มเติม', en: 'Additional Notes' },
   'booking.submit': { th: 'ส่งคำขอจอง', en: 'Submit Booking' },
   'booking.or': { th: 'หรือจองผ่าน LINE', en: 'Or book via LINE' },
+  'booking.success': { th: 'ส่งคำขอจองเรียบร้อยแล้ว — เราจะติดต่อกลับภายใน 30 นาที', en: 'Booking request sent — we\'ll get back to you within 30 minutes.' },
+  'booking.error': { th: 'เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง', en: 'Something went wrong. Please try again.' },
+  'booking.retry': { th: 'ลองใหม่', en: 'Try again' },
 
   'contact.title': { th: 'ติดต่อเรา', en: 'Contact Us' },
   'contact.phone.label': { th: 'โทรศัพท์', en: 'Phone' },
