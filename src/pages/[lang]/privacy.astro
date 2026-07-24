@@ -1,0 +1,221 @@
+---
+import Base from '../../layouts/Base.astro';
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const lastUpdated = '2026-07-24';
+---
+
+<Base
+  title={lang === 'th' ? 'นโยบายความเป็นส่วนตัว — Thunder Studio' : 'Privacy Policy — Thunder Studio'}
+  description={lang === 'th' ? 'นโยบายความเป็นส่วนตัวของ Thunder Studio' : 'Thunder Studio Privacy Policy'}
+  lang={lang}
+>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-onyx/90 backdrop-blur-md border-b border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+      <a href={`/${lang}`} class="flex items-center gap-3">
+        <svg viewBox="0 0 32 32" class="w-7 h-7" fill="none">
+          <path d="M18.5 6L10 18h5.5l-1.5 8L23 14h-5.5z" fill="currentColor"/>
+        </svg>
+        <div>
+          <div class="text-[15px] font-bold tracking-[0.05em] leading-none">THUNDER</div>
+          <div class="text-[7px] font-semibold tracking-[0.19em] text-white/50 mt-1">STUDIO</div>
+        </div>
+      </a>
+      <a href={`/${lang}`} class="text-[13px] text-white/60 hover:text-white transition-colors">{lang === 'th' ? 'กลับหน้าแรก' : 'Back to Home'}</a>
+    </div>
+  </header>
+
+  <main class="max-w-[800px] mx-auto px-6 pt-32 pb-20">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": lang === 'th' ? 'นโยบายความเป็นส่วนตัว' : 'Privacy Policy',
+      "url": `https://thundermusicstudio.com/${lang}/privacy`,
+      "dateModified": lastUpdated,
+      "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+    })} />
+
+    {lang === 'th' ? (
+      <article class="prose-legal">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase mb-4">นโยบายความเป็นส่วนตัว</h1>
+        <p class="text-[13px] text-white/40 mb-12">อัปเดตล่าสุด: {lastUpdated}</p>
+
+        <h2>1. บทนำ</h2>
+        <p>บริษัท ธันเดอร์ เวนเจอร์ กรุ๊ป จำกัด ("เรา") ดำเนินการเว็บไซต์ Thunder Studio (thundermusicstudio.com) นโยบายความเป็นส่วนตัวนี้อธิบายว่าเราเก็บรวบรวม ใช้ และปกป้องข้อมูลส่วนบุคคลของท่านอย่างไร</p>
+        <p>เลขประจำตัวผู้เสียภาษี: 0105586164737</p>
+
+        <h2>2. ข้อมูลที่เราเก็บรวบรวม</h2>
+        <h3>2.1 ข้อมูลที่ท่านให้โดยตรง</h3>
+        <p>เมื่อท่านกรอกแบบฟอร์มจองห้องซ้อม เราเก็บรวบรวม:</p>
+        <ul>
+          <li>ชื่อ</li>
+          <li>เบอร์โทรศัพท์</li>
+          <li>ห้องที่ต้องการจอง วันที่ และเวลา</li>
+          <li>ข้อความเพิ่มเติม (ถ้ามี)</li>
+        </ul>
+
+        <h3>2.2 ข้อมูลที่เก็บรวบรวมอัตโนมัติ</h3>
+        <p>เว็บไซต์ของเราเป็นเว็บไซต์แบบ Static ที่โฮสต์บน Netlify เราไม่ใช้คุกกี้ติดตาม ไม่ใช้ Google Analytics และไม่ใช้ Facebook Pixel Netlify อาจเก็บข้อมูล Server log มาตรฐาน (IP address, ประเภทเบราว์เซอร์, เวลาเข้าถึง)</p>
+
+        <h3>2.3 บริการจากบุคคลที่สาม</h3>
+        <ul>
+          <li><strong>Netlify Forms</strong> — ประมวลผลการส่งแบบฟอร์มจอง ข้อมูลถูกเก็บบน Netlify servers</li>
+          <li><strong>Google Maps</strong> — แสดงแผนที่ในหน้าติดต่อ อยู่ภายใต้นโยบายความเป็นส่วนตัวของ Google</li>
+          <li><strong>Google Fonts</strong> — โหลดฟอนต์ Montserrat และ Noto Sans Thai Google อาจเก็บข้อมูลการเข้าถึง</li>
+          <li><strong>Supabase Storage</strong> — ให้บริการรูปภาพ ไม่เก็บข้อมูลผู้ใช้</li>
+        </ul>
+
+        <h2>3. วิธีที่เราใช้ข้อมูล</h2>
+        <p>เราใช้ข้อมูลที่เก็บรวบรวมเพื่อ:</p>
+        <ul>
+          <li>ติดต่อกลับเรื่องการจองห้องซ้อม</li>
+          <li>ให้บริการตามที่ร้องขอ</li>
+          <li>ปรับปรุงบริการของเรา</li>
+        </ul>
+        <p>เราจะไม่ขายหรือแบ่งปันข้อมูลส่วนบุคคลของท่านกับบุคคลที่สามเพื่อวัตถุประสงค์ทางการตลาด</p>
+
+        <h2>4. การเก็บรักษาข้อมูล</h2>
+        <p>ข้อมูลการจองจะถูกเก็บรักษาตราบเท่าที่จำเป็นเพื่อให้บริการ และจะถูกลบเมื่อไม่จำเป็นต้องใช้อีกต่อไป Server log จะถูกเก็บรักษาไม่เกิน 30 วัน</p>
+
+        <h2>5. ความปลอดภัยของข้อมูล</h2>
+        <p>เราใช้มาตรการรักษาความปลอดภัยที่เหมาะสม รวมถึงการเข้ารหัส HTTPS/TLS สำหรับข้อมูลระหว่างการส่ง</p>
+
+        <h2>6. สิทธิของท่าน</h2>
+        <p>ภายใต้พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) ท่านมีสิทธิ:</p>
+        <ul>
+          <li>เข้าถึงข้อมูลส่วนบุคคลของท่าน</li>
+          <li>แก้ไขข้อมูลที่ไม่ถูกต้อง</li>
+          <li>ขอให้ลบข้อมูล</li>
+          <li>คัดค้านการประมวลผลข้อมูล</li>
+          <li>ขอให้โอนย้ายข้อมูล</li>
+        </ul>
+
+        <h2>7. ข้อมูลสำหรับผู้ใช้ในสหภาพยุโรป (GDPR)</h2>
+        <p>หากท่านอยู่ในเขตเศรษฐกิจยุโรป ท่านมีสิทธิเพิ่มเติมภายใต้ GDPR รวมถึงสิทธิในการเข้าถึง แก้ไข ลบ จำกัดการประมวลผล โอนย้ายข้อมูล และคัดค้าน หากต้องการใช้สิทธิเหล่านี้ กรุณาติดต่อเราตามข้อมูลด้านล่าง</p>
+
+        <h2>8. การเปลี่ยนแปลงนโยบาย</h2>
+        <p>เราอาจปรับปรุงนโยบายนี้เป็นครั้งคราว การเปลี่ยนแปลงจะมีผลเมื่อเผยแพร่บนหน้านี้ การใช้งานเว็บไซต์ต่อไปหลังจากการเปลี่ยนแปลงถือว่าท่านยอมรับนโยบายที่ปรับปรุงแล้ว</p>
+
+        <h2>9. ติดต่อเรา</h2>
+        <p>หากมีคำถามเกี่ยวกับนโยบายนี้:</p>
+        <ul>
+          <li>อีเมล: theorn.n@thunderventuregroup.com</li>
+          <li>โทรศัพท์: 063-546-1924</li>
+          <li>ที่อยู่: 288, 102-103 ถ.พหลโยธิน แขวงอนุสาวรีย์ เขตบางเขน กรุงเทพ 10220</li>
+        </ul>
+      </article>
+    ) : (
+      <article class="prose-legal">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase mb-4">Privacy Policy</h1>
+        <p class="text-[13px] text-white/40 mb-12">Last Updated: {lastUpdated}</p>
+
+        <h2>1. Introduction</h2>
+        <p>Thunder Venture Group Company Limited ("we," "us," or "our") operates Thunder Studio (thundermusicstudio.com). This Privacy Policy explains what personal information we collect, how we use it, and how we protect it.</p>
+        <p>Tax ID: 0105586164737</p>
+
+        <h2>2. Information We Collect</h2>
+        <h3>2.1 Information You Provide Directly</h3>
+        <p>When you submit the booking form, we collect:</p>
+        <ul>
+          <li>Name</li>
+          <li>Phone number</li>
+          <li>Preferred room, date, and time</li>
+          <li>Additional notes (optional)</li>
+        </ul>
+
+        <h3>2.2 Information Collected Automatically</h3>
+        <p>Our website is a static site hosted on Netlify. We do not use tracking cookies, Google Analytics, or Facebook Pixel. Netlify may collect standard server logs (IP address, browser type, access time).</p>
+
+        <h3>2.3 Third-Party Services</h3>
+        <ul>
+          <li><strong>Netlify Forms</strong> — Processes booking form submissions. Data is stored on Netlify servers.</li>
+          <li><strong>Google Maps</strong> — Displays the map on our contact section. Subject to Google's Privacy Policy.</li>
+          <li><strong>Google Fonts</strong> — Loads Montserrat and Noto Sans Thai fonts. Google may collect access data.</li>
+          <li><strong>Supabase Storage</strong> — Serves images. Does not collect user data.</li>
+        </ul>
+
+        <h2>3. How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Respond to your booking requests</li>
+          <li>Provide the services you request</li>
+          <li>Improve our services</li>
+        </ul>
+        <p>We do not sell or share your personal information with third parties for marketing purposes.</p>
+
+        <h2>4. Data Retention</h2>
+        <p>Booking information is retained as long as necessary to provide our services and is deleted when no longer needed. Server logs are retained for no more than 30 days.</p>
+
+        <h2>5. Data Security</h2>
+        <p>We implement appropriate security measures, including HTTPS/TLS encryption for data in transit.</p>
+
+        <h2>6. Your Rights</h2>
+        <p>Under the Thailand Personal Data Protection Act (PDPA), you have the right to:</p>
+        <ul>
+          <li>Access your personal data</li>
+          <li>Correct inaccurate data</li>
+          <li>Request deletion of your data</li>
+          <li>Object to processing</li>
+          <li>Request data portability</li>
+        </ul>
+
+        <h2>7. For Users in the European Union (GDPR)</h2>
+        <p>If you are located in the European Economic Area, you have additional rights under the GDPR, including the rights of access, rectification, erasure, restriction of processing, data portability, and objection. To exercise these rights, contact us using the information below.</p>
+
+        <h2>8. Changes to This Policy</h2>
+        <p>We may update this policy from time to time. Changes take effect when published on this page. Your continued use of the website after changes constitutes acceptance of the updated policy.</p>
+
+        <h2>9. Contact Us</h2>
+        <p>If you have questions about this policy:</p>
+        <ul>
+          <li>Email: theorn.n@thunderventuregroup.com</li>
+          <li>Phone: 063-546-1924</li>
+          <li>Address: 288, 102-103 Phahonyothin Rd, Anusawari, Bang Khen, Bangkok 10220</li>
+        </ul>
+      </article>
+    )}
+  </main>
+
+  <style>
+    .prose-legal h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .prose-legal h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose-legal p {
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 0.75rem;
+    }
+    .prose-legal ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose-legal li {
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 0.25rem;
+    }
+    .prose-legal strong {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+</Base>

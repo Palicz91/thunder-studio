@@ -48,9 +48,10 @@ const translations: Record<string, Record<Lang, string>> = {
   'contact.hours.label': { th: 'เวลาทำการ', en: 'Hours' },
   'contact.social': { th: 'ติดตามเรา', en: 'Follow Us' },
 
-  'phone': { th: '+66 62 225 5164', en: '+66 62 225 5164' },
+  'phone': { th: '063-546-1924', en: '063-546-1924' },
   'line': { th: '@thunderstudio', en: '@thunderstudio' },
-  'address': { th: 'กรุงเทพมหานคร', en: 'Bangkok, Thailand' },
+  'address': { th: '288, 102-103 ถ.พหลโยธิน แขวงอนุสาวรีย์ เขตบางเขน กรุงเทพ 10220', en: '288, 102-103 Phahonyothin Rd, Anusawari, Bang Khen, Bangkok 10220' },
+  'tax': { th: 'เลขประจำตัวผู้เสียภาษี: 0105586164737', en: 'Tax ID: 0105586164737' },
   'hours': { th: '10:00 – 22:00 ทุกวัน', en: '10:00 AM – 10:00 PM Daily' },
 
   'footer.tagline': { th: 'ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ใจกลางกรุงเทพ', en: 'Professional music rehearsal rooms and recording studio in the heart of Bangkok.' },
@@ -60,7 +61,7 @@ const translations: Record<string, Record<Lang, string>> = {
   'footer.rights': { th: '© 2025 Thunder Studio — Thunder Venture Group', en: '© 2025 Thunder Studio — Thunder Venture Group' },
   'footer.privacy': { th: 'นโยบายความเป็นส่วนตัว', en: 'Privacy Policy' },
   'footer.terms': { th: 'ข้อกำหนดการใช้งาน', en: 'Terms & Conditions' },
-  'email': { th: 'thunderventure.info@gmail.com', en: 'thunderventure.info@gmail.com' },
+  'email': { th: 'theorn.n@thunderventuregroup.com', en: 'theorn.n@thunderventuregroup.com' },
 
   'room.select': { th: 'เลือกห้อง', en: 'Select Room' },
   'room.large': { th: 'ห้องซ้อมใหญ่', en: 'Large Rehearsal Room' },

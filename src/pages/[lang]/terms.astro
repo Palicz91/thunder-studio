@@ -1,0 +1,197 @@
+---
+import Base from '../../layouts/Base.astro';
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const lastUpdated = '2026-07-24';
+---
+
+<Base
+  title={lang === 'th' ? 'ข้อกำหนดการใช้งาน — Thunder Studio' : 'Terms & Conditions — Thunder Studio'}
+  description={lang === 'th' ? 'ข้อกำหนดการใช้งานเว็บไซต์ Thunder Studio' : 'Thunder Studio Terms & Conditions'}
+  lang={lang}
+>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-onyx/90 backdrop-blur-md border-b border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+      <a href={`/${lang}`} class="flex items-center gap-3">
+        <svg viewBox="0 0 32 32" class="w-7 h-7" fill="none">
+          <path d="M18.5 6L10 18h5.5l-1.5 8L23 14h-5.5z" fill="currentColor"/>
+        </svg>
+        <div>
+          <div class="text-[15px] font-bold tracking-[0.05em] leading-none">THUNDER</div>
+          <div class="text-[7px] font-semibold tracking-[0.19em] text-white/50 mt-1">STUDIO</div>
+        </div>
+      </a>
+      <a href={`/${lang}`} class="text-[13px] text-white/60 hover:text-white transition-colors">{lang === 'th' ? 'กลับหน้าแรก' : 'Back to Home'}</a>
+    </div>
+  </header>
+
+  <main class="max-w-[800px] mx-auto px-6 pt-32 pb-20">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": lang === 'th' ? 'ข้อกำหนดการใช้งาน' : 'Terms & Conditions',
+      "url": `https://thundermusicstudio.com/${lang}/terms`,
+      "dateModified": lastUpdated,
+      "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+    })} />
+
+    {lang === 'th' ? (
+      <article class="prose-legal">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase mb-4">ข้อกำหนดการใช้งาน</h1>
+        <p class="text-[13px] text-white/40 mb-12">อัปเดตล่าสุด: {lastUpdated}</p>
+
+        <h2>1. การยอมรับข้อกำหนด</h2>
+        <p>การเข้าใช้งานเว็บไซต์ Thunder Studio (thundermusicstudio.com) และการใช้บริการของเรา ถือว่าท่านยอมรับข้อกำหนดเหล่านี้ทั้งหมด หากท่านไม่ยอมรับ กรุณาหยุดใช้งานเว็บไซต์</p>
+
+        <h2>2. ข้อมูลบริษัท</h2>
+        <p>Thunder Studio ดำเนินการโดย บริษัท ธันเดอร์ เวนเจอร์ กรุ๊ป จำกัด</p>
+        <ul>
+          <li>ที่อยู่: 288, 102-103 ถ.พหลโยธิน แขวงอนุสาวรีย์ เขตบางเขน กรุงเทพ 10220</li>
+          <li>เลขประจำตัวผู้เสียภาษี: 0105586164737</li>
+          <li>อีเมล: theorn.n@thunderventuregroup.com</li>
+          <li>โทรศัพท์: 063-546-1924</li>
+        </ul>
+
+        <h2>3. บริการ</h2>
+        <p>Thunder Studio ให้บริการห้องซ้อมดนตรีและสตูดิโอบันทึกเสียง เว็บไซต์นี้ให้ข้อมูลเกี่ยวกับห้องซ้อม อุปกรณ์ และช่องทางการจอง</p>
+
+        <h2>4. การจองและยกเลิก</h2>
+        <p>การส่งแบบฟอร์มจองผ่านเว็บไซต์เป็นการแสดงความสนใจเบื้องต้น ยังไม่ถือเป็นการยืนยันการจอง เจ้าหน้าที่จะติดต่อกลับเพื่อยืนยันห้องว่างและรายละเอียดการจอง</p>
+        <p>นโยบายการยกเลิกจะแจ้งให้ทราบเมื่อยืนยันการจอง กรุณาแจ้งยกเลิกล่วงหน้าอย่างน้อย 24 ชั่วโมง</p>
+
+        <h2>5. กฎการใช้ห้องซ้อม</h2>
+        <ul>
+          <li>กรุณามาถึงตรงเวลาตามที่จอง การมาสายจะไม่ขยายเวลาการใช้ห้อง</li>
+          <li>ใช้อุปกรณ์ด้วยความระมัดระวัง ความเสียหายที่เกิดจากการใช้งานที่ไม่เหมาะสมจะถูกเรียกเก็บค่าซ่อมแซม</li>
+          <li>ห้ามนำอาหารและเครื่องดื่มเข้าห้องซ้อม (ยกเว้นน้ำดื่มในขวดปิดฝา)</li>
+          <li>ห้ามสูบบุหรี่และใช้สารเสพติดในบริเวณสตูดิโอ</li>
+          <li>รักษาความสะอาดและจัดเก็บอุปกรณ์ให้เรียบร้อยก่อนออก</li>
+        </ul>
+
+        <h2>6. ความรับผิดชอบ</h2>
+        <p>Thunder Studio ไม่รับผิดชอบต่อทรัพย์สินส่วนตัวที่สูญหายหรือเสียหายภายในบริเวณสตูดิโอ กรุณาดูแลทรัพย์สินของท่านเอง</p>
+        <p>เราใช้ความพยายามอย่างสมเหตุสมผลเพื่อให้อุปกรณ์ทำงานได้อย่างถูกต้อง แต่ไม่รับประกันว่าอุปกรณ์ทุกชิ้นจะพร้อมใช้งานได้ตลอดเวลา</p>
+
+        <h2>7. ทรัพย์สินทางปัญญา</h2>
+        <p>เนื้อหาทั้งหมดบนเว็บไซต์นี้ รวมถึงข้อความ รูปภาพ โลโก้ และการออกแบบ เป็นทรัพย์สินของ Thunder Venture Group ห้ามทำซ้ำ ดัดแปลง หรือเผยแพร่โดยไม่ได้รับอนุญาตเป็นลายลักษณ์อักษร</p>
+
+        <h2>8. ข้อจำกัดความรับผิด</h2>
+        <p>เว็บไซต์และบริการของเราให้บริการ "ตามสภาพ" ที่มี เราไม่รับประกันว่าเว็บไซต์จะพร้อมใช้งานตลอดเวลาหรือปราศจากข้อผิดพลาด ความรับผิดของเราจำกัดเฉพาะค่าบริการที่ท่านชำระจริง</p>
+
+        <h2>9. กฎหมายที่ใช้บังคับ</h2>
+        <p>ข้อกำหนดเหล่านี้อยู่ภายใต้กฎหมายของประเทศไทย ข้อพิพาทใดๆ จะอยู่ในเขตอำนาจของศาลไทย</p>
+
+        <h2>10. การเปลี่ยนแปลงข้อกำหนด</h2>
+        <p>เราสงวนสิทธิ์ในการแก้ไขข้อกำหนดเหล่านี้เมื่อใดก็ได้ การเปลี่ยนแปลงจะมีผลเมื่อเผยแพร่บนหน้านี้</p>
+
+        <h2>11. ติดต่อเรา</h2>
+        <p>หากมีคำถามเกี่ยวกับข้อกำหนดเหล่านี้:</p>
+        <ul>
+          <li>อีเมล: theorn.n@thunderventuregroup.com</li>
+          <li>โทรศัพท์: 063-546-1924</li>
+          <li>ที่อยู่: 288, 102-103 ถ.พหลโยธิน แขวงอนุสาวรีย์ เขตบางเขน กรุงเทพ 10220</li>
+        </ul>
+      </article>
+    ) : (
+      <article class="prose-legal">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase mb-4">Terms & Conditions</h1>
+        <p class="text-[13px] text-white/40 mb-12">Last Updated: {lastUpdated}</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing Thunder Studio (thundermusicstudio.com) and using our services, you agree to these terms in full. If you do not agree, please stop using the website.</p>
+
+        <h2>2. Company Information</h2>
+        <p>Thunder Studio is operated by Thunder Venture Group Company Limited.</p>
+        <ul>
+          <li>Address: 288, 102-103 Phahonyothin Rd, Anusawari, Bang Khen, Bangkok 10220</li>
+          <li>Tax ID: 0105586164737</li>
+          <li>Email: theorn.n@thunderventuregroup.com</li>
+          <li>Phone: 063-546-1924</li>
+        </ul>
+
+        <h2>3. Services</h2>
+        <p>Thunder Studio provides music rehearsal rooms and recording studio services. This website provides information about rooms, equipment, and booking channels.</p>
+
+        <h2>4. Booking and Cancellation</h2>
+        <p>Submitting the booking form on the website is a preliminary expression of interest and does not constitute a confirmed booking. Our staff will contact you to confirm availability and booking details.</p>
+        <p>Cancellation policy will be communicated upon booking confirmation. Please cancel at least 24 hours in advance.</p>
+
+        <h2>5. Studio Rules</h2>
+        <ul>
+          <li>Please arrive on time for your booking. Late arrivals will not extend your session time.</li>
+          <li>Use equipment with care. Damage caused by improper use will incur repair charges.</li>
+          <li>No food or drinks in rehearsal rooms (except water in closed bottles).</li>
+          <li>No smoking or drug use on studio premises.</li>
+          <li>Keep the space clean and return equipment to its place before leaving.</li>
+        </ul>
+
+        <h2>6. Liability</h2>
+        <p>Thunder Studio is not responsible for personal belongings lost or damaged on the premises. Please take care of your belongings.</p>
+        <p>We make reasonable efforts to ensure equipment is functioning correctly but do not guarantee that all equipment will be available at all times.</p>
+
+        <h2>7. Intellectual Property</h2>
+        <p>All content on this website, including text, images, logos, and design, is the property of Thunder Venture Group. Reproduction, modification, or distribution without written permission is prohibited.</p>
+
+        <h2>8. Limitation of Liability</h2>
+        <p>Our website and services are provided "as is." We do not guarantee the website will be available at all times or free of errors. Our liability is limited to the service fees you have actually paid.</p>
+
+        <h2>9. Governing Law</h2>
+        <p>These terms are governed by the laws of Thailand. Any disputes shall be subject to the jurisdiction of Thai courts.</p>
+
+        <h2>10. Changes to Terms</h2>
+        <p>We reserve the right to modify these terms at any time. Changes take effect when published on this page.</p>
+
+        <h2>11. Contact Us</h2>
+        <p>If you have questions about these terms:</p>
+        <ul>
+          <li>Email: theorn.n@thunderventuregroup.com</li>
+          <li>Phone: 063-546-1924</li>
+          <li>Address: 288, 102-103 Phahonyothin Rd, Anusawari, Bang Khen, Bangkok 10220</li>
+        </ul>
+      </article>
+    )}
+  </main>
+
+  <style>
+    .prose-legal h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .prose-legal h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose-legal p {
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 0.75rem;
+    }
+    .prose-legal ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose-legal li {
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 0.25rem;
+    }
+    .prose-legal strong {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+</Base>

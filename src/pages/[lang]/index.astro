@@ -255,8 +255,16 @@ const bookingLabels = {
             <span class="text-[15px] text-gray-700 leading-relaxed">{t('address')}</span>
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
+            <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{lang === 'th' ? 'อีเมล' : 'Email'}</span>
+            <a href={`mailto:${t('email')}`} class="text-[15px] text-gray-700 hover:underline">{t('email')}</a>
+          </div>
+          <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.hours.label')}</span>
             <span class="text-[15px] text-gray-700">{t('hours')}</span>
+          </div>
+          <div class="flex gap-5 py-5 border-b border-gray-300">
+            <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{lang === 'th' ? 'ภาษี' : 'Tax ID'}</span>
+            <span class="text-[15px] text-gray-700">0105586164737</span>
           </div>
 
           <div class="pt-8">
@@ -349,9 +357,9 @@ const bookingLabels = {
         <div class="text-[12px] text-white/42 tracking-[0.02em]">
           &copy; {new Date().getFullYear()} {lang === 'th' ? 'Thunder Studio — Thunder Venture Group สงวนลิขสิทธิ์' : 'Thunder Studio — Thunder Venture Group. All rights reserved.'}
           <span class="mx-2">&middot;</span>
-          <a href="#" class="text-white/55 hover:text-white transition-colors">{t('footer.privacy')}</a>
+          <a href={`/${lang}/privacy`} class="text-white/55 hover:text-white transition-colors">{t('footer.privacy')}</a>
           <span class="mx-2">&middot;</span>
-          <a href="#" class="text-white/55 hover:text-white transition-colors">{t('footer.terms')}</a>
+          <a href={`/${lang}/terms`} class="text-white/55 hover:text-white transition-colors">{t('footer.terms')}</a>
         </div>
       </div>
     </div>
