@@ -1,0 +1,331 @@
+---
+import Base from '../../layouts/Base.astro';
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/ui';
+import { rooms } from '../../data/rooms';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const otherLang = lang === 'th' ? 'en' : 'th';
+
+const title = lang === 'th'
+  ? 'Thunder Studio — ห้องซ้อมดนตรี & สตูดิโอบันทึกเสียง กรุงเทพ'
+  : 'Thunder Studio — Music Rehearsal & Recording Studio Bangkok';
+const description = lang === 'th'
+  ? 'ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ใจกลางกรุงเทพ พร้อมอุปกรณ์ Marshall, กลองชุด, PA system'
+  : 'Professional music rehearsal rooms and recording studio in Bangkok. Marshall amps, full drum kits, PA systems.';
+---
+
+<Base {title} {description} {lang}>
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-onyx/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+      <a href={`/${lang}`} class="flex items-center gap-3">
+        <svg viewBox="0 0 32 32" class="w-7 h-7" fill="none">
+          <path d="M18.5 6L10 18h5.5l-1.5 8L23 14h-5.5z" fill="currentColor"/>
+        </svg>
+        <div>
+          <div class="text-[15px] font-bold tracking-[0.05em] leading-none">THUNDER</div>
+          <div class="text-[7px] font-semibold tracking-[0.19em] text-white/50 mt-1">STUDIO</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-[13px] font-medium">
+        <a href="#rooms" class="text-white/60 hover:text-white transition-colors">{t('nav.rooms')}</a>
+        <a href="#booking" class="text-white/60 hover:text-white transition-colors">{t('nav.booking')}</a>
+        <a href="#contact" class="text-white/60 hover:text-white transition-colors">{t('nav.contact')}</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <div class="flex border border-white/20 rounded-full p-0.5">
+          <a href={`/th`} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'th' ? 'bg-white text-onyx' : 'text-white/50']}>TH</a>
+          <a href={`/en`} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'en' ? 'bg-white text-onyx' : 'text-white/50']}>EN</a>
+        </div>
+        <a href="#booking" class="hidden md:block border border-white/40 rounded-xl px-4 py-2 text-[13px] font-semibold hover:bg-white hover:text-onyx transition-all">
+          {t('nav.booking')}
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative min-h-[100dvh] flex items-center overflow-hidden grain">
+    <div class="absolute inset-0">
+      <img src={rooms[0].images[0]} alt={t('hero.sub')} class="w-full h-full object-cover opacity-20" />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/60 to-onyx/80"></div>
+
+    <div class="relative max-w-[1200px] mx-auto px-6 pt-32 pb-20 w-full">
+      <div class="flex items-center gap-3 mb-8">
+        <svg viewBox="0 0 32 32" class="w-4 h-4 text-white/60" fill="none">
+          <path d="M18.5 6L10 18h5.5l-1.5 8L23 14h-5.5z" fill="currentColor"/>
+        </svg>
+        <span class="text-[12px] font-semibold tracking-[0.2em] text-white/60">THUNDER STUDIO — BANGKOK</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.02em] leading-[1.04] uppercase max-w-4xl whitespace-pre-line">
+        {t('hero.title')}
+      </h1>
+
+      <p class="text-base md:text-lg text-white/60 mt-8 max-w-xl leading-relaxed">
+        {t('hero.sub')}
+      </p>
+
+      <div class="flex gap-4 mt-10 flex-wrap">
+        <a href="#booking" class="bg-white text-onyx rounded-xl px-7 py-4 font-semibold text-[15px] hover:bg-white/90 transition-colors">
+          {t('hero.cta.book')}
+        </a>
+        <a href="#rooms" class="border border-white/40 rounded-xl px-7 py-4 font-semibold text-[15px] hover:bg-white hover:text-onyx transition-all">
+          {t('hero.cta.rooms')}
+        </a>
+      </div>
+
+      <div class="flex gap-12 mt-16 pt-8 border-t border-white/10 flex-wrap">
+        <div>
+          <div class="text-3xl font-bold">3</div>
+          <div class="text-[12px] text-white/50 mt-1">{lang === 'th' ? 'ห้องซ้อม' : 'Rooms'}</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold">Marshall</div>
+          <div class="text-[12px] text-white/50 mt-1">{lang === 'th' ? 'แอมป์' : 'Amps'}</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold">Pro</div>
+          <div class="text-[12px] text-white/50 mt-1">{lang === 'th' ? 'กันเสียง' : 'Soundproofed'}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section id="rooms" class="bg-clinical text-onyx">
+    <div class="max-w-[1200px] mx-auto px-6 py-20 md:py-28">
+      <h2 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('rooms.title')}</h2>
+      <p class="text-[15px] text-gray-700 mt-4 max-w-xl">{t('rooms.sub')}</p>
+
+      <div class="mt-14 space-y-20">
+        {rooms.map((room, idx) => (
+          <div class:list={['grid md:grid-cols-2 gap-8 items-start', idx % 2 === 1 && 'md:direction-rtl']}>
+            <div class="overflow-hidden rounded-2xl border border-gray-300">
+              <img src={room.images[0]} alt={room.name[lang]} class="w-full h-[320px] md:h-[400px] object-cover" loading="lazy" />
+            </div>
+            <div class={idx % 2 === 1 ? 'md:direction-ltr' : ''}>
+              <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-3">
+                {String(idx + 1).padStart(2, '0')}
+              </div>
+              <h3 class="text-2xl md:text-3xl font-bold tracking-[-0.01em]">{room.name[lang]}</h3>
+              <p class="text-[15px] text-gray-700 leading-relaxed mt-4">{room.description[lang]}</p>
+
+              <div class="mt-6 flex items-center gap-4 text-[13px]">
+                <span class="border border-gray-300 rounded-lg px-3 py-1.5 font-semibold">
+                  {room.capacity} {lang === 'th' ? 'คน' : 'pax'}
+                </span>
+              </div>
+
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                {room.equipment.map(eq => (
+                  <div class="flex items-center gap-2 text-[13px] text-gray-700">
+                    <svg class="w-4 h-4 text-gray-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    {eq[lang]}
+                  </div>
+                ))}
+              </div>
+
+              {room.images.length > 1 && (
+                <div class="flex gap-2 mt-6 overflow-x-auto">
+                  {room.images.slice(1, 4).map(img => (
+                    <img src={img} alt={room.name[lang]} class="w-20 h-20 rounded-lg object-cover border border-gray-300 shrink-0" loading="lazy" />
+                  ))}
+                </div>
+              )}
+
+              <a href="#booking" class="inline-block mt-6 bg-onyx text-white rounded-xl px-6 py-3 text-[14px] font-semibold hover:bg-onyx/80 transition-colors">
+                {t('hero.cta.book')}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="relative bg-onyx overflow-hidden grain">
+    <div class="relative max-w-[1200px] mx-auto px-6 py-20 md:py-28">
+      <h2 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('features.title')}</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-0 mt-14 border-t border-l border-white/10">
+        {[1, 2, 3, 4].map(i => (
+          <div class="border-r border-b border-white/10 p-7 min-h-[200px] flex flex-col">
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-10 h-10 border border-white/30 rounded-xl flex items-center justify-center">
+                {i === 1 && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>}
+                {i === 2 && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
+                {i === 3 && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M17 2l-5 5-5-5"/></svg>}
+                {i === 4 && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>}
+              </div>
+              <span class="text-[12px] font-bold text-white/20">{String(i).padStart(2, '0')}</span>
+            </div>
+            <h3 class="text-[17px] font-bold tracking-[-0.01em]">{t(`features.${i}.title`)}</h3>
+            <p class="text-[13px] text-white/50 leading-relaxed mt-3">{t(`features.${i}.desc`)}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="bg-clinical text-onyx overflow-hidden">
+    <div class="max-w-[1200px] mx-auto px-6 py-14">
+      <div class="flex gap-3 overflow-x-auto pb-4 -mx-6 px-6 snap-x">
+        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/common-area-1.webp" alt={lang === 'th' ? 'พื้นที่ส่วนกลาง' : 'Common area'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0" loading="lazy" />
+        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/hallway.webp" alt={lang === 'th' ? 'โถงทางเข้า' : 'Entrance hallway'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0" loading="lazy" />
+        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/attic-lounge-1.webp" alt={lang === 'th' ? 'ห้องใต้หลังคา' : 'Attic lounge'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0" loading="lazy" />
+        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/common-area-2.webp" alt={lang === 'th' ? 'พื้นที่ส่วนกลาง' : 'Common area'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0" loading="lazy" />
+        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/attic-lounge-2.webp" alt={lang === 'th' ? 'ห้องใต้หลังคา' : 'Attic lounge'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking" class="relative bg-onyx overflow-hidden grain">
+    <div class="relative max-w-[1200px] mx-auto px-6 py-20 md:py-28">
+      <div class="grid md:grid-cols-2 gap-16">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('booking.title')}</h2>
+          <p class="text-[15px] text-white/50 mt-4 max-w-md leading-relaxed">{t('booking.sub')}</p>
+
+          <div class="mt-10 p-6 border border-white/10 rounded-2xl">
+            <div class="text-[11px] font-semibold tracking-[0.14em] text-white/40 mb-4">{t('booking.or')}</div>
+            <a href={`https://line.me/ti/p/${t('line')}`} target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#06c755] text-white rounded-xl px-6 py-4 font-semibold text-[15px] hover:bg-[#05b34b] transition-colors w-full justify-center">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+              LINE: {t('line')}
+            </a>
+          </div>
+        </div>
+
+        <form method="POST" data-netlify="true" data-netlify-honeypot="bot-field" name="booking" class="space-y-5">
+          <input type="hidden" name="form-name" value="booking" />
+          <p style="display:none"><input name="bot-field" /></p>
+          <input type="hidden" name="lang" value={lang} />
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+              <label for="name" class="text-[12px] font-semibold">{t('booking.name')}</label>
+              <input type="text" id="name" name="name" required class="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-[14px] text-white focus:border-white/50 outline-none transition-colors" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="phone" class="text-[12px] font-semibold">{t('booking.phone')}</label>
+              <input type="tel" id="phone" name="phone" required class="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-[14px] text-white focus:border-white/50 outline-none transition-colors" />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="room" class="text-[12px] font-semibold">{t('booking.room')}</label>
+            <select id="room" name="room" required class="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-[14px] text-white focus:border-white/50 outline-none transition-colors">
+              <option value="" class="bg-onyx">{t('room.select')}</option>
+              <option value="large" class="bg-onyx">{t('room.large')}</option>
+              <option value="small" class="bg-onyx">{t('room.small')}</option>
+              <option value="control" class="bg-onyx">{t('room.control')}</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+              <label for="date" class="text-[12px] font-semibold">{t('booking.date')}</label>
+              <input type="date" id="date" name="date" required class="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-[14px] text-white focus:border-white/50 outline-none transition-colors" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="time" class="text-[12px] font-semibold">{t('booking.time')}</label>
+              <input type="time" id="time" name="time" required class="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-[14px] text-white focus:border-white/50 outline-none transition-colors" />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="message" class="text-[12px] font-semibold">{t('booking.message')}</label>
+            <textarea id="message" name="message" rows="3" class="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-[14px] text-white focus:border-white/50 outline-none transition-colors resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-white text-onyx rounded-xl py-4 font-semibold text-[15px] hover:bg-white/90 transition-colors mt-2">
+            {t('booking.submit')}
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-clinical text-onyx">
+    <div class="max-w-[1200px] mx-auto px-6 py-20 md:py-28">
+      <h2 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('contact.title')}</h2>
+
+      <div class="grid md:grid-cols-2 gap-12 mt-14">
+        <div class="space-y-0 border-t border-gray-300">
+          <div class="flex gap-5 py-5 border-b border-gray-300">
+            <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.phone.label')}</span>
+            <a href={`tel:${t('phone').replace(/\s/g, '')}`} class="text-[17px] font-semibold hover:underline">{t('phone')}</a>
+          </div>
+          <div class="flex gap-5 py-5 border-b border-gray-300">
+            <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.line.label')}</span>
+            <a href={`https://line.me/ti/p/${t('line')}`} target="_blank" rel="noopener" class="text-[17px] font-semibold hover:underline">{t('line')}</a>
+          </div>
+          <div class="flex gap-5 py-5 border-b border-gray-300">
+            <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.address.label')}</span>
+            <span class="text-[15px] text-gray-700 leading-relaxed">{t('address')}</span>
+          </div>
+          <div class="flex gap-5 py-5 border-b border-gray-300">
+            <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.hours.label')}</span>
+            <span class="text-[15px] text-gray-700">{t('hours')}</span>
+          </div>
+
+          <div class="pt-8">
+            <div class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 mb-4">{t('contact.social')}</div>
+            <div class="flex gap-4">
+              <a href="https://www.facebook.com/thunderventurestudio" target="_blank" rel="noopener" class="w-10 h-10 border border-gray-300 rounded-xl flex items-center justify-center text-gray-500 hover:border-onyx hover:text-onyx transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/thunderventure.studio" target="_blank" rel="noopener" class="w-10 h-10 border border-gray-300 rounded-xl flex items-center justify-center text-gray-500 hover:border-onyx hover:text-onyx transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-gray-300 h-[300px] md:h-auto">
+          <iframe
+            src="https://maps.google.com/maps?q=Bangkok+Thailand&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={lang === 'th' ? 'แผนที่ Thunder Studio' : 'Thunder Studio map'}
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-onyx border-t border-white/10">
+    <div class="max-w-[1200px] mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <svg viewBox="0 0 32 32" class="w-5 h-5 text-white/40" fill="none">
+          <path d="M18.5 6L10 18h5.5l-1.5 8L23 14h-5.5z" fill="currentColor"/>
+        </svg>
+        <span class="text-[12px] text-white/40">{t('footer.rights')}</span>
+      </div>
+      <div class="flex gap-6 text-[12px] text-white/40">
+        <a href="https://www.facebook.com/thunderventurestudio" target="_blank" rel="noopener" class="hover:text-white transition-colors">Facebook</a>
+        <a href="https://www.instagram.com/thunderventure.studio" target="_blank" rel="noopener" class="hover:text-white transition-colors">Instagram</a>
+      </div>
+    </div>
+  </footer>
+</Base>

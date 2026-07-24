@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@import "@fontsource/montserrat/300.css";
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/700.css";
+@import "@fontsource/noto-sans-thai/300.css";
+@import "@fontsource/noto-sans-thai/400.css";
+@import "@fontsource/noto-sans-thai/500.css";
+@import "@fontsource/noto-sans-thai/600.css";
+@import "@fontsource/noto-sans-thai/700.css";
+
+@theme {
+  --color-onyx: #0f0e0e;
+  --color-clinical: #f4f4f4;
+  --color-gray-700: #5B5D5F;
+  --color-gray-500: #9A9A98;
+  --color-gray-300: #DADAD8;
+  --color-gray-100: #f4f4f4;
+  --font-sans: "Montserrat", "Noto Sans Thai", sans-serif;
+}
+
+::selection {
+  background: var(--color-onyx);
+  color: white;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-onyx);
+  outline-offset: 2px;
+}
+
+[lang="th"] h1,
+[lang="th"] h2,
+[lang="th"] h3 {
+  text-transform: none;
+  line-height: 1.18;
+}
+
+[lang="th"] p {
+  line-height: 1.9;
+}
+
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  opacity: 0.06;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}

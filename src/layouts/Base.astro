@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+import type { Lang } from '../i18n/ui';
+import { useTranslations, getLocalizedPath } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  ogImage?: string;
+}
+
+const { title, description, lang, ogImage } = Astro.props;
+const otherLang = lang === 'th' ? 'en' : 'th';
+const currentPath = Astro.url.pathname;
+const altPath = currentPath.replace(/^\/(th|en)/, `/${otherLang}`);
+const canonicalURL = new URL(currentPath, Astro.site);
+const altURL = new URL(altPath, Astro.site);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={lang} href={canonicalURL} />
+    <link rel="alternate" hreflang={otherLang} href={altURL} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/th' + currentPath.replace(/^\/(th|en)/, ''), Astro.site)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={lang === 'th' ? 'th_TH' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0f0e0e" />
+  </head>
+  <body class="bg-onyx text-white font-sans antialiased">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "MusicVenue",
+      "name": "Thunder Studio",
+      "url": Astro.site?.toString().replace(/\/$/, ''),
+      "description": lang === 'th'
+        ? 'ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ใจกลางกรุงเทพ'
+        : 'Professional music rehearsal rooms and recording studio in the heart of Bangkok.',
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangkok",
+        "addressCountry": "TH"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Thunder Venture Group"
+      }
+    })} />
+    <slot />
+  </body>
+</html>
