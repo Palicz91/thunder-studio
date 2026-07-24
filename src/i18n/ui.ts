@@ -53,8 +53,14 @@ const translations: Record<string, Record<Lang, string>> = {
   'address': { th: 'กรุงเทพมหานคร', en: 'Bangkok, Thailand' },
   'hours': { th: '10:00 – 22:00 ทุกวัน', en: '10:00 AM – 10:00 PM Daily' },
 
+  'footer.tagline': { th: 'ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ใจกลางกรุงเทพ', en: 'Professional music rehearsal rooms and recording studio in the heart of Bangkok.' },
+  'footer.nav': { th: 'เมนู', en: 'NAVIGATE' },
+  'footer.company': { th: 'บริษัท', en: 'COMPANY' },
+  'footer.parent': { th: 'Thunder Venture Group', en: 'Thunder Venture Group' },
   'footer.rights': { th: '© 2025 Thunder Studio — Thunder Venture Group', en: '© 2025 Thunder Studio — Thunder Venture Group' },
   'footer.privacy': { th: 'นโยบายความเป็นส่วนตัว', en: 'Privacy Policy' },
+  'footer.terms': { th: 'ข้อกำหนดการใช้งาน', en: 'Terms & Conditions' },
+  'email': { th: 'thunderventure.info@gmail.com', en: 'thunderventure.info@gmail.com' },
 
   'room.select': { th: 'เลือกห้อง', en: 'Select Room' },
   'room.large': { th: 'ห้องซ้อมใหญ่', en: 'Large Rehearsal Room' },
