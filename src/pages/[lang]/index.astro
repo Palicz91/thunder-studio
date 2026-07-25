@@ -60,20 +60,34 @@ const bookingLabels = {
 
       <div class="flex items-center gap-3">
         <div class="flex border border-white/20 rounded-full p-0.5">
-          <a href={`/th`} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'th' ? 'bg-white text-onyx' : 'text-white/50']}>TH</a>
-          <a href={`/en`} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'en' ? 'bg-white text-onyx' : 'text-white/50']}>EN</a>
+          <a href={`/th`} aria-label={lang === 'th' ? 'ภาษาไทย (เลือกอยู่)' : 'Switch to Thai'} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'th' ? 'bg-white text-onyx' : 'text-white/50']}>TH</a>
+          <a href={`/en`} aria-label={lang === 'en' ? 'English (selected)' : 'Switch to English'} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'en' ? 'bg-white text-onyx' : 'text-white/50']}>EN</a>
         </div>
         <a href="#booking" class="hidden md:block border border-white/40 rounded-xl px-4 py-2 text-[13px] font-semibold hover:bg-white hover:text-onyx transition-all">
           {t('nav.booking')}
         </a>
+        <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-white/60 hover:text-white" aria-label={lang === 'th' ? 'เปิดเมนู' : 'Open menu'}>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
       </div>
     </div>
   </header>
 
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="fixed inset-0 z-40 bg-onyx/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 text-lg font-semibold transition-all duration-300 opacity-0 pointer-events-none md:hidden">
+    <button id="mobile-menu-close" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white/60 hover:text-white" aria-label={lang === 'th' ? 'ปิดเมนู' : 'Close menu'}>
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="#rooms" class="mobile-menu-link text-white/70 hover:text-white transition-colors">{t('nav.rooms')}</a>
+    <a href="#booking" class="mobile-menu-link text-white/70 hover:text-white transition-colors">{t('nav.booking')}</a>
+    <a href="#contact" class="mobile-menu-link text-white/70 hover:text-white transition-colors">{t('nav.contact')}</a>
+    <a href="#booking" class="mobile-menu-link mt-4 bg-white text-onyx rounded-xl px-7 py-3 text-[15px] hover:bg-white/90 transition-colors">{t('hero.cta.book')}</a>
+  </div>
+
   <!-- HERO -->
   <section class="relative min-h-[100dvh] flex items-center overflow-hidden grain">
     <div class="absolute inset-0">
-      <img src={rooms[0].images[0]} alt={t('hero.sub')} class="w-full h-full object-cover opacity-20" />
+      <img src={rooms[0].images[0]} alt={t('hero.sub')} class="w-full h-full object-cover opacity-20" fetchpriority="high" />
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/60 to-onyx/80"></div>
 
@@ -129,7 +143,7 @@ const bookingLabels = {
         {rooms.map((room, idx) => (
           <div class="reveal grid md:grid-cols-2 gap-8 items-start" style={`transition-delay: ${idx * 120}ms;`}>
             <div class:list={['overflow-hidden rounded-2xl border border-gray-300', idx % 2 === 1 && 'md:order-2']}>
-              <img src={room.images[0]} alt={room.name[lang]} class="w-full h-[320px] md:h-[400px] object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              <img src={room.images[0]} alt={room.name[lang]} width="600" height="400" class="w-full h-[320px] md:h-[400px] object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
             </div>
             <div class={idx % 2 === 1 ? 'md:order-1' : ''}>
               <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-3">
@@ -366,4 +380,27 @@ const bookingLabels = {
   </footer>
 
   <ScrollReveal />
+
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const close = document.getElementById('mobile-menu-close');
+    const links = menu?.querySelectorAll('.mobile-menu-link');
+
+    function openMenu() {
+      menu?.classList.remove('opacity-0', 'pointer-events-none');
+      menu?.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      menu?.classList.add('opacity-0', 'pointer-events-none');
+      menu?.classList.remove('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = '';
+    }
+
+    btn?.addEventListener('click', openMenu);
+    close?.addEventListener('click', closeMenu);
+    links?.forEach(link => link.addEventListener('click', closeMenu));
+  </script>
 </Base>

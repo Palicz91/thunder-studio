@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://thunder-studio.netlify.app',
+  site: 'https://thundermusicstudio.com',
   output: 'static',
   i18n: {
     defaultLocale: 'th',
@@ -15,7 +15,12 @@ export default defineConfig({
       redirectToDefaultLocale: true,
     },
   },
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => page !== 'https://thundermusicstudio.com/',
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -38,17 +38,23 @@ export default function BookingForm({ lang, labels }: Props) {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+
     try {
       const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+        body: new URLSearchParams(data as any).toString(),
+        signal: controller.signal,
       });
 
       if (!res.ok) throw new Error('Submit failed');
       setState('success');
     } catch {
       setState('error');
+    } finally {
+      clearTimeout(timeout);
     }
   }
 
@@ -115,7 +121,7 @@ export default function BookingForm({ lang, labels }: Props) {
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <label htmlFor="date" className="text-[12px] font-semibold">{labels.date}</label>
-              <input type="date" id="date" name="date" required className={inputClass} disabled={state === 'submitting'} />
+              <input type="date" id="date" name="date" required min={new Date().toISOString().split('T')[0]} className={inputClass} disabled={state === 'submitting'} />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="time" className="text-[12px] font-semibold">{labels.time}</label>

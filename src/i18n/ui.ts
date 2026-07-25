@@ -58,7 +58,6 @@ const translations: Record<string, Record<Lang, string>> = {
   'footer.nav': { th: 'เมนู', en: 'NAVIGATE' },
   'footer.company': { th: 'บริษัท', en: 'COMPANY' },
   'footer.parent': { th: 'Thunder Venture Group', en: 'Thunder Venture Group' },
-  'footer.rights': { th: '© 2025 Thunder Studio — Thunder Venture Group', en: '© 2025 Thunder Studio — Thunder Venture Group' },
   'footer.privacy': { th: 'นโยบายความเป็นส่วนตัว', en: 'Privacy Policy' },
   'footer.terms': { th: 'ข้อกำหนดการใช้งาน', en: 'Terms & Conditions' },
   'email': { th: 'theorn.n@thunderventuregroup.com', en: 'theorn.n@thunderventuregroup.com' },
@@ -75,6 +74,3 @@ export function useTranslations(lang: Lang) {
   };
 }
 
-export function getLocalizedPath(path: string, lang: Lang): string {
-  return `/${lang}${path}`;
-}

@@ -28,7 +28,13 @@ const lastUpdated = '2026-07-24';
           <div class="text-[7px] font-semibold tracking-[0.19em] text-white/50 mt-1">STUDIO</div>
         </div>
       </a>
-      <a href={`/${lang}`} class="text-[13px] text-white/60 hover:text-white transition-colors">{lang === 'th' ? 'กลับหน้าแรก' : 'Back to Home'}</a>
+      <div class="flex items-center gap-4">
+        <div class="flex border border-white/20 rounded-full p-0.5">
+          <a href="/th/privacy" aria-label={lang === 'th' ? 'ภาษาไทย (เลือกอยู่)' : 'Switch to Thai'} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'th' ? 'bg-white text-onyx' : 'text-white/50']}>TH</a>
+          <a href="/en/privacy" aria-label={lang === 'en' ? 'English (selected)' : 'Switch to English'} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'en' ? 'bg-white text-onyx' : 'text-white/50']}>EN</a>
+        </div>
+        <a href={`/${lang}`} class="text-[13px] text-white/60 hover:text-white transition-colors">{lang === 'th' ? 'กลับหน้าแรก' : 'Back to Home'}</a>
+      </div>
     </div>
   </header>
 
@@ -68,7 +74,6 @@ const lastUpdated = '2026-07-24';
         <ul>
           <li><strong>Netlify Forms</strong> — ประมวลผลการส่งแบบฟอร์มจอง ข้อมูลถูกเก็บบน Netlify servers</li>
           <li><strong>Google Maps</strong> — แสดงแผนที่ในหน้าติดต่อ อยู่ภายใต้นโยบายความเป็นส่วนตัวของ Google</li>
-          <li><strong>Google Fonts</strong> — โหลดฟอนต์ Montserrat และ Noto Sans Thai Google อาจเก็บข้อมูลการเข้าถึง</li>
           <li><strong>Supabase Storage</strong> — ให้บริการรูปภาพ ไม่เก็บข้อมูลผู้ใช้</li>
         </ul>
 
@@ -137,7 +142,6 @@ const lastUpdated = '2026-07-24';
         <ul>
           <li><strong>Netlify Forms</strong> — Processes booking form submissions. Data is stored on Netlify servers.</li>
           <li><strong>Google Maps</strong> — Displays the map on our contact section. Subject to Google's Privacy Policy.</li>
-          <li><strong>Google Fonts</strong> — Loads Montserrat and Noto Sans Thai fonts. Google may collect access data.</li>
           <li><strong>Supabase Storage</strong> — Serves images. Does not collect user data.</li>
         </ul>
 
@@ -182,6 +186,16 @@ const lastUpdated = '2026-07-24';
       </article>
     )}
   </main>
+
+  <footer class="border-t border-white/10 py-8">
+    <div class="max-w-[800px] mx-auto px-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-white/42">
+      <span>&copy; {new Date().getFullYear()} Thunder Studio — Thunder Venture Group</span>
+      <div class="flex gap-4">
+        <a href={`/${lang}`} class="text-white/55 hover:text-white transition-colors">{lang === 'th' ? 'หน้าแรก' : 'Home'}</a>
+        <a href={`/${lang}/terms`} class="text-white/55 hover:text-white transition-colors">{t('footer.terms')}</a>
+      </div>
+    </div>
+  </footer>
 
   <style>
     .prose-legal h2 {
