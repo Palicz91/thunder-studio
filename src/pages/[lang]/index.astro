@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ScrollReveal from '../../components/ScrollReveal.astro';
-import BookingForm from '../../components/BookingForm.tsx';
+import CalBooking from '../../components/CalBooking.tsx';
 import type { Lang } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/ui';
 import { rooms } from '../../data/rooms';
@@ -20,22 +20,7 @@ const description = lang === 'th'
   ? 'ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ใจกลางกรุงเทพ พร้อมอุปกรณ์ Marshall, กลองชุด, PA system'
   : 'Professional music rehearsal rooms and recording studio in Bangkok. Marshall amps, full drum kits, PA systems.';
 
-const bookingLabels = {
-  name: t('booking.name'),
-  phone: t('booking.phone'),
-  room: t('booking.room'),
-  date: t('booking.date'),
-  time: t('booking.time'),
-  message: t('booking.message'),
-  submit: t('booking.submit'),
-  roomSelect: t('room.select'),
-  roomLarge: t('room.large'),
-  roomSmall: t('room.small'),
-  roomControl: t('room.control'),
-  success: t('booking.success'),
-  error: t('booking.error'),
-  retry: t('booking.retry'),
-};
+const CAL_LINK = 'thunder-studio';
 ---
 
 <Base {title} {description} {lang}>
@@ -228,22 +213,22 @@ const bookingLabels = {
   <!-- BOOKING -->
   <section id="booking" class="relative bg-onyx overflow-hidden grain">
     <div class="relative max-w-[1200px] mx-auto px-6 py-20 md:py-28">
-      <div class="grid md:grid-cols-2 gap-16">
-        <div class="reveal">
-          <h2 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('booking.title')}</h2>
-          <p class="text-[15px] text-white/50 mt-4 max-w-md leading-relaxed">{t('booking.sub')}</p>
+      <div class="reveal">
+        <h2 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('booking.title')}</h2>
+        <p class="text-[15px] text-white/50 mt-4 max-w-xl leading-relaxed">{t('booking.sub')}</p>
+      </div>
 
-          <div class="mt-10 p-6 border border-white/10 rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-            <div class="text-[11px] font-semibold tracking-[0.14em] text-white/40 mb-4">{t('booking.or')}</div>
-            <a href={`https://line.me/ti/p/${t('line')}`} target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#06c755] text-white rounded-xl px-6 py-4 font-semibold text-[15px] hover:bg-[#05b34b] transition-colors w-full justify-center">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-              LINE: {t('line')}
-            </a>
-          </div>
-        </div>
+      <div class="reveal mt-12" style="transition-delay: 150ms;">
+        <CalBooking client:visible lang={lang} calLink={CAL_LINK} />
+      </div>
 
-        <div class="reveal" style="transition-delay: 150ms;">
-          <BookingForm client:visible lang={lang} labels={bookingLabels} />
+      <div class="reveal mt-8 max-w-md" style="transition-delay: 250ms;">
+        <div class="p-6 border border-white/10 rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+          <div class="text-[11px] font-semibold tracking-[0.14em] text-white/40 mb-4">{t('booking.or')}</div>
+          <a href={`https://line.me/ti/p/${t('line')}`} target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#06c755] text-white rounded-xl px-6 py-4 font-semibold text-[15px] hover:bg-[#05b34b] transition-colors w-full justify-center">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINE: {t('line')}
+          </a>
         </div>
       </div>
     </div>

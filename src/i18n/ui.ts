@@ -28,7 +28,7 @@ const translations: Record<string, Record<Lang, string>> = {
   'features.4.desc': { th: 'โซนนั่งเล่น ห้องใต้หลังคา พร้อมบรรยากาศสบายๆ ก่อนและหลังซ้อม', en: 'Lounge area and attic space for relaxing before and after sessions.' },
 
   'booking.title': { th: 'จองห้องซ้อม', en: 'Book a Room' },
-  'booking.sub': { th: 'เลือกห้องซ้อมที่ต้องการ กรอกข้อมูล แล้วเราจะติดต่อกลับภายใน 30 นาที', en: 'Choose your preferred room, fill in the details, and we\'ll get back to you within 30 minutes.' },
+  'booking.sub': { th: 'เลือกห้องซ้อมที่ต้องการ เลือกวันเวลา แล้วจองได้เลย', en: 'Pick your room, choose a time slot, and book instantly.' },
   'booking.name': { th: 'ชื่อ', en: 'Name' },
   'booking.phone': { th: 'เบอร์โทร', en: 'Phone' },
   'booking.room': { th: 'ห้องที่ต้องการ', en: 'Preferred Room' },
