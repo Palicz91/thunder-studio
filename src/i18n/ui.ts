@@ -66,6 +66,20 @@ const translations: Record<string, Record<Lang, string>> = {
   'room.large': { th: 'ห้องซ้อมใหญ่', en: 'Large Rehearsal Room' },
   'room.small': { th: 'ห้องซ้อมเล็ก', en: 'Small Rehearsal Room' },
   'room.control': { th: 'Control Room', en: 'Control Room' },
+
+  'faq.title': { th: 'คำถามที่พบบ่อย', en: 'Frequently Asked Questions' },
+  'faq.1.q': { th: 'ต้องจองล่วงหน้าไหม?', en: 'Do I need to book in advance?' },
+  'faq.1.a': { th: 'แนะนำให้จองล่วงหน้าผ่านเว็บไซต์หรือ LINE เพื่อรับประกันห้องว่าง แต่สามารถ walk-in ได้ถ้ามีห้องว่าง', en: 'We recommend booking in advance via our website or LINE to guarantee availability. Walk-ins are welcome if rooms are available.' },
+  'faq.2.q': { th: 'มีอุปกรณ์ดนตรีให้ใช้ไหม?', en: 'What equipment is provided?' },
+  'faq.2.a': { th: 'ทุกห้องมีอุปกรณ์พร้อมใช้ รวมถึง Marshall amps, กลองชุด, PA system, ไมค์และแสตนด์ แค่เอากีตาร์หรือเบสมาก็พอ', en: 'Every room comes fully equipped with Marshall amps, drum kits, PA systems, mics and stands. Just bring your guitar or bass.' },
+  'faq.3.q': { th: 'เปิดกี่โมงถึงกี่โมง?', en: 'What are your opening hours?' },
+  'faq.3.a': { th: 'เปิดทุกวัน 10:00 - 22:00 รวมวันหยุดนักขัตฤกษ์', en: 'We are open daily from 10:00 AM to 10:00 PM, including public holidays.' },
+  'faq.4.q': { th: 'มีที่จอดรถไหม?', en: 'Is parking available?' },
+  'faq.4.a': { th: 'มีที่จอดรถให้บริการหน้าอาคาร', en: 'Parking is available in front of the building.' },
+  'faq.5.q': { th: 'สามารถบันทึกเสียงได้ไหม?', en: 'Can I record at Thunder Studio?' },
+  'faq.5.a': { th: 'ได้ครับ Control Room ของเราพร้อมมิกซ์คอนโซล, studio monitors และ DAW workstation สำหรับบันทึกเสียง มิกซ์ และมาสเตอร์', en: 'Yes. Our Control Room is equipped with a mixing console, studio monitors, and a DAW workstation for recording, mixing, and mastering.' },
+  'faq.6.q': { th: 'ยกเลิกการจองได้ไหม?', en: 'What is the cancellation policy?' },
+  'faq.6.a': { th: 'สามารถยกเลิกหรือเปลี่ยนเวลาได้ล่วงหน้าอย่างน้อย 2 ชั่วโมง โดยแจ้งผ่าน LINE หรือโทรศัพท์', en: 'You can cancel or reschedule at least 2 hours before your session via LINE or phone.' },
 };
 
 export function useTranslations(lang: Lang) {

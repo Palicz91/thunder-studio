@@ -21,6 +21,11 @@ const description = lang === 'th'
   : 'Professional music rehearsal rooms and recording studio in Bangkok. Marshall amps, full drum kits, PA systems.';
 
 const CAL_LINK = 'thunder-studio';
+
+const faqs = [1, 2, 3, 4, 5, 6].map(i => ({
+  question: t(`faq.${i}.q`),
+  answer: t(`faq.${i}.a`),
+}));
 ---
 
 <Base {title} {description} {lang}>
@@ -293,6 +298,40 @@ const CAL_LINK = 'thunder-studio';
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-onyx">
+    <div class="max-w-[1200px] mx-auto px-6 py-20 md:py-28">
+      <h2 class="reveal text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('faq.title')}</h2>
+
+      <div class="mt-14 max-w-3xl divide-y divide-white/10">
+        {faqs.map((faq, idx) => (
+          <details class="reveal group" style={`transition-delay: ${idx * 80}ms;`}>
+            <summary class="flex items-center justify-between gap-4 py-6 cursor-pointer list-none text-[17px] font-semibold text-white/90 hover:text-white transition-colors">
+              {faq.question}
+              <svg class="w-5 h-5 shrink-0 text-white/40 group-open:rotate-45 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </summary>
+            <p class="pb-6 text-[15px] text-white/60 leading-relaxed pr-10">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer,
+        },
+      })),
+    })} />
   </section>
 
   <!-- FOOTER -->

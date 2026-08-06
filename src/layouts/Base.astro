@@ -45,6 +45,10 @@ const altURL = new URL(altPath, Astro.site);
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#0f0e0e" />
+    <meta name="geo.region" content="TH-10" />
+    <meta name="geo.placename" content="Bang Khen, Bangkok" />
+    <meta name="geo.position" content="13.8748;100.5689" />
+    <meta name="ICBM" content="13.8748, 100.5689" />
   </head>
   <body class="bg-onyx text-white font-sans antialiased">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -56,6 +60,7 @@ const altURL = new URL(altPath, Astro.site);
         ? 'ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ใจกลางกรุงเทพ'
         : 'Professional music rehearsal rooms and recording studio in the heart of Bangkok.',
       "telephone": "+66635461924",
+      "email": "theorn.n@thunderventuregroup.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "288, 102-103 Phahonyothin Rd",
@@ -64,10 +69,28 @@ const altURL = new URL(altPath, Astro.site);
         "postalCode": "10220",
         "addressCountry": "TH"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 13.8748,
+        "longitude": 100.5689
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "10:00",
+        "closes": "22:00"
+      },
+      "image": "https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/large-room-1.webp",
+      "hasMap": "https://maps.google.com/maps?q=288+Phahonyothin+Rd+Anusawari+Bang+Khen+Bangkok+10220",
+      "sameAs": [
+        "https://www.facebook.com/thunderventurestudio",
+        "https://www.instagram.com/thunderventure.studio"
+      ],
       "taxID": "0105586164737",
       "parentOrganization": {
         "@type": "Organization",
-        "name": "Thunder Venture Group"
+        "name": "Thunder Venture Group",
+        "url": "https://thunderventuregroup.com"
       }
     })} />
     <slot />
