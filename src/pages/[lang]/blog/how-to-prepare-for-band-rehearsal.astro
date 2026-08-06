@@ -1,0 +1,351 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const datePublished = '2026-08-06';
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+
+const title = lang === 'th'
+  ? 'เตรียมตัวอย่างไรก่อนเข้าห้องซ้อมวง — คู่มือฉบับสมบูรณ์'
+  : 'How to prepare for band rehearsal — the complete guide';
+const description = lang === 'th'
+  ? 'เคล็ดลับเตรียมตัวก่อนเข้าห้องซ้อมดนตรี ตั้งแต่การเลือกเพลง เตรียมอุปกรณ์ ไปจนถึงการใช้เวลาซ้อมให้คุ้มค่า'
+  : 'Practical tips to get more out of every rehearsal session: setlist planning, gear prep, warm-up routines, and time management.';
+---
+
+<Base {title} {description} {lang} ogImage={`${IMG}/large-room-1.webp`}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thunder Studio",
+      "url": "https://thundermusicstudio.com",
+    },
+    "image": `${IMG}/large-room-1.webp`,
+    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/blog/how-to-prepare-for-band-rehearsal`,
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.blog'), "item": `https://thundermusicstudio.com/${lang}/blog` },
+      { "@type": "ListItem", "position": 3, "name": lang === 'th' ? 'เตรียมตัวก่อนเข้าห้องซ้อมวง' : 'How to prepare for band rehearsal' },
+    ],
+  })} />
+
+  <article class="bg-clinical text-onyx">
+    <section class="pt-28 pb-12">
+      <div class="max-w-[720px] mx-auto px-6">
+        <nav class="reveal text-[13px] text-gray-500 mb-8">
+          <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+          <span class="mx-2">/</span>
+          <span class="text-onyx font-medium">{t('breadcrumb.blog')}</span>
+        </nav>
+
+        <div class="reveal">
+          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
+            {lang === 'th' ? 'เตรียมตัวอย่างไรก่อนเข้าห้องซ้อมวง' : 'How to prepare for band rehearsal'}
+          </h1>
+          <p class="text-[17px] text-gray-600 mt-5 leading-relaxed max-w-xl">{description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-6">
+      <div class="max-w-[900px] mx-auto px-6">
+        <img
+          src={`${IMG}/large-room-1.webp`}
+          alt={lang === 'th' ? 'ห้องซ้อมดนตรี Thunder Studio' : 'Thunder Studio rehearsal room'}
+          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-[720px] mx-auto px-6">
+        {lang === 'th' ? (
+          <div class="prose-blog">
+            <p>วงดนตรีหลายวงจ่ายค่าห้องซ้อมชั่วโมงละหลายร้อยบาท แต่ใช้ 20 นาทีแรกเพื่อเสียบสาย ปรับเสียง และถกกันว่าจะซ้อมเพลงอะไร ผลลัพธ์คือเสียทั้งเงินและเวลาโดยไม่จำเป็น คู่มือนี้จะช่วยให้คุณใช้เวลาในห้องซ้อมได้คุ้มค่าทุกนาที</p>
+
+            <h2>1. วางแผนเพลงที่จะซ้อมก่อนเข้าห้อง</h2>
+            <p>สิ่งที่ทำให้ห้องซ้อมเสียเวลาที่สุดคือการเปิดมือถือหาเพลงในห้อง ก่อนวันซ้อมอย่างน้อย 1 วัน ให้ตกลงเรื่องเหล่านี้:</p>
+            <ul>
+              <li><strong>รายชื่อเพลงที่จะซ้อม</strong> — เรียงลำดับความสำคัญ เพลงที่ต้องซ้อมมากที่สุดขึ้นก่อน</li>
+              <li><strong>คีย์และ tempo</strong> — ตกลงกันล่วงหน้า ไม่ต้องเสียเวลาลองหาคีย์ในห้อง</li>
+              <li><strong>เวลาต่อเพลง</strong> — กำหนดคร่าวๆ ว่าจะให้เพลงละกี่นาที เพื่อไม่ให้ติดเพลงเดียวนานเกินไป</li>
+            </ul>
+            <p>ใช้ LINE กลุ่มของวงหรือ Google Docs แชร์ setlist ให้ทุกคนเห็นตรงกัน</p>
+
+            <h2>2. ซ้อมส่วนตัวก่อนซ้อมวง</h2>
+            <p>ห้องซ้อมวงไม่ใช่ที่สำหรับเรียนเพลงใหม่ ถ้าคุณยังจำคอร์ดหรือทำนองไม่ได้ ให้ซ้อมที่บ้านหรือ<a href={`/${lang}/rooms/small-room`}>ห้องซ้อมเล็ก</a>ก่อน เพราะเวลาซ้อมวงมีค่า ควรใช้เพื่อประสานเสียงรวมกัน ไม่ใช่เพื่อเรียนพาร์ทของตัวเอง</p>
+            <p>เป้าหมายคือเข้าห้องซ้อมแล้วทุกคนรู้พาร์ทตัวเองอยู่แล้ว เวลาจริงจะได้โฟกัสที่ dynamics, timing และ arrangement</p>
+
+            <h2>3. เตรียมอุปกรณ์ให้พร้อม</h2>
+            <p>ตรวจสอบอุปกรณ์อย่างน้อยคืนก่อนวันซ้อม:</p>
+            <ul>
+              <li><strong>สายกีตาร์ / สายเบส</strong> — ถ้าสายเก่าหรือขึ้นสนิม เปลี่ยนล่วงหน้า ไม่ใช่ในห้องซ้อม</li>
+              <li><strong>สายแจ็ค</strong> — เตรียมสำรองอย่างน้อย 1 เส้น สายขาดในห้องซ้อมคือจบเลย</li>
+              <li><strong>ไม้กลอง</strong> — มือกลองควรพกไม้สำรองเสมอ</li>
+              <li><strong>จูนเนอร์</strong> — แอปบนมือถือก็ได้ แต่ clip-on tuner แม่นกว่า</li>
+              <li><strong>ปิ๊ก</strong> — เตรียมไว้หลายอัน หายง่าย</li>
+            </ul>
+            <p>ที่ <a href={`/${lang}/rooms/large-room`}>Thunder Studio ห้องซ้อมใหญ่</a> มี Marshall amps, กลองชุดเต็ม, PA system และไมค์พร้อมอยู่แล้ว แค่เอากีตาร์หรือเบสมาก็พอ</p>
+
+            <h2>4. มาถึงก่อนเวลาอย่างน้อย 10 นาที</h2>
+            <p>การมาก่อนเวลาให้ประโยชน์หลายอย่าง:</p>
+            <ul>
+              <li>เวลา setup อุปกรณ์โดยไม่กินเวลาซ้อม</li>
+              <li>จูนเครื่องดนตรีและเช็คเสียงก่อนเริ่ม</li>
+              <li>ทำความรู้จักห้องและตำแหน่งอุปกรณ์</li>
+              <li>อุ่นเครื่องเบาๆ ก่อนเริ่มจริง</li>
+            </ul>
+            <p>ถ้าทุกคนมาตรงเวลา คุณจะเริ่มเล่นเพลงแรกได้ภายใน 5 นาทีแรก แทนที่จะเสีย 20 นาทีเพื่อรอคนสุดท้าย</p>
+
+            <h2>5. อุ่นเครื่องอย่างมีจุดประสงค์</h2>
+            <p>อุ่นเครื่อง 5-10 นาทีช่วยลดความเสี่ยงบาดเจ็บและเล่นได้ดีขึ้น:</p>
+            <ul>
+              <li><strong>นักกีตาร์ / มือเบส</strong> — เล่นสเกลหรือ chromatic runs ช้าๆ เพิ่ม tempo ทีละนิด</li>
+              <li><strong>มือกลอง</strong> — ตีจังหวะพื้นฐาน เน้นควบคุมแรงตีและ timing</li>
+              <li><strong>นักร้อง</strong> — อุ่นเสียงด้วย lip trills หรือ humming ไม่ต้องร้องเต็มเสียงทันที</li>
+            </ul>
+
+            <h2>6. บริหารเวลาในห้องซ้อม</h2>
+            <p>สมมติจองห้องซ้อม 2 ชั่วโมง แบ่งเวลาแบบนี้:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold">ช่วงเวลา</th>
+                    <th class="px-5 py-3 font-semibold">กิจกรรม</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">0:00 – 0:10</td><td class="px-5 py-3 text-gray-700">Setup + จูน + อุ่นเครื่อง</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">0:10 – 0:50</td><td class="px-5 py-3 text-gray-700">ซ้อมเพลงที่ยากที่สุด / เพลงใหม่</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">0:50 – 1:00</td><td class="px-5 py-3 text-gray-700">พัก 10 นาที (ดื่มน้ำ, ถกเรื่อง arrangement)</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">1:00 – 1:40</td><td class="px-5 py-3 text-gray-700">ซ้อมเพลงที่เหลือ / run-through ทั้ง set</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">1:40 – 1:50</td><td class="px-5 py-3 text-gray-700">Run-through สุดท้ายแบบต่อเนื่อง</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">1:50 – 2:00</td><td class="px-5 py-3 text-gray-700">สรุป + วาง action items สำหรับครั้งหน้า</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>หลักสำคัญ: เพลงที่ยากซ้อมตอนต้น เพราะสมาธิและพลังงานยังเต็ม เพลงที่คล่องแล้ววางไว้ช่วงหลัง</p>
+
+            <h2>7. อัดเสียงทุกครั้ง</h2>
+            <p>ตั้งมือถือบนขาตั้งและกด record ตอนเริ่มซ้อม ไม่ต้องคุณภาพเสียงระดับสตูดิโอ แค่ฟังกลับได้ เพราะ:</p>
+            <ul>
+              <li>จะได้ยินสิ่งที่ฟังไม่ออกตอนเล่น (timing ไม่ตรง, คีย์เพี้ยน)</li>
+              <li>ใช้ review ระหว่างสัปดาห์ก่อนนัดซ้อมครั้งหน้า</li>
+              <li>ติดตามพัฒนาการของวงได้</li>
+            </ul>
+            <p>ถ้าต้องการคุณภาพเสียงระดับ professional ลองใช้ <a href={`/${lang}/rooms/control-room`}>Control Room</a> ที่มี mixing console และ DAW workstation พร้อม</p>
+
+            <h2>8. สื่อสารชัดเจนในห้องซ้อม</h2>
+            <p>ปัญหาที่พบบ่อยคือวงเล่นผ่านเพลงแล้วไม่พูดคุยกัน ลองใช้ระบบนี้:</p>
+            <ul>
+              <li>หลังจบแต่ละเพลง ทุกคนพูดสั้นๆ 1 เรื่องที่ต้องปรับ</li>
+              <li>ใช้ภาษาที่เฉพาะเจาะจง: "ท่อน bridge กลองเบาลง" ดีกว่า "ท่อนนั้นยังไม่ดี"</li>
+              <li>ไม่ซ้อมเพลงเดียวเกิน 3 รอบติด ถ้ายังไม่ได้ ให้จดไว้และกลับไปซ้อมส่วนตัว</li>
+            </ul>
+
+            <h2>9. เช็คลิสต์ก่อนเข้าห้องซ้อม</h2>
+            <div class="my-6 bg-onyx text-white rounded-xl p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[14px]">
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Setlist ส่งให้ทุกคนแล้ว</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> ซ้อมพาร์ทตัวเองครบแล้ว</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> สายกีตาร์/เบส สภาพดี</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> สายแจ็คสำรอง</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> จูนเนอร์ / แอปจูน</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> ไม้กลองสำรอง</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> ปิ๊กสำรอง</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> น้ำดื่ม</label>
+              </div>
+            </div>
+
+            <h2>พร้อมซ้อมแล้ว?</h2>
+            <p>Thunder Studio มีห้องซ้อมหลายขนาดพร้อมอุปกรณ์ครบ ตั้งแต่<a href={`/${lang}/rooms/small-room`}>ห้องเล็กสำหรับซ้อมเดี่ยว</a>ไปจนถึง<a href={`/${lang}/rooms/large-room`}>ห้องใหญ่สำหรับวง 6-10 คน</a> เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ</p>
+          </div>
+        ) : (
+          <div class="prose-blog">
+            <p>Most bands pay by the hour for rehearsal space, then spend the first 20 minutes plugging in, tuning up, and debating what to play. That wasted time adds up fast. A 2-hour session with 20 minutes lost is 17% of your budget gone before a single song is played. This guide covers everything you need to do before and during rehearsal so every minute counts.</p>
+
+            <h2>1. Plan your setlist before you arrive</h2>
+            <p>The single biggest time killer in a rehearsal room is pulling up your phone to figure out what song to play next. At least one day before rehearsal, agree on:</p>
+            <ul>
+              <li><strong>Which songs to rehearse</strong> — list them in priority order, hardest first</li>
+              <li><strong>Keys and tempos</strong> — settle these in advance so nobody wastes time searching during the session</li>
+              <li><strong>Time per song</strong> — set rough limits to avoid getting stuck on one track for 45 minutes</li>
+            </ul>
+            <p>Share the setlist via a group chat or Google Doc so everyone sees the same plan.</p>
+
+            <h2>2. Learn your parts at home</h2>
+            <p>Rehearsal time is for playing together, not for learning songs individually. If you still can't remember the chords or melody, practice at home or book a <a href={`/${lang}/rooms/small-room`}>small rehearsal room</a> for solo practice before the group session.</p>
+            <p>The goal: every member walks in already knowing their part. Rehearsal time is then spent on dynamics, timing, transitions, and arrangement details that only work when the whole band plays together.</p>
+
+            <h2>3. Prep your gear the night before</h2>
+            <p>Check your equipment at least the night before:</p>
+            <ul>
+              <li><strong>Guitar / bass strings</strong> — if they're old or rusted, change them the day before. Not in the rehearsal room.</li>
+              <li><strong>Instrument cables</strong> — bring at least one spare. A dead cable in the room means you're done.</li>
+              <li><strong>Drumsticks</strong> — always carry a spare pair</li>
+              <li><strong>Tuner</strong> — a phone app works, but a clip-on tuner is more accurate in a loud room</li>
+              <li><strong>Picks</strong> — bring several. They disappear.</li>
+            </ul>
+            <p>At <a href={`/${lang}/rooms/large-room`}>Thunder Studio's Large Rehearsal Room</a>, Marshall amps, a full drum kit, PA system, and mics are already set up. Just bring your guitar or bass.</p>
+
+            <h2>4. Arrive at least 10 minutes early</h2>
+            <p>Getting there early pays off in multiple ways:</p>
+            <ul>
+              <li>Time to set up without eating into your booked hours</li>
+              <li>Tune your instruments and check levels before the clock starts</li>
+              <li>Familiarize yourself with the room layout and equipment positions</li>
+              <li>Light warm-up before the real work begins</li>
+            </ul>
+            <p>When everyone shows up on time, you can start playing the first song within 5 minutes instead of losing 20 minutes waiting for the last member to arrive.</p>
+
+            <h2>5. Warm up with purpose</h2>
+            <p>A focused 5-10 minute warm-up reduces injury risk and improves performance:</p>
+            <ul>
+              <li><strong>Guitarists / bassists</strong> — play scales or chromatic runs slowly, then gradually increase speed</li>
+              <li><strong>Drummers</strong> — play basic patterns at moderate volume. Focus on stick control and timing.</li>
+              <li><strong>Vocalists</strong> — warm up with lip trills or humming. Don't belt at full volume immediately.</li>
+            </ul>
+
+            <h2>6. Manage your time in the room</h2>
+            <p>A typical 2-hour session breaks down like this:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold">Time</th>
+                    <th class="px-5 py-3 font-semibold">Activity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">0:00 – 0:10</td><td class="px-5 py-3 text-gray-700">Setup + tune + warm-up</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">0:10 – 0:50</td><td class="px-5 py-3 text-gray-700">Hardest songs / new material</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">0:50 – 1:00</td><td class="px-5 py-3 text-gray-700">Break (hydrate, discuss arrangement notes)</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">1:00 – 1:40</td><td class="px-5 py-3 text-gray-700">Remaining songs / full set run-through</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">1:40 – 1:50</td><td class="px-5 py-3 text-gray-700">Final run-through without stopping</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">1:50 – 2:00</td><td class="px-5 py-3 text-gray-700">Debrief + action items for next session</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>The key principle: tackle the hardest material first when focus and energy are highest. Songs you already know well go later.</p>
+
+            <h2>7. Record every session</h2>
+            <p>Set your phone on a stand and hit record when rehearsal starts. It doesn't need to be studio quality — just listenable enough to review. Here's why:</p>
+            <ul>
+              <li>You'll hear things you can't notice while playing (timing drift, pitch issues, balance problems)</li>
+              <li>Recordings become study material during the week before the next session</li>
+              <li>You can track how the band improves over weeks and months</li>
+            </ul>
+            <p>For professional-quality recordings, try the <a href={`/${lang}/rooms/control-room`}>Control Room</a> with its mixing console and DAW workstation.</p>
+
+            <h2>8. Communicate clearly during rehearsal</h2>
+            <p>A common trap: the band plays through a song, nobody says anything, then they play it again the same way. Use this system instead:</p>
+            <ul>
+              <li>After each song, every member shares one specific thing to adjust</li>
+              <li>Be precise: "drums quieter during the bridge" is better than "that part didn't sound right"</li>
+              <li>Don't run the same song more than 3 times in a row. If it's still not working, note the problem and take it home for individual practice.</li>
+            </ul>
+
+            <h2>9. Pre-rehearsal checklist</h2>
+            <div class="my-6 bg-onyx text-white rounded-xl p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[14px]">
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Setlist shared with all members</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Individual parts learned</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Guitar/bass strings in good shape</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Spare instrument cable</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Tuner / tuner app</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Spare drumsticks</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Extra picks</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Water bottle</label>
+              </div>
+            </div>
+
+            <h2>Ready to rehearse?</h2>
+            <p>Thunder Studio has rooms for every setup — from a <a href={`/${lang}/rooms/small-room`}>small room for solo practice</a> to a <a href={`/${lang}/rooms/large-room`}>large room for 6-10 musicians</a>. Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok.</p>
+          </div>
+        )}
+
+        <div class="reveal mt-12 text-center">
+          <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+
+  <style>
+    .prose-blog h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      color: var(--color-onyx);
+    }
+    .prose-blog p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 1rem;
+    }
+    .prose-blog ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose-blog li {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 0.35rem;
+    }
+    .prose-blog strong {
+      color: var(--color-onyx);
+      font-weight: 600;
+    }
+    .prose-blog a {
+      color: var(--color-onyx);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(15, 14, 14, 0.3);
+    }
+    .prose-blog a:hover {
+      text-decoration-color: var(--color-onyx);
+    }
+  </style>
+</Base>

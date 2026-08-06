@@ -146,6 +146,9 @@ const translations: Record<string, Record<Lang, string>> = {
   'location.faq.3.q': { th: 'เปิดกี่โมงถึงกี่โมง?', en: 'What are the opening hours?' },
   'location.faq.3.a': { th: '10:00 - 22:00 ทุกวัน รวมวันหยุดนักขัตฤกษ์', en: '10:00 AM to 10:00 PM daily, including public holidays.' },
 
+  'nav.blog': { th: 'บทความ', en: 'Blog' },
+  'breadcrumb.blog': { th: 'บทความ', en: 'Blog' },
+
   'faq.title': { th: 'คำถามที่พบบ่อย', en: 'Frequently Asked Questions' },
   'faq.1.q': { th: 'ต้องจองล่วงหน้าไหม?', en: 'Do I need to book in advance?' },
   'faq.1.a': { th: 'แนะนำให้จองล่วงหน้าผ่านเว็บไซต์หรือ LINE เพื่อรับประกันห้องว่าง แต่สามารถ walk-in ได้ถ้ามีห้องว่าง', en: 'We recommend booking in advance via our website or LINE to guarantee availability. Walk-ins are welcome if rooms are available.' },

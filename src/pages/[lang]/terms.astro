@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import type { Lang } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/ui';
 
@@ -17,26 +19,7 @@ const lastUpdated = '2026-07-24';
   description={lang === 'th' ? 'ข้อกำหนดการใช้งานเว็บไซต์ Thunder Studio' : 'Thunder Studio Terms & Conditions'}
   lang={lang}
 >
-  <header class="fixed top-0 left-0 right-0 z-50 bg-onyx/90 backdrop-blur-md border-b border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
-      <a href={`/${lang}`} class="flex items-center gap-3">
-        <svg viewBox="0 0 32 32" class="w-7 h-7" fill="none">
-          <path d="M18.5 6L10 18h5.5l-1.5 8L23 14h-5.5z" fill="currentColor"/>
-        </svg>
-        <div>
-          <div class="text-[15px] font-bold tracking-[0.05em] leading-none">THUNDER</div>
-          <div class="text-[7px] font-semibold tracking-[0.19em] text-white/50 mt-1">STUDIO</div>
-        </div>
-      </a>
-      <div class="flex items-center gap-4">
-        <div class="flex border border-white/20 rounded-full p-0.5">
-          <a href="/th/terms" aria-label={lang === 'th' ? 'ภาษาไทย (เลือกอยู่)' : 'Switch to Thai'} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'th' ? 'bg-white text-onyx' : 'text-white/50']}>TH</a>
-          <a href="/en/terms" aria-label={lang === 'en' ? 'English (selected)' : 'Switch to English'} class:list={['px-3 py-1.5 text-[11px] font-semibold tracking-wide rounded-full transition-all', lang === 'en' ? 'bg-white text-onyx' : 'text-white/50']}>EN</a>
-        </div>
-        <a href={`/${lang}`} class="text-[13px] text-white/60 hover:text-white transition-colors">{lang === 'th' ? 'กลับหน้าแรก' : 'Back to Home'}</a>
-      </div>
-    </div>
-  </header>
+  <SiteHeader {lang} />
 
   <main class="max-w-[800px] mx-auto px-6 pt-32 pb-20">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -165,15 +148,7 @@ const lastUpdated = '2026-07-24';
     )}
   </main>
 
-  <footer class="border-t border-white/10 py-8">
-    <div class="max-w-[800px] mx-auto px-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-white/42">
-      <span>&copy; {new Date().getFullYear()} Thunder Studio — Thunder Venture Group</span>
-      <div class="flex gap-4">
-        <a href={`/${lang}`} class="text-white/55 hover:text-white transition-colors">{lang === 'th' ? 'หน้าแรก' : 'Home'}</a>
-        <a href={`/${lang}/privacy`} class="text-white/55 hover:text-white transition-colors">{t('footer.privacy')}</a>
-      </div>
-    </div>
-  </footer>
+  <SiteFooter {lang} />
 
   <style>
     .prose-legal h2 {

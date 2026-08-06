@@ -3,6 +3,11 @@ import '../styles/global.css';
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 
+import montserratLatin400 from '@fontsource/montserrat/files/montserrat-latin-400-normal.woff2';
+import montserratLatin700 from '@fontsource/montserrat/files/montserrat-latin-700-normal.woff2';
+import notoSansThaiThai400 from '@fontsource/noto-sans-thai/files/noto-sans-thai-thai-400-normal.woff2';
+import notoSansThaiThai700 from '@fontsource/noto-sans-thai/files/noto-sans-thai-thai-700-normal.woff2';
+
 interface Props {
   title: string;
   description: string;
@@ -44,6 +49,11 @@ const altURL = new URL(altPath, Astro.site);
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="preload" href={montserratLatin400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={montserratLatin700} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={notoSansThaiThai400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={notoSansThaiThai700} as="font" type="font/woff2" crossorigin />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#0f0e0e" />
     <meta name="geo.region" content="TH-10" />
     <meta name="geo.placename" content="Bang Khen, Bangkok" />
