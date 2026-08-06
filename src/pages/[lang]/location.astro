@@ -1,0 +1,186 @@
+---
+import Base from '../../layouts/Base.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ScrollReveal from '../../components/ScrollReveal.astro';
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+const title = lang === 'th'
+  ? 'ที่ตั้งและการเดินทาง — Thunder Studio บางเขน กรุงเทพ'
+  : 'Location & Directions — Thunder Studio Bang Khen Bangkok';
+const description = lang === 'th'
+  ? 'Thunder Studio ตั้งอยู่ 288 ถ.พหลโยธิน บางเขน กรุงเทพ 10220 เปิดทุกวัน 10:00-22:00 มีที่จอดรถ'
+  : 'Thunder Studio at 288 Phahonyothin Rd, Bang Khen, Bangkok 10220. Open daily 10:00-22:00. Free parking.';
+
+const faqs = [1, 2, 3].map(i => ({
+  question: t(`location.faq.${i}.q`),
+  answer: t(`location.faq.${i}.a`),
+}));
+
+const directions = [
+  { icon: 'car', title: t('location.car.title'), desc: t('location.car.desc') },
+  { icon: 'train', title: t('location.bts.title'), desc: t('location.bts.desc') },
+  { icon: 'taxi', title: t('location.taxi.title'), desc: t('location.taxi.desc') },
+  { icon: 'parking', title: t('location.parking.title'), desc: t('location.parking.desc') },
+];
+---
+
+<Base {title} {description} {lang}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MusicVenue",
+    "name": "Thunder Studio",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "288, 102-103 Phahonyothin Rd",
+      "addressLocality": "Bang Khen",
+      "addressRegion": "Bangkok",
+      "postalCode": "10220",
+      "addressCountry": "TH",
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 13.8748,
+      "longitude": 100.5689,
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "22:00",
+    },
+    "telephone": "+66635461924",
+    "hasMap": "https://maps.google.com/maps?q=288+Phahonyothin+Rd+Anusawari+Bang+Khen+Bangkok+10220",
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('nav.location') },
+    ],
+  })} />
+
+  <section class="pt-28 pb-16 bg-clinical text-onyx">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <nav class="reveal text-[13px] text-gray-500 mb-8">
+        <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+        <span class="mx-2">/</span>
+        <span class="text-onyx font-medium">{t('nav.location')}</span>
+      </nav>
+
+      <h1 class="reveal text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('location.title')}</h1>
+      <p class="reveal text-base text-gray-600 mt-4 max-w-xl" style="transition-delay: 80ms;">{t('location.hero')}</p>
+
+      <div class="grid md:grid-cols-2 gap-12 mt-14">
+        <div>
+          <div class="reveal border border-gray-300 rounded-2xl p-6">
+            <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-3">{t('location.address.title')}</div>
+            <p class="text-[17px] font-semibold">{t('address')}</p>
+            <div class="mt-4 space-y-2 text-[14px] text-gray-700">
+              <div><span class="text-gray-500">{t('contact.phone.label')}:</span> <a href={`tel:${t('phone').replace(/\s/g, '')}`} class="hover:underline">{t('phone')}</a></div>
+              <div><span class="text-gray-500">{lang === 'th' ? 'อีเมล' : 'Email'}:</span> <a href={`mailto:${t('email')}`} class="hover:underline">{t('email')}</a></div>
+              <div><span class="text-gray-500">LINE:</span> <a href={`https://line.me/ti/p/${t('line')}`} target="_blank" rel="noopener" class="hover:underline">{t('line')}</a></div>
+            </div>
+          </div>
+
+          <div class="reveal mt-6 border border-gray-300 rounded-2xl p-6" style="transition-delay: 100ms;">
+            <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-3">{t('location.hours.title')}</div>
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+              <span class="text-[17px] font-semibold">{t('hours')}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal rounded-2xl overflow-hidden border border-gray-300 h-[350px]" style="transition-delay: 150ms;">
+          <iframe
+            src="https://maps.google.com/maps?q=288+Phahonyothin+Rd+Anusawari+Bang+Khen+Bangkok+10220&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={t('location.map.title')}
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-onyx py-20 grain">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <h2 class="reveal text-3xl font-bold tracking-[-0.02em] uppercase">{t('location.how.title')}</h2>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-12">
+        {directions.map((dir, idx) => (
+          <div class="reveal border border-white/10 rounded-2xl p-7" style={`transition-delay: ${idx * 80}ms;`}>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-10 h-10 border border-white/30 rounded-xl flex items-center justify-center">
+                {dir.icon === 'car' && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2"/><path d="M9 17h6"/></svg>}
+                {dir.icon === 'train' && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><circle cx="8.5" cy="15.5" r="1"/><circle cx="15.5" cy="15.5" r="1"/><path d="M6 19l-2 3"/><path d="M18 19l2 3"/></svg>}
+                {dir.icon === 'taxi' && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2"/><path d="M9 17h6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M10 5l1-2h2l1 2"/></svg>}
+                {dir.icon === 'parking' && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>}
+              </div>
+              <h3 class="text-[17px] font-bold">{dir.title}</h3>
+            </div>
+            <p class="text-[14px] text-white/60 leading-relaxed">{dir.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-clinical text-onyx py-16">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <h2 class="reveal text-2xl md:text-3xl font-bold tracking-[-0.02em]">{t('faq.title')}</h2>
+      <div class="mt-8 max-w-3xl divide-y divide-gray-200">
+        {faqs.map((faq, idx) => (
+          <details class="reveal group" style={`transition-delay: ${idx * 80}ms;`}>
+            <summary class="flex items-center justify-between gap-4 py-5 cursor-pointer list-none text-[16px] font-semibold text-onyx/90 hover:text-onyx transition-colors">
+              {faq.question}
+              <svg class="w-5 h-5 shrink-0 text-gray-400 group-open:rotate-45 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </summary>
+            <p class="pb-5 text-[15px] text-gray-600 leading-relaxed pr-10">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer },
+      })),
+    })} />
+  </section>
+
+  <section class="bg-onyx py-14 text-center">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <h2 class="reveal text-2xl font-bold">{t('hero.cta.book')}</h2>
+      <a href={`/${lang}/#booking`} class="reveal inline-block mt-5 bg-white text-onyx rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-white/90 transition-colors" style="transition-delay: 80ms;">
+        {t('hero.cta.book')}
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+</Base>

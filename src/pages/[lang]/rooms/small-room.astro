@@ -1,0 +1,169 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+import { rooms } from '../../../data/rooms';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const room = rooms[1];
+const otherRooms = rooms.filter((_, i) => i !== 1);
+
+const title = lang === 'th'
+  ? 'ห้องซ้อมเล็ก — Thunder Studio กรุงเทพ'
+  : 'Small Rehearsal Room — Thunder Studio Bangkok';
+const description = lang === 'th'
+  ? 'ห้องซ้อมดนตรีส่วนตัวขนาดกะทัดรัด 2-4 คน ผนังกันเสียงรอบด้าน เหมาะซ้อมเดี่ยว ดูโอ้ หรือวงเล็ก'
+  : 'Compact private rehearsal room for 2-4 people. Fully soundproofed. Ideal for solo practice, duos, or small groups.';
+
+const faqs = [1, 2, 3].map(i => ({
+  question: t(`room.small.faq.${i}.q`),
+  answer: t(`room.small.faq.${i}.a`),
+}));
+---
+
+<Base {title} {description} {lang} ogImage={room.images[0]}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": room.name[lang],
+    "description": room.description[lang],
+    "image": room.images,
+    "brand": { "@type": "Organization", "name": "Thunder Studio" },
+    "category": lang === 'th' ? 'ห้องซ้อมดนตรี' : 'Music Rehearsal Room',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.rooms'), "item": `https://thundermusicstudio.com/${lang}/#rooms` },
+      { "@type": "ListItem", "position": 3, "name": room.name[lang] },
+    ],
+  })} />
+
+  <section class="pt-28 pb-16 bg-clinical text-onyx">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <nav class="reveal text-[13px] text-gray-500 mb-8">
+        <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+        <span class="mx-2">/</span>
+        <a href={`/${lang}/#rooms`} class="hover:text-onyx transition-colors">{t('breadcrumb.rooms')}</a>
+        <span class="mx-2">/</span>
+        <span class="text-onyx font-medium">{room.name[lang]}</span>
+      </nav>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div class="reveal">
+          <img src={room.images[0]} alt={room.name[lang]} width="600" height="400" class="w-full h-[350px] md:h-[450px] object-cover rounded-2xl border border-gray-300" fetchpriority="high" />
+          {room.images.length > 1 && (
+            <div class="flex gap-2 mt-3 overflow-x-auto">
+              {room.images.slice(1).map(img => (
+                <img src={img} alt={`${room.name[lang]} - ${t('room.gallery')}`} class="w-24 h-24 rounded-xl object-cover border border-gray-300 shrink-0 hover:scale-105 transition-transform" loading="lazy" />
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div class="reveal" style="transition-delay: 100ms;">
+          <h1 class="text-3xl md:text-4xl font-bold tracking-[-0.02em]">{room.name[lang]}</h1>
+          <p class="text-[16px] text-gray-700 leading-relaxed mt-4">{room.description[lang]}</p>
+
+          <div class="mt-6 flex items-center gap-3">
+            <span class="border border-gray-300 rounded-lg px-4 py-2 text-[14px] font-semibold">
+              {t('room.capacity.label')}: {room.capacity} {t('room.capacity.unit')}
+            </span>
+          </div>
+
+          <div class="mt-8">
+            <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{t('room.equipment')}</div>
+            <div class="grid grid-cols-2 gap-3">
+              {room.equipment.map(eq => (
+                <div class="flex items-center gap-2 text-[14px] text-gray-700">
+                  <svg class="w-4 h-4 text-green-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {eq[lang]}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{t('room.perfect')}</div>
+            <ul class="space-y-2">
+              {[1, 2, 3].map(i => (
+                <li class="flex items-center gap-2 text-[14px] text-gray-700">
+                  <span class="w-1.5 h-1.5 bg-gray-400 rounded-full shrink-0"></span>
+                  {t(`room.small.perfect.${i}`)}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a href={`/${lang}/#booking`} class="inline-block mt-8 bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('room.book')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-onyx py-16">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <h2 class="reveal text-2xl md:text-3xl font-bold tracking-[-0.02em]">{t('faq.title')}</h2>
+      <div class="mt-8 max-w-3xl divide-y divide-white/10">
+        {faqs.map((faq, idx) => (
+          <details class="reveal group" style={`transition-delay: ${idx * 80}ms;`}>
+            <summary class="flex items-center justify-between gap-4 py-5 cursor-pointer list-none text-[16px] font-semibold text-white/90 hover:text-white transition-colors">
+              {faq.question}
+              <svg class="w-5 h-5 shrink-0 text-white/40 group-open:rotate-45 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </summary>
+            <p class="pb-5 text-[15px] text-white/60 leading-relaxed pr-10">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer },
+      })),
+    })} />
+  </section>
+
+  <section class="bg-clinical text-onyx py-16">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <h2 class="reveal text-2xl md:text-3xl font-bold tracking-[-0.02em]">{t('room.other')}</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        {otherRooms.map((r, idx) => (
+          <a href={`/${lang}/rooms/${r.slug}`} class="reveal group block rounded-2xl border border-gray-300 overflow-hidden hover:shadow-lg transition-shadow" style={`transition-delay: ${idx * 100}ms;`}>
+            <img src={r.images[0]} alt={r.name[lang]} class="w-full h-48 object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+            <div class="p-5">
+              <h3 class="text-lg font-bold">{r.name[lang]}</h3>
+              <p class="text-[14px] text-gray-600 mt-1">{r.capacity} {t('room.capacity.unit')}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+</Base>

@@ -1,0 +1,129 @@
+---
+import Base from '../../layouts/Base.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ScrollReveal from '../../components/ScrollReveal.astro';
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+const title = lang === 'th'
+  ? 'เกี่ยวกับ Thunder Studio — ห้องซ้อมดนตรี กรุงเทพ'
+  : 'About Thunder Studio — Music Rehearsal Bangkok';
+const description = lang === 'th'
+  ? 'Thunder Studio ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ในย่านบางเขน กรุงเทพ โดย Thunder Venture Group'
+  : 'Thunder Studio - professional music rehearsal rooms and recording studio in Bang Khen, Bangkok. Part of Thunder Venture Group.';
+
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+---
+
+<Base {title} {description} {lang}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "MusicVenue",
+      "name": "Thunder Studio",
+      "description": description,
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Thunder Venture Group",
+        "url": "https://thunderventuregroup.com",
+      },
+    },
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('nav.about') },
+    ],
+  })} />
+
+  <section class="relative min-h-[50vh] flex items-end overflow-hidden grain">
+    <div class="absolute inset-0">
+      <img src={`${IMG}/common-area-1.webp`} alt="Thunder Studio" class="w-full h-full object-cover opacity-20" fetchpriority="high" />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/60 to-onyx/80"></div>
+    <div class="relative max-w-[1200px] mx-auto px-6 pt-32 pb-14 w-full">
+      <nav class="text-[13px] text-white/50 mb-6">
+        <a href={`/${lang}`} class="hover:text-white transition-colors">{t('breadcrumb.home')}</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/80">{t('nav.about')}</span>
+      </nav>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('about.title')}</h1>
+      <p class="text-base md:text-lg text-white/60 mt-4 max-w-xl leading-relaxed">{t('about.hero')}</p>
+    </div>
+  </section>
+
+  <section class="bg-clinical text-onyx py-20">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-14 items-start">
+        <div class="reveal">
+          <h2 class="text-3xl font-bold tracking-[-0.02em]">{t('about.story.title')}</h2>
+          <p class="text-[16px] text-gray-700 leading-relaxed mt-6">{t('about.story.p1')}</p>
+          <p class="text-[16px] text-gray-700 leading-relaxed mt-4">{t('about.story.p2')}</p>
+
+          <div class="mt-10 p-6 bg-onyx text-white rounded-2xl">
+            <h3 class="text-lg font-bold">{t('about.parent.title')}</h3>
+            <p class="text-[14px] text-white/70 leading-relaxed mt-3">{t('about.parent.desc')}</p>
+            <a href="https://thunderventuregroup.com" target="_blank" rel="noopener" class="inline-block mt-4 text-[13px] font-semibold text-white/60 hover:text-white transition-colors">
+              thunderventuregroup.com &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal space-y-6" style="transition-delay: 120ms;">
+          <img src={`${IMG}/hallway.webp`} alt={lang === 'th' ? 'โถงทางเข้า Thunder Studio' : 'Thunder Studio entrance hallway'} class="w-full h-[300px] object-cover rounded-2xl border border-gray-300" loading="lazy" />
+          <img src={`${IMG}/attic-lounge-1.webp`} alt={lang === 'th' ? 'ห้องใต้หลังคา' : 'Attic lounge'} class="w-full h-[200px] object-cover rounded-2xl border border-gray-300" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-onyx py-20 grain">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <h2 class="reveal text-3xl font-bold tracking-[-0.02em] uppercase">{t('features.title')}</h2>
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        {[
+          { title: t('about.equipment.title'), desc: t('about.equipment.desc'), icon: 'music' },
+          { title: t('about.sound.title'), desc: t('about.sound.desc'), icon: 'shield' },
+          { title: t('about.space.title'), desc: t('about.space.desc'), icon: 'coffee' },
+        ].map((feature, idx) => (
+          <div class="reveal p-7 border border-white/10 rounded-2xl" style={`transition-delay: ${idx * 100}ms;`}>
+            <div class="w-10 h-10 border border-white/30 rounded-xl flex items-center justify-center mb-5">
+              {feature.icon === 'music' && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>}
+              {feature.icon === 'shield' && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
+              {feature.icon === 'coffee' && <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>}
+            </div>
+            <h3 class="text-[17px] font-bold">{feature.title}</h3>
+            <p class="text-[13px] text-white/50 leading-relaxed mt-3">{feature.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-clinical text-onyx py-16">
+    <div class="max-w-[1200px] mx-auto px-6 text-center">
+      <h2 class="reveal text-3xl font-bold tracking-[-0.02em]">{t('hero.cta.book')}</h2>
+      <p class="reveal text-[15px] text-gray-600 mt-3 max-w-lg mx-auto" style="transition-delay: 80ms;">{t('booking.sub')}</p>
+      <a href={`/${lang}/#booking`} class="reveal inline-block mt-6 bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors" style="transition-delay: 160ms;">
+        {t('hero.cta.book')}
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+</Base>

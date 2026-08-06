@@ -41,6 +41,14 @@ Thunder Studio is a music rehearsal and recording facility located in Bang Khen,
 - Facebook: https://www.facebook.com/thunderventurestudio
 - Instagram: https://www.instagram.com/thunderventure.studio
 
+## Pages
+- Homepage: https://thundermusicstudio.com/en/ - Main landing page with all rooms, booking, and contact
+- Large Rehearsal Room: https://thundermusicstudio.com/en/rooms/large-room - 6-10 person room with Marshall amps, drum kit, PA
+- Small Rehearsal Room: https://thundermusicstudio.com/en/rooms/small-room - 2-4 person soundproofed room for solo/duo practice
+- Control Room: https://thundermusicstudio.com/en/rooms/control-room - Recording studio with mixing console and DAW
+- About: https://thundermusicstudio.com/en/about - Our story and Thunder Venture Group
+- Location: https://thundermusicstudio.com/en/location - Directions, parking, opening hours
+
 ## Company
 Thunder Venture Group Co., Ltd.
 Tax ID: 0105586164737
