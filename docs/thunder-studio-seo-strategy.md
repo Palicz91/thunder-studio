@@ -33,8 +33,8 @@ Thunder Studio operates in a **low-competition SEO niche**. Thai-language keywor
 | Blog post #1: rehearsal preparation guide | Done | 2026-08-06 |
 | Thai natural writing audit (removed AI tells, calques, varied vocabulary) | Done | 2026-08-06 |
 | Sitemap link in HTML head | Done | 2026-08-06 |
-| Google Business Profile setup | Not started | — |
-| Google Search Console setup | Not started | — |
+| Google Business Profile setup | Done — awaiting address verification | 2026-08-07 |
+| Google Search Console setup | Done | 2026-08-07 |
 | Pricing page | Blocked (needs rates) | — |
 | Blog post #2: recording studio guide | Done | 2026-08-07 |
 | Blog post #3: room selection guide | Done | 2026-08-07 |
@@ -259,8 +259,8 @@ Update llms.txt every time a new page is added — include: page title, URL, one
 - [x] Opening hours with live status indicator
 
 ### Off-site (not started)
-- [ ] Google Business Profile (see Part 2)
-- [ ] Google Search Console setup + sitemap submission
+- [x] Google Business Profile — created, awaiting address verification (2026-08-07)
+- [x] Google Search Console — set up (2026-08-07)
 - [ ] Submit to Thai business directories (Wongnai, Foursquare, Yelp Thailand, Yellow Pages Thailand)
 - [ ] Facebook page — link back to website
 - [ ] Instagram — link in bio to website
@@ -337,8 +337,8 @@ Home > Blog > How to prepare for band rehearsal
 
 | Task | Blocker | Est. time |
 |------|---------|-----------|
-| Google Business Profile setup | Manual login required (owner action) | 1-2 hours |
-| Google Search Console setup | Manual login required (owner action) | 30 min |
+| Google Business Profile setup | Awaiting address verification | Done (2026-08-07) |
+| Google Search Console setup | — | Done (2026-08-07) |
 | Pricing page | Need hourly rates per room from owner | 1.5 hours |
 | Blog: "Recording studio guide for beginners" | — | Done (2026-08-07) |
 | Blog: "Choosing the right room size" | — | Done (2026-08-07) |
@@ -395,7 +395,7 @@ Home > Blog > How to prepare for band rehearsal
 - [x] Scroll-reveal animations (CSS transitions, no JS layout shifts)
 
 ### Still needed
-- [ ] Google Search Console — submit sitemap, verify domain
+- [x] Google Search Console — set up (2026-08-07)
 - [ ] Bing Webmaster Tools — submit sitemap
 - [ ] Add `lastmod` to sitemap entries (Astro sitemap plugin config)
 - [ ] Lighthouse audit and fix any performance issues
@@ -433,11 +433,11 @@ Home > Blog > How to prepare for band rehearsal
 
 | Priority | Action | Impact | Effort | Status |
 |----------|--------|--------|--------|--------|
-| 1 | Google Business Profile setup | Captures 8,800/mo Maps searches | 1-2 hours | Not started (owner action) |
+| 1 | Google Business Profile setup | Captures 8,800/mo Maps searches | 1-2 hours | Done — awaiting address verification |
 | 2 | Room pages (3 pages) | Rank for 500+/mo commercial keywords | 4 hours | Done |
 | 3 | Location page | Rank for 70+/mo local keywords, supports GBP | 1.5 hours | Done |
 | 4 | About page | Trust signal, supports E-E-A-T | 1 hour | Done |
-| 5 | Google Search Console setup | Track all metrics | 30 min | Not started (owner action) |
+| 5 | Google Search Console setup | Track all metrics | 30 min | Done (2026-08-07) |
 | 6 | Pricing page | Rank for 230+/mo transactional keywords | 1.5 hours | Blocked (needs rates) |
 | 7 | Blog content (3 posts) | Long-tail traffic + AI citations | 5-6 hours | Done (3/3) |
 | 8 | Directory submissions | Local SEO signals | 1 hour | Prepared (owner action for GBP/Wongnai/FB) |
@@ -531,7 +531,7 @@ Professional music rehearsal rooms and recording studio in Bang Khen, Bangkok. M
 
 | Directory | URL | Status | Notes |
 |-----------|-----|--------|-------|
-| Google Business Profile | business.google.com | Not started | Owner action — needs Google login |
+| Google Business Profile | business.google.com | Done — awaiting address verification | Set up 2026-08-07 |
 | Wongnai | business.wongnai.com | Not started | #1 Thai discovery platform |
 | Thailand YellowPages | yellowpages.co.th | Not started | Free basic listing |
 | Longdo Map | map.longdo.com | Not started | Thai-built map, free submission |

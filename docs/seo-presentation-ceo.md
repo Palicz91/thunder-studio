@@ -17,7 +17,7 @@ No competitor in Bangkok is doing SEO properly. The studios that show up in Goog
 
 **What we expect:** 80–270 new bookings per month within 3-6 months from Google Maps and organic search combined. Zero ad spend — all organic.
 
-**What we need from you:** Set up Google Business Profile (1-2 hours, owner login required), share hourly room rates for the pricing page, and start asking customers for Google reviews.
+**Google Search Console and Google Business Profile are already set up** — address verification is in progress. Once verified, Thunder Studio goes live on Google Maps and starts capturing those 8,800 monthly searches. Remaining: share hourly room rates (for pricing page) and start asking customers for Google reviews.
 
 ---
 
@@ -136,13 +136,13 @@ These are new customers who would otherwise go to competitors or not find any st
 
 ## What We Need from You
 
-| Action | Who | Time | Impact |
-|--------|-----|------|--------|
-| Set up Google Business Profile | Owner (Google login) | 1-2 hours | Captures 8,800/mo searches |
-| Set up Google Search Console | Owner (Google login) | 30 min | Track all SEO performance |
-| Provide hourly room rates | Studio manager | 15 min | Unblocks pricing page |
-| Upload 20+ studio photos to GBP | Studio staff | 30 min | Better Maps listing |
-| Ask customers for Google reviews | Front desk | Ongoing | Higher Maps ranking |
+| Action | Who | Time | Impact | Status |
+|--------|-----|------|--------|--------|
+| ~~Set up Google Business Profile~~ | ~~Owner~~ | ~~1-2 hours~~ | ~~Captures 8,800/mo searches~~ | ✅ Done — awaiting address verification |
+| ~~Set up Google Search Console~~ | ~~Owner~~ | ~~30 min~~ | ~~Track all SEO performance~~ | ✅ Done |
+| Provide hourly room rates | Studio manager | 15 min | Unblocks pricing page | Pending |
+| Upload 20+ studio photos to GBP | Studio staff | 30 min | Better Maps listing | Pending (after verification) |
+| Ask customers for Google reviews | Front desk | Ongoing | Higher Maps ranking | Pending (after verification) |
 
 ---
 
