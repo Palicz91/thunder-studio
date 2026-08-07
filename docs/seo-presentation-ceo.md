@@ -5,6 +5,22 @@
 
 ---
 
+## Executive Summary
+
+**16,500 musicians search Google every month** for rehearsal rooms and recording studios in Thailand. Thunder Studio currently captures **zero** of them.
+
+The reason is simple: **53% of those searches show Google Maps results**, and Thunder Studio has no Google Business Profile. Without it, we don't exist on the map — literally.
+
+We've built a fully optimized, bilingual website with room pages, blog content, and all the technical foundations. But the website alone isn't enough. **The single most important action is setting up a Google Business Profile** — it takes 1-2 hours of the owner's time and immediately opens the door to 8,800 monthly searches.
+
+No competitor in Bangkok is doing SEO properly. The studios that show up in Google today have Facebook pages and Pantip posts — not real websites. **Thunder Studio can own this space.**
+
+**What we expect:** 80–270 new bookings per month within 3-6 months from Google Maps and organic search combined. Zero ad spend — all organic.
+
+**What we need from you:** Set up Google Business Profile (1-2 hours, owner login required), share hourly room rates for the pricing page, and start asking customers for Google reviews.
+
+---
+
 ## The Opportunity
 
 Every month, thousands of musicians in Thailand search Google for rehearsal rooms and recording studios:
