@@ -1,17 +1,17 @@
 # Thunder Studio SEO Strategy
 
 **Created:** 2026-08-06
-**Last updated:** 2026-08-06
+**Last updated:** 2026-08-07
 **Domain:** thundermusicstudio.com
 **Market:** Bangkok, Thailand
 **Languages:** Thai (primary) + English (secondary)
-**Data source:** DataForSEO Labs (live, 2026-08-06)
+**Data source:** DataForSEO Labs (live, 2026-08-06) — cross-validated 2026-08-07 (see Part 12)
 
 ---
 
 ## Executive summary
 
-Thunder Studio operates in a **zero-competition SEO niche**. Almost all target keywords show difficulty 0. The #1 search term "ห้องซ้อมดนตรีใกล้ฉัน" gets 8,100 searches/month and routes to Google Maps — not organic results. The single highest-ROI action is setting up a Google Business Profile.
+Thunder Studio operates in a **low-competition SEO niche**. Thai-language keywords genuinely show difficulty 0 (validated 2026-08-07); English keywords like "recording studio Bangkok" have real competition (difficulty ~15-30). The #1 search term "ห้องซ้อมดนตรีใกล้ฉัน" gets 8,100 searches/month and routes to Google Maps — not organic results. The single highest-ROI action is setting up a Google Business Profile.
 
 **Current state (2026-08-06):** 18 indexed URLs across 9 bilingual pages. Font preloading, structured data, FAQ schemas, AI visibility (llms.txt, robots.txt), and 1 blog post live. SEO score: ~75/100. AI visibility: ~70/100.
 
@@ -31,12 +31,13 @@ Thunder Studio operates in a **zero-competition SEO niche**. Almost all target k
 | Font preloading (Montserrat + Noto Sans Thai) | Done | 2026-08-06 |
 | Privacy/Terms refactored | Done | 2026-08-06 |
 | Blog post #1: rehearsal preparation guide | Done | 2026-08-06 |
+| Thai natural writing audit (removed AI tells, calques, varied vocabulary) | Done | 2026-08-06 |
 | Sitemap link in HTML head | Done | 2026-08-06 |
 | Google Business Profile setup | Not started | — |
 | Google Search Console setup | Not started | — |
 | Pricing page | Blocked (needs rates) | — |
-| Blog post #2: recording studio guide | Not started | — |
-| Blog post #3: room selection guide | Not started | — |
+| Blog post #2: recording studio guide | Done | 2026-08-07 |
+| Blog post #3: room selection guide | Done | 2026-08-07 |
 | Directory submissions | Not started | — |
 
 ---
@@ -330,6 +331,7 @@ Home > Blog > How to prepare for band rehearsal
 | Refactor privacy/terms to shared components | Done | 2026-08-06 |
 | Font preloading (4 woff2 files) | Done | 2026-08-06 |
 | Blog: "How to prepare for band rehearsal" | Done | 2026-08-06 |
+| Thai natural writing audit (removed สามารถ...ได้, em dashes, varied ระดับมืออาชีพ) | Done | 2026-08-06 |
 
 ### Remaining (Phase 3)
 
@@ -441,3 +443,42 @@ Home > Blog > How to prepare for band rehearsal
 | 8 | Directory submissions | Local SEO signals | 1 hour | Not started |
 | 9 | Review collection system | GBP ranking boost | Ongoing | Not started |
 | 10 | Font preloading + technical SEO | LCP improvement | 30 min | Done |
+
+---
+
+## Part 12: DataForSEO validation (2026-08-07)
+
+Independent cross-validation of DataForSEO keyword data via web research, SERP analysis, and Google Trends signals.
+
+### Methodology
+No independent tool provides exact Thailand-level volumes for Thai keywords publicly. Validation uses: (1) structural plausibility analysis, (2) actual SERP competition assessment, (3) known DataForSEO bucketing behavior (Google Keyword Planner uses ~60 preset volume buckets like 1K, 1.5K, 2.9K, 5.4K, 8.1K — not exact counts), (4) cross-signal triangulation.
+
+### Validation results
+
+| Keyword | DataForSEO | Volume verdict | Difficulty verdict | Notes |
+|---------|------------|---------------|-------------------|-------|
+| ห้องซ้อมดนตรีใกล้ฉัน | 8,100/mo, D:0 | Plausible (treat as 4.5K–12K range) | Confirmed 0 | GKP bucket rounding, not exact |
+| ห้องซ้อมดนตรี | 5,400/mo, D:0 | **Suspicious** — head term lower than "near me" variant | Confirmed 0 | Likely bucket misclassification; both are 4K–10K range |
+| music practice room | 590/mo, D:0 | **Uncertain** — may be global, not Thailand-only | Uncertain | Needs geo-filter confirmation |
+| ห้องอัดเสียง ใกล้ฉัน | 320/mo, D:0 | Plausible | Confirmed 0 | Narrow niche, consistent |
+| recording studio Bangkok | 170/mo, D:0 | Volume plausible | **Difficulty WRONG — real ~15-30** | Miloco Studios, Timeout Bangkok, SoundBetter rank here |
+| music studio Bangkok | 170/mo, D:0 | Volume plausible | **Difficulty WRONG — real ~15-30** | BangkokHaps, Timeout Bangkok rank here |
+| ห้องซ้อมดนตรีใกล้ฉัน ราคาถูก | 140/mo, D:0 | Plausible | Confirmed 0 | Long-tail proportion consistent |
+
+### Key findings
+
+1. **Volume inversion is the biggest red flag.** "ห้องซ้อมดนตรีใกล้ฉัน" (8,100) reportedly exceeds "ห้องซ้อมดนตรี" (5,400) — the "near me" variant beating the head term is atypical. Thai mobile "near me" search is growing fast but rarely exceeds head terms. Treat both as same order of magnitude (4K–10K range) rather than distinct numbers.
+
+2. **Difficulty 0 is WRONG for English keywords.** "recording studio Bangkok" and "music studio Bangkok" have real SERP competition from Timeout Bangkok, BangkokHaps, Miloco Studios, SoundBetter, and international directories. These sites have meaningful domain authority. Real difficulty is likely 15–30. Strategy should not treat these as freely rankable.
+
+3. **All Thai-language keywords at difficulty 0 are confirmed valid.** SERPs show only Facebook pages and Pantip forum threads — no SEO-optimized websites target these queries. The opportunity is real.
+
+4. **"music practice room" (590/mo) is ambiguous.** If this is Thailand-only volume, it's plausible for the English-speaking expat segment. If global, it's significantly deflated. The keyword's commercial value for a Bangkok studio is limited either way.
+
+5. **All DataForSEO volumes use Google Keyword Planner's bucket system** — they are order-of-magnitude estimates, not precise measurements. The 8,100 figure could be anywhere from 4,500 to 12,000; the 5,400 could be 2,900 to 8,100. Strategy priority rankings remain valid even with this uncertainty.
+
+### Impact on strategy
+
+- **No priority changes needed.** The core thesis — Thai rehearsal keywords have zero organic competition and meaningful volume — is validated. GBP remains #1 priority.
+- **Adjust expectations for English keywords.** Ranking for "recording studio Bangkok" and "music studio Bangkok" will require more effort than Thai keywords. Budget for backlink building on these.
+- **Treat all volume numbers as ±50% ranges**, not exact figures.

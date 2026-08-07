@@ -1,0 +1,341 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const datePublished = '2026-08-07';
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+
+const title = lang === 'th'
+  ? 'อัดเสียงครั้งแรก เตรียมตัวยังไงก่อนเข้าสตูดิโอ'
+  : 'First time recording? How to prepare for the studio';
+const description = lang === 'th'
+  ? 'คู่มือสำหรับคนที่ยังไม่เคยอัดเสียง ตั้งแต่ซ้อมเพลงให้พร้อม เลือกห้องอัด เตรียมอุปกรณ์ ไปจนถึงเทคนิคในห้องบันทึกเสียง'
+  : 'A practical guide for first-time recording: song preparation, choosing the right studio setup, gear to bring, and session tips.';
+---
+
+<Base {title} {description} {lang} ogImage={`${IMG}/control-room-1.webp`}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thunder Studio",
+      "url": "https://thundermusicstudio.com",
+    },
+    "image": `${IMG}/control-room-1.webp`,
+    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/blog/recording-studio-guide`,
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.blog'), "item": `https://thundermusicstudio.com/${lang}/blog` },
+      { "@type": "ListItem", "position": 3, "name": lang === 'th' ? 'อัดเสียงครั้งแรก' : 'Recording studio guide' },
+    ],
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": lang === 'th' ? [
+      { "@type": "Question", "name": "อัดเสียงครั้งแรกต้องเตรียมอะไรบ้าง?", "acceptedAnswer": { "@type": "Answer", "text": "ซ้อมเพลงจนคล่อง เตรียมสายกีตาร์ใหม่ ไม้กลองสำรอง และ reference track ที่ต้องการให้เสียงออกมาคล้าย เข้าห้องอัดตอนพร้อม ไม่ใช่ตอนยังซ้อมไม่จบ" }},
+      { "@type": "Question", "name": "อัดเสียงแบบ live กับ tracking ต่างกันยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "Live recording คือทุกคนเล่นพร้อมกัน ได้อารมณ์ดิบ เหมาะกับวงที่เล่นด้วยกันจนแน่นแล้ว Tracking คืออัดทีละ track เริ่มจากกลอง แก้ไขได้ง่ายกว่า เหมาะกับวงที่ต้องการความละเอียดสูง" }},
+      { "@type": "Question", "name": "ห้องอัดเสียงราคาเท่าไหร่?", "acceptedAnswer": { "@type": "Answer", "text": "ราคาห้องอัดเสียงแตกต่างกันตามขนาดห้อง อุปกรณ์ และบริการ ที่ Thunder Studio มี Control Room พร้อม DAW workstation และมิกซ์คอนโซล ติดต่อสอบถามราคาได้ที่ 063-546-1924 หรือ LINE @thunderstudio" }},
+    ] : [
+      { "@type": "Question", "name": "What should I prepare for my first recording session?", "acceptedAnswer": { "@type": "Answer", "text": "Practice your songs until tight, bring fresh guitar strings and spare drumsticks, and prepare reference tracks showing the sound you want. Enter the studio ready to perform, not to learn the song." }},
+      { "@type": "Question", "name": "What is the difference between live recording and tracking?", "acceptedAnswer": { "@type": "Answer", "text": "Live recording captures all instruments at once for a raw, energetic feel. Tracking records one instrument at a time, starting with drums, allowing precise editing. Choose based on your band's tightness and desired polish." }},
+      { "@type": "Question", "name": "How much does a recording studio cost?", "acceptedAnswer": { "@type": "Answer", "text": "Recording studio costs vary by room size, equipment, and services. Thunder Studio's Control Room includes a DAW workstation and mixing console. Contact 063-546-1924 or LINE @thunderstudio for rates." }},
+    ],
+  })} />
+
+  <article class="bg-clinical text-onyx">
+    <section class="pt-28 pb-12">
+      <div class="max-w-[720px] mx-auto px-6">
+        <nav class="reveal text-[13px] text-gray-500 mb-8">
+          <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+          <span class="mx-2">/</span>
+          <span class="text-onyx font-medium">{t('breadcrumb.blog')}</span>
+        </nav>
+
+        <div class="reveal">
+          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
+            {lang === 'th' ? 'อัดเสียงครั้งแรก เตรียมตัวยังไงก่อนเข้าสตูดิโอ' : 'First time recording? How to prepare for the studio'}
+          </h1>
+          <p class="text-[17px] text-gray-600 mt-5 leading-relaxed max-w-xl">{description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-6">
+      <div class="max-w-[900px] mx-auto px-6">
+        <img
+          src={`${IMG}/control-room-1.webp`}
+          alt={lang === 'th' ? 'ห้องบันทึกเสียง Control Room Thunder Studio' : 'Thunder Studio Control Room recording studio'}
+          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-[720px] mx-auto px-6">
+        {lang === 'th' ? (
+          <div class="prose-blog">
+            <p>หลายวงวางแผนอัดเสียงมาเป็นเดือน แต่พอเข้าห้องอัดจริงกลับเสียเวลาครึ่งวันกับการ setup และแก้ปัญหาที่ป้องกันได้ ค่าห้องอัดไม่ถูก เวลาทุกนาทีมีราคา คู่มือนี้จะช่วยให้คุณใช้เวลาในห้องบันทึกเสียงได้คุ้มค่าตั้งแต่ครั้งแรก</p>
+
+            <h2>1. ซ้อมจนคล่องก่อนจอง</h2>
+            <p>ห้องอัดเสียงไม่ใช่ห้องซ้อม ถ้ายังเล่นเพลงไม่จบ ยังจำท่อนไม่ได้ หรือยัง arrangement ไม่ลงตัว ให้จอง<a href={`/${lang}/rooms/large-room`}>ห้องซ้อมใหญ่</a>ก่อน</p>
+            <p>เช็คความพร้อมง่ายๆ ถ้าวงเล่นเพลงรวดเดียวจบโดยไม่หยุดได้ 3 รอบติดกัน แปลว่าพร้อมอัด ถ้ายังไม่ได้ ให้ซ้อมเพิ่ม</p>
+
+            <h2>2. เลือกรูปแบบการอัด: live หรือ tracking</h2>
+            <p>สองวิธีหลักที่ห้องอัดเสียงใช้กัน:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold"></th>
+                    <th class="px-5 py-3 font-semibold">Live Recording</th>
+                    <th class="px-5 py-3 font-semibold">Tracking</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">วิธีการ</td><td class="px-5 py-3 text-gray-700">ทุกคนเล่นพร้อมกัน อัดทีเดียว</td><td class="px-5 py-3 text-gray-700">อัดทีละ track เริ่มจากกลอง ตามด้วยเบส กีตาร์ ร้อง</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">ข้อดี</td><td class="px-5 py-3 text-gray-700">ได้อารมณ์ดิบ เสียงมีชีวิต เสร็จเร็ว</td><td class="px-5 py-3 text-gray-700">แก้ไขได้ทีละ track ควบคุมคุณภาพได้มากกว่า</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">ข้อเสีย</td><td class="px-5 py-3 text-gray-700">แก้ไขยาก ต้องเล่นแม่นมาก</td><td class="px-5 py-3 text-gray-700">ใช้เวลานานกว่า ขาดอารมณ์ร่วม</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">เหมาะกับ</td><td class="px-5 py-3 text-gray-700">วงที่เล่นด้วยกันจนแน่นแล้ว</td><td class="px-5 py-3 text-gray-700">วงที่ต้องการความละเอียดสูง</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>ถ้าอัดเสียงครั้งแรก แนะนำ tracking เพราะแก้ไขได้ง่ายกว่า ไม่ต้องกดดันว่าทุกคนต้องเล่นแม่นพร้อมกัน</p>
+
+            <h2>3. เตรียม reference track</h2>
+            <p>reference track คือเพลงที่คุณอยากให้เสียงสุดท้ายออกมาคล้าย ไม่ใช่เพลงเดียวกัน แต่เป็นตัวอย่างของ "เสียง" ที่ต้องการ เช่น:</p>
+            <ul>
+              <li>เสียงกลองแห้งๆ แบบ Arctic Monkeys</li>
+              <li>กีตาร์หนาๆ แบบ Foo Fighters</li>
+              <li>เสียงร้องนุ่มๆ แบบ Mild</li>
+            </ul>
+            <p>ส่ง reference track ให้ sound engineer ก่อนวันอัด จะช่วยประหยัดเวลาปรับเสียงในห้องอัดได้เยอะ</p>
+
+            <h2>4. เตรียมอุปกรณ์ให้พร้อม</h2>
+            <p>ในห้องซ้อม สายเก่าหรือเสียงไม่ค่อยดีพอรับได้ แต่ในห้องอัดเสียง ไมค์จะจับทุกรายละเอียด ต้องเตรียมให้ดีกว่าปกติ:</p>
+            <ul>
+              <li><strong>สายกีตาร์/เบส ใหม่</strong> เปลี่ยนอย่างน้อย 1-2 วันก่อนอัด ให้สายเข้าที่ก่อน ไม่ใช่เปลี่ยนวันอัด</li>
+              <li><strong>หนังกลอง</strong> ถ้าเก่ามาก เสียงจะทึบ ไม่มี sustain</li>
+              <li><strong>สายแจ็คที่ไม่มีเสียงรบกวน</strong> สาย noise ในห้องซ้อมไม่ค่อยได้ยิน แต่ในห้องอัดจะชัดมาก</li>
+              <li><strong>ไม้กลองสำรอง</strong> ไม้หักระหว่างอัดเกิดขึ้นบ่อย</li>
+              <li><strong>ปิ๊ก</strong> เตรียมหลายอัน ความหนาที่คุณถนัด</li>
+            </ul>
+
+            <h2>5. วันอัดจริง: ทำยังไงให้ราบรื่น</h2>
+            <p>เมื่อเข้าห้องบันทึกเสียงแล้ว ให้ทำตามขั้นตอนนี้:</p>
+            <ul>
+              <li><strong>มาก่อนเวลา 15 นาที</strong> setup อุปกรณ์ ลองเสียง ทดสอบ level ก่อนเวลาจริง</li>
+              <li><strong>จูนก่อนทุก take</strong> อุณหภูมิห้องอัดกับห้องซ้อมต่างกัน สายเพี้ยนได้</li>
+              <li><strong>อย่าเปลี่ยน arrangement ในห้อง</strong> ตัดสินใจเรื่อง arrangement ก่อนวันอัด เปลี่ยนในห้องอัดคือเสียเวลาทุกคน</li>
+              <li><strong>ฟัง sound engineer</strong> ถ้า engineer แนะนำให้เล่นเบาลงหรือเปลี่ยนตำแหน่ง ลองทำตามก่อน เขาฟังผ่านมอนิเตอร์ที่แม่นกว่าหูเปล่า</li>
+            </ul>
+
+            <h2>6. ผิดพลาดที่มือใหม่ทำบ่อย</h2>
+            <ul>
+              <li><strong>อัดจนเหนื่อย</strong> take ที่ 15 มักจะแย่กว่า take ที่ 3 ถ้า 5 take แล้วยังไม่ได้ ให้พัก 10 นาที หรือข้ามไปเพลงอื่นก่อน</li>
+              <li><strong>ใช้ headphone volume ดังเกินไป</strong> ฟังดังแล้วร้องดัง ร้องดังแล้วเสียงแตก ตั้ง volume ระดับที่ได้ยินชัดพอ ไม่ต้องดัง</li>
+              <li><strong>ไม่พักหู</strong> ทุก 45-60 นาที ถอดหูฟังพัก 5 นาที หูล้าแล้วตัดสินเสียงไม่ดี</li>
+              <li><strong>อยากได้ทุกอย่างในวันเดียว</strong> เพลง 1 เพลงอัดเสร็จสมบูรณ์ใน 1 วันก็ถือว่าดีแล้ว อย่าบีบ 5 เพลงใน 3 ชั่วโมง</li>
+            </ul>
+
+            <h2>7. หลังอัดเสร็จ: mixing และ mastering</h2>
+            <p>อัดเสร็จยังไม่จบ เสียง raw ที่ออกมาจากห้องอัดต้องผ่านอีก 2 ขั้นตอน:</p>
+            <ul>
+              <li><strong>Mixing</strong> ปรับ volume, EQ, effect ของแต่ละ track ให้เข้ากัน ใช้เวลาประมาณ 4-8 ชั่วโมงต่อเพลง</li>
+              <li><strong>Mastering</strong> ขัดเสียงรวมให้สมบูรณ์ ปรับ loudness ให้เหมาะกับการเผยแพร่ ใช้เวลาประมาณ 1-2 ชั่วโมงต่อเพลง</li>
+            </ul>
+            <p>ที่ <a href={`/${lang}/rooms/control-room`}>Control Room</a> ของ Thunder Studio มีมิกซ์คอนโซล, studio monitors และ DAW workstation พร้อมสำหรับทั้ง mixing และ mastering</p>
+
+            <h2>เช็คลิสต์ก่อนเข้าห้องอัด</h2>
+            <div class="my-6 bg-onyx text-white rounded-xl p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[14px]">
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> เพลงซ้อมจนคล่อง เล่นรวดเดียวจบได้ 3 รอบ</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> ตกลง arrangement สุดท้ายแล้ว</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> สายกีตาร์/เบส ใหม่ (เปลี่ยน 1-2 วันก่อน)</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> สายแจ็คไม่มี noise</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> ไม้กลองสำรอง</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> ปิ๊กสำรอง</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Reference track ส่งให้ engineer แล้ว</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> น้ำดื่ม + ของกินเล็กน้อย</label>
+              </div>
+            </div>
+
+            <h2>พร้อมอัดเสียงแล้ว?</h2>
+            <p>Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> พร้อมมิกซ์คอนโซล, studio monitors และ DAW workstation เหมาะทั้งอัดเสียง มิกซ์ และมาสเตอร์ หรือจะจอง<a href={`/${lang}/rooms/large-room`}>ห้องซ้อมใหญ่</a>เพื่อซ้อมให้คล่องก่อนก็ได้ เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ</p>
+          </div>
+        ) : (
+          <div class="prose-blog">
+            <p>Many bands spend months planning their first recording session, then lose half a day in the studio sorting out problems they could have prevented. Studio time is expensive. Every minute counts. This guide covers everything you need to know before, during, and after your first time in a recording studio.</p>
+
+            <h2>1. Practice until tight before you book</h2>
+            <p>A recording studio is not a rehearsal room. If you still can't play the song without stopping, if parts of the arrangement aren't finalized, or if anyone is still learning their part, book a <a href={`/${lang}/rooms/large-room`}>rehearsal room</a> first.</p>
+            <p>Simple readiness test: if the band can play the song from start to finish without stopping, three times in a row, you're ready to record. If not, keep practicing.</p>
+
+            <h2>2. Choose your recording method: live or tracking</h2>
+            <p>Two main approaches used in recording studios:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold"></th>
+                    <th class="px-5 py-3 font-semibold">Live Recording</th>
+                    <th class="px-5 py-3 font-semibold">Tracking</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Method</td><td class="px-5 py-3 text-gray-700">Everyone plays at once, recorded simultaneously</td><td class="px-5 py-3 text-gray-700">One instrument at a time: drums first, then bass, guitar, vocals</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Pros</td><td class="px-5 py-3 text-gray-700">Raw energy, natural feel, finishes faster</td><td class="px-5 py-3 text-gray-700">Fix individual tracks, more control over quality</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Cons</td><td class="px-5 py-3 text-gray-700">Harder to edit, requires very tight playing</td><td class="px-5 py-3 text-gray-700">Takes longer, can lose the live energy</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Best for</td><td class="px-5 py-3 text-gray-700">Bands that are already very tight together</td><td class="px-5 py-3 text-gray-700">Bands wanting precise, polished results</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>For a first recording, tracking is usually the safer choice. It's more forgiving, and you won't need everyone to nail their part in the same take.</p>
+
+            <h2>3. Prepare reference tracks</h2>
+            <p>A reference track is a song that sounds like what you want your final product to sound like. Not the same song, but an example of the "sound" you're after. For example:</p>
+            <ul>
+              <li>Dry, punchy drums like Arctic Monkeys</li>
+              <li>Thick, layered guitars like Foo Fighters</li>
+              <li>Soft, warm vocals like Adele</li>
+            </ul>
+            <p>Send your reference tracks to the sound engineer before the session. This saves significant time adjusting sound during the actual recording.</p>
+
+            <h2>4. Prepare your gear</h2>
+            <p>In a rehearsal room, slightly worn strings or minor buzz might go unnoticed. In a recording studio, the microphone picks up everything. Prepare more carefully than usual:</p>
+            <ul>
+              <li><strong>Fresh guitar/bass strings</strong> — change them 1-2 days before the session so they settle in. Not the day of.</li>
+              <li><strong>Drum heads</strong> — if they're old, the sound will be dull with no sustain</li>
+              <li><strong>Noise-free cables</strong> — cable noise that's invisible in a rehearsal room becomes very obvious under studio microphones</li>
+              <li><strong>Spare drumsticks</strong> — sticks break during recording more often than you'd think</li>
+              <li><strong>Picks</strong> — bring several, in the thickness you prefer</li>
+            </ul>
+
+            <h2>5. On recording day: how to keep things smooth</h2>
+            <p>Once you're in the studio, follow this approach:</p>
+            <ul>
+              <li><strong>Arrive 15 minutes early</strong> — set up gear, test levels, and do a sound check before the clock starts</li>
+              <li><strong>Tune before every take</strong> — temperature differences between the rehearsal room and studio cause tuning drift</li>
+              <li><strong>Don't change the arrangement in the studio</strong> — finalize all arrangement decisions before recording day. Changing things in the studio costs everyone time.</li>
+              <li><strong>Listen to the engineer</strong> — if they suggest playing softer or repositioning, try it first. They're hearing through studio monitors that are far more accurate than your ears in the room.</li>
+            </ul>
+
+            <h2>6. Common first-timer mistakes</h2>
+            <ul>
+              <li><strong>Recording until exhausted</strong> — take 15 is usually worse than take 3. If 5 takes haven't worked, take a 10-minute break or move to a different song.</li>
+              <li><strong>Headphone volume too loud</strong> — loud monitoring leads to loud singing, which leads to distortion. Set the volume just loud enough to hear clearly.</li>
+              <li><strong>Not resting your ears</strong> — every 45-60 minutes, take off the headphones for 5 minutes. Ear fatigue degrades your judgment.</li>
+              <li><strong>Trying to finish everything in one day</strong> — one song recorded properly in a full day is a good result. Don't try to squeeze 5 songs into 3 hours.</li>
+            </ul>
+
+            <h2>7. After recording: mixing and mastering</h2>
+            <p>Recording is only the first step. The raw tracks from the studio need two more stages:</p>
+            <ul>
+              <li><strong>Mixing</strong> — adjusting volume, EQ, and effects for each track so they work together. Typically takes 4-8 hours per song.</li>
+              <li><strong>Mastering</strong> — polishing the final mix and adjusting loudness for distribution. Usually 1-2 hours per song.</li>
+            </ul>
+            <p>Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> is equipped with a mixing console, studio monitors, and a DAW workstation for both mixing and mastering.</p>
+
+            <h2>Pre-recording checklist</h2>
+            <div class="my-6 bg-onyx text-white rounded-xl p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[14px]">
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Songs rehearsed until tight (3 clean run-throughs)</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Final arrangement decided</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Fresh guitar/bass strings (changed 1-2 days ago)</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Noise-free cables</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Spare drumsticks</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Extra picks</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Reference tracks sent to engineer</label>
+                <label class="flex items-center gap-3"><span class="w-5 h-5 border-2 border-white/40 rounded shrink-0"></span> Water + light snacks</label>
+              </div>
+            </div>
+
+            <h2>Ready to record?</h2>
+            <p>Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> has a mixing console, studio monitors, and a DAW workstation for recording, mixing, and mastering. Or book a <a href={`/${lang}/rooms/large-room`}>Large Rehearsal Room</a> to tighten up before your session. Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok.</p>
+          </div>
+        )}
+
+        <div class="reveal mt-12 text-center">
+          <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+
+  <style>
+    .prose-blog h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      color: var(--color-onyx);
+    }
+    .prose-blog p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 1rem;
+    }
+    .prose-blog ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose-blog li {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 0.35rem;
+    }
+    .prose-blog strong {
+      color: var(--color-onyx);
+      font-weight: 600;
+    }
+    .prose-blog a {
+      color: var(--color-onyx);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(15, 14, 14, 0.3);
+    }
+    .prose-blog a:hover {
+      text-decoration-color: var(--color-onyx);
+    }
+  </style>
+</Base>
