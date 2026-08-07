@@ -440,7 +440,7 @@ Home > Blog > How to prepare for band rehearsal
 | 5 | Google Search Console setup | Track all metrics | 30 min | Not started (owner action) |
 | 6 | Pricing page | Rank for 230+/mo transactional keywords | 1.5 hours | Blocked (needs rates) |
 | 7 | Blog content (3 posts) | Long-tail traffic + AI citations | 5-6 hours | Done (3/3) |
-| 8 | Directory submissions | Local SEO signals | 1 hour | Not started |
+| 8 | Directory submissions | Local SEO signals | 1 hour | Prepared (owner action for GBP/Wongnai/FB) |
 | 9 | Review collection system | GBP ranking boost | Ongoing | Not started |
 | 10 | Font preloading + technical SEO | LCP improvement | 30 min | Done |
 
@@ -482,3 +482,52 @@ No independent tool provides exact Thailand-level volumes for Thai keywords publ
 - **No priority changes needed.** The core thesis — Thai rehearsal keywords have zero organic competition and meaningful volume — is validated. GBP remains #1 priority.
 - **Adjust expectations for English keywords.** Ranking for "recording studio Bangkok" and "music studio Bangkok" will require more effort than Thai keywords. Budget for backlink building on these.
 - **Treat all volume numbers as ±50% ranges**, not exact figures.
+
+---
+
+## Part 13: Directory submissions (2026-08-07)
+
+### Business listing details (use these exact details for all submissions)
+
+```
+Business Name: Thunder Studio
+Category: Music Rehearsal Space / Recording Studio
+Address: 288, 102-103 Phahonyothin Rd, Anusawari, Bang Khen, Bangkok 10220
+Thai Address: 288, 102-103 ถ.พหลโยธิน แขวงอนุสาวรีย์ เขตบางเขน กรุงเทพ 10220
+Phone: 063-546-1924
+Email: theorn.n@thunderventuregroup.com
+Website: https://thundermusicstudio.com
+Hours: 10:00-22:00 daily (including holidays)
+LINE: @thunderstudio
+```
+
+### Thai description (for directories that accept a description)
+```
+ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงย่านบางเขน กรุงเทพ มี Marshall amps กลองชุดเต็ม PA system ครบ ห้องกันเสียงมาตรฐาน เปิดทุกวัน 10:00-22:00
+```
+
+### English description
+```
+Professional music rehearsal rooms and recording studio in Bang Khen, Bangkok. Marshall amps, full drum kits, PA systems, and soundproofed rooms. Open daily 10:00-22:00.
+```
+
+### Directory submission status
+
+| Directory | URL | Status | Notes |
+|-----------|-----|--------|-------|
+| Google Business Profile | business.google.com | Not started | Owner action — needs Google login |
+| Wongnai | business.wongnai.com | Not started | #1 Thai discovery platform |
+| Thailand YellowPages | yellowpages.co.th | Not started | Free basic listing |
+| Longdo Map | map.longdo.com | Not started | Thai-built map, free submission |
+| Facebook Business | facebook.com/business | Not started | Owner action — needs Facebook login |
+| OpenStreetMap | openstreetmap.org | Not started | Free, community-maintained |
+| Yelp | biz.yelp.com | Not started | Lower priority for Thailand |
+
+### Priority order
+1. **Google Business Profile** (owner action) — captures 8,800/mo Maps searches
+2. **Wongnai** (owner action) — biggest Thai local discovery platform
+3. **Facebook Business Page** (owner action) — essential for Thai audience
+4. **Thailand YellowPages** — free basic listing
+5. **Longdo Map** — Thai map platform
+6. **OpenStreetMap** — global coverage
+7. **Yelp** — lower priority for Thailand
