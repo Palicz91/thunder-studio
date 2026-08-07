@@ -7,17 +7,15 @@
 
 ## Executive Summary
 
-**16,500 musicians search Google every month** for rehearsal rooms and recording studios in Thailand. Thunder Studio currently captures **zero** of them.
+**16,500 musicians search Google every month** for rehearsal rooms and recording studios in Thailand. Thunder Studio currently captures **zero** of them — but that's about to change.
 
-The reason is simple: **53% of those searches show Google Maps results**, and Thunder Studio has no Google Business Profile. Without it, we don't exist on the map — literally.
+**53% of those searches go through Google Maps.** Google Business Profile and Search Console are already set up — once address verification completes, Thunder Studio goes live on Maps and starts capturing 8,800 monthly searches.
 
-We've built a fully optimized, bilingual website with room pages, blog content, and all the technical foundations. But the website alone isn't enough. **The single most important action is setting up a Google Business Profile** — it takes 1-2 hours of the owner's time and immediately opens the door to 8,800 monthly searches.
-
-No competitor in Bangkok is doing SEO properly. The studios that show up in Google today have Facebook pages and Pantip posts — not real websites. **Thunder Studio can own this space.**
+We've also built a fully optimized, bilingual website with room pages, blog content, and all the technical foundations. No competitor in Bangkok is doing SEO properly — the studios that show up today have Facebook pages and Pantip posts, not real websites. **Thunder Studio can own this space.**
 
 **What we expect:** 80–270 new bookings per month within 3-6 months from Google Maps and organic search combined. Zero ad spend — all organic.
 
-**Google Search Console and Google Business Profile are already set up** — address verification is in progress. Once verified, Thunder Studio goes live on Google Maps and starts capturing those 8,800 monthly searches. Remaining: share hourly room rates (for pricing page) and start asking customers for Google reviews.
+**What's still needed:** Share hourly room rates (for the pricing page), upload studio photos to GBP after verification, and start asking customers for Google reviews.
 
 ---
 
