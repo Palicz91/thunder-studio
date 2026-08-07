@@ -4,7 +4,7 @@
 
 [[redirects]]
   from = "/"
-  to = "/th"
+  to = "/en"
   status = 301
   force = true
 
