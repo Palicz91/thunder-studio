@@ -8,7 +8,7 @@ export default defineConfig({
   site: 'https://thundermusicstudio.com',
   output: 'static',
   i18n: {
-    defaultLocale: 'th',
+    defaultLocale: 'en',
     locales: ['th', 'en'],
     routing: {
       prefixDefaultLocale: true,
