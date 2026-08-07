@@ -11,7 +11,7 @@
 
 ## Executive summary
 
-Thunder Studio operates in a **low-competition SEO niche**. Thai-language keywords genuinely show difficulty 0 (validated 2026-08-07); English keywords like "recording studio Bangkok" have real competition (difficulty ~15-30). The #1 search term "ห้องซ้อมดนตรีใกล้ฉัน" gets 8,100 searches/month and routes to Google Maps — not organic results. The single highest-ROI action is setting up a Google Business Profile.
+Thunder Studio operates in a **low-competition SEO niche**. Thai-language keywords show difficulty 0, **confirmed via bulk_keyword_difficulty endpoint (2026-08-07)** — the backlink barrier is genuinely low. English keywords like "recording studio Bangkok" show KD 0 in DataForSEO (backlink-based) but face real domain-authority competition from Timeout Bangkok, BangkokHaps, etc. The #1 search term "ห้องซ้อมดนตรีใกล้ฉัน" gets 8,100 searches/month and routes to Google Maps — not organic results. The single highest-ROI action is setting up a Google Business Profile.
 
 **Current state (2026-08-06):** 22 indexed URLs across 11 bilingual pages. Font preloading, structured data, FAQ schemas, AI visibility (llms.txt, robots.txt), and 1 blog post live. SEO score: ~75/100. AI visibility: ~70/100.
 
@@ -455,23 +455,28 @@ No independent tool provides exact Thailand-level volumes for Thai keywords publ
 
 ### Validation results
 
-| Keyword | DataForSEO | Volume verdict | Difficulty verdict | Notes |
-|---------|------------|---------------|-------------------|-------|
-| ห้องซ้อมดนตรีใกล้ฉัน | 8,100/mo, D:0 | Plausible (treat as 4.5K–12K range) | Confirmed 0 | GKP bucket rounding, not exact |
-| ห้องซ้อมดนตรี | 5,400/mo, D:0 | **Suspicious** — head term lower than "near me" variant | Confirmed 0 | Likely bucket misclassification; both are 4K–10K range |
-| music practice room | 590/mo, D:0 | **Uncertain** — may be global, not Thailand-only | Uncertain | Needs geo-filter confirmation |
-| ห้องอัดเสียง ใกล้ฉัน | 320/mo, D:0 | Plausible | Confirmed 0 | Narrow niche, consistent |
-| recording studio Bangkok | 170/mo, D:0 | Volume plausible | **Difficulty WRONG — real ~15-30** | Miloco Studios, Timeout Bangkok, SoundBetter rank here |
-| music studio Bangkok | 170/mo, D:0 | Volume plausible | **Difficulty WRONG — real ~15-30** | BangkokHaps, Timeout Bangkok rank here |
-| ห้องซ้อมดนตรีใกล้ฉัน ราคาถูก | 140/mo, D:0 | Plausible | Confirmed 0 | Long-tail proportion consistent |
+| Keyword | DataForSEO | Volume verdict | KD (bulk_kd) | Difficulty note | Notes |
+|---------|------------|---------------|-------------|-----------------|-------|
+| ห้องซ้อมดนตรีใกล้ฉัน | 8,100/mo | Plausible (treat as 4.5K–12K range) | **0** ✓ | Backlink barrier genuinely low | GKP bucket rounding |
+| ห้องซ้อมดนตรี | 5,400/mo | Head term lower than "near me" variant | **0** ✓ | Confirmed | Both are 4K–10K range |
+| music practice room | 590/mo | **Uncertain** — may be global, not Thailand-only | **0** ✓ | Confirmed | Needs geo-filter check |
+| ห้องอัดเสียง ใกล้ฉัน | 320/mo | Plausible | **0** ✓ | Confirmed | Narrow niche |
+| recording studio Bangkok | 170/mo | Volume plausible | **0** ✓ | KD 0 is correct (backlink-based), but DA competition is real | Timeout BKK, BangkokHaps rank on DA |
+| music studio Bangkok | 170/mo | Volume plausible | **0** ✓ | Same — low backlink barrier, high DA barrier | BangkokHaps, Timeout rank on DA |
+| ห้องซ้อมดนตรีใกล้ฉัน ราคาถูก | 140/mo | Plausible | **null** | No SERP snapshot — treat as unknown | Long-tail |
+| ห้องซ้อมดนตรี ราคา | 40/mo | Plausible | **48** ✓ | Real backlink competition | Established studios rank |
+| ห้องซ้อมดนตรี ลาดพร้าว | 140/mo | Plausible | **48** ✓ | Real backlink competition | Specific competitor turf |
+| สตูดิโอบันทึกเสียง | 110/mo | Plausible | **10** ✓ | Moderate backlink barrier | Recording niche |
 
 ### Key findings
 
 1. **Volume inversion is the biggest red flag.** "ห้องซ้อมดนตรีใกล้ฉัน" (8,100) reportedly exceeds "ห้องซ้อมดนตรี" (5,400) — the "near me" variant beating the head term is atypical. Thai mobile "near me" search is growing fast but rarely exceeds head terms. Treat both as same order of magnitude (4K–10K range) rather than distinct numbers.
 
-2. **Difficulty 0 is WRONG for English keywords.** "recording studio Bangkok" and "music studio Bangkok" have real SERP competition from Timeout Bangkok, BangkokHaps, Miloco Studios, SoundBetter, and international directories. These sites have meaningful domain authority. Real difficulty is likely 15–30. Strategy should not treat these as freely rankable.
+2. **~~Difficulty 0 is WRONG for English keywords.~~** **CORRECTED (2026-08-07):** `bulk_keyword_difficulty` confirms KD 0 for "recording studio Bangkok" and "music studio Bangkok". KD is backlink-based — the top-10 pages for these terms genuinely have thin backlink profiles. However, the sites that rank (Timeout Bangkok, BangkokHaps, Miloco) do so via domain authority, not page-level backlinks. This is a different barrier — not measured by KD, but real. Quality content can compete on backlinks; overcoming DA takes time.
 
-3. **All Thai-language keywords at difficulty 0 are confirmed valid.** SERPs show only Facebook pages and Pantip forum threads — no SEO-optimized websites target these queries. The opportunity is real.
+3. **All Thai-language keywords at difficulty 0 are confirmed valid** via bulk_keyword_difficulty. SERPs show only Facebook pages and Pantip forum threads — no SEO-optimized websites target these queries. The opportunity is real.
+
+3b. **9/20 Thunder Studio keywords return null KD** — DataForSEO's Thai database has thin coverage for niche music rehearsal terms. Null means "no SERP snapshot available", not "easy". Affected: ห้องซ้อมกลอง ใกล้ฉัน, ห้องซ้อมดนตรี 24 ชั่วโมง, ห้องซ้อมดนตรี กรุงเทพ, ห้องซ้อมดนตรี บางเขน, ห้องซ้อมดนตรี อนุสาวรีย์, ห้องซ้อมดนตรี ใกล้ bts, ห้องอัดเสียง ราคา, ห้องซ้อมดนตรีใกล้ฉัน ราคาถูก, เช่าห้องซ้อมดนตรี ใกล้ฉัน.
 
 4. **"music practice room" (590/mo) is ambiguous.** If this is Thailand-only volume, it's plausible for the English-speaking expat segment. If global, it's significantly deflated. The keyword's commercial value for a Bangkok studio is limited either way.
 
@@ -479,9 +484,20 @@ No independent tool provides exact Thailand-level volumes for Thai keywords publ
 
 ### Impact on strategy
 
-- **No priority changes needed.** The core thesis — Thai rehearsal keywords have zero organic competition and meaningful volume — is validated. GBP remains #1 priority.
-- **Adjust expectations for English keywords.** Ranking for "recording studio Bangkok" and "music studio Bangkok" will require more effort than Thai keywords. Budget for backlink building on these.
+- **No priority changes needed.** The core thesis — Thai rehearsal keywords have genuinely low backlink competition and meaningful volume — is validated. GBP remains #1 priority.
+- **English keywords: backlink barrier is low, DA barrier is real.** KD 0 is correct but doesn't tell the full story. Ranking for "recording studio Bangkok" requires overcoming Timeout/BangkokHaps domain authority — build backlinks and produce better content than their thin listings.
 - **Treat all volume numbers as ±50% ranges**, not exact figures.
+
+### Keyword refresh (2026-08-07, DataForSEO Labs keyword_overview + keyword_suggestions + bulk_keyword_difficulty)
+
+API cost: $0.04. All tracked keywords confirmed stable — no volume changes vs initial pull. Difficulty confirmed via bulk_keyword_difficulty endpoint.
+
+Key observations:
+- สตูดิโอบันทึกเสียง: confirmed D:10 (only keyword with non-zero difficulty among Thai terms)
+- ห้องซ้อมดนตรี ลาดพร้าว: confirmed D:48, ห้องซ้อมดนตรี ราคา: confirmed D:48 — real competition exists on pricing and location terms
+- Competitor brand navigational queries are large: Jo Music (1,300/mo), HS Music Studio (1,300/mo), Horizon Music (1,000/mo), Musicok24hrs (720/mo), Plug & Play Studio (720/mo) — these are navigational, not targetable
+- ห้องซ้อมดนตรี สวยๆ: 70/mo (D:11) — potential gallery/visual content opportunity
+- Geographic terms (นนทบุรี 110, เชียงใหม่ 210, หาดใหญ่ 110) — not relevant for Bangkok location but shows nationwide demand
 
 ---
 
