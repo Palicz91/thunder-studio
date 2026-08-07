@@ -13,7 +13,7 @@
 
 Thunder Studio operates in a **low-competition SEO niche**. Thai-language keywords genuinely show difficulty 0 (validated 2026-08-07); English keywords like "recording studio Bangkok" have real competition (difficulty ~15-30). The #1 search term "ห้องซ้อมดนตรีใกล้ฉัน" gets 8,100 searches/month and routes to Google Maps — not organic results. The single highest-ROI action is setting up a Google Business Profile.
 
-**Current state (2026-08-06):** 18 indexed URLs across 9 bilingual pages. Font preloading, structured data, FAQ schemas, AI visibility (llms.txt, robots.txt), and 1 blog post live. SEO score: ~75/100. AI visibility: ~70/100.
+**Current state (2026-08-06):** 22 indexed URLs across 11 bilingual pages. Font preloading, structured data, FAQ schemas, AI visibility (llms.txt, robots.txt), and 1 blog post live. SEO score: ~75/100. AI visibility: ~70/100.
 
 **Target state:** 22+ indexed pages, GBP optimized, pricing page live, GSC connected. SEO score: 90+.
 
@@ -137,7 +137,7 @@ Thunder Studio operates in a **low-competition SEO niche**. Thai-language keywor
 
 ## Part 3: Site architecture
 
-### Current pages (9 pages, 18 bilingual URLs)
+### Current pages (11 pages, 22 bilingual URLs)
 
 ```
 Layer 1: Commercial pages
@@ -153,15 +153,15 @@ Layer 2: Trust pages
 └── /[lang]/terms                         — Terms & conditions ✅
 
 Layer 3: Content pages
-└── /[lang]/blog/how-to-prepare-for-band-rehearsal — Rehearsal guide ✅
+├── /[lang]/blog/how-to-prepare-for-band-rehearsal — Rehearsal guide ✅
+├── /[lang]/blog/recording-studio-guide        — Recording studio guide ✅
+└── /[lang]/blog/choosing-room-size             — Room selection guide ✅
 ```
 
 ### Still needed
 
 ```
 ├── /[lang]/pricing                       — Pricing (needs hourly rates from owner)
-├── /[lang]/blog/recording-studio-guide   — Beginner's recording guide
-└── /[lang]/blog/choosing-room-size       — Room selection guide
 ```
 
 ### Keyword-to-page mapping (no cannibalization)
@@ -340,8 +340,8 @@ Home > Blog > How to prepare for band rehearsal
 | Google Business Profile setup | Manual login required (owner action) | 1-2 hours |
 | Google Search Console setup | Manual login required (owner action) | 30 min |
 | Pricing page | Need hourly rates per room from owner | 1.5 hours |
-| Blog: "Recording studio guide for beginners" | None | 2 hours |
-| Blog: "Choosing the right room size" | None | 1.5 hours |
+| Blog: "Recording studio guide for beginners" | — | Done (2026-08-07) |
+| Blog: "Choosing the right room size" | — | Done (2026-08-07) |
 | Upload 20+ photos to GBP | GBP setup must be done first | 30 min |
 | Submit to 5 Thai business directories | None | 1 hour |
 
@@ -414,7 +414,7 @@ Home > Blog > How to prepare for band rehearsal
 
 | Metric | Current (Aug 6) | 30-day target | 90-day target |
 |--------|-----------------|---------------|---------------|
-| Indexed pages | 18 URLs | 18 | 24+ |
+| Indexed pages | 22 URLs | 22 | 24+ |
 | Organic impressions/mo | Unknown (no GSC) | 500+ | 5,000+ |
 | Organic clicks/mo | Unknown | 50+ | 500+ |
 | GBP views/mo | 0 (no GBP) | 500+ | 2,000+ |
@@ -439,7 +439,7 @@ Home > Blog > How to prepare for band rehearsal
 | 4 | About page | Trust signal, supports E-E-A-T | 1 hour | Done |
 | 5 | Google Search Console setup | Track all metrics | 30 min | Not started (owner action) |
 | 6 | Pricing page | Rank for 230+/mo transactional keywords | 1.5 hours | Blocked (needs rates) |
-| 7 | Blog content (3 posts) | Long-tail traffic + AI citations | 5-6 hours | 1/3 done |
+| 7 | Blog content (3 posts) | Long-tail traffic + AI citations | 5-6 hours | Done (3/3) |
 | 8 | Directory submissions | Local SEO signals | 1 hour | Not started |
 | 9 | Review collection system | GBP ranking boost | Ongoing | Not started |
 | 10 | Font preloading + technical SEO | LCP improvement | 30 min | Done |
