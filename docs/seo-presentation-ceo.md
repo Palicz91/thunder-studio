@@ -136,7 +136,7 @@ These are new customers who would otherwise go to competitors or not find any st
 
 | Action | Who | Time | Impact | Status |
 |--------|-----|------|--------|--------|
-| ~~Set up Google Business Profile~~ | ~~Owner~~ | ~~1-2 hours~~ | ~~Captures 8,800/mo searches~~ | ✅ Done — awaiting address verification |
+| ~~Set up Google Business Profile~~ | ~~Owner~~ | ~~1-2 hours~~ | ~~Captures 8,800/mo searches~~ | ✅ Done — verified & live |
 | ~~Set up Google Search Console~~ | ~~Owner~~ | ~~30 min~~ | ~~Track all SEO performance~~ | ✅ Done |
 | Provide hourly room rates | Studio manager | 15 min | Unblocks pricing page | Pending |
 | Upload 20+ studio photos to GBP | Studio staff | 30 min | Better Maps listing | Pending (after verification) |

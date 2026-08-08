@@ -533,8 +533,6 @@ Professional music rehearsal rooms and recording studio in Bang Khen, Bangkok. M
 |-----------|-----|--------|-------|
 | Google Business Profile | business.google.com | Done — awaiting address verification | Set up 2026-08-07 |
 | Wongnai | business.wongnai.com | Not started | #1 Thai discovery platform |
-| Thailand YellowPages | yellowpages.co.th | Not started | Free basic listing |
-| Longdo Map | map.longdo.com | Not started | Thai-built map, free submission |
 | Facebook Business | facebook.com/business | Not started | Owner action — needs Facebook login |
 | OpenStreetMap | openstreetmap.org | Not started | Free, community-maintained |
 | Yelp | biz.yelp.com | Not started | Lower priority for Thailand |
@@ -543,7 +541,5 @@ Professional music rehearsal rooms and recording studio in Bang Khen, Bangkok. M
 1. **Google Business Profile** (owner action) — captures 8,800/mo Maps searches
 2. **Wongnai** (owner action) — biggest Thai local discovery platform
 3. **Facebook Business Page** (owner action) — essential for Thai audience
-4. **Thailand YellowPages** — free basic listing
-5. **Longdo Map** — Thai map platform
-6. **OpenStreetMap** — global coverage
-7. **Yelp** — lower priority for Thailand
+4. **OpenStreetMap** — global coverage
+5. **Yelp** — lower priority for Thailand
