@@ -78,6 +78,7 @@ const translations: Record<string, Record<Lang, string>> = {
   'room.capacity.unit': { th: 'คน', en: 'people' },
   'room.perfect': { th: 'เหมาะสำหรับ', en: 'Perfect for' },
   'room.book': { th: 'จองห้องนี้', en: 'Book this Room' },
+  'room.line': { th: 'สอบถามผ่าน LINE', en: 'Ask via LINE' },
   'room.other': { th: 'ห้องอื่นๆ', en: 'Other Rooms' },
   'room.gallery': { th: 'รูปภาพห้อง', en: 'Room gallery' },
 
