@@ -21,8 +21,8 @@ const title = lang === 'th'
   ? 'ห้องซ้อมใหญ่ — Thunder Studio กรุงเทพ'
   : 'Large Rehearsal Room — Thunder Studio Bangkok';
 const description = lang === 'th'
-  ? 'ห้องซ้อมดนตรีขนาดใหญ่ 6-10 คน พร้อม Marshall amps กลองชุดเต็ม PA system จองออนไลน์'
-  : 'Large rehearsal room for 6-10 musicians. Marshall amps, full drum kit, PA system. Book online.';
+  ? 'ห้องซ้อมดนตรีขนาดใหญ่ พร้อม Marshall amps กลองชุดเต็ม PA system จองออนไลน์'
+  : 'Large rehearsal room with Marshall amps, full drum kit, PA system. Book online.';
 
 const faqs = [1, 2, 3].map(i => ({
   question: t(`room.large.faq.${i}.q`),
@@ -71,12 +71,6 @@ const faqs = [1, 2, 3].map(i => ({
         <div class="reveal" style="transition-delay: 100ms;">
           <h1 class="text-3xl md:text-4xl font-bold tracking-[-0.02em]">{room.name[lang]}</h1>
           <p class="text-[16px] text-gray-700 leading-relaxed mt-4">{room.description[lang]}</p>
-
-          <div class="mt-6 flex items-center gap-3">
-            <span class="border border-gray-300 rounded-lg px-4 py-2 text-[14px] font-semibold">
-              {t('room.capacity.label')}: {room.capacity} {t('room.capacity.unit')}
-            </span>
-          </div>
 
           <div class="mt-8">
             <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{t('room.equipment')}</div>
@@ -150,7 +144,7 @@ const faqs = [1, 2, 3].map(i => ({
             <img src={r.images[0]} alt={r.name[lang]} class="w-full h-48 object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
             <div class="p-5">
               <h3 class="text-lg font-bold">{r.name[lang]}</h3>
-              <p class="text-[14px] text-gray-600 mt-1">{r.capacity} {t('room.capacity.unit')}</p>
+              <p class="text-[14px] text-gray-600 mt-1">{r.description[lang]}</p>
             </div>
           </a>
         ))}
