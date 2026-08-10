@@ -221,7 +221,25 @@ const galleryImages = [
         <p class="text-[15px] text-white/50 mt-4 max-w-xl leading-relaxed">{t('booking.sub')}</p>
       </div>
 
-      <div class="reveal mt-12" style="transition-delay: 150ms;">
+      <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-4 mt-10" style="transition-delay: 100ms;">
+        {rooms.map(room => (
+          <a href={`https://cal.com/thunder-studio/${room.calSlug}`} target="_blank" rel="noopener" class="group relative block rounded-xl overflow-hidden border border-white/10 h-[120px]">
+            <img src={room.images[0]} alt={room.name[lang]} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+              <div>
+                <div class="text-[15px] font-bold">{room.name[lang]}</div>
+                <div class="text-[12px] text-white/60">{room.capacity} {lang === 'th' ? 'คน' : 'people'}</div>
+              </div>
+              <svg class="w-5 h-5 text-white/60 group-hover:text-white transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="reveal mt-6" style="transition-delay: 150ms;">
         <CalBooking client:visible lang={lang} calLink={CAL_LINK} />
       </div>
 
