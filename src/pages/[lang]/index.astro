@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import ScrollReveal from '../../components/ScrollReveal.astro';
 import CalBooking from '../../components/CalBooking.tsx';
+import Gallery from '../../components/Gallery.tsx';
 import type { Lang } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/ui';
 import { rooms } from '../../data/rooms';
@@ -26,6 +27,15 @@ const faqs = [1, 2, 3, 4, 5, 6].map(i => ({
   question: t(`faq.${i}.q`),
   answer: t(`faq.${i}.a`),
 }));
+
+const SB = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+const galleryImages = [
+  { src: `${SB}/common-area-1.webp`, alt: lang === 'th' ? 'พื้นที่ส่วนกลาง' : 'Common area' },
+  { src: `${SB}/hallway.webp`, alt: lang === 'th' ? 'โถงทางเข้า' : 'Entrance hallway' },
+  { src: `${SB}/attic-lounge-1.webp`, alt: lang === 'th' ? 'ห้องใต้หลังคา' : 'Attic lounge' },
+  { src: `${SB}/common-area-2.webp`, alt: lang === 'th' ? 'พื้นที่ส่วนกลาง' : 'Common area' },
+  { src: `${SB}/attic-lounge-2.webp`, alt: lang === 'th' ? 'ห้องใต้หลังคา' : 'Attic lounge' },
+];
 ---
 
 <Base {title} {description} {lang}>
@@ -210,12 +220,8 @@ const faqs = [1, 2, 3, 4, 5, 6].map(i => ({
   <!-- GALLERY -->
   <section class="bg-clinical text-onyx overflow-hidden">
     <div class="max-w-[1200px] mx-auto px-6 py-14">
-      <div class="reveal flex gap-3 overflow-x-auto pb-4 -mx-6 px-6 snap-x">
-        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/common-area-1.webp" alt={lang === 'th' ? 'พื้นที่ส่วนกลาง' : 'Common area'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0 hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
-        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/hallway.webp" alt={lang === 'th' ? 'โถงทางเข้า' : 'Entrance hallway'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0 hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
-        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/attic-lounge-1.webp" alt={lang === 'th' ? 'ห้องใต้หลังคา' : 'Attic lounge'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0 hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
-        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/common-area-2.webp" alt={lang === 'th' ? 'พื้นที่ส่วนกลาง' : 'Common area'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0 hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
-        <img src="https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/attic-lounge-2.webp" alt={lang === 'th' ? 'ห้องใต้หลังคา' : 'Attic lounge'} class="h-48 md:h-64 w-auto rounded-2xl object-cover snap-start shrink-0 hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
+      <div class="reveal">
+        <Gallery client:visible images={galleryImages} />
       </div>
     </div>
   </section>

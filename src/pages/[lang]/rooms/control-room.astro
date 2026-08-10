@@ -3,6 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import ScrollReveal from '../../../components/ScrollReveal.astro';
+import RoomGallery from '../../../components/RoomGallery.tsx';
 import type { Lang } from '../../../i18n/ui';
 import { useTranslations } from '../../../i18n/ui';
 import { rooms } from '../../../data/rooms';
@@ -64,7 +65,7 @@ const faqs = [1, 2, 3].map(i => ({
 
       <div class="grid md:grid-cols-2 gap-10 items-start">
         <div class="reveal">
-          <img src={room.images[0]} alt={room.name[lang]} width="600" height="400" class="w-full h-[350px] md:h-[450px] object-cover rounded-2xl border border-gray-300" fetchpriority="high" />
+          <RoomGallery client:visible images={room.images} alt={room.name[lang]} />
         </div>
 
         <div class="reveal" style="transition-delay: 100ms;">
