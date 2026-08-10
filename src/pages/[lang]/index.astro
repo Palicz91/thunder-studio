@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import ScrollReveal from '../../components/ScrollReveal.astro';
 import CalBooking from '../../components/CalBooking.tsx';
 import Gallery from '../../components/Gallery.tsx';
+import RoomGallery from '../../components/RoomGallery.tsx';
 import type { Lang } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/ui';
 import { rooms } from '../../data/rooms';
@@ -142,8 +143,8 @@ const galleryImages = [
       <div class="mt-14 space-y-20">
         {rooms.map((room, idx) => (
           <div class="reveal grid md:grid-cols-2 gap-8 items-start" style={`transition-delay: ${idx * 120}ms;`}>
-            <div class:list={['overflow-hidden rounded-2xl border border-gray-300', idx % 2 === 1 && 'md:order-2']}>
-              <img src={room.images[0]} alt={room.name[lang]} width="600" height="400" class="w-full h-[320px] md:h-[400px] object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+            <div class:list={[idx % 2 === 1 && 'md:order-2']}>
+              <RoomGallery client:visible images={room.images} alt={room.name[lang]} />
             </div>
             <div class={idx % 2 === 1 ? 'md:order-1' : ''}>
               <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-3">
@@ -162,14 +163,6 @@ const galleryImages = [
                   </div>
                 ))}
               </div>
-
-              {room.images.length > 1 && (
-                <div class="flex gap-2 mt-6 overflow-x-auto">
-                  {room.images.slice(1, 4).map(img => (
-                    <img src={img} alt={room.name[lang]} class="w-20 h-20 rounded-lg object-cover border border-gray-300 shrink-0 hover:scale-105 transition-transform" loading="lazy" />
-                  ))}
-                </div>
-              )}
 
               <div class="flex gap-3 mt-6 flex-wrap">
                 <a href={`/${lang}/rooms/${room.slug}`} class="inline-block bg-onyx text-white rounded-xl px-6 py-3 text-[14px] font-semibold hover:bg-onyx/80 transition-colors">
