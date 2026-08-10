@@ -272,11 +272,11 @@ const galleryImages = [
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.address.label')}</span>
-            <span class="text-[15px] text-gray-700 leading-relaxed">{t('address')}</span>
+            <span class="text-[15px] text-gray-700 leading-relaxed min-w-0">{t('address')}</span>
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{lang === 'th' ? 'อีเมล' : 'Email'}</span>
-            <a href={`mailto:${t('email')}`} class="text-[15px] text-gray-700 hover:underline">{t('email')}</a>
+            <a href={`mailto:${t('email')}`} class="text-[15px] text-gray-700 hover:underline min-w-0 break-all">{t('email')}</a>
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.hours.label')}</span>
