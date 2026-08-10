@@ -168,7 +168,7 @@ const galleryImages = [
                 <a href={`/${lang}/rooms/${room.slug}`} class="inline-block bg-onyx text-white rounded-xl px-6 py-3 text-[14px] font-semibold hover:bg-onyx/80 transition-colors">
                   {lang === 'th' ? 'ดูรายละเอียด' : 'View details'}
                 </a>
-                <a href="#booking" class="inline-block border border-gray-400 rounded-xl px-6 py-3 text-[14px] font-semibold hover:bg-onyx hover:text-white transition-all">
+                <a href={`https://cal.com/thunder-studio/${room.calSlug}`} target="_blank" rel="noopener" class="inline-block border border-gray-400 rounded-xl px-6 py-3 text-[14px] font-semibold hover:bg-onyx hover:text-white transition-all">
                   {t('hero.cta.book')}
                 </a>
               </div>

@@ -18,11 +18,11 @@ const room = rooms[0];
 const otherRooms = rooms.filter((_, i) => i !== 0);
 
 const title = lang === 'th'
-  ? 'ห้องซ้อมใหญ่ — Thunder Studio กรุงเทพ'
-  : 'Large Rehearsal Room — Thunder Studio Bangkok';
+  ? 'Studio 1 — ห้องซ้อมดนตรี Thunder Studio กรุงเทพ'
+  : 'Studio 1 — Music Rehearsal Room Thunder Studio Bangkok';
 const description = lang === 'th'
   ? 'ห้องซ้อมดนตรีขนาดใหญ่ พร้อม Marshall amps กลองชุดเต็ม PA system จองออนไลน์'
-  : 'Large rehearsal room with Marshall amps, full drum kit, PA system. Book online.';
+  : 'Spacious rehearsal room with Marshall amps, full drum kit, PA system. Book online.';
 
 const faqs = [1, 2, 3].map(i => ({
   question: t(`room.large.faq.${i}.q`),
@@ -98,7 +98,7 @@ const faqs = [1, 2, 3].map(i => ({
             </ul>
           </div>
 
-          <a href={`/${lang}/#booking`} class="inline-block mt-8 bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+          <a href={`https://cal.com/thunder-studio/${room.calSlug}`} target="_blank" rel="noopener" class="inline-block mt-8 bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
             {t('room.book')}
           </a>
         </div>

@@ -19,7 +19,7 @@ const title = lang === 'th'
   ? 'เลือกห้องซ้อมขนาดไหนดี? คู่มือเลือกห้องซ้อมดนตรี'
   : 'Which rehearsal room size do you need? A practical guide';
 const description = lang === 'th'
-  ? 'เปรียบเทียบห้องซ้อมเล็ก ห้องซ้อมใหญ่ และห้องอัดเสียง เลือกให้ตรงกับจำนวนคนและรูปแบบการซ้อม ไม่จ่ายเกินจริง'
+  ? 'เปรียบเทียบ Studio 2 Studio 1 และ Control Room เลือกให้ตรงกับจำนวนคนและรูปแบบการซ้อม ไม่จ่ายเกินจริง'
   : 'Compare small rooms, large rooms, and recording studios. Pick the right size for your group and playing style without overpaying.';
 ---
 
@@ -58,13 +58,13 @@ const description = lang === 'th'
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": lang === 'th' ? [
-      { "@type": "Question", "name": "ห้องซ้อมเล็กกับห้องซ้อมใหญ่ต่างกันยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "ห้องซ้อมเล็กจุ 2-4 คน มี guitar amp และ PA เหมาะสำหรับซ้อมเดี่ยว ดูโอ้ หรือวงเล็ก ห้องซ้อมใหญ่จุ 6-10 คน มี Marshall amps กลองชุดเต็ม PA system ครบ เหมาะสำหรับวงเต็ม" }},
-      { "@type": "Question", "name": "ซ้อมกลองอย่างเดียว ใช้ห้องไหนดี?", "acceptedAnswer": { "@type": "Answer", "text": "ห้องซ้อมเล็กเหมาะที่สุด ผนังกันเสียงรอบด้าน ตีเต็มที่ได้ ราคาถูกกว่าห้องใหญ่ ขอกลองเพิ่มได้ แจ้งตอนจอง" }},
-      { "@type": "Question", "name": "วง 5 คน ใช้ห้องเล็กได้ไหม?", "acceptedAnswer": { "@type": "Answer", "text": "ห้องเล็กจุได้ 2-4 คน วง 5 คนขึ้นไปแนะนำห้องใหญ่ พื้นที่กว้างกว่า เสียงไม่อัด มีอุปกรณ์ครบกว่า" }},
+      { "@type": "Question", "name": "Studio 2 กับ Studio 1 ต่างกันยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "Studio 2 จุ 2-4 คน มี guitar amp และ PA เหมาะสำหรับซ้อมเดี่ยว ดูโอ้ หรือวงเล็ก Studio 1 จุ 6-10 คน มี Marshall amps กลองชุดเต็ม PA system ครบ เหมาะสำหรับวงเต็ม" }},
+      { "@type": "Question", "name": "ซ้อมกลองอย่างเดียว ใช้ห้องไหนดี?", "acceptedAnswer": { "@type": "Answer", "text": "Studio 2 เหมาะที่สุด ผนังกันเสียงรอบด้าน ตีเต็มที่ได้ ราคาถูกกว่า Studio 1 ขอกลองเพิ่มได้ แจ้งตอนจอง" }},
+      { "@type": "Question", "name": "วง 5 คน ใช้ Studio 2 ได้ไหม?", "acceptedAnswer": { "@type": "Answer", "text": "Studio 2 จุได้ 2-4 คน วง 5 คนขึ้นไปแนะนำ Studio 1 พื้นที่กว้างกว่า เสียงไม่อัด มีอุปกรณ์ครบกว่า" }},
     ] : [
-      { "@type": "Question", "name": "What is the difference between a small and large rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "A small room holds 2-4 people with a guitar amp and PA, ideal for solo, duo, or small group practice. A large room holds 6-10 people with Marshall amps, full drum kit, and complete PA system for full band rehearsals." }},
-      { "@type": "Question", "name": "Which room is best for drum practice?", "acceptedAnswer": { "@type": "Answer", "text": "The small rehearsal room is ideal for solo drum practice. Fully soundproofed walls let you play at full volume. Drums can be arranged on request when booking." }},
-      { "@type": "Question", "name": "Can a 5-piece band use the small room?", "acceptedAnswer": { "@type": "Answer", "text": "The small room fits 2-4 people. For 5 or more musicians, the large room is recommended — more space, better acoustics, and a full equipment setup." }},
+      { "@type": "Question", "name": "What is the difference between Studio 1 and Studio 2?", "acceptedAnswer": { "@type": "Answer", "text": "Studio 2 holds 2-4 people with a guitar amp and PA, ideal for solo, duo, or small group practice. Studio 1 holds 6-10 people with Marshall amps, full drum kit, and complete PA system for full band rehearsals." }},
+      { "@type": "Question", "name": "Which room is best for drum practice?", "acceptedAnswer": { "@type": "Answer", "text": "Studio 2 is ideal for solo drum practice. Fully soundproofed walls let you play at full volume. Drums can be arranged on request when booking." }},
+      { "@type": "Question", "name": "Can a 5-piece band use Studio 2?", "acceptedAnswer": { "@type": "Answer", "text": "Studio 2 fits 2-4 people. For 5 or more musicians, Studio 1 is recommended — more space, better acoustics, and a full equipment setup." }},
     ],
   })} />
 
@@ -111,8 +111,8 @@ const description = lang === 'th'
                 <thead>
                   <tr class="bg-onyx text-white text-left">
                     <th class="px-5 py-3 font-semibold"></th>
-                    <th class="px-5 py-3 font-semibold">ห้องเล็ก</th>
-                    <th class="px-5 py-3 font-semibold">ห้องใหญ่</th>
+                    <th class="px-5 py-3 font-semibold">Studio 2</th>
+                    <th class="px-5 py-3 font-semibold">Studio 1</th>
                     <th class="px-5 py-3 font-semibold">Control Room</th>
                   </tr>
                 </thead>
@@ -125,7 +125,7 @@ const description = lang === 'th'
               </table>
             </div>
 
-            <h2>ห้องซ้อมเล็ก: ซ้อมเดี่ยวหรือวงเล็ก 2-4 คน</h2>
+            <h2>Studio 2: ซ้อมเดี่ยวหรือวงเล็ก 2-4 คน</h2>
             <p>เหมาะกับ:</p>
             <ul>
               <li><strong>ซ้อมเดี่ยว</strong> กีตาร์ เบส คีย์บอร์ด ร้องเพลง หรือกลอง พื้นที่ส่วนตัว เสียงไม่รบกวนใคร</li>
@@ -133,18 +133,18 @@ const description = lang === 'th'
               <li><strong>วงเล็ก 3-4 คน</strong> trio หรือ quartet ที่ไม่ต้องการกลองชุด (หรือขอกลองเพิ่มได้)</li>
               <li><strong>ซ้อมกลอง</strong> ผนังกันเสียงรอบด้าน ตีเต็มที่ได้โดยไม่ต้องกังวลเรื่องเสียงดัง</li>
             </ul>
-            <p>ข้อดีของห้องเล็กคือราคาถูกกว่าห้องใหญ่ ถ้าซ้อมแค่ 2 คนไม่จำเป็นต้องจ่ายค่าห้องใหญ่</p>
-            <p><a href={`/${lang}/rooms/small-room`}>ดูรายละเอียดห้องซ้อมเล็ก</a></p>
+            <p>ข้อดีของ Studio 2 คือราคาถูกกว่า Studio 1 ถ้าซ้อมแค่ 2 คนไม่จำเป็นต้องจ่ายค่า Studio 1</p>
+            <p><a href={`/${lang}/rooms/small-room`}>ดูรายละเอียด Studio 2</a></p>
 
-            <h2>ห้องซ้อมใหญ่: วงเต็ม 6-10 คน</h2>
+            <h2>Studio 1: วงเต็ม 6-10 คน</h2>
             <p>เหมาะกับ:</p>
             <ul>
               <li><strong>วงดนตรีเต็มวง</strong> 5 คนขึ้นไป กลอง เบส กีตาร์ คีย์บอร์ด ร้อง</li>
               <li><strong>ซ้อมก่อนโชว์</strong> จำลองการแสดงจริง ต้องการพื้นที่เคลื่อนไหว</li>
               <li><strong>เวิร์คช็อปดนตรี</strong> สอนเป็นกลุ่ม หรือ jam session</li>
             </ul>
-            <p>ห้องใหญ่มี Marshall amps และกลองชุดเต็มพร้อมอยู่แล้ว แค่เอากีตาร์หรือเบสมา อุปกรณ์อื่นไม่ต้องหิ้ว</p>
-            <p><a href={`/${lang}/rooms/large-room`}>ดูรายละเอียดห้องซ้อมใหญ่</a></p>
+            <p>Studio 1 มี Marshall amps และกลองชุดเต็มพร้อมอยู่แล้ว แค่เอากีตาร์หรือเบสมา อุปกรณ์อื่นไม่ต้องหิ้ว</p>
+            <p><a href={`/${lang}/rooms/large-room`}>ดูรายละเอียด Studio 1</a></p>
 
             <h2>Control Room: อัดเสียงและมิกซ์</h2>
             <p><a href={`/${lang}/rooms/control-room`}>Control Room</a> ไม่ใช่ห้องซ้อม แต่เป็นห้องสำหรับ:</p>
@@ -153,7 +153,7 @@ const description = lang === 'th'
               <li><strong>มิกซ์เสียง</strong> ปรับ EQ, effect, volume ของแต่ละ track</li>
               <li><strong>มาสเตอร์</strong> ขัดเสียงรวมให้พร้อมเผยแพร่</li>
             </ul>
-            <p>ใช้ร่วมกับห้องซ้อมใหญ่ได้ วงเล่นในห้องซ้อม อัดเสียงจาก Control Room ได้เลย</p>
+            <p>ใช้ร่วมกับ Studio 1 ได้ วงเล่นในห้องซ้อม อัดเสียงจาก Control Room ได้เลย</p>
             <p>อ่านเพิ่มเติม: <a href={`/${lang}/blog/recording-studio-guide`}>คู่มืออัดเสียงสำหรับมือใหม่</a></p>
 
             <h2>เลือกตามจำนวนคน</h2>
@@ -168,24 +168,24 @@ const description = lang === 'th'
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">1 คน</td><td class="px-5 py-3 text-gray-700">ห้องเล็ก</td><td class="px-5 py-3 text-gray-700">ราคาถูกกว่า พื้นที่พอดี</td></tr>
-                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">2-3 คน</td><td class="px-5 py-3 text-gray-700">ห้องเล็ก</td><td class="px-5 py-3 text-gray-700">พื้นที่เพียงพอ อุปกรณ์ครบ</td></tr>
-                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">4 คน</td><td class="px-5 py-3 text-gray-700">ห้องเล็ก หรือ ห้องใหญ่</td><td class="px-5 py-3 text-gray-700">ห้องเล็กได้ แต่ถ้ามีกลองชุดด้วยจะแน่นไป ใช้ห้องใหญ่สบายกว่า</td></tr>
-                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">5-6 คน</td><td class="px-5 py-3 text-gray-700">ห้องใหญ่</td><td class="px-5 py-3 text-gray-700">ต้องการพื้นที่ อุปกรณ์ครบชุด</td></tr>
-                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">7-10 คน</td><td class="px-5 py-3 text-gray-700">ห้องใหญ่</td><td class="px-5 py-3 text-gray-700">วงใหญ่ เพดานสูง พื้นที่กว้าง</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">1 คน</td><td class="px-5 py-3 text-gray-700">Studio 2</td><td class="px-5 py-3 text-gray-700">ราคาถูกกว่า พื้นที่พอดี</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">2-3 คน</td><td class="px-5 py-3 text-gray-700">Studio 2</td><td class="px-5 py-3 text-gray-700">พื้นที่เพียงพอ อุปกรณ์ครบ</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">4 คน</td><td class="px-5 py-3 text-gray-700">Studio 2 หรือ Studio 1</td><td class="px-5 py-3 text-gray-700">Studio 2 ได้ แต่ถ้ามีกลองชุดด้วยจะแน่นไป ใช้ Studio 1 สบายกว่า</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">5-6 คน</td><td class="px-5 py-3 text-gray-700">Studio 1</td><td class="px-5 py-3 text-gray-700">ต้องการพื้นที่ อุปกรณ์ครบชุด</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">7-10 คน</td><td class="px-5 py-3 text-gray-700">Studio 1</td><td class="px-5 py-3 text-gray-700">วงใหญ่ เพดานสูง พื้นที่กว้าง</td></tr>
                 </tbody>
               </table>
             </div>
 
             <h2>คำแนะนำเพิ่มเติม</h2>
             <ul>
-              <li><strong>ซ้อมเดี่ยวก่อน ซ้อมวงทีหลัง</strong> จองห้องเล็กเพื่อซ้อมพาร์ทตัวเอง แล้วค่อยจองห้องใหญ่ตอนซ้อมรวมวง ประหยัดกว่าซ้อมพาร์ทตัวเองในห้องใหญ่</li>
-              <li><strong>ซ้อมก่อนอัด</strong> ซ้อมในห้องใหญ่จนมั่นใจ แล้วค่อยจอง Control Room อัดเสียง ไม่ต้องเสียค่าห้องอัดไปกับการซ้อม</li>
+              <li><strong>ซ้อมเดี่ยวก่อน ซ้อมวงทีหลัง</strong> จอง Studio 2 เพื่อซ้อมพาร์ทตัวเอง แล้วค่อยจอง Studio 1 ตอนซ้อมรวมวง ประหยัดกว่าซ้อมพาร์ทตัวเองใน Studio 1</li>
+              <li><strong>ซ้อมก่อนอัด</strong> ซ้อมใน Studio 1 จนมั่นใจ แล้วค่อยจอง Control Room อัดเสียง ไม่ต้องเสียค่าห้องอัดไปกับการซ้อม</li>
               <li><strong>มาดูห้องก่อนจองก็ได้</strong> ถ้าไม่แน่ใจว่าห้องไหนเหมาะ แวะมาดูก่อนได้ เปิดทุกวัน 10:00-22:00</li>
             </ul>
 
             <h2>พร้อมจองแล้ว?</h2>
-            <p>Thunder Studio มี<a href={`/${lang}/rooms/small-room`}>ห้องซ้อมเล็ก</a>สำหรับซ้อมเดี่ยว <a href={`/${lang}/rooms/large-room`}>ห้องซ้อมใหญ่</a>สำหรับวงเต็ม และ <a href={`/${lang}/rooms/control-room`}>Control Room</a> สำหรับอัดเสียง ทุกห้องพร้อมอุปกรณ์ครบ เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ</p>
+            <p>Thunder Studio มี <a href={`/${lang}/rooms/small-room`}>Studio 2</a> สำหรับซ้อมเดี่ยว <a href={`/${lang}/rooms/large-room`}>Studio 1</a> สำหรับวงเต็ม และ <a href={`/${lang}/rooms/control-room`}>Control Room</a> สำหรับอัดเสียง ทุกห้องพร้อมอุปกรณ์ครบ เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ</p>
           </div>
         ) : (
           <div class="prose-blog">
@@ -198,8 +198,8 @@ const description = lang === 'th'
                 <thead>
                   <tr class="bg-onyx text-white text-left">
                     <th class="px-5 py-3 font-semibold"></th>
-                    <th class="px-5 py-3 font-semibold">Small Room</th>
-                    <th class="px-5 py-3 font-semibold">Large Room</th>
+                    <th class="px-5 py-3 font-semibold">Studio 2</th>
+                    <th class="px-5 py-3 font-semibold">Studio 1</th>
                     <th class="px-5 py-3 font-semibold">Control Room</th>
                   </tr>
                 </thead>
@@ -212,7 +212,7 @@ const description = lang === 'th'
               </table>
             </div>
 
-            <h2>Small rehearsal room: solo or small groups of 2-4</h2>
+            <h2>Studio 2: solo or small groups of 2-4</h2>
             <p>Best for:</p>
             <ul>
               <li><strong>Solo practice</strong> — guitar, bass, keyboards, vocals, or drums. Private space, no noise bleed.</li>
@@ -220,18 +220,18 @@ const description = lang === 'th'
               <li><strong>Small groups of 3-4</strong> — trios or quartets that don't need a full drum kit (drums can be arranged on request)</li>
               <li><strong>Drum practice</strong> — fully soundproofed walls let you play at full volume without worrying about noise</li>
             </ul>
-            <p>The main advantage of the small room is cost. If you're only 2 people, there's no reason to pay for a large room.</p>
-            <p><a href={`/${lang}/rooms/small-room`}>View Small Room details</a></p>
+            <p>The main advantage of Studio 2 is cost. If you're only 2 people, there's no reason to pay for Studio 1.</p>
+            <p><a href={`/${lang}/rooms/small-room`}>View Studio 2 details</a></p>
 
-            <h2>Large rehearsal room: full bands of 6-10</h2>
+            <h2>Studio 1: full bands of 6-10</h2>
             <p>Best for:</p>
             <ul>
               <li><strong>Full bands</strong> — 5 or more musicians: drums, bass, guitar, keys, vocals</li>
               <li><strong>Pre-gig rehearsals</strong> — simulate a live performance with room to move</li>
               <li><strong>Music workshops</strong> — group lessons or jam sessions</li>
             </ul>
-            <p>The large room comes with Marshall amps and a full drum kit ready to go. Just bring your guitar or bass.</p>
-            <p><a href={`/${lang}/rooms/large-room`}>View Large Room details</a></p>
+            <p>Studio 1 comes with Marshall amps and a full drum kit ready to go. Just bring your guitar or bass.</p>
+            <p><a href={`/${lang}/rooms/large-room`}>View Studio 1 details</a></p>
 
             <h2>Control Room: recording and mixing</h2>
             <p>The <a href={`/${lang}/rooms/control-room`}>Control Room</a> is not a rehearsal space. It's designed for:</p>
@@ -240,7 +240,7 @@ const description = lang === 'th'
               <li><strong>Mixing</strong> — adjust EQ, effects, and volume for each track</li>
               <li><strong>Mastering</strong> — polish the final mix for release</li>
             </ul>
-            <p>It works together with the Large Rehearsal Room: the band plays in the rehearsal room while the recording happens from the Control Room.</p>
+            <p>It works together with Studio 1: the band plays in the rehearsal room while the recording happens from the Control Room.</p>
             <p>Read more: <a href={`/${lang}/blog/recording-studio-guide`}>Recording studio guide for beginners</a></p>
 
             <h2>Choose by group size</h2>
@@ -255,24 +255,24 @@ const description = lang === 'th'
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">1</td><td class="px-5 py-3 text-gray-700">Small Room</td><td class="px-5 py-3 text-gray-700">Lower cost, right-sized space</td></tr>
-                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">2-3</td><td class="px-5 py-3 text-gray-700">Small Room</td><td class="px-5 py-3 text-gray-700">Plenty of space, all equipment included</td></tr>
-                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">4</td><td class="px-5 py-3 text-gray-700">Small or Large</td><td class="px-5 py-3 text-gray-700">Small works, but with a full drum kit it gets tight. Large is more comfortable.</td></tr>
-                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">5-6</td><td class="px-5 py-3 text-gray-700">Large Room</td><td class="px-5 py-3 text-gray-700">Need the space and full equipment setup</td></tr>
-                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">7-10</td><td class="px-5 py-3 text-gray-700">Large Room</td><td class="px-5 py-3 text-gray-700">Big band, high ceilings, wide floor space</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">1</td><td class="px-5 py-3 text-gray-700">Studio 2</td><td class="px-5 py-3 text-gray-700">Lower cost, right-sized space</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">2-3</td><td class="px-5 py-3 text-gray-700">Studio 2</td><td class="px-5 py-3 text-gray-700">Plenty of space, all equipment included</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">4</td><td class="px-5 py-3 text-gray-700">Studio 2 or Studio 1</td><td class="px-5 py-3 text-gray-700">Studio 2 works, but with a full drum kit it gets tight. Studio 1 is more comfortable.</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">5-6</td><td class="px-5 py-3 text-gray-700">Studio 1</td><td class="px-5 py-3 text-gray-700">Need the space and full equipment setup</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">7-10</td><td class="px-5 py-3 text-gray-700">Studio 1</td><td class="px-5 py-3 text-gray-700">Big band, high ceilings, wide floor space</td></tr>
                 </tbody>
               </table>
             </div>
 
             <h2>Tips</h2>
             <ul>
-              <li><strong>Practice solo first, rehearse together later.</strong> Book a small room to work on your own parts, then book the large room when the full band is ready. Cheaper than practicing your part in a large room.</li>
-              <li><strong>Rehearse before you record.</strong> Get tight in the rehearsal room first, then book the Control Room for recording. Don't pay recording studio rates for rehearsal time.</li>
+              <li><strong>Practice solo first, rehearse together later.</strong> Book Studio 2 to work on your own parts, then book Studio 1 when the full band is ready. Cheaper than practicing your part in Studio 1.</li>
+              <li><strong>Rehearse before you record.</strong> Get tight in Studio 1 first, then book the Control Room for recording. Don't pay recording studio rates for rehearsal time.</li>
               <li><strong>Visit before you book.</strong> Not sure which room fits? Stop by and take a look. Open daily 10:00 AM to 10:00 PM.</li>
             </ul>
 
             <h2>Ready to book?</h2>
-            <p>Thunder Studio has a <a href={`/${lang}/rooms/small-room`}>Small Room</a> for solo practice, a <a href={`/${lang}/rooms/large-room`}>Large Room</a> for full bands, and a <a href={`/${lang}/rooms/control-room`}>Control Room</a> for recording. All rooms come fully equipped. Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok.</p>
+            <p>Thunder Studio has <a href={`/${lang}/rooms/small-room`}>Studio 2</a> for solo practice, <a href={`/${lang}/rooms/large-room`}>Studio 1</a> for full bands, and a <a href={`/${lang}/rooms/control-room`}>Control Room</a> for recording. All rooms come fully equipped. Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok.</p>
           </div>
         )}
 

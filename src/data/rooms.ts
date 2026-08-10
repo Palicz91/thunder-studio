@@ -2,6 +2,7 @@ const IMG_BASE = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/pub
 
 export interface Room {
   slug: string;
+  calSlug: string;
   name: { th: string; en: string };
   description: { th: string; en: string };
   capacity: string;
@@ -12,7 +13,8 @@ export interface Room {
 export const rooms: Room[] = [
   {
     slug: 'large-room',
-    name: { th: 'ห้องซ้อมใหญ่', en: 'Large Rehearsal Room' },
+    calSlug: 'studio-1',
+    name: { th: 'Studio 1', en: 'Studio 1' },
     description: {
       th: 'ห้องซ้อมขนาดใหญ่ เพดานสูง พร้อมอุปกรณ์ครบชุด เหมาะสำหรับวงดนตรีเต็มวง หรือซ้อมก่อนแสดงสด',
       en: 'Spacious rehearsal room with high ceilings and full equipment. Perfect for full bands or pre-gig rehearsals.',
@@ -35,7 +37,8 @@ export const rooms: Room[] = [
   },
   {
     slug: 'small-room',
-    name: { th: 'ห้องซ้อมเล็ก', en: 'Small Rehearsal Room' },
+    calSlug: 'studio-2',
+    name: { th: 'Studio 2', en: 'Studio 2' },
     description: {
       th: 'ห้องซ้อมส่วนตัวขนาดกะทัดรัด เหมาะสำหรับซ้อมเดี่ยว ดูโอ้ หรือวงเล็ก ผนังกันเสียงรอบด้าน',
       en: 'Compact private room ideal for solo practice, duos, or small groups. Fully soundproofed.',
@@ -53,6 +56,7 @@ export const rooms: Room[] = [
   },
   {
     slug: 'control-room',
+    calSlug: 'control-room',
     name: { th: 'Control Room', en: 'Control Room' },
     description: {
       th: 'ห้องบันทึกเสียงพร้อมมิกซ์คอนโซลและอุปกรณ์ระดับสตูดิโอ สำหรับบันทึกเสียง มิกซ์ หรือมาสเตอร์',
