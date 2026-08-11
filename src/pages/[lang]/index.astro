@@ -274,9 +274,12 @@ const galleryImages = [
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.phone.label')}</span>
             <a href={`tel:${t('phone').replace(/\s/g, '')}`} class="text-[17px] font-semibold hover:underline">{t('phone')}</a>
           </div>
-          <div class="flex gap-5 py-5 border-b border-gray-300">
-            <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.line.label')}</span>
-            <a href={`https://line.me/R/ti/p/${t('line')}`} target="_blank" rel="noopener" class="text-[17px] font-semibold hover:underline">{t('line')}</a>
+          <div class="flex gap-5 py-5 border-b border-gray-300 items-center">
+            <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0">{t('contact.line.label')}</span>
+            <a href={`https://line.me/R/ti/p/${t('line')}`} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-[#06c755] text-white rounded-xl px-5 py-2.5 text-[14px] font-semibold hover:bg-[#05b34b] transition-colors">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+              {lang === 'th' ? 'แชทผ่าน LINE' : 'Chat on LINE'}
+            </a>
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.address.label')}</span>
