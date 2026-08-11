@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ScrollReveal from '../../components/ScrollReveal.astro';
-import CalBooking from '../../components/CalBooking.tsx';
+import SimplyBooking from '../../components/SimplyBooking.tsx';
 import Gallery from '../../components/Gallery.tsx';
 import RoomGallery from '../../components/RoomGallery.tsx';
 import type { Lang } from '../../i18n/ui';
@@ -22,7 +22,8 @@ const description = lang === 'th'
   ? 'ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ใจกลางกรุงเทพ พร้อมอุปกรณ์ Marshall, กลองชุด, PA system'
   : 'Professional music rehearsal rooms and recording studio in Bangkok. Marshall amps, full drum kits, PA systems.';
 
-const CAL_LINK = 'thunder-studio';
+const SB_COMPANY = 'thunderstudio';
+const SB_API_KEY = '5abee73c96dbd7a8df41edb745e30bda479aef41a53ca12e9aa3a8f801eca14b';
 
 const faqs = [1, 2, 3, 4, 5, 6].map(i => ({
   question: t(`faq.${i}.q`),
@@ -168,7 +169,7 @@ const galleryImages = [
                 <a href={`/${lang}/rooms/${room.slug}`} class="inline-block bg-onyx text-white rounded-xl px-6 py-3 text-[14px] font-semibold hover:bg-onyx/80 transition-colors">
                   {lang === 'th' ? 'ดูรายละเอียด' : 'View details'}
                 </a>
-                <a href={`https://cal.com/thunder-studio/${room.calSlug}`} target="_blank" rel="noopener" class="inline-block border border-gray-400 rounded-xl px-6 py-3 text-[14px] font-semibold hover:bg-onyx hover:text-white transition-all">
+                <a href="#booking" class="inline-block border border-gray-400 rounded-xl px-6 py-3 text-[14px] font-semibold hover:bg-onyx hover:text-white transition-all">
                   {t('hero.cta.book')}
                 </a>
               </div>
@@ -216,37 +217,44 @@ const galleryImages = [
   <!-- BOOKING -->
   <section id="booking" class="relative bg-onyx overflow-hidden grain">
     <div class="relative max-w-[1200px] mx-auto px-6 py-20 md:py-28">
-      <div class="reveal">
+      <div class="reveal text-center">
         <h2 class="text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{t('booking.title')}</h2>
-        <p class="text-[15px] text-white/50 mt-4 max-w-xl leading-relaxed">{t('booking.sub')}</p>
+        <p class="text-[15px] text-white/50 mt-4 max-w-xl mx-auto leading-relaxed">{t('booking.sub')}</p>
       </div>
 
-      <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-4 mt-10" style="transition-delay: 100ms;">
-        {rooms.map(room => (
-          <a href={`https://cal.com/thunder-studio/${room.calSlug}`} target="_blank" rel="noopener" class="group relative block rounded-xl overflow-hidden border border-white/10 h-[120px]">
-            <img src={room.images[0]} alt={room.name[lang]} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
-              <div>
-                <div class="text-[15px] font-bold">{room.name[lang]}</div>
-                <div class="text-[12px] text-white/60">{room.capacity} {lang === 'th' ? 'คน' : 'people'}</div>
-              </div>
-              <svg class="w-5 h-5 text-white/60 group-hover:text-white transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
-          </a>
-        ))}
+      <div class="reveal mt-10 max-w-4xl mx-auto" style="transition-delay: 100ms;">
+        <SimplyBooking
+          client:visible
+          lang={lang}
+          rooms={rooms}
+          companyLogin={SB_COMPANY}
+          apiKey={SB_API_KEY}
+          labels={{
+            selectRoom: t('booking.selectRoom'),
+            selectDate: t('booking.selectDate'),
+            selectTime: t('booking.selectTime'),
+            selectDuration: t('booking.selectDuration'),
+            yourDetails: t('booking.yourDetails'),
+            name: t('booking.name'),
+            email: t('booking.email'),
+            phone: t('booking.phone'),
+            confirm: t('booking.confirm'),
+            success: t('booking.success'),
+            error: t('booking.error'),
+            retry: t('booking.retry'),
+            back: t('booking.back'),
+            noSlots: t('booking.noSlots'),
+            loading: t('booking.loading'),
+            fullyBooked: t('booking.fullyBooked'),
+            duration: t('booking.duration'),
+          }}
+        />
       </div>
 
-      <div class="reveal mt-6" style="transition-delay: 150ms;">
-        <CalBooking client:visible lang={lang} calLink={CAL_LINK} />
-      </div>
-
-      <div class="reveal mt-8 max-w-md" style="transition-delay: 250ms;">
+      <div class="reveal mt-8 max-w-sm sm:max-w-md mx-auto" style="transition-delay: 250ms;">
         <div class="p-6 border border-white/10 rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
           <div class="text-[11px] font-semibold tracking-[0.14em] text-white/40 mb-4">{t('booking.or')}</div>
-          <a href={`https://line.me/ti/p/${t('line')}`} target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#06c755] text-white rounded-xl px-6 py-4 font-semibold text-[15px] hover:bg-[#05b34b] transition-colors w-full justify-center">
+          <a href={`https://line.me/R/ti/p/${t('line')}`} target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#06c755] text-white rounded-xl px-6 py-4 font-semibold text-[15px] hover:bg-[#05b34b] transition-colors w-full justify-center">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
             LINE: {t('line')}
           </a>
@@ -268,7 +276,7 @@ const galleryImages = [
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.line.label')}</span>
-            <a href={`https://line.me/ti/p/${t('line')}`} target="_blank" rel="noopener" class="text-[17px] font-semibold hover:underline">{t('line')}</a>
+            <a href={`https://line.me/R/ti/p/${t('line')}`} target="_blank" rel="noopener" class="text-[17px] font-semibold hover:underline">{t('line')}</a>
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.address.label')}</span>
@@ -380,7 +388,7 @@ const galleryImages = [
             <a href="https://www.instagram.com/thunderventure.studio" target="_blank" rel="noopener" aria-label="Instagram" class="text-white/50 hover:text-white transition-colors">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
-            <a href={`https://line.me/ti/p/${t('line')}`} target="_blank" rel="noopener" aria-label="LINE" class="text-white/50 hover:text-white transition-colors">
+            <a href={`https://line.me/R/ti/p/${t('line')}`} target="_blank" rel="noopener" aria-label="LINE" class="text-white/50 hover:text-white transition-colors">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
             </a>
           </div>

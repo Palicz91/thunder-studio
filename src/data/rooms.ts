@@ -3,7 +3,9 @@ const IMG_BASE = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/pub
 export interface Room {
   slug: string;
   calSlug: string;
+  simplyBookEventId: number;
   name: { th: string; en: string };
+  shortDescription: { th: string; en: string };
   description: { th: string; en: string };
   capacity: string;
   equipment: { th: string; en: string }[];
@@ -14,7 +16,9 @@ export const rooms: Room[] = [
   {
     slug: 'large-room',
     calSlug: 'studio-1',
+    simplyBookEventId: 2,
     name: { th: 'Studio 1', en: 'Studio 1' },
+    shortDescription: { th: 'ห้องกว้างสำหรับวงเต็ม', en: 'Spacious room for full bands' },
     description: {
       th: 'ห้องซ้อมขนาดใหญ่ เพดานสูง พร้อมอุปกรณ์ครบชุด เหมาะสำหรับวงดนตรีเต็มวง หรือซ้อมก่อนแสดงสด',
       en: 'Spacious rehearsal room with high ceilings and full equipment. Perfect for full bands or pre-gig rehearsals.',
@@ -38,7 +42,9 @@ export const rooms: Room[] = [
   {
     slug: 'small-room',
     calSlug: 'studio-2',
+    simplyBookEventId: 3,
     name: { th: 'Studio 2', en: 'Studio 2' },
+    shortDescription: { th: 'ห้องส่วนตัวขนาดกะทัดรัด', en: 'Compact private room' },
     description: {
       th: 'ห้องซ้อมส่วนตัวขนาดกะทัดรัด เหมาะสำหรับซ้อมเดี่ยว ดูโอ้ หรือวงเล็ก ผนังกันเสียงรอบด้าน',
       en: 'Compact private room ideal for solo practice, duos, or small groups. Fully soundproofed.',
@@ -57,7 +63,9 @@ export const rooms: Room[] = [
   {
     slug: 'control-room',
     calSlug: 'control-room',
+    simplyBookEventId: 4,
     name: { th: 'Control Room', en: 'Control Room' },
+    shortDescription: { th: 'ห้องบันทึกเสียงและมิกซ์', en: 'Recording and mixing room' },
     description: {
       th: 'ห้องบันทึกเสียงพร้อมมิกซ์คอนโซลและอุปกรณ์ระดับสตูดิโอ สำหรับบันทึกเสียง มิกซ์ หรือมาสเตอร์',
       en: 'Recording room with mixing console and studio-grade gear. For recording, mixing, or mastering.',
