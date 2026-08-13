@@ -1,0 +1,383 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const datePublished = '2026-08-13';
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+
+const title = lang === 'th'
+  ? 'วิธีเลือกสตูดิโอบันทึกเสียง ดูอะไรบ้างก่อนจอง'
+  : 'How to Choose a Recording Studio: What to Check Before Booking';
+const description = lang === 'th'
+  ? 'เลือกสตูดิโอบันทึกเสียงยังไงให้ได้เงินคุ้ม ตั้งแต่เช็คอะคูสติก อุปกรณ์ วิศวกรเสียง ราคา ไปจนถึงสัญญาณเตือนที่ควรรู้ก่อนจอง'
+  : 'A practical guide to choosing the right recording studio: acoustics, equipment, engineer skill, rates, red flags, and questions to ask before you book.';
+---
+
+<Base {title} {description} {lang} ogImage={`${IMG}/control-room-1.webp`}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thunder Studio",
+      "url": "https://thundermusicstudio.com",
+    },
+    "image": `${IMG}/control-room-1.webp`,
+    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/blog/how-to-choose-recording-studio`,
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.blog'), "item": `https://thundermusicstudio.com/${lang}/blog` },
+      { "@type": "ListItem", "position": 3, "name": lang === 'th' ? 'วิธีเลือกสตูดิโอบันทึกเสียง' : 'How to choose a recording studio' },
+    ],
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": lang === 'th' ? [
+      { "@type": "Question", "name": "ห้องอัดเสียงกับห้องซ้อมดนตรีต่างกันยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "ห้องซ้อมออกแบบมาเพื่อเล่นดนตรีโดยไม่รบกวนคนข้างเคียง ส่วนห้องอัดเสียงมีอะคูสติกที่ควบคุมได้ อุปกรณ์บันทึกเสียง และวิศวกรเสียงที่ช่วยให้ได้ไฟล์เสียงคุณภาพสูง" }},
+      { "@type": "Question", "name": "อัดเสียงหนึ่งเพลงใช้เวลานานแค่ไหน?", "acceptedAnswer": { "@type": "Answer", "text": "ขึ้นอยู่กับความพร้อมของวงและจำนวน instrument แต่โดยทั่วไปวงที่ซ้อมมาดีแล้วจะใช้เวลาประมาณ 3-6 ชั่วโมงต่อเพลง รวม setup, tracking, และฟังผลเบื้องต้น" }},
+      { "@type": "Question", "name": "ต้องมีวิศวกรเสียงของตัวเองไหม?", "acceptedAnswer": { "@type": "Answer", "text": "ไม่จำเป็น สตูดิโอส่วนใหญ่มีวิศวกรเสียงให้บริการอยู่แล้ว แต่ถ้ามีวิศวกรที่เคยทำงานด้วยกันและรู้จักเสียงของวง ก็นำมาเองได้" }},
+      { "@type": "Question", "name": "ต้องเตรียมตัวยังไงก่อนเข้าห้องอัด?", "acceptedAnswer": { "@type": "Answer", "text": "ดูคู่มือเตรียมตัวอัดเสียงครั้งแรกได้ที่ thundermusicstudio.com ครอบคลุมตั้งแต่การซ้อม อุปกรณ์ที่ต้องเตรียม ไปจนถึงเทคนิคในวันอัด" }},
+      { "@type": "Question", "name": "ค่าอัดเสียงแพงไหม?", "acceptedAnswer": { "@type": "Answer", "text": "ราคาแตกต่างกันตามขนาดห้อง อุปกรณ์ และบริการที่รวมอยู่ ที่ Thunder Studio ติดต่อสอบถามราคาได้ที่ 063-546-1924 หรือ LINE @thunderstudio" }},
+      { "@type": "Question", "name": "มิกซ์และมาสเตอร์ที่สตูดิโอเดียวกันได้ไหม?", "acceptedAnswer": { "@type": "Answer", "text": "ได้ สตูดิโอที่มีห้องคอนโทรลพร้อมมอนิเตอร์คุณภาพสูงและ DAW ครบชุด ทำ mixing และ mastering ต่อเนื่องจากการอัดได้เลย สะดวกและประหยัดเวลากว่าแยกไปทำที่อื่น" }},
+    ] : [
+      { "@type": "Question", "name": "What is the difference between a recording studio and a rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "A rehearsal room is designed for practicing without disturbing neighbors. A recording studio has controlled acoustics, recording equipment, and an engineer to help you capture high-quality audio files." }},
+      { "@type": "Question", "name": "How long does a recording session take?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on how well-rehearsed the band is and the number of instruments, but a well-prepared band typically needs 3-6 hours per song, including setup, tracking, and initial playback." }},
+      { "@type": "Question", "name": "Do I need my own engineer?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Most studios provide an in-house engineer. But if you have an engineer who already knows your band's sound, you're welcome to bring them along." }},
+      { "@type": "Question", "name": "What should I prepare before my session?", "acceptedAnswer": { "@type": "Answer", "text": "See the first-time recording preparation guide at thundermusicstudio.com, covering everything from rehearsal readiness and gear to day-of-session techniques." }},
+      { "@type": "Question", "name": "How much does a recording studio cost?", "acceptedAnswer": { "@type": "Answer", "text": "Rates vary by room, equipment, and included services. Contact Thunder Studio at 063-546-1924 or LINE @thunderstudio for current rates." }},
+      { "@type": "Question", "name": "Can I do mixing and mastering at the same studio?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A studio with a proper control room, quality monitors, and a full DAW setup can handle mixing and mastering right after tracking, which saves time and keeps everything in one place." }},
+    ],
+  })} />
+
+  <article class="bg-clinical text-onyx">
+    <section class="pt-28 pb-12">
+      <div class="max-w-[720px] mx-auto px-6">
+        <nav class="reveal text-[13px] text-gray-500 mb-8">
+          <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+          <span class="mx-2">/</span>
+          <span class="text-onyx font-medium">{t('breadcrumb.blog')}</span>
+        </nav>
+
+        <div class="reveal">
+          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
+            {lang === 'th' ? 'วิธีเลือกสตูดิโอบันทึกเสียง ดูอะไรบ้างก่อนจอง' : 'How to Choose a Recording Studio: What to Check Before Booking'}
+          </h1>
+          <p class="text-[17px] text-gray-600 mt-5 leading-relaxed max-w-xl">{description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-6">
+      <div class="max-w-[900px] mx-auto px-6">
+        <img
+          src={`${IMG}/control-room-1.webp`}
+          alt={lang === 'th' ? 'ห้องบันทึกเสียง Control Room Thunder Studio บางเขน กรุงเทพ' : 'Thunder Studio Control Room recording studio Bang Khen Bangkok'}
+          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-[720px] mx-auto px-6">
+        {lang === 'th' ? (
+          <div class="prose-blog">
+            <p>เลือกสตูดิโอบันทึกเสียงที่ใช่ต้องดู 6 อย่างหลัก ได้แก่ อะคูสติกของห้อง อุปกรณ์บันทึกเสียง ทักษะของวิศวกรเสียง ทำเลที่ตั้ง ราคาและสิ่งที่รวมอยู่ในแพ็กเกจ และผลงานที่ผ่านมา การเช็คครบทั้ง 6 ข้อก่อนจองช่วยให้ได้เสียงที่ต้องการโดยไม่เสียเวลาและเงินกับสตูดิโอที่ไม่ตรงความต้องการ</p>
+
+            <h2>8 สิ่งที่ต้องเช็คก่อนจองห้องอัดเสียง</h2>
+
+            <h2>1. อะคูสติกและการกันเสียงของห้อง</h2>
+            <p>อะคูสติกคือรากฐานของห้องบันทึกเสียงที่ดี ลองสังเกตง่ายๆ ตอนที่ไปดูห้อง พูดหรือปรบมือดังๆ ได้ยินเสียงก้องตามหลังไหม มีเสียงจากภายนอกรั่วเข้ามาไหม ไม่ว่าจะเป็นเสียงรถ เสียงแอร์ หรือเสียงห้องข้างเคียง</p>
+            <p>ห้องที่ไม่มีการทำ acoustic treatment จะมีเสียงสะท้อนที่ไมค์จับได้ทุกอย่าง ผลคืองานมิกซ์ยากขึ้นหรือเสียงออกมาไม่นิ่ง ขอฟัง dry recording ตัวอย่างที่อัดในห้องนั้นจะช่วยยืนยันได้ดีที่สุด</p>
+
+            <h2>2. อุปกรณ์และ DAW</h2>
+            <p>ถามตรงๆ ว่าใช้ console อะไร DAW อะไร และมีไมค์อะไรบ้าง สตูดิโอที่ดีควรตอบได้ทันทีโดยไม่ลังเล อุปกรณ์ไม่ต้องราคาแพงที่สุด แต่ต้องอยู่ในสภาพดีและวิศวกรต้องรู้จักมันเป็นอย่างดี</p>
+            <ul>
+              <li><strong>มิกซ์คอนโซล</strong> อนาล็อกหรือดิจิทัล แต่ละแบบให้เสียงต่างกัน</li>
+              <li><strong>DAW</strong> Pro Tools, Logic, Ableton, Cubase ล้วนใช้งานได้ดีถ้าวิศวกรถนัด</li>
+              <li><strong>ไมค์</strong> ควรมีทั้ง condenser สำหรับร้องและ dynamic สำหรับกลอง อย่างน้อยหลายตัว</li>
+              <li><strong>Studio monitors</strong> ต้องมี ถ้าไม่มีหรือใช้ลำโพง consumer grade ให้ระวัง</li>
+            </ul>
+
+            <h2>3. ประสบการณ์ของวิศวกรเสียง</h2>
+            <p>อุปกรณ์ดีแต่วิศวกรไม่มีประสบการณ์ ก็ได้เสียงออกมาไม่ดีอยู่ดี ขอฟังผลงานที่ผ่านมาของวิศวกร ถ้าเขาเคยอัดแนวเพลงที่คุณทำ ยิ่งดี ลองถามว่าเคยทำงานกับวงที่คล้ายกันไหม และขอ reference ติดต่อวงเหล่านั้นได้หรือเปล่า</p>
+            <p>วิศวกรที่ดีจะถามกลับว่าคุณต้องการเสียงแบบไหน ไม่ใช่แค่รับจองแล้วให้เริ่มเล่นเลย</p>
+
+            <h2>4. ทำเลและการเดินทาง</h2>
+            <p>วันอัดเสียงมักจะเริ่มเช้าและจบดึก ทำเลสำคัญกว่าที่คิด เช็คว่ามีที่จอดรถไหม ถ้าขนอุปกรณ์หนักอย่างกลองชุดจะเอาเข้าออกยังไง รถสาธารณะถึงได้ไหม และถ้าวงอยู่ในกรุงเทพ ระยะทางจากพื้นที่ที่อยู่ไปสตูดิโอควรไม่ไกลเกินไปเพื่อไม่ให้เหนื่อยก่อนถึงห้องอัด</p>
+            <p>Thunder Studio อยู่ที่<a href={`/${lang}/blog/music-rehearsal-rooms-bangkok`}>บางเขน กรุงเทพ</a> มีที่จอดรถ เปิดทุกวัน 10:00-22:00</p>
+
+            <h2>5. ราคาและสิ่งที่รวมอยู่ในแพ็กเกจ</h2>
+            <p>ราคาต่อชั่วโมงอย่างเดียวไม่เพียงพอ ต้องถามให้ละเอียดว่าราคารวมอะไรบ้าง:</p>
+            <ul>
+              <li>รวมค่าวิศวกรเสียงไหม หรือคิดแยก?</li>
+              <li>รวม mixing ไหม หรือต้องจ่ายเพิ่ม?</li>
+              <li>มี revision กี่รอบ?</li>
+              <li>ไฟล์ที่ได้รับเป็น format อะไร WAV หรือ MP3?</li>
+              <li>ถ้าอัดนานกว่าที่จอง คิดราคายังไง?</li>
+            </ul>
+            <p>ถามให้ครบก่อนจอง จะได้ไม่มีค่าใช้จ่ายที่ไม่คาดคิดภายหลัง ติดต่อสอบถามราคาที่ <a href={`/${lang}/#booking`}>Thunder Studio</a> ได้เลย</p>
+
+            <h2>6. ผลงานของสตูดิโอ</h2>
+            <p>ขอฟังผลงานที่อัดในสตูดิโอนั้น ไม่ใช่เดโมที่วิศวกรทำเอง แต่เป็นงานจริงที่ลูกค้าเคยอัด ถ้าสตูดิโอไม่มีผลงานให้ฟัง หรือบอกว่าเป็นความลับทุกชิ้น ให้ระวัง</p>
+            <p>ฟังแล้วดูว่าเสียงนิ่งไหม มีรายละเอียดไหม มี noise พื้นหลังไหม เสียงกลองแน่นไหม เสียงร้องชัดหรือจมอยู่ใน mix</p>
+
+            <h2>7. รีวิวและชื่อเสียง</h2>
+            <p>เช็ค Google Reviews ของสตูดิโอ ดูทั้งคะแนนและเนื้อหารีวิว ถ้ามีรีวิวที่พูดถึงเรื่องเดิมซ้ำๆ เช่น วิศวกรไม่ตรงเวลา หรืออุปกรณ์มีปัญหาบ่อย ให้ถือว่าเป็นรูปแบบ ไม่ใช่เหตุการณ์เดี่ยว</p>
+            <p>ถามเพื่อนนักดนตรีในแวดวงเดียวกันก็ได้ข้อมูลที่ตรงไปตรงมากว่ารีวิวออนไลน์เสมอ</p>
+
+            <h2>8. บรรยากาศและความสบายใจ</h2>
+            <p>วันอัดเสียงอาจใช้เวลา 6-10 ชั่วโมง บรรยากาศของสตูดิโอสำคัญกว่าที่คิด ห้องสะอาดไหม อุณหภูมิพอดีไหม วิศวกรพูดคุยง่ายหรือทำให้รู้สึกกดดัน มีพื้นที่สำหรับพักระหว่าง take ไหม</p>
+            <p>ถ้าแค่ไปดูห้องก่อนจองแล้วรู้สึกอึดอัดหรือไม่ชอบบรรยากาศ ให้ฟังความรู้สึกนั้น เสียงที่ดีออกมาจากนักดนตรีที่รู้สึกสบายใจในห้อง</p>
+
+            <h2>สัญญาณเตือนที่ควรระวัง</h2>
+            <p>ก่อนจอง มีบางสิ่งที่ถ้าเจอแล้วควรคิดใหม่:</p>
+            <ul>
+              <li><strong>ไม่มีผลงานให้ฟัง</strong> สตูดิโอที่เปิดมาสักระยะต้องมีผลงาน ถ้าไม่มีอะไรให้ฟังเลยให้ตั้งคำถาม</li>
+              <li><strong>กดดันให้จองเร็ว</strong> บอกว่าต้องจองวันนี้เท่านั้น หรือให้โปรโมชันที่หมดเร็วมากผิดปกติ สัญญาณของการขาย ไม่ใช่สัญญาณของงานที่มีคุณภาพ</li>
+              <li><strong>ราคาไม่ชัดเจน</strong> บอกไม่ได้ว่าราคารวมอะไร หรือเปลี่ยนตัวเลขไปมา</li>
+              <li><strong>อุปกรณ์ไม่ได้รับการดูแล</strong> สายขาด คอนโซลมีฝุ่น โต๊ะมิกซ์บางปุ่มใช้ไม่ได้ สิ่งเหล่านี้สะท้อนถึงมาตรฐานของสตูดิโอ</li>
+              <li><strong>ไม่มีวิศวกรประจำ</strong> ถ้าคุณต้องการวิศวกรแต่สตูดิโอบอกว่าต้องหาเอง ให้แน่ใจว่าเข้าใจสิ่งที่จองอยู่ก่อน</li>
+            </ul>
+
+            <h2>คำถามที่ควรถามก่อนจอง</h2>
+            <p>เตรียมถามคำถามเหล่านี้ตอนติดต่อสตูดิโอ:</p>
+            <ul>
+              <li>ห้องอัดใช้ DAW อะไร และมีไมค์อะไรบ้าง?</li>
+              <li>ราคาต่อชั่วโมงรวมค่าวิศวกรเสียงไหม?</li>
+              <li>ราคารวม mixing ไหม หรือมีแพ็กเกจ mixing แยก?</li>
+              <li>ขอฟังผลงานที่อัดในสตูดิโอนี้ได้ไหม?</li>
+              <li>ถ้าต้องการ revision หลังอัดเสร็จ คิดค่าใช้จ่ายยังไง?</li>
+              <li>มีที่จอดรถไหม และขนกลองชุดเข้าออกยังไง?</li>
+            </ul>
+
+            <h2>ห้องอัดเสียง vs ห้องซ้อมดนตรี</h2>
+            <p>หลายคนสับสนระหว่างสองอย่างนี้ ต่างกันอย่างไร:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold"></th>
+                    <th class="px-5 py-3 font-semibold">ห้องอัดเสียง</th>
+                    <th class="px-5 py-3 font-semibold">ห้องซ้อมดนตรี</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">วัตถุประสงค์</td><td class="px-5 py-3 text-gray-700">บันทึกเสียงคุณภาพสูงเพื่อเผยแพร่</td><td class="px-5 py-3 text-gray-700">ซ้อมดนตรีโดยไม่รบกวนคนอื่น</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">อะคูสติก</td><td class="px-5 py-3 text-gray-700">ออกแบบมาเพื่อการบันทึกเสียง ควบคุมได้</td><td class="px-5 py-3 text-gray-700">กันเสียงออก ไม่จำเป็นต้องควบคุมอะคูสติกภายใน</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">อุปกรณ์</td><td class="px-5 py-3 text-gray-700">มิกซ์คอนโซล, DAW, ไมค์, studio monitors</td><td class="px-5 py-3 text-gray-700">แอมป์, กลองชุด, PA system พื้นฐาน</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">วิศวกรเสียง</td><td class="px-5 py-3 text-gray-700">มักมีวิศวกรเสียงประจำ</td><td class="px-5 py-3 text-gray-700">ไม่จำเป็น ใช้เองได้เลย</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">ผลลัพธ์</td><td class="px-5 py-3 text-gray-700">ไฟล์เสียงพร้อมมิกซ์และมาสเตอร์</td><td class="px-5 py-3 text-gray-700">ความพร้อมของวงก่อนอัดหรือแสดงสด</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">ใช้เมื่อ</td><td class="px-5 py-3 text-gray-700">วงพร้อม ซ้อมคล่อง ต้องการไฟล์เสียง</td><td class="px-5 py-3 text-gray-700">ยังซ้อม ยัง arrangement ไม่ลงตัว</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>ถ้ายังซ้อมไม่คล่อง แนะนำจอง <a href={`/${lang}/rooms/large-room`}>ห้องซ้อม Studio 1</a> ก่อน แล้วค่อยมาต่อที่ <a href={`/${lang}/rooms/control-room`}>Control Room</a> เมื่อพร้อม อ่านเพิ่มเติมเรื่องการเตรียมตัวได้ที่ <a href={`/${lang}/blog/recording-studio-guide`}>คู่มือเตรียมตัวอัดเสียงครั้งแรก</a></p>
+
+            <h2>คำถามที่พบบ่อย</h2>
+
+            <p><strong>ห้องอัดเสียงกับห้องซ้อมดนตรีต่างกันยังไง?</strong><br />ห้องซ้อมออกแบบมาเพื่อเล่นดนตรีโดยไม่รบกวนคนข้างเคียง ส่วนห้องอัดเสียงมีอะคูสติกที่ควบคุมได้ อุปกรณ์บันทึกเสียง และวิศวกรเสียงที่ช่วยให้ได้ไฟล์เสียงคุณภาพสูง</p>
+
+            <p><strong>อัดเสียงหนึ่งเพลงใช้เวลานานแค่ไหน?</strong><br />วงที่ซ้อมมาดีแล้วใช้เวลาประมาณ 3-6 ชั่วโมงต่อเพลง รวม setup, tracking, และฟังผลเบื้องต้น ถ้าต้องการ mixing ด้วยให้บวกเพิ่มอีก 4-8 ชั่วโมงต่อเพลง</p>
+
+            <p><strong>ต้องมีวิศวกรเสียงของตัวเองไหม?</strong><br />ไม่จำเป็น สตูดิโอส่วนใหญ่มีวิศวกรเสียงให้บริการ แต่ถ้ามีวิศวกรที่รู้จักเสียงของวงอยู่แล้ว นำมาเองได้</p>
+
+            <p><strong>ต้องเตรียมตัวยังไงก่อนเข้าห้องอัด?</strong><br />อ่านรายละเอียดได้ที่ <a href={`/${lang}/blog/recording-studio-guide`}>คู่มือเตรียมตัวอัดเสียงครั้งแรก</a> ครอบคลุมตั้งแต่การซ้อม อุปกรณ์ที่ต้องเตรียม ไปจนถึงเทคนิคในวันอัด</p>
+
+            <p><strong>ค่าอัดเสียงแพงไหม?</strong><br />ราคาแตกต่างกันตามอุปกรณ์ ขนาดห้อง และบริการที่รวมอยู่ ที่ Thunder Studio ติดต่อสอบถามราคาได้ที่ <a href={`/${lang}/#booking`}>แบบฟอร์มจอง</a> หรือ LINE @thunderstudio</p>
+
+            <p><strong>มิกซ์และมาสเตอร์ที่สตูดิโอเดียวกันได้ไหม?</strong><br />ได้ <a href={`/${lang}/rooms/control-room`}>Control Room</a> ของ Thunder Studio มีมิกซ์คอนโซล, studio monitors และ DAW workstation พร้อมสำหรับทั้ง mixing และ mastering ต่อเนื่องจากการอัด</p>
+          </div>
+        ) : (
+          <div class="prose-blog">
+            <p>Choosing the right recording studio comes down to six key criteria: room acoustics, equipment, engineer skill, location, session rates, and portfolio. Checking all six before booking saves you time, money, and the frustration of working in a studio that doesn't fit your needs.</p>
+
+            <h2>8 things to check before booking a recording studio</h2>
+
+            <h2>1. Room acoustics and soundproofing</h2>
+            <p>Acoustics are the foundation of any good recording studio. When you visit, clap your hands or speak loudly and listen. Do you hear a flutter echo? Does outside noise bleed in — traffic, air conditioning, adjacent rooms?</p>
+            <p>A room without proper acoustic treatment will have reflections the microphone captures clearly, making the mix harder and the sound inconsistent. The best way to verify is to ask for a dry recording sample made in that specific room.</p>
+
+            <h2>2. Equipment and DAW</h2>
+            <p>Ask directly: what console, what DAW, what microphones? A good studio answers without hesitation. Gear doesn't need to be the most expensive, but it needs to be well-maintained and the engineer needs to know it thoroughly.</p>
+            <ul>
+              <li><strong>Mixing console</strong> — analog or digital, each has a different character</li>
+              <li><strong>DAW</strong> — Pro Tools, Logic, Ableton, Cubase all work well if the engineer is fluent</li>
+              <li><strong>Microphones</strong> — should include condensers for vocals and dynamics for drums, multiple options</li>
+              <li><strong>Studio monitors</strong> — essential; if they're using consumer speakers, that's a problem</li>
+            </ul>
+
+            <h2>3. Engineer experience</h2>
+            <p>Great gear with an inexperienced engineer still produces poor results. Ask to hear the engineer's portfolio. If they've worked in your genre before, even better. Ask whether they've recorded bands similar to yours, and whether you can contact any of those bands.</p>
+            <p>A good engineer will ask what sound you're going for. They won't just take the booking and tell you to start playing.</p>
+
+            <h2>4. Location and accessibility</h2>
+            <p>Recording days can run long — 6 to 10 hours is common. Location matters more than people realize. Is there parking? If you're hauling a drum kit, how does the loading work? Is it reachable by public transit? If you're based in Bangkok, the distance from where your band members live to the studio affects how fresh everyone arrives.</p>
+            <p>Thunder Studio is in <a href={`/${lang}/blog/music-rehearsal-rooms-bangkok`}>Bang Khen, Bangkok</a>, with parking available. Open daily 10:00 AM to 10:00 PM.</p>
+
+            <h2>5. Session rates and what's included</h2>
+            <p>Hourly rate alone isn't enough information. Ask exactly what's included:</p>
+            <ul>
+              <li>Does the rate include the engineer, or is that billed separately?</li>
+              <li>Is mixing included, or is it an add-on?</li>
+              <li>How many revisions are allowed?</li>
+              <li>What file format do you receive — WAV or MP3?</li>
+              <li>If the session runs over the booked time, how is that charged?</li>
+            </ul>
+            <p>Get the full picture before you commit so there are no surprise costs afterward. Contact <a href={`/${lang}/#booking`}>Thunder Studio</a> for current rates.</p>
+
+            <h2>6. Sample work and portfolio</h2>
+            <p>Ask to hear recordings made at that studio — not the engineer's personal demo work, but actual client recordings. If the studio can't produce any, or claims everything is confidential, that's worth noting.</p>
+            <p>When you listen, check whether the sound is clean and detailed, whether there's background noise, whether the drums are tight, and whether the vocals sit clearly in the mix or get buried.</p>
+
+            <h2>7. Reviews and reputation</h2>
+            <p>Check the studio's Google Reviews — both the rating and the content. If multiple reviews mention the same issues (engineer running late, equipment problems, unexpected charges), treat that as a pattern, not a one-off.</p>
+            <p>Asking musician friends who've recorded locally tends to produce more honest feedback than online reviews alone.</p>
+
+            <h2>8. Vibe and comfort</h2>
+            <p>You may be spending 6-10 hours in this room. Is it clean? Is the temperature comfortable? Does the engineer communicate well or make you feel rushed? Is there somewhere to sit and rest between takes?</p>
+            <p>If visiting the studio before booking already feels uncomfortable, trust that. Good recordings come from musicians who feel relaxed in the room.</p>
+
+            <h2>Red flags to watch for</h2>
+            <p>Before booking, if you see any of these, reconsider:</p>
+            <ul>
+              <li><strong>No portfolio to share</strong> — a studio that's been operating for any length of time will have recordings to show. No samples means no track record.</li>
+              <li><strong>Pressure to book immediately</strong> — urgency tactics ("this offer ends today") are sales pressure, not signals of quality work.</li>
+              <li><strong>Unclear or shifting pricing</strong> — if you can't get a straight answer on what the rate includes, expect confusion later.</li>
+              <li><strong>Poorly maintained equipment</strong> — broken cables, dusty consoles, faders that don't move smoothly. These reflect how the studio runs overall.</li>
+              <li><strong>No in-house engineer</strong> — if you need an engineer and the studio says you're on your own, make sure you understand what you're actually booking.</li>
+            </ul>
+
+            <h2>Questions to ask before booking</h2>
+            <p>Have these ready when you contact the studio:</p>
+            <ul>
+              <li>What DAW and microphones does the studio use?</li>
+              <li>Does the hourly rate include the engineer?</li>
+              <li>Is mixing included, or is there a separate mixing package?</li>
+              <li>Can I hear recordings made at this studio?</li>
+              <li>If I need revisions after the session, how is that handled and charged?</li>
+              <li>Is there parking, and how does drum kit load-in work?</li>
+            </ul>
+
+            <h2>Recording studio vs rehearsal room</h2>
+            <p>Many musicians are unclear on the difference. Here's a direct comparison:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold"></th>
+                    <th class="px-5 py-3 font-semibold">Recording Studio</th>
+                    <th class="px-5 py-3 font-semibold">Rehearsal Room</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Purpose</td><td class="px-5 py-3 text-gray-700">Capture high-quality audio for release</td><td class="px-5 py-3 text-gray-700">Practice music without disturbing others</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Acoustics</td><td class="px-5 py-3 text-gray-700">Designed and treated for recording</td><td class="px-5 py-3 text-gray-700">Soundproofed outward, interior acoustics not critical</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Equipment</td><td class="px-5 py-3 text-gray-700">Mixing console, DAW, microphones, studio monitors</td><td class="px-5 py-3 text-gray-700">Amps, drum kit, basic PA system</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Engineer</td><td class="px-5 py-3 text-gray-700">Usually included or available</td><td class="px-5 py-3 text-gray-700">Not needed, self-service</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Output</td><td class="px-5 py-3 text-gray-700">Mixed and mastered audio files</td><td class="px-5 py-3 text-gray-700">Band tightness and performance readiness</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Use when</td><td class="px-5 py-3 text-gray-700">Band is ready, songs are tight, need audio files</td><td class="px-5 py-3 text-gray-700">Still rehearsing, arrangement not finalized</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>If you're not fully rehearsed yet, book <a href={`/${lang}/rooms/large-room`}>Studio 1 rehearsal room</a> first, then move to the <a href={`/${lang}/rooms/control-room`}>Control Room</a> when you're ready to record. For full session prep tips, see the <a href={`/${lang}/blog/recording-studio-guide`}>first-time recording guide</a>.</p>
+
+            <h2>Frequently asked questions</h2>
+
+            <p><strong>What is the difference between a recording studio and a rehearsal room?</strong><br />A rehearsal room is built for practicing without disturbing neighbors. A recording studio has controlled acoustics, recording equipment, and an engineer to capture high-quality audio files ready for release.</p>
+
+            <p><strong>How long does a recording session take?</strong><br />A well-rehearsed band typically needs 3-6 hours per song, including setup, tracking, and initial playback. Add 4-8 hours per song if mixing is included in the session.</p>
+
+            <p><strong>Do I need my own engineer?</strong><br />Not necessarily. Most studios have an in-house engineer included. If you have an engineer who already knows your band's sound, you can bring them along.</p>
+
+            <p><strong>What should I prepare before my session?</strong><br />See the <a href={`/${lang}/blog/recording-studio-guide`}>first-time recording preparation guide</a> for a full walkthrough: rehearsal readiness, gear to bring, and day-of-session tips.</p>
+
+            <p><strong>How much does a recording studio cost?</strong><br />Rates vary by room, equipment, and what's included. Contact <a href={`/${lang}/#booking`}>Thunder Studio</a> for current rates or reach us on LINE @thunderstudio.</p>
+
+            <p><strong>Can I do mixing and mastering at the same studio?</strong><br />Yes. Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> is equipped with a mixing console, studio monitors, and a DAW workstation for recording, mixing, and mastering in one place.</p>
+          </div>
+        )}
+
+        <div class="reveal mt-12 text-center">
+          <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+
+  <style>
+    .prose-blog h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      color: var(--color-onyx);
+    }
+    .prose-blog p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 1rem;
+    }
+    .prose-blog ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose-blog li {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 0.35rem;
+    }
+    .prose-blog strong {
+      color: var(--color-onyx);
+      font-weight: 600;
+    }
+    .prose-blog a {
+      color: var(--color-onyx);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(15, 14, 14, 0.3);
+    }
+    .prose-blog a:hover {
+      text-decoration-color: var(--color-onyx);
+    }
+  </style>
+</Base>

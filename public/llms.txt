@@ -52,11 +52,15 @@ Thunder Studio is a music rehearsal and recording facility located in Bang Khen,
 - [Control Room](https://thundermusicstudio.com/en/rooms/control-room) — Recording studio with mixing console and DAW
 - [About](https://thundermusicstudio.com/en/about) — Our story and Thunder Venture Group
 - [Location](https://thundermusicstudio.com/en/location) — Directions, parking, opening hours
+- [Services](https://thundermusicstudio.com/en/services) — All services: band rehearsal, solo practice, recording, mixing & mastering
 
 ## Blog
 - [How to prepare for band rehearsal](https://thundermusicstudio.com/en/blog/how-to-prepare-for-band-rehearsal) — Complete guide covering setlist planning, gear prep, warm-up routines, and time management
 - [Recording studio guide for beginners](https://thundermusicstudio.com/en/blog/recording-studio-guide) — First-time recording preparation: live vs tracking, gear prep, reference tracks, session tips, mixing and mastering
 - [Choosing the right room size](https://thundermusicstudio.com/en/blog/choosing-room-size) — Compare small rooms, large rooms, and recording studios by group size, equipment, and use case
+- [What is a music rehearsal room?](https://thundermusicstudio.com/en/blog/what-is-a-rehearsal-room) — Pillar guide: definition, types of rooms, home vs studio comparison, equipment, etiquette
+- [Music rehearsal rooms in Bangkok](https://thundermusicstudio.com/en/blog/music-rehearsal-rooms-bangkok) — Complete guide to Bangkok rehearsal rooms: areas, equipment, how to choose, first-visit tips
+- [How to choose a recording studio](https://thundermusicstudio.com/en/blog/how-to-choose-recording-studio) — 8 criteria to evaluate: acoustics, equipment, engineer, location, rates, portfolio, reviews, vibe
 
 ## Company
 Thunder Venture Group Co., Ltd.

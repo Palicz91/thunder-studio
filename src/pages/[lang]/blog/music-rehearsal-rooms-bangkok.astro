@@ -1,0 +1,335 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const datePublished = '2026-08-13';
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+
+const title = lang === 'th'
+  ? 'ห้องซ้อมดนตรีในกรุงเทพ: คู่มือฉบับสมบูรณ์'
+  : 'Music Rehearsal Rooms in Bangkok: The Complete Guide';
+const description = lang === 'th'
+  ? 'รวมข้อมูลห้องซ้อมดนตรีในกรุงเทพ ย่านไหนมีห้องซ้อม อุปกรณ์แบบไหน เลือกยังไงให้เหมาะกับวง และเคล็ดลับสำหรับคนจองห้องซ้อมครั้งแรก'
+  : 'Everything you need to know about music rehearsal rooms in Bangkok: where to find them, what equipment to expect, how to choose the right room, and tips for your first visit.';
+---
+
+<Base {title} {description} {lang} ogImage={`${IMG}/large-room-1.webp`}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thunder Studio",
+      "url": "https://thundermusicstudio.com",
+    },
+    "image": `${IMG}/large-room-1.webp`,
+    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/blog/music-rehearsal-rooms-bangkok`,
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.blog'), "item": `https://thundermusicstudio.com/${lang}/blog` },
+      { "@type": "ListItem", "position": 3, "name": lang === 'th' ? 'ห้องซ้อมดนตรีในกรุงเทพ' : 'Music Rehearsal Rooms in Bangkok' },
+    ],
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": lang === 'th' ? [
+      { "@type": "Question", "name": "ห้องซ้อมดนตรีในกรุงเทพราคาเท่าไหร่?", "acceptedAnswer": { "@type": "Answer", "text": "ราคาขึ้นอยู่กับขนาดห้องและอุปกรณ์ที่รวมอยู่ ติดต่อสอบถามราคาและเช็คความพร้อมได้โดยตรงกับสตูดิโอ" }},
+      { "@type": "Question", "name": "ห้องซ้อมดนตรีมีอุปกรณ์อะไรให้บ้าง?", "acceptedAnswer": { "@type": "Answer", "text": "ห้องซ้อมส่วนใหญ่มี Marshall amps, กลองชุด, PA system และไมค์ Thunder Studio ทั้ง Studio 1 และ Studio 2 มีอุปกรณ์ครบ ไม่ต้องหิ้วมาเอง" }},
+      { "@type": "Question", "name": "ต้องเอาเครื่องดนตรีไปเองไหม?", "acceptedAnswer": { "@type": "Answer", "text": "เอาเฉพาะกีตาร์หรือเบสของตัวเองมาก็พอ อุปกรณ์หลักอย่าง amps กลอง PA และไมค์มีให้ในห้องซ้อมอยู่แล้ว" }},
+      { "@type": "Question", "name": "จองห้องซ้อมยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "จองผ่านช่องทางออนไลน์หรือติดต่อสตูดิโอโดยตรง Thunder Studio รับจองทาง LINE และเว็บไซต์" }},
+      { "@type": "Question", "name": "ห้องซ้อมรองรับกี่คน?", "acceptedAnswer": { "@type": "Answer", "text": "ขึ้นอยู่กับขนาดห้อง Studio 2 ของ Thunder Studio รองรับ 2-4 คน Studio 1 รองรับ 6-10 คน เหมาะสำหรับวงดนตรีเต็มวง" }},
+      { "@type": "Question", "name": "อัดเสียงในห้องซ้อมได้ไหม?", "acceptedAnswer": { "@type": "Answer", "text": "ห้องซ้อมทั่วไปไม่ได้ออกแบบมาสำหรับอัดเสียง แต่ Thunder Studio มี Control Room พร้อม mixing console และ DAW สำหรับบันทึกเสียงโดยเฉพาะ" }},
+      { "@type": "Question", "name": "ควรเตรียมอะไรไปบ้างก่อนเข้าห้องซ้อม?", "acceptedAnswer": { "@type": "Answer", "text": "เตรียมเครื่องดนตรีของตัวเอง สายแจ็คสำรอง จูนเนอร์ และ setlist ล่วงหน้า มาถึงก่อนเวลาอย่างน้อย 10 นาทีเพื่อ setup และอุ่นเครื่อง" }},
+    ] : [
+      { "@type": "Question", "name": "How much does a rehearsal room in Bangkok cost?", "acceptedAnswer": { "@type": "Answer", "text": "Pricing depends on room size and included equipment. Contact the studio directly to check rates and availability." }},
+      { "@type": "Question", "name": "What equipment is provided in a Bangkok rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "Most rehearsal rooms provide Marshall amps, a full drum kit, PA system, and microphones. Thunder Studio's Studio 1 and Studio 2 both come fully equipped — no need to bring your own gear." }},
+      { "@type": "Question", "name": "Do I need to bring my own instrument?", "acceptedAnswer": { "@type": "Answer", "text": "Bring your own guitar or bass. Core equipment like amps, drums, PA, and mics are included in the room." }},
+      { "@type": "Question", "name": "How do I book a rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "Book through the studio's website or contact them directly. Thunder Studio accepts bookings via LINE and the website." }},
+      { "@type": "Question", "name": "How many people can use a rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on room size. Thunder Studio's Studio 2 fits 2-4 people. Studio 1 fits 6-10 people, suitable for a full band." }},
+      { "@type": "Question", "name": "Can I record in a rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "Standard rehearsal rooms are not designed for recording. Thunder Studio has a dedicated Control Room with a mixing console and DAW workstation for professional recording sessions." }},
+      { "@type": "Question", "name": "What should I bring to a rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "Bring your own instrument, a spare cable, a tuner, and your setlist prepared in advance. Arrive at least 10 minutes early for setup and warm-up." }},
+    ],
+  })} />
+
+  <article class="bg-clinical text-onyx">
+    <section class="pt-28 pb-12">
+      <div class="max-w-[720px] mx-auto px-6">
+        <nav class="reveal text-[13px] text-gray-500 mb-8">
+          <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+          <span class="mx-2">/</span>
+          <span class="text-onyx font-medium">{t('breadcrumb.blog')}</span>
+        </nav>
+
+        <div class="reveal">
+          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
+            {lang === 'th' ? 'ห้องซ้อมดนตรีในกรุงเทพ: คู่มือฉบับสมบูรณ์' : 'Music Rehearsal Rooms in Bangkok: The Complete Guide'}
+          </h1>
+          <p class="text-[17px] text-gray-600 mt-5 leading-relaxed max-w-xl">{description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-6">
+      <div class="max-w-[900px] mx-auto px-6">
+        <img
+          src={`${IMG}/large-room-1.webp`}
+          alt={lang === 'th' ? 'ห้องซ้อมดนตรี Thunder Studio กรุงเทพ' : 'Music rehearsal room Bangkok — Thunder Studio'}
+          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-[720px] mx-auto px-6">
+        {lang === 'th' ? (
+          <div class="prose-blog">
+            <p>กรุงเทพมีห้องซ้อมดนตรีกระจายอยู่หลายย่าน ทั้งใกล้รถไฟฟ้าและในซอยเงียบๆ ส่วนใหญ่มีอุปกรณ์ให้ครบไม่ต้องหิ้วมาเอง ราคาและคุณภาพต่างกันมาก คู่มือนี้รวมทุกอย่างที่ต้องรู้ ตั้งแต่หาห้องซ้อมที่ไหน อุปกรณ์มีอะไรบ้าง ไปจนถึงเคล็ดลับสำหรับคนเริ่มต้น</p>
+
+            <h2>ห้องซ้อมดนตรีคืออะไร?</h2>
+            <p>ห้องซ้อมดนตรีคือพื้นที่เช่าที่ออกแบบมาสำหรับวงดนตรีโดยเฉพาะ ผนังกันเสียง อุปกรณ์ครบ จ่ายเป็นรายชั่วโมง ต่างจากการซ้อมที่บ้านตรงที่ไม่รบกวนใคร และมีเครื่องดนตรีให้ใช้โดยไม่ต้องลงทุนซื้อเอง ถ้าอยากรู้ว่าห้องซ้อมดนตรีทำงานยังไงในรายละเอียด อ่านได้ที่ <a href={`/${lang}/blog/what-is-a-rehearsal-room`}>ห้องซ้อมดนตรีคืออะไร</a></p>
+
+            <h2>ห้องซ้อมดนตรีในกรุงเทพอยู่ที่ไหนบ้าง?</h2>
+            <p>ห้องซ้อมดนตรีในกรุงเทพกระจายตัวอยู่หลายย่าน แต่ละพื้นที่มีลักษณะต่างกัน:</p>
+
+            <p><strong>ลาดพร้าว / MRT</strong> ย่านนี้มีสตูดิโอหลายแห่งกระจายอยู่ตามซอยต่างๆ เข้าถึงได้สะดวกด้วยรถไฟฟ้า MRT เหมาะสำหรับคนที่อยู่ฝั่งพระนครหรือรามคำแหง</p>
+
+            <p><strong>สุขุมวิท / BTS</strong> ย่านกลางเมืองที่มีห้องซ้อมอยู่บ้างสำหรับคนทำงานกลางเมือง แต่ค่าเช่าสูงกว่า เพราะอยู่ในทำเลราคาแพง</p>
+
+            <p><strong>บางเขน</strong> ย่านนี้เป็นที่ตั้งของ <strong>Thunder Studio</strong> ทางเหนือของกรุงเทพ บรรยากาศเงียบสงบ ที่จอดรถสะดวก เหมาะสำหรับวงที่มากันหลายคนหรือมาด้วยรถ อยู่ <a href={`/${lang}/location`}>ใกล้ทางด่วนและถนนหลัก</a></p>
+
+            <p><strong>สยาม / ราชเทวี</strong> กลางเมือง เดินทางสะดวกสำหรับทุกฝ่าย แต่ห้องซ้อมในย่านนี้มีน้อย และมักมีขนาดเล็ก</p>
+
+            <h2>อุปกรณ์ในห้องซ้อมดนตรี</h2>
+            <p>ห้องซ้อมดนตรีที่ดีควรมีอุปกรณ์พื้นฐานครบ ได้แก่:</p>
+            <ul>
+              <li><strong>Marshall amps</strong> สำหรับกีตาร์และเบส เป็นมาตรฐานในห้องซ้อมทั่วไป</li>
+              <li><strong>กลองชุดเต็ม</strong> รวม bass drum, snare, hi-hat, cymbals ครบชุด</li>
+              <li><strong>PA system</strong> สำหรับร้องเพลงและเสียงรวม</li>
+              <li><strong>ไมโครโฟน</strong> พร้อมขาตั้งและสาย</li>
+            </ul>
+            <p>Thunder Studio มีทั้ง <a href={`/${lang}/rooms/large-room`}>Studio 1 ห้องใหญ่</a> ที่มี Marshall amps, กลองชุด และ PA system ครบ และ <a href={`/${lang}/rooms/small-room`}>Studio 2 ห้องเล็ก</a> สำหรับวงขนาดเล็กหรือซ้อมเดี่ยว นอกจากนี้ยังมี <a href={`/${lang}/rooms/control-room`}>Control Room</a> สำหรับอัดเสียงและมิกซ์</p>
+
+            <h2>เลือกห้องซ้อมยังไงให้เหมาะ?</h2>
+            <p>สิ่งสำคัญที่สุดในการเลือกห้องซ้อมคือจำนวนคนในวง:</p>
+            <ul>
+              <li><strong>1-4 คน</strong> ห้องเล็กเพียงพอ จ่ายน้อยกว่า ไม่จำเป็นต้องใช้ห้องใหญ่</li>
+              <li><strong>5-10 คน</strong> ต้องการห้องใหญ่ที่มีพื้นที่เคลื่อนไหวและอุปกรณ์ครบ</li>
+            </ul>
+            <p>ปัจจัยอื่นที่ควรดู: อุปกรณ์ที่มีให้ (ต้องการกลองชุดไหม?), ที่จอดรถ, ช่วงเวลาที่เปิด และระยะทางจากบ้านของสมาชิกแต่ละคน อ่านรายละเอียดเพิ่มเติมในคู่มือ <a href={`/${lang}/blog/choosing-room-size`}>เลือกขนาดห้องซ้อมยังไงดี</a></p>
+
+            <h2>เปรียบเทียบห้องซ้อมที่ Thunder Studio</h2>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold"></th>
+                    <th class="px-5 py-3 font-semibold">Studio 2</th>
+                    <th class="px-5 py-3 font-semibold">Studio 1</th>
+                    <th class="px-5 py-3 font-semibold">Control Room</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">จำนวนคน</td><td class="px-5 py-3 text-gray-700">2-4 คน</td><td class="px-5 py-3 text-gray-700">6-10 คน</td><td class="px-5 py-3 text-gray-700">2-3 คน</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">อุปกรณ์หลัก</td><td class="px-5 py-3 text-gray-700">Guitar amp, PA, ไมค์</td><td class="px-5 py-3 text-gray-700">Marshall amps, กลองชุด, PA, ไมค์</td><td class="px-5 py-3 text-gray-700">Mixing console, DAW, studio monitors</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">เหมาะกับ</td><td class="px-5 py-3 text-gray-700">ซ้อมเดี่ยว, ดูโอ้, วงเล็ก</td><td class="px-5 py-3 text-gray-700">วงเต็ม, ซ้อมก่อนโชว์</td><td class="px-5 py-3 text-gray-700">อัดเสียง, มิกซ์</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">กันเสียง</td><td class="px-5 py-3 text-gray-700">กันเสียงรอบด้าน</td><td class="px-5 py-3 text-gray-700">กันเสียงรอบด้าน</td><td class="px-5 py-3 text-gray-700">กันเสียง + acoustic treatment</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>เคล็ดลับสำหรับคนจองห้องซ้อมครั้งแรก</h2>
+            <p>ถ้าไม่เคยใช้ห้องซ้อมมาก่อน เคล็ดลับเหล่านี้จะช่วยให้ประสบการณ์ครั้งแรกราบรื่น:</p>
+            <ul>
+              <li><strong>เตรียม setlist ก่อนเข้าห้อง</strong> อย่าตัดสินใจในห้องว่าจะซ้อมเพลงอะไร เสียเวลาโดยไม่จำเป็น</li>
+              <li><strong>มาก่อนเวลาอย่างน้อย 10 นาที</strong> เพื่อ setup อุปกรณ์และจูนเครื่องดนตรีก่อนเวลาจองเริ่ม</li>
+              <li><strong>เอากีตาร์หรือเบสของตัวเองมา</strong> อุปกรณ์อื่นมีให้ในห้อง แต่เครื่องดนตรีส่วนตัวมาเองดีกว่า</li>
+              <li><strong>พกสายแจ็คสำรอง</strong> สายขาดในห้องซ้อมเป็นเรื่องที่เกิดขึ้นบ่อย</li>
+              <li><strong>อัดเสียงไว้</strong> วางมือถือบนขาตั้ง กด record ตอนเริ่ม ฟังกลับหลังซ้อมเพื่อจับข้อผิดพลาดที่ไม่ได้ยินตอนเล่น</li>
+              <li><strong>ราคาติดต่อสอบถาม</strong> อย่าเดา แต่ละห้องและช่วงเวลาราคาต่างกัน ถามก่อนจองเสมอ</li>
+            </ul>
+            <p>อยากเตรียมตัวให้พร้อมกว่านี้ อ่านคู่มือเต็มได้ที่ <a href={`/${lang}/blog/how-to-prepare-for-band-rehearsal`}>เตรียมตัวอย่างไรก่อนเข้าห้องซ้อมวง</a></p>
+
+            <h2>คำถามที่พบบ่อย</h2>
+
+            <p><strong>ห้องซ้อมราคาเท่าไหร่?</strong><br />ราคาขึ้นอยู่กับขนาดห้อง ช่วงเวลา และอุปกรณ์ที่รวมอยู่ ติดต่อสอบถามราคาได้โดยตรง</p>
+
+            <p><strong>ต้องเอาเครื่องดนตรีไปเองไหม?</strong><br />เอาเฉพาะกีตาร์หรือเบสของตัวเองก็พอ amps กลอง PA และไมค์มีให้ในห้อง</p>
+
+            <p><strong>จองยังไง?</strong><br />ติดต่อ Thunder Studio ทาง LINE หรือผ่านหน้าจองบนเว็บไซต์</p>
+
+            <p><strong>ห้องซ้อมรองรับกี่คน?</strong><br />Studio 2 รองรับ 2-4 คน Studio 1 รองรับ 6-10 คน เหมาะสำหรับวงเต็ม</p>
+
+            <p><strong>อัดเสียงในห้องซ้อมได้ไหม?</strong><br />ห้องซ้อมทั่วไปไม่ได้ออกแบบมาสำหรับอัดเสียง Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> พร้อม DAW และ mixing console สำหรับอัดเสียงโดยเฉพาะ</p>
+
+            <p><strong>ควรเตรียมอะไรไปบ้าง?</strong><br />เครื่องดนตรีของตัวเอง สายแจ็คสำรอง จูนเนอร์ และ setlist ที่เตรียมล่วงหน้า มาก่อนเวลาอย่างน้อย 10 นาที</p>
+
+            <p><strong>วงแรกเริ่มซ้อมที่ Thunder Studio ยังไง?</strong><br />จองผ่านเว็บหรือ LINE แจ้งจำนวนคนและช่วงเวลา ทีมงานจะแนะนำห้องที่เหมาะ</p>
+          </div>
+        ) : (
+          <div class="prose-blog">
+            <p>Bangkok has music rehearsal rooms spread across multiple districts — some near the BTS and MRT, others tucked into quieter side streets. Most provide full equipment so you don't need to haul gear. Quality and pricing vary considerably. This guide covers where to find rehearsal rooms in Bangkok, what equipment to expect, how to choose the right one, and what to know before your first visit.</p>
+
+            <h2>What is a rehearsal room?</h2>
+            <p>A rehearsal room is a soundproofed, hourly-rental space built for bands and musicians. Thick walls mean you won't disturb neighbors, and equipment is included so you don't need to invest in your own. It's the practical middle ground between practicing at home with headphones and booking a full recording studio. For a deeper explanation of how rehearsal rooms work, see <a href={`/${lang}/blog/what-is-a-rehearsal-room`}>What is a rehearsal room?</a></p>
+
+            <h2>Where to find rehearsal rooms in Bangkok</h2>
+            <p>Rehearsal studios are distributed unevenly across the city. Here's what to expect by area:</p>
+
+            <p><strong>Ladprao / MRT corridor</strong> — Several studios are spread along this corridor and accessible by MRT. A practical option for musicians based in central Bangkok or the eastern suburbs.</p>
+
+            <p><strong>Sukhumvit / BTS</strong> — Studios in this area exist but tend to be smaller, with higher rates due to premium real estate. Convenient location if members are spread across the city center.</p>
+
+            <p><strong>Bang Khen (north Bangkok)</strong> — Home to <strong>Thunder Studio</strong>. Quieter neighborhood, easy parking, and straightforward road access. Well suited for bands arriving by car. See the <a href={`/${lang}/location`}>location page</a> for directions.</p>
+
+            <p><strong>Siam / Ratchathewi</strong> — Centrally located and easy to reach from any direction, but rehearsal spaces here are limited. Rooms tend to be compact.</p>
+
+            <h2>Equipment in Bangkok rehearsal rooms</h2>
+            <p>A well-equipped rehearsal room should include:</p>
+            <ul>
+              <li><strong>Marshall amps</strong> — guitar and bass amplification. Standard in most Bangkok rehearsal rooms.</li>
+              <li><strong>Full drum kit</strong> — bass drum, snare, hi-hat, cymbals, and toms as a complete setup.</li>
+              <li><strong>PA system</strong> — for vocals and overall mix monitoring.</li>
+              <li><strong>Microphones</strong> — with stands and cables.</li>
+            </ul>
+            <p>Thunder Studio offers a <a href={`/${lang}/rooms/large-room`}>large room (Studio 1)</a> with Marshall amps, full drum kit, and PA system, a <a href={`/${lang}/rooms/small-room`}>small room (Studio 2)</a> for smaller groups or solo practice, and a <a href={`/${lang}/rooms/control-room`}>Control Room</a> for recording and mixing sessions.</p>
+
+            <h2>How to choose a rehearsal room in Bangkok</h2>
+            <p>The most important factor is group size:</p>
+            <ul>
+              <li><strong>1-4 people</strong> — a small room is sufficient. No reason to pay for a large room.</li>
+              <li><strong>5-10 people</strong> — you need a large room with space to move and a full equipment setup.</li>
+            </ul>
+            <p>Other things to evaluate: whether the room includes a drum kit, parking availability, opening hours, and how far each band member needs to travel. For a detailed comparison, read the <a href={`/${lang}/blog/choosing-room-size`}>rehearsal room size guide</a>.</p>
+
+            <h2>Thunder Studio room comparison</h2>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold"></th>
+                    <th class="px-5 py-3 font-semibold">Studio 2</th>
+                    <th class="px-5 py-3 font-semibold">Studio 1</th>
+                    <th class="px-5 py-3 font-semibold">Control Room</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Capacity</td><td class="px-5 py-3 text-gray-700">2-4 people</td><td class="px-5 py-3 text-gray-700">6-10 people</td><td class="px-5 py-3 text-gray-700">2-3 people</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Key equipment</td><td class="px-5 py-3 text-gray-700">Guitar amp, PA, mics</td><td class="px-5 py-3 text-gray-700">Marshall amps, full drum kit, PA, mics</td><td class="px-5 py-3 text-gray-700">Mixing console, DAW, studio monitors</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Best for</td><td class="px-5 py-3 text-gray-700">Solo, duo, small group</td><td class="px-5 py-3 text-gray-700">Full band, pre-show rehearsal</td><td class="px-5 py-3 text-gray-700">Recording, mixing</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Soundproofing</td><td class="px-5 py-3 text-gray-700">Full soundproofing</td><td class="px-5 py-3 text-gray-700">Full soundproofing</td><td class="px-5 py-3 text-gray-700">Soundproofing + acoustic treatment</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>Tips for your first rehearsal room visit</h2>
+            <p>If you haven't used a rehearsal room before, these tips will make your first session go smoothly:</p>
+            <ul>
+              <li><strong>Prepare your setlist before you arrive</strong> — deciding what to play inside the room wastes paid time. Agree on songs the day before.</li>
+              <li><strong>Arrive at least 10 minutes early</strong> — use that time for setup and tuning before your booked slot starts.</li>
+              <li><strong>Bring your own guitar or bass</strong> — everything else is in the room, but play on your own instrument.</li>
+              <li><strong>Pack a spare cable</strong> — a dead cable in the room means the session stops. It happens more often than you'd expect.</li>
+              <li><strong>Record the session</strong> — prop your phone on a stand and hit record. You'll catch timing and pitch issues that are impossible to hear while playing.</li>
+              <li><strong>Ask about rates before booking</strong> — pricing varies by room size and time slot. Always confirm before you commit.</li>
+            </ul>
+            <p>For a complete rehearsal preparation guide, read <a href={`/${lang}/blog/how-to-prepare-for-band-rehearsal`}>How to prepare for band rehearsal</a>.</p>
+
+            <h2>Frequently asked questions</h2>
+
+            <p><strong>How much does a rehearsal room in Bangkok cost?</strong><br />Rates vary by room size, time of day, and included equipment. Contact the studio directly for current pricing.</p>
+
+            <p><strong>Do I need to bring my own instrument?</strong><br />Bring your guitar or bass. Amps, drums, PA, and mics are included in the room.</p>
+
+            <p><strong>How do I book?</strong><br />Contact Thunder Studio via LINE or through the booking form on the website.</p>
+
+            <p><strong>How many people fit in a rehearsal room?</strong><br />Studio 2 fits 2-4 people. Studio 1 fits 6-10 — suitable for a full band.</p>
+
+            <p><strong>Can I record in the rehearsal room?</strong><br />Rehearsal rooms are not designed for recording. Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> has a mixing console and DAW workstation for dedicated recording sessions.</p>
+
+            <p><strong>What should I bring?</strong><br />Your instrument, a spare cable, a tuner, and your setlist. Arrive 10 minutes before your slot for setup.</p>
+
+            <p><strong>How do I get started at Thunder Studio?</strong><br />Book online or via LINE. Share your group size and preferred time — the team will recommend the right room.</p>
+          </div>
+        )}
+
+        <div class="reveal mt-12 text-center">
+          <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+
+  <style>
+    .prose-blog h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      color: var(--color-onyx);
+    }
+    .prose-blog p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 1rem;
+    }
+    .prose-blog ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose-blog li {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 0.35rem;
+    }
+    .prose-blog strong {
+      color: var(--color-onyx);
+      font-weight: 600;
+    }
+    .prose-blog a {
+      color: var(--color-onyx);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(15, 14, 14, 0.3);
+    }
+    .prose-blog a:hover {
+      text-decoration-color: var(--color-onyx);
+    }
+  </style>
+</Base>

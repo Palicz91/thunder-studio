@@ -1,0 +1,328 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const datePublished = '2026-08-13';
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+
+const title = lang === 'th'
+  ? 'ห้องซ้อมดนตรีคืออะไร ทำไมต้องไปซ้อมที่สตูดิโอ'
+  : 'What Is a Music Rehearsal Room? Why Studios Beat Practice at Home';
+const description = lang === 'th'
+  ? 'ห้องซ้อมดนตรีคืออะไร มีอุปกรณ์อะไรบ้าง ต่างจากซ้อมที่บ้านยังไง รวมคำแนะนำสำหรับวงดนตรีที่อยากได้คุณภาพเสียงดีโดยไม่รบกวนเพื่อนบ้าน'
+  : 'What is a music rehearsal room, what equipment does it have, and why is it better than practicing at home? A practical guide for bands who want pro sound without the complaints.';
+---
+
+<Base {title} {description} {lang} ogImage={`${IMG}/common-area-1.webp`}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thunder Studio",
+      "url": "https://thundermusicstudio.com",
+    },
+    "image": `${IMG}/common-area-1.webp`,
+    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/blog/what-is-a-rehearsal-room`,
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.blog'), "item": `https://thundermusicstudio.com/${lang}/blog` },
+      { "@type": "ListItem", "position": 3, "name": lang === 'th' ? 'ห้องซ้อมดนตรีคืออะไร' : 'What is a rehearsal room' },
+    ],
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": lang === 'th' ? [
+      { "@type": "Question", "name": "ไปซ้อมที่สตูดิโอต้องเอาอะไรไปบ้าง?", "acceptedAnswer": { "@type": "Answer", "text": "ส่วนใหญ่ไม่ต้องเอาอะไรไปมาก เพราะสตูดิโอมีกลอง แอมป์ และ PA ให้ครบ แนะนำให้เอาสายแจ็ค กีตาร์หรือเบสของตัวเอง ปิ๊ก และไม้กลองสำรองไปด้วย" }},
+      { "@type": "Question", "name": "จองห้องซ้อมดนตรีได้ยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "จองได้ทาง LINE @thunderstudio หรือโทร 063-546-1924 บอกวันที่ เวลา และขนาดวง ทีมงานจะแนะนำห้องที่เหมาะสม" }},
+      { "@type": "Question", "name": "มาซ้อมครั้งแรก ต้องเตรียมตัวยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "ควรซ้อมเพลงให้คล่องก่อน เพื่อให้เวลาในห้องซ้อมคุ้มค่า มาก่อนเวลา 10-15 นาที เพื่อ setup อุปกรณ์ และแจ้งทีมงานว่าวงมีกี่คนและเล่นดนตรีประเภทไหน" }},
+      { "@type": "Question", "name": "ห้องซ้อมดนตรีราคาเท่าไหร่?", "acceptedAnswer": { "@type": "Answer", "text": "ราคาห้องซ้อมขึ้นอยู่กับขนาดห้องและอุปกรณ์ที่มี ติดต่อสอบถามราคาได้ที่ 063-546-1924 หรือ LINE @thunderstudio" }},
+      { "@type": "Question", "name": "ห้องซ้อมรับกี่คน?", "acceptedAnswer": { "@type": "Answer", "text": "ขึ้นอยู่กับขนาดห้อง ห้องเล็กเหมาะกับวง 2-3 คน ห้องใหญ่รับได้ 4-6 คนขึ้นไป Thunder Studio มีทั้ง Small Room และ Large Room ให้เลือกตามขนาดวง" }},
+      { "@type": "Question", "name": "ห้องซ้อมมีอุปกรณ์อะไรให้บ้าง?", "acceptedAnswer": { "@type": "Answer", "text": "Thunder Studio มีกลองชุดเต็ม แอมป์กีตาร์ Marshall แอมป์เบส ระบบ PA พร้อมไมค์สำหรับนักร้อง ครบสำหรับวงดนตรีทุกประเภท" }},
+    ] : [
+      { "@type": "Question", "name": "What should I bring to a rehearsal studio?", "acceptedAnswer": { "@type": "Answer", "text": "Most studios provide drums, amps, and PA, so you mainly need your guitar or bass, a cable, picks, and spare drumsticks. Check with the studio beforehand if you're unsure what's included." }},
+      { "@type": "Question", "name": "How do I book a rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "Contact Thunder Studio via LINE @thunderstudio or call 063-546-1924. Let us know your preferred date, time, and band size and we'll suggest the right room." }},
+      { "@type": "Question", "name": "Any tips for a first-time rehearsal studio visit?", "acceptedAnswer": { "@type": "Answer", "text": "Arrive 10-15 minutes early to set up gear. Know your songs before you arrive so the time is spent playing, not learning. Tell the staff your band size and what instruments you play." }},
+      { "@type": "Question", "name": "How much does a rehearsal room cost?", "acceptedAnswer": { "@type": "Answer", "text": "Rates depend on room size and equipment. Contact Thunder Studio at 063-546-1924 or LINE @thunderstudio for current pricing." }},
+      { "@type": "Question", "name": "How many people fit in a rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on the room. Small rooms suit 2-3 person groups, while large rooms comfortably fit bands of 4-6 or more. Thunder Studio has both Small Room and Large Room options." }},
+      { "@type": "Question", "name": "What equipment is provided in the rehearsal room?", "acceptedAnswer": { "@type": "Answer", "text": "Thunder Studio provides a full drum kit, Marshall guitar amp, bass amp, and a PA system with microphone — everything a full band needs to rehearse." }},
+    ],
+  })} />
+
+  <article class="bg-clinical text-onyx">
+    <section class="pt-28 pb-12">
+      <div class="max-w-[720px] mx-auto px-6">
+        <nav class="reveal text-[13px] text-gray-500 mb-8">
+          <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+          <span class="mx-2">/</span>
+          <span class="text-onyx font-medium">{t('breadcrumb.blog')}</span>
+        </nav>
+
+        <div class="reveal">
+          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
+            {lang === 'th' ? 'ห้องซ้อมดนตรีคืออะไร ทำไมต้องไปซ้อมที่สตูดิโอ' : 'What Is a Music Rehearsal Room? Why Studios Beat Practice at Home'}
+          </h1>
+          <p class="text-[17px] text-gray-600 mt-5 leading-relaxed max-w-xl">{description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-6">
+      <div class="max-w-[900px] mx-auto px-6">
+        <img
+          src={`${IMG}/common-area-1.webp`}
+          alt={lang === 'th' ? 'ห้องซ้อมดนตรี Thunder Studio บางเขน กรุงเทพ' : 'Thunder Studio music rehearsal room in Bang Khen Bangkok'}
+          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-[720px] mx-auto px-6">
+        {lang === 'th' ? (
+          <div class="prose-blog">
+            <p>ห้องซ้อมดนตรี คือพื้นที่กันเสียงที่จัดเตรียมอุปกรณ์ไว้ครบ ทั้งกลอง แอมป์ ระบบ PA และไมค์ เปิดให้เช่าเป็นรายชั่วโมงสำหรับวงดนตรีที่ต้องการซ้อม ในกรุงเทพมีสตูดิโอให้เลือกมากกว่า 50 แห่งทั่วเมือง เล่นได้เต็มที่โดยไม่ต้องเป็นห่วงเรื่องเสียงดังรบกวนใคร</p>
+
+            <h2>ห้องซ้อมดนตรีต่างจากซ้อมที่บ้านยังไง</h2>
+            <p>หลายคนเริ่มจากซ้อมที่บ้านหรืออพาร์ตเมนต์ ซึ่งพอได้ในช่วงแรก แต่พอวงเริ่มเป็นรูปเป็นร่างจะเจอข้อจำกัดหลายอย่าง ลองเปรียบดู:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold"></th>
+                    <th class="px-5 py-3 font-semibold">ซ้อมที่บ้าน</th>
+                    <th class="px-5 py-3 font-semibold">ห้องซ้อมสตูดิโอ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">เสียง</td><td class="px-5 py-3 text-gray-700">ต้องลดเสียง เล่นไม่เต็มที่ รบกวนเพื่อนบ้าน</td><td class="px-5 py-3 text-gray-700">กันเสียงครบ เล่นได้เต็มที่ไม่มีข้อจำกัด</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">อุปกรณ์</td><td class="px-5 py-3 text-gray-700">ต้องซื้อและดูแลเอง ใช้พื้นที่เยอะ</td><td class="px-5 py-3 text-gray-700">มีกลอง แอมป์ PA พร้อมให้ใช้ทันที</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">คุณภาพเสียง</td><td class="px-5 py-3 text-gray-700">ห้องไม่ได้ออกแบบมาสำหรับดนตรี เสียงก้อง</td><td class="px-5 py-3 text-gray-700">อะคูสติกดี เสียงชัด ได้ยินทุก part ชัดเจน</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">บรรยากาศ</td><td class="px-5 py-3 text-gray-700">สบาย แต่ขาดความตั้งใจ</td><td class="px-5 py-3 text-gray-700">พื้นที่จริงจัง ช่วยให้โฟกัสได้ดีกว่า</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">ค่าใช้จ่าย</td><td class="px-5 py-3 text-gray-700">ต้นทุนตั้งต้นสูง ถ้าต้องซื้ออุปกรณ์ครบ</td><td class="px-5 py-3 text-gray-700">จ่ายเป็นชั่วโมง ไม่มีต้นทุนคงที่</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>สรุปง่ายๆ คือถ้าซ้อมคนเดียวหรือแค่ฝึกท่อนเดี่ยว บ้านก็พอได้ แต่ถ้าวงต้องการซ้อมพร้อมกันเต็มรูปแบบ ห้องซ้อมสตูดิโอคุ้มกว่าชัดเจน</p>
+
+            <h2>ประเภทห้องซ้อมดนตรี</h2>
+            <p>ห้องซ้อมในสตูดิโอส่วนใหญ่แบ่งตามขนาดและการใช้งาน:</p>
+            <ul>
+              <li><strong>ห้องเดี่ยว (Individual Room)</strong> เหมาะสำหรับฝึกเดี่ยวหรือ duo ขนาดเล็ก พื้นที่แน่น ราคาประหยัด</li>
+              <li><strong><a href={`/${lang}/rooms/small-room`}>ห้องเล็ก (Small Room)</a></strong> รับวง 2-3 คน มีกลอง แอมป์ ไมค์ครบ เหมาะกับวงที่เพิ่งเริ่ม</li>
+              <li><strong><a href={`/${lang}/rooms/large-room`}>ห้องใหญ่ (Large Room)</a></strong> รับวง 4-6 คนขึ้นไป พื้นที่กว้าง เล่นสบาย เหมาะกับวงเต็มรูปแบบ</li>
+              <li><strong>ห้องพร้อมบันทึกเสียง</strong> มี interface หรือ <a href={`/${lang}/rooms/control-room`}>control room</a> ต่อเชื่อม ซ้อมเสร็จอัดได้เลย</li>
+            </ul>
+            <p>การเลือกขนาดห้องให้ถูกต้องสำคัญมาก อ่านเพิ่มเติมได้ที่ <a href={`/${lang}/blog/choosing-room-size`}>คู่มือเลือกขนาดห้องซ้อม</a></p>
+
+            <h2>อุปกรณ์ที่มีในห้องซ้อม</h2>
+            <p>ห้องซ้อมมาตรฐานจะมีอุปกรณ์ครบสำหรับวงดนตรีทุกประเภท ที่ Thunder Studio มีให้ใช้ทุกห้อง:</p>
+            <ul>
+              <li><strong>กลองชุดเต็ม</strong> พร้อมขาสแนร์ แฉ hi-hat ไรด์ และแฉ crash</li>
+              <li><strong>แอมป์กีตาร์ Marshall</strong> เสียงดีในระดับที่ใช้งานจริงได้</li>
+              <li><strong>แอมป์เบส</strong> ให้เสียงต่ำที่นักเบสต้องการ</li>
+              <li><strong>ระบบ PA และไมค์</strong> สำหรับนักร้อง พร้อม stand ไมค์</li>
+              <li><strong>สายแจ็ค</strong> มีสำรองให้ในกรณีฉุกเฉิน</li>
+            </ul>
+            <p>ข้อแนะนำ แม้จะมีสายให้ยืม แต่นำสายของตัวเองมาจะดีกว่า เพราะรู้ว่าไม่มีเสียง noise</p>
+
+            <h2>ข้อดีของการซ้อมที่สตูดิโอ</h2>
+            <p>นอกจากเรื่องเสียงที่ดีขึ้น ยังมีข้อดีอีกหลายอย่างที่คนไม่ค่อยพูดถึง:</p>
+            <ul>
+              <li><strong>ไม่มีปัญหาเรื่องเพื่อนบ้าน</strong> ห้องกันเสียงครบ เล่นเต็มที่ได้ตั้งแต่เริ่มถึงสิ้นสุดเวลา</li>
+              <li><strong>ได้ยินเสียงตัวเองชัด</strong> อะคูสติกของห้องออกแบบมาให้ได้ยิน balance ของวงได้ตรงกว่าห้องทั่วไป</li>
+              <li><strong>อุปกรณ์คุณภาพดี</strong> กลองที่ tune มาแล้ว แอมป์เกรดโปร ไม่ต้องซื้อเองหรือขนมา</li>
+              <li><strong>สร้างวินัย</strong> จองเวลาแล้วต้องไป ทำให้ซ้อมสม่ำเสมอกว่าซ้อมที่บ้านซึ่งเลื่อนได้ง่าย</li>
+              <li><strong>บันทึกเสียงได้</strong> สตูดิโอที่มี <a href={`/${lang}/rooms/control-room`}>ห้อง control</a> พ่วงอยู่ด้วย อยากอัดเดโมได้เลย</li>
+            </ul>
+
+            <h2>มารยาทในห้องซ้อม</h2>
+            <p>ห้องซ้อมเป็นพื้นที่ใช้ร่วมกัน มีมารยาทพื้นฐานที่ควรรู้:</p>
+            <ul>
+              <li><strong>ตรงเวลา</strong> มาก่อน 10 นาที เพื่อ setup ให้เสร็จก่อนเวลาจริงเริ่ม ไม่กินเวลาของตัวเอง</li>
+              <li><strong>เก็บของให้เรียบร้อย</strong> ก่อนออกจากห้อง เก็บสายแจ็คและอุปกรณ์ที่ใช้ไปวางคืนในตำแหน่งเดิม</li>
+              <li><strong>ไม่เล่นเกินเวลา</strong> ถ้าจองถึง 20:00 ให้หยุดตรงเวลา เพราะวงถัดไปรออยู่</li>
+              <li><strong>แจ้งทีมงานทันทีถ้าอุปกรณ์มีปัญหา</strong> อย่าแก้เองถ้าไม่แน่ใจ</li>
+              <li><strong>ระดับเสียงพอดี</strong> ดังได้ แต่ไม่จำเป็นต้องดังสุดตลอดเวลา ฟังกันในวงก่อน</li>
+              <li><strong>ไม่นำอาหารเข้าห้อง</strong> หลายสตูดิโอมีกฎนี้ ตรวจสอบกับทีมงานก่อน</li>
+            </ul>
+
+            <h2>ซ้อมบ่อยแค่ไหนดี</h2>
+            <p>ขึ้นอยู่กับเป้าหมายของวง แต่มีแนวทางทั่วไปดังนี้:</p>
+            <ul>
+              <li><strong>วงใหม่ที่เพิ่งตั้ง</strong> ซ้อม 1-2 ครั้งต่อสัปดาห์ เน้นการสร้าง chemistry และ repertoire</li>
+              <li><strong>วงที่เตรียมโชว์</strong> ซ้อม 2-3 ครั้งต่อสัปดาห์ ช่วง 2-4 สัปดาห์ก่อนขึ้นเวที</li>
+              <li><strong>วงที่เตรียมอัดเสียง</strong> ซ้อมจนเล่นได้ 3 รอบติดกันโดยไม่หยุด ก่อนจองวันอัด</li>
+              <li><strong>วงที่ซ้อมสม่ำเสมอ</strong> อย่างน้อยครั้งต่อสัปดาห์ เพื่อรักษาฟอร์มและความแน่น</li>
+            </ul>
+            <p>อ่านเพิ่มเติมเรื่องการเตรียมตัวซ้อมที่ <a href={`/${lang}/blog/how-to-prepare-for-band-rehearsal`}>คู่มือเตรียมตัวก่อนซ้อมวงดนตรี</a> และดูข้อมูลสตูดิโอในกรุงเทพที่ <a href={`/${lang}/blog/music-rehearsal-rooms-bangkok`}>คู่มือห้องซ้อมดนตรีในกรุงเทพ</a></p>
+
+            <h2>ห้องซ้อมดนตรีที่ Thunder Studio</h2>
+            <p>Thunder Studio ตั้งอยู่ที่บางเขน กรุงเทพ มีห้องซ้อมให้เลือกหลายขนาด ทั้ง <a href={`/${lang}/rooms/small-room`}>Small Room</a> สำหรับวงเล็ก และ <a href={`/${lang}/rooms/large-room`}>Large Room</a> สำหรับวงเต็มรูปแบบ ทุกห้องมีกลอง แอมป์ Marshall และระบบ PA พร้อมใช้งาน เปิดทุกวัน 10:00-22:00</p>
+          </div>
+        ) : (
+          <div class="prose-blog">
+            <p>A music rehearsal room is a soundproofed space equipped with drums, amplifiers, a PA system, and microphones, rented by the hour so bands can practice at full volume. Bangkok has more than 50 rehearsal studios across the city, giving musicians a place to play without worrying about noise complaints from neighbors.</p>
+
+            <h2>Rehearsal room vs practicing at home</h2>
+            <p>Many musicians start by practicing at home, which works for solo practice or early-stage learning. But as the band grows, the limitations become obvious:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold"></th>
+                    <th class="px-5 py-3 font-semibold">Practicing at Home</th>
+                    <th class="px-5 py-3 font-semibold">Rehearsal Studio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Volume</td><td class="px-5 py-3 text-gray-700">Must keep it down, can't play freely, neighbor complaints</td><td class="px-5 py-3 text-gray-700">Fully soundproofed, play at any volume without restrictions</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Equipment</td><td class="px-5 py-3 text-gray-700">Must buy and maintain everything yourself, takes up space</td><td class="px-5 py-3 text-gray-700">Drums, amps, and PA ready to use immediately</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Sound quality</td><td class="px-5 py-3 text-gray-700">Room not designed for music, sounds boxy or echoey</td><td class="px-5 py-3 text-gray-700">Good acoustics, every part of the band sounds clear</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Focus</td><td class="px-5 py-3 text-gray-700">Comfortable but easy to get distracted</td><td class="px-5 py-3 text-gray-700">Dedicated space designed for practice, better focus</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Cost</td><td class="px-5 py-3 text-gray-700">High upfront cost if buying full gear</td><td class="px-5 py-3 text-gray-700">Pay hourly, no fixed overhead</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>For solo practice or early-stage learning, home works fine. For full-band rehearsals where everyone needs to play together at real volume, a studio is clearly better value.</p>
+
+            <h2>Types of rehearsal rooms</h2>
+            <p>Most rehearsal studios organize rooms by size and purpose:</p>
+            <ul>
+              <li><strong>Individual rooms</strong> — compact spaces for solo practice or duos, priced for single musicians</li>
+              <li><strong><a href={`/${lang}/rooms/small-room`}>Small rooms</a></strong> — fit 2-3 person bands with drums, amps, and mic included, good for bands starting out</li>
+              <li><strong><a href={`/${lang}/rooms/large-room`}>Large rooms</a></strong> — accommodate 4-6+ person bands comfortably, full equipment, space to move around</li>
+              <li><strong>Rooms with recording capability</strong> — linked to a <a href={`/${lang}/rooms/control-room`}>control room</a> so you can record a demo straight after rehearsal</li>
+            </ul>
+            <p>Choosing the right room size matters more than most people expect. Read the full breakdown in the <a href={`/${lang}/blog/choosing-room-size`}>room size guide</a>.</p>
+
+            <h2>Standard equipment in a rehearsal room</h2>
+            <p>A well-equipped rehearsal room provides everything a band needs without bringing anything except instruments. At Thunder Studio, every room includes:</p>
+            <ul>
+              <li><strong>Full drum kit</strong> — with snare stand, hi-hat, ride cymbal, and crash</li>
+              <li><strong>Marshall guitar amp</strong> — reliable tone at real playing volumes</li>
+              <li><strong>Bass amp</strong> — delivers the low-end a bassist needs to hear themselves</li>
+              <li><strong>PA system and microphone</strong> — for vocalists, with mic stand included</li>
+              <li><strong>Spare cables</strong> — available for emergencies, though bringing your own is always better</li>
+            </ul>
+
+            <h2>Benefits of using a rehearsal studio</h2>
+            <p>Beyond the obvious sound improvement, there are several advantages that don't get talked about enough:</p>
+            <ul>
+              <li><strong>No neighbor problems</strong> — soundproofing means playing at full band volume from start to finish</li>
+              <li><strong>You hear the band properly</strong> — room acoustics let you hear the actual balance, not a distorted version filtered through bad acoustics</li>
+              <li><strong>Professional-grade gear</strong> — a properly tuned drum kit and quality amps, without the cost of owning them</li>
+              <li><strong>Built-in discipline</strong> — booking a time slot means you show up. Home practice is easy to postpone.</li>
+              <li><strong>Recording access</strong> — studios with a <a href={`/${lang}/rooms/control-room`}>connected control room</a> let you capture a demo right after rehearsal</li>
+            </ul>
+
+            <h2>Rehearsal room etiquette</h2>
+            <p>Shared spaces work better when everyone follows the same basic rules:</p>
+            <ul>
+              <li><strong>Arrive 10 minutes early</strong> — use the extra time for setup so your booked hour starts with playing, not cable-untangling</li>
+              <li><strong>Return equipment to its place</strong> — put cables, mic stands, and anything you moved back where you found it</li>
+              <li><strong>Stop on time</strong> — if you booked until 8 PM, the next band is waiting. Finish on schedule.</li>
+              <li><strong>Report problems immediately</strong> — if something sounds wrong or a piece of gear isn't working, tell the staff. Don't try to fix it yourself.</li>
+              <li><strong>Match your volume to the room</strong> — loud is fine, but you don't need maximum volume the entire session. Listen to each other first.</li>
+              <li><strong>Check the food policy</strong> — many studios don't allow food in the rehearsal room. Ask before bringing snacks in.</li>
+            </ul>
+
+            <h2>How often should you rehearse?</h2>
+            <p>There's no single right answer, but here's a practical framework based on where your band is:</p>
+            <ul>
+              <li><strong>New band just forming</strong> — 1-2 times per week. Focus on building chemistry and learning songs together.</li>
+              <li><strong>Preparing for a show</strong> — 2-3 times per week in the 2-4 weeks before the gig.</li>
+              <li><strong>Preparing to record</strong> — rehearse until you can play the song three times in a row without stopping. Then book the studio.</li>
+              <li><strong>Ongoing maintenance</strong> — at least once a week keeps everyone sharp and the setlist fresh.</li>
+            </ul>
+            <p>For more detail on how to make each session count, read the <a href={`/${lang}/blog/how-to-prepare-for-band-rehearsal`}>band rehearsal preparation guide</a>. Looking for studios across the city? The <a href={`/${lang}/blog/music-rehearsal-rooms-bangkok`}>Bangkok rehearsal room guide</a> covers what to look for.</p>
+
+            <h2>Rehearsal rooms at Thunder Studio</h2>
+            <p>Thunder Studio is in Bang Khen, Bangkok, with multiple room sizes including a <a href={`/${lang}/rooms/small-room`}>Small Room</a> for smaller groups and a <a href={`/${lang}/rooms/large-room`}>Large Room</a> for full bands. Every room comes equipped with drums, Marshall amps, and a PA system. Open daily 10 AM to 10 PM.</p>
+          </div>
+        )}
+
+        <div class="reveal mt-12 text-center">
+          <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+
+  <style>
+    .prose-blog h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      color: var(--color-onyx);
+    }
+    .prose-blog p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 1rem;
+    }
+    .prose-blog ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose-blog li {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 0.35rem;
+    }
+    .prose-blog strong {
+      color: var(--color-onyx);
+      font-weight: 600;
+    }
+    .prose-blog a {
+      color: var(--color-onyx);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(15, 14, 14, 0.3);
+    }
+    .prose-blog a:hover {
+      text-decoration-color: var(--color-onyx);
+    }
+  </style>
+</Base>
