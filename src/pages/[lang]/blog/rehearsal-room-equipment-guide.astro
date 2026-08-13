@@ -1,0 +1,565 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const datePublished = '2026-08-13';
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+
+const title = lang === 'th'
+  ? 'อุปกรณ์ในห้องซ้อมดนตรี: มีอะไรบ้าง ต้องเตรียมอะไรไปเอง'
+  : "Rehearsal Room Equipment: What's Included and What to Bring";
+const description = lang === 'th'
+  ? 'ห้องซ้อมดนตรีมีอุปกรณ์อะไรให้บ้าง ต้องเตรียมอะไรไปเองก่อนเข้าซ้อม บทความนี้เปรียบเทียบอุปกรณ์ใน Studio 1 Studio 2 และ Control Room ของ Thunder Studio พร้อมเคล็ดลับการใช้งาน'
+  : "What equipment does a rehearsal room provide? A practical guide to standard studio gear, what to bring yourself, and a room-by-room comparison of Thunder Studio's three rooms.";
+---
+
+<Base {title} {description} {lang} ogImage={`${IMG}/large-room-1.webp`}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thunder Studio",
+      "url": "https://thundermusicstudio.com",
+    },
+    "image": `${IMG}/large-room-1.webp`,
+    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/blog/rehearsal-room-equipment-guide`,
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.blog'), "item": `https://thundermusicstudio.com/${lang}/blog` },
+      { "@type": "ListItem", "position": 3, "name": lang === 'th' ? 'อุปกรณ์ในห้องซ้อมดนตรี' : 'Rehearsal Room Equipment Guide' },
+    ],
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": lang === 'th' ? [
+      {
+        "@type": "Question",
+        "name": "ห้องซ้อมดนตรีมีอุปกรณ์อะไรให้บ้าง?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ห้องซ้อมส่วนใหญ่มี amplifier กีตาร์และเบส, กลองชุดเต็ม, PA system และไมโครโฟนพร้อมขาตั้ง บางห้องมีเครื่องดนตรีเพิ่มเติมตามขนาดและระดับของสตูดิโอ"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ต้องเตรียมอะไรไปเองเมื่อไปห้องซ้อม?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "สิ่งที่ต้องพกติดตัว: กีตาร์หรือเบส (ห้องซ้อมไม่ได้ให้ยืมเครื่องดนตรี), สายแจ็ค, จูนเนอร์, ไม้กลอง (มือกลอง), ปิ๊ก และที่อุดหู เพื่อกันเสียงดัง"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Studio 1 กับ Studio 2 ที่ Thunder Studio ต่างกันอย่างไร?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Studio 1 เป็นห้องใหญ่รองรับ 6-10 คน มี Marshall amp สองตัว (กีตาร์ + เบส), กลองชุดเต็ม, PA system และไมค์ ส่วน Studio 2 เป็นห้องเล็กสำหรับ 2-4 คน มี guitar amp, PA system และไมค์ เหมาะสำหรับซ้อมเดี่ยวหรือกลุ่มเล็ก"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Marshall amp ที่ห้องซ้อมตั้งค่ายังไงดี?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "เริ่มต้นด้วยการตั้ง gain ต่ำ, volume ที่ระดับกลาง และ EQ แบบ flat (bass, mid, treble ที่ 5) แล้วค่อยปรับตามเสียงที่ต้องการ อย่าเปิด gain สูงทันทีโดยไม่ได้ลองเสียงก่อน"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ต้องใช้ที่อุดหูตอนซ้อมดนตรีไหม?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "แนะนำมากโดยเฉพาะมือกลองและคนที่อยู่ใกล้กลอง ระดับเสียงในห้องซ้อมอยู่ที่ 95-110 dB ซึ่งสูงพอที่จะทำให้ประสาทหูเสียหายได้ในระยะยาว ที่อุดหูมิวสิคัลราคาไม่แพงและลดเสียงได้โดยไม่ทำให้เสียคุณภาพเสียงมากนัก"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Control Room ที่ Thunder Studio ใช้ทำอะไรได้บ้าง?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Control Room มี mixing console, DAW workstation, studio monitors และ rack gear เหมาะสำหรับอัดเสียง, มิกซ์เสียง และ post-production ต่างจากห้องซ้อมปกติที่เน้นการซ้อมเล่น"
+        }
+      }
+    ] : [
+      {
+        "@type": "Question",
+        "name": "What equipment does a rehearsal room typically include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most rehearsal rooms provide guitar and bass amplifiers, a full drum kit, a PA system, and microphones with stands. The specific gear varies by studio size and tier."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I bring to a rehearsal room?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Always bring your own instrument (guitar, bass, or keyboard — studios don't lend these), instrument cables, a tuner, drumsticks (if you're the drummer), picks, and earplugs for hearing protection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Studio 1 and Studio 2 at Thunder Studio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Studio 1 is the large room for 6-10 musicians. It has two Marshall amps (guitar and bass), a full drum kit, PA system, and microphones. Studio 2 is the small room for 2-4 people with a guitar amp, PA system, and microphones — ideal for solo practice or small groups."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I set up a Marshall amp in a rehearsal room?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with gain low, volume at midpoint, and EQ flat (bass, mid, treble all at 5). Then adjust from that neutral baseline. Never crank gain to maximum without first checking the room's acoustics — it can cause unwanted feedback and damage speakers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need earplugs for rehearsal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, especially for drummers and anyone standing close to the kit. Rehearsal room volume typically runs 95-110 dB, which can cause cumulative hearing damage. Musicians' earplugs (flat-response plugs) reduce volume without distorting the sound significantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Control Room at Thunder Studio used for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Control Room has a mixing console, DAW workstation, studio monitors, and rack gear. It's designed for recording, mixing, and post-production — different from a rehearsal room which focuses on live band practice."
+        }
+      }
+    ],
+  })} />
+
+  <article class="bg-clinical text-onyx">
+    <section class="pt-28 pb-12">
+      <div class="max-w-[720px] mx-auto px-6">
+        <nav class="reveal text-[13px] text-gray-500 mb-8">
+          <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+          <span class="mx-2">/</span>
+          <span class="text-onyx font-medium">{t('breadcrumb.blog')}</span>
+        </nav>
+
+        <div class="reveal">
+          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
+            {lang === 'th' ? 'อุปกรณ์ในห้องซ้อมดนตรี: มีอะไรบ้าง ต้องเตรียมอะไรไปเอง' : "Rehearsal Room Equipment: What's Included and What to Bring"}
+          </h1>
+          <p class="text-[17px] text-gray-600 mt-5 leading-relaxed max-w-xl">{description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-6">
+      <div class="max-w-[900px] mx-auto px-6">
+        <img
+          src={`${IMG}/large-room-1.webp`}
+          alt={lang === 'th' ? 'อุปกรณ์ในห้องซ้อมดนตรี Thunder Studio' : 'Thunder Studio rehearsal room equipment'}
+          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-[720px] mx-auto px-6">
+        {lang === 'th' ? (
+          <div class="prose-blog">
+
+            <p>ห้องซ้อมดนตรีส่วนใหญ่มี amplifier, กลองชุดเต็ม, PA system และไมโครโฟนรวมอยู่ในราคาเช่าห้องแล้ว นักดนตรีต้องพกมาเองแค่เครื่องดนตรีของตัวเอง, สายแจ็ค, จูนเนอร์ และที่อุดหู บทความนี้อธิบายทุกอย่างที่ต้องรู้เกี่ยวกับอุปกรณ์ในห้องซ้อม ตั้งแต่อุปกรณ์มาตรฐาน ไปจนถึงสิ่งที่ควรเตรียมติดตัวมาเอง</p>
+
+            <h2>อุปกรณ์มาตรฐานในห้องซ้อมดนตรีมีอะไรบ้าง</h2>
+            <p>ห้องซ้อมคุณภาพดีจะมีอุปกรณ์หลักเหล่านี้พร้อมไว้ให้:</p>
+
+            <p><strong>Amplifier กีตาร์และเบส</strong><br />
+            แอมป์เป็นหัวใจหลักของห้องซ้อม ห้องใหญ่อย่าง <a href={`/${lang}/rooms/large-room`}>Studio 1</a> มักมี Marshall amp สองตัวแยกกัน ตัวหนึ่งสำหรับกีตาร์ อีกตัวสำหรับเบส Marshall เป็นแบรนด์ที่วงดนตรีทั่วโลกใช้มากที่สุดในการซ้อม ให้เสียงที่อบอุ่น ตอบสนองต่อการปรับ EQ ได้ดี และทนทานต่อการใช้งานหนัก</p>
+
+            <p><strong>กลองชุดเต็ม</strong><br />
+            กลองเป็นอุปกรณ์ที่ไม่มีทางพกมาเองได้ ห้องซ้อมจึงต้องมีให้เสมอ ชุดกลองมาตรฐานประกอบด้วย bass drum, snare, hi-hat, cymbals (crash และ ride) และ toms อย่างน้อย 2 ตัว มือกลองปรับตั้ง hi-hat stand, ความตึงของ snare และระดับความสูงของ cymbal ได้ตามถนัด</p>
+
+            <p><strong>PA System</strong><br />
+            PA system ประกอบด้วย mixer และลำโพงหนึ่งคู่ขึ้นไป ใช้รับสัญญาณจากไมค์และส่งออกเสียงให้ได้ยินทั่วห้อง เหมาะสำหรับร้องเพลงและเสียง keyboard หรือ playback ต่างๆ บางสตูดิโอมี monitor speaker แยกเพิ่มเพื่อให้นักร้องได้ยินเสียงตัวเองชัดขึ้น</p>
+
+            <p><strong>ไมโครโฟนพร้อมขาตั้ง</strong><br />
+            ไมค์ในห้องซ้อมส่วนใหญ่เป็น dynamic microphone เช่น Shure SM58 หรือรุ่นใกล้เคียง ทนทาน กันเสียงรบกวน และเหมาะกับสภาพห้องที่ดังมาก มาพร้อม XLR cable เชื่อมต่อกับ PA system อยู่แล้ว</p>
+
+            <h2>สิ่งที่ต้องเตรียมมาเอง</h2>
+            <p>ห้องซ้อมไม่ได้มีทุกอย่าง สิ่งเหล่านี้ต้องพกติดตัวมาเสมอ:</p>
+            <ul>
+              <li><strong>กีตาร์ / เบส</strong> ห้องซ้อมไม่มีให้ยืม เครื่องดนตรีของคุณต้องมาเอง</li>
+              <li><strong>สายแจ็ค</strong> เตรียมมาอย่างน้อย 2 เส้น หนึ่งใช้งาน หนึ่งสำรอง สายขาดในห้องซ้อมคือหยุดซ้อมทันที</li>
+              <li><strong>จูนเนอร์</strong> แอปบนมือถือใช้ได้ แต่ clip-on tuner แม่นกว่าในห้องที่มีเสียงรบกวน</li>
+              <li><strong>ไม้กลอง</strong> มือกลองต้องพกมาเอง พร้อมไม้สำรองอีกคู่เผื่อหัก</li>
+              <li><strong>ปิ๊ก</strong> หายง่าย เตรียมมาหลายอัน</li>
+              <li><strong>ที่อุดหู</strong> ห้องซ้อมมีเสียงดัง 95-110 dB ใส่ที่อุดหูทุกครั้งเพื่อปกป้องการได้ยินระยะยาว</li>
+            </ul>
+            <p>อยากรู้ว่าควรเตรียมตัวอย่างไรก่อนเข้าห้องซ้อม อ่านต่อได้ที่ <a href={`/${lang}/blog/how-to-prepare-for-band-rehearsal`}>คู่มือเตรียมตัวก่อนซ้อมวง</a></p>
+
+            <h2>เปรียบเทียบอุปกรณ์แต่ละห้องที่ Thunder Studio</h2>
+            <p>Thunder Studio มีสามห้อง แต่ละห้องมีอุปกรณ์ต่างกันตามขนาดและการใช้งาน:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold">อุปกรณ์</th>
+                    <th class="px-5 py-3 font-semibold">Studio 1 (ห้องใหญ่)</th>
+                    <th class="px-5 py-3 font-semibold">Studio 2 (ห้องเล็ก)</th>
+                    <th class="px-5 py-3 font-semibold">Control Room</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">Amp กีตาร์</td>
+                    <td class="px-5 py-3 text-gray-700">Marshall ✓</td>
+                    <td class="px-5 py-3 text-gray-700">Guitar amp ✓</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">Amp เบส</td>
+                    <td class="px-5 py-3 text-gray-700">Marshall ✓</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">กลองชุดเต็ม</td>
+                    <td class="px-5 py-3 text-gray-700">✓ (bass drum, snare, hi-hat, cymbals, toms)</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">PA System</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">ไมโครโฟน + ขาตั้ง</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">Mixing console</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                  </tr>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">DAW Workstation</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">Studio Monitors</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                  </tr>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">Rack Gear</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">รองรับคน</td>
+                    <td class="px-5 py-3 text-gray-700">6-10 คน</td>
+                    <td class="px-5 py-3 text-gray-700">2-4 คน</td>
+                    <td class="px-5 py-3 text-gray-700">1-3 คน</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>ดูรายละเอียดเพิ่มเติมแต่ละห้อง: <a href={`/${lang}/rooms/large-room`}>Studio 1 (ห้องใหญ่)</a>, <a href={`/${lang}/rooms/small-room`}>Studio 2 (ห้องเล็ก)</a>, <a href={`/${lang}/rooms/control-room`}>Control Room</a></p>
+
+            <h2>วิธีใช้อุปกรณ์ในห้องซ้อมให้ถูกต้อง</h2>
+
+            <p><strong>ตั้งค่า amp กีตาร์และเบส</strong><br />
+            เริ่มต้นจาก gain ต่ำ, volume ระดับกลาง และ EQ แบบ flat ทั้งหมด (ปุ่ม bass, mid, treble ที่ตำแหน่ง 5 หรือกึ่งกลาง) แล้วค่อยปรับเพิ่มตามเสียงที่ต้องการ อย่าเปิด gain สูงทันทีโดยไม่ได้ทดสอบก่อน เพราะอาจทำให้เสียง feedback ดังเป็นอันตรายต่อลำโพง</p>
+
+            <p><strong>ปรับกลองให้เหมาะกับผู้เล่น</strong><br />
+            มือกลองแต่ละคนสูงต่างกัน ปรับความสูงของ hi-hat stand, ตำแหน่ง snare และมุม cymbal ได้ตามถนัด ก่อนเริ่มซ้อมให้ลองตีช้าๆ เพื่อเช็คว่าไม่มีชิ้นไหนหลวม และทำความคุ้นเคยกับ kick drum pedal ของห้องนั้น เพราะน้ำหนักและ spring อาจต่างจากชุดกลองที่ซ้อมที่บ้าน</p>
+
+            <p><strong>ตั้ง PA system และไมค์</strong><br />
+            เสียบ XLR cable จากไมค์เข้า mixer แล้วเปิด channel ที่ตรงกัน เริ่มจาก gain ต่ำ เปิดลำโพง แล้วค่อยๆ ดันระดับเสียงขึ้นจนได้ volume ที่ต้องการ หากเสียง feedback (เสียงหวีดแหลม) ให้ลด gain ลง หรือเลื่อนไมค์ให้ห่างจากลำโพง</p>
+
+            <h2>มารยาทการใช้อุปกรณ์ห้องซ้อม</h2>
+            <p>อุปกรณ์ในห้องซ้อมใช้ร่วมกันกับนักดนตรีอีกหลายวง การดูแลให้อุปกรณ์อยู่ในสภาพดีเป็นหน้าที่ของทุกคน:</p>
+            <ul>
+              <li><strong>ไม่เปิด volume สูงเกินจำเป็น</strong> amp ที่เปิดดังเกินไปทำลายลำโพงและทำให้ห้องข้างๆ รำคาญ ใช้เสียงระดับที่วงได้ยินกันชัดก็พอ</li>
+              <li><strong>ไม่จัดกลองใหม่โดยไม่ถาม</strong> ถ้าต้องเลื่อนกลองหรือ cymbal stand ควรถามเจ้าหน้าที่ก่อน และจัดกลับตำแหน่งเดิมก่อนออกจากห้อง</li>
+              <li><strong>แจ้งอุปกรณ์ที่ชำรุด</strong> ถ้าพบสายไฟหลวม ขั้วต่อเสีย หรือหัวกลองขาด ให้แจ้งเจ้าหน้าที่ทันที อย่าพยายามซ่อมเอง</li>
+              <li><strong>ถอดสายก่อนออกจากห้อง</strong> ถอด instrument cable ออกจาก amp ก่อนปิดเครื่อง และม้วนสายเก็บอย่างระวัง</li>
+              <li><strong>ปิดเครื่องทุกอย่างเมื่อเสร็จ</strong> ปิด amp, PA system และไฟก่อนออกจากห้อง</li>
+            </ul>
+
+            <h2>คำถามที่พบบ่อยเกี่ยวกับอุปกรณ์ห้องซ้อม</h2>
+
+            <p><strong>ห้องซ้อมดนตรีมีอุปกรณ์อะไรให้บ้าง?</strong><br />
+            ห้องซ้อมส่วนใหญ่มี amplifier กีตาร์และเบส, กลองชุดเต็ม, PA system และไมโครโฟนพร้อมขาตั้ง บางห้องมีเครื่องดนตรีเพิ่มเติมตามขนาดและระดับของสตูดิโอ</p>
+
+            <p><strong>ต้องเตรียมอะไรไปเองเมื่อไปห้องซ้อม?</strong><br />
+            สิ่งที่ต้องพกติดตัว: กีตาร์หรือเบส (ห้องซ้อมไม่ได้ให้ยืมเครื่องดนตรี), สายแจ็ค, จูนเนอร์, ไม้กลอง (มือกลอง), ปิ๊ก และที่อุดหูเพื่อกันเสียงดัง</p>
+
+            <p><strong>Studio 1 กับ Studio 2 ที่ Thunder Studio ต่างกันอย่างไร?</strong><br />
+            Studio 1 เป็นห้องใหญ่รองรับ 6-10 คน มี Marshall amp สองตัว (กีตาร์ + เบส), กลองชุดเต็ม, PA system และไมค์ Studio 2 เป็นห้องเล็กสำหรับ 2-4 คน มี guitar amp, PA system และไมค์ เหมาะสำหรับซ้อมเดี่ยวหรือกลุ่มเล็ก</p>
+
+            <p><strong>Marshall amp ที่ห้องซ้อมตั้งค่ายังไงดี?</strong><br />
+            เริ่มต้นด้วยการตั้ง gain ต่ำ, volume ที่ระดับกลาง และ EQ แบบ flat (bass, mid, treble ที่ 5) แล้วค่อยปรับตามเสียงที่ต้องการ อย่าเปิด gain สูงทันทีโดยไม่ได้ลองเสียงก่อน</p>
+
+            <p><strong>ต้องใช้ที่อุดหูตอนซ้อมดนตรีไหม?</strong><br />
+            แนะนำมากโดยเฉพาะมือกลองและคนที่อยู่ใกล้กลอง ระดับเสียงในห้องซ้อมอยู่ที่ 95-110 dB ซึ่งสูงพอที่จะทำให้ประสาทหูเสียหายได้ในระยะยาว ที่อุดหูมิวสิคัลราคาไม่แพงและลดเสียงได้โดยไม่ทำให้เสียคุณภาพเสียงมากนัก</p>
+
+            <p><strong>Control Room ที่ Thunder Studio ใช้ทำอะไรได้บ้าง?</strong><br />
+            <a href={`/${lang}/rooms/control-room`}>Control Room</a> มี mixing console, DAW workstation, studio monitors และ rack gear เหมาะสำหรับอัดเสียง, มิกซ์เสียง และ post-production ต่างจากห้องซ้อมปกติที่เน้นการซ้อมเล่น</p>
+
+            <p>ต้องการข้อมูลเพิ่มเติมเกี่ยวกับห้องซ้อมดนตรี อ่าน <a href={`/${lang}/blog/what-is-a-rehearsal-room`}>ห้องซ้อมดนตรีคืออะไร</a> สำหรับภาพรวมทั้งหมด</p>
+
+            <h2>พร้อมจองห้องซ้อมแล้ว?</h2>
+            <p>Thunder Studio มีห้องซ้อมครบทุกขนาด พร้อมอุปกรณ์คุณภาพสูงที่บางเขน กรุงเทพ เปิดทุกวัน 10:00-22:00 ติดต่อสอบถามราคาและจองได้เลย</p>
+
+          </div>
+        ) : (
+          <div class="prose-blog">
+
+            <p>Most rehearsal rooms include amplifiers, a full drum kit, a PA system, and microphones as part of the room hire. Musicians need to bring their own instrument, cables, tuner, and earplugs. This guide covers the standard gear found in rehearsal studios, what you need to supply yourself, and a room-by-room breakdown of what Thunder Studio provides across its three spaces.</p>
+
+            <h2>Standard equipment in a rehearsal room</h2>
+            <p>A well-equipped rehearsal studio typically provides:</p>
+
+            <p><strong>Guitar and bass amplifiers</strong><br />
+            Amps are the core of any rehearsal room. A large room like <a href={`/${lang}/rooms/large-room`}>Studio 1</a> usually has two separate amps — one for guitar, one for bass. Marshall amps are the industry standard: they deliver warm, responsive tone, handle high volumes cleanly, and survive years of heavy use. Smaller rooms may have a single combo amp suitable for guitar or keyboards.</p>
+
+            <p><strong>Full drum kit</strong><br />
+            Because drums can't realistically be transported, every serious rehearsal room provides a complete kit. A standard setup includes a bass drum with pedal, snare drum, hi-hat with stand and pedal, crash and ride cymbals, and at least two toms. Drummers can adjust hi-hat height, snare tension, and cymbal angles to match their playing style.</p>
+
+            <p><strong>PA system</strong><br />
+            The PA consists of a mixer and a pair of speaker cabinets. It handles microphone signals and any line-level sources like keyboards or backing tracks. Better-equipped rooms add monitor speakers so vocalists can hear themselves clearly without relying on the main PA.</p>
+
+            <p><strong>Microphones with stands</strong><br />
+            Rehearsal rooms typically stock dynamic microphones (Shure SM58 or equivalent) — rugged, feedback-resistant, and well-suited to loud environments. They come pre-connected with XLR cables running to the PA mixer.</p>
+
+            <h2>What you should bring yourself</h2>
+            <p>Studios provide the backbone, but these items are always your responsibility:</p>
+            <ul>
+              <li><strong>Guitar or bass</strong> — studios don't lend instruments. Your instrument comes with you.</li>
+              <li><strong>Instrument cables</strong> — bring at least two. One to use, one spare. A dead cable ends rehearsal immediately.</li>
+              <li><strong>Tuner</strong> — a phone app works, but a clip-on tuner is far more reliable in a loud room.</li>
+              <li><strong>Drumsticks</strong> — drummers must bring their own, plus a spare pair in case one snaps.</li>
+              <li><strong>Picks</strong> — bring several. They vanish.</li>
+              <li><strong>Earplugs</strong> — rehearsal rooms run at 95-110 dB. Musicians' earplugs (flat-response plugs) reduce volume without killing the tone.</li>
+            </ul>
+            <p>For a complete pre-session checklist, see <a href={`/${lang}/blog/how-to-prepare-for-band-rehearsal`}>How to prepare for band rehearsal</a>.</p>
+
+            <h2>Equipment comparison: Thunder Studio rooms</h2>
+            <p>Thunder Studio has three rooms. Here's exactly what's in each one:</p>
+
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold">Equipment</th>
+                    <th class="px-5 py-3 font-semibold">Studio 1 (Large)</th>
+                    <th class="px-5 py-3 font-semibold">Studio 2 (Small)</th>
+                    <th class="px-5 py-3 font-semibold">Control Room</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">Guitar amp</td>
+                    <td class="px-5 py-3 text-gray-700">Marshall ✓</td>
+                    <td class="px-5 py-3 text-gray-700">Guitar amp ✓</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">Bass amp</td>
+                    <td class="px-5 py-3 text-gray-700">Marshall ✓</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">Full drum kit</td>
+                    <td class="px-5 py-3 text-gray-700">✓ (bass drum, snare, hi-hat, cymbals, toms)</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">PA system</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">Microphones + stands</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">Mixing console</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                  </tr>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">DAW workstation</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">Studio monitors</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                  </tr>
+                  <tr class="border-t border-gray-200">
+                    <td class="px-5 py-3 font-medium">Rack gear</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">—</td>
+                    <td class="px-5 py-3 text-gray-700">✓</td>
+                  </tr>
+                  <tr class="border-t border-gray-200 bg-gray-50">
+                    <td class="px-5 py-3 font-medium">Capacity</td>
+                    <td class="px-5 py-3 text-gray-700">6-10 musicians</td>
+                    <td class="px-5 py-3 text-gray-700">2-4 musicians</td>
+                    <td class="px-5 py-3 text-gray-700">1-3 people</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>See full details for each space: <a href={`/${lang}/rooms/large-room`}>Studio 1 (Large Room)</a>, <a href={`/${lang}/rooms/small-room`}>Studio 2 (Small Room)</a>, <a href={`/${lang}/rooms/control-room`}>Control Room</a>.</p>
+
+            <h2>How to use the equipment in a rehearsal room</h2>
+
+            <p><strong>Setting up a guitar or bass amp</strong><br />
+            Start with gain low, volume at midpoint, and all EQ knobs at noon (flat). From that neutral starting point, add what you need — more bass for a fuller guitar sound, slightly more gain for drive. Never crank the gain before you've heard the room's acoustics. Sudden high-gain signals can cause feedback and damage speakers.</p>
+
+            <p><strong>Adjusting the drum kit</strong><br />
+            Every drummer is a different height and has different preferences. Adjust hi-hat stand height, snare position, and cymbal angles before the session starts. Play lightly through the kit first to check that nothing is loose, and get a feel for the kick pedal — spring tension varies between kits and affects your playing significantly.</p>
+
+            <p><strong>Setting up the PA and microphones</strong><br />
+            Plug the XLR cable from the mic into the mixer channel, then open the channel. Start with the gain low, turn on the speakers, and raise the fader gradually until you reach the right level. If you hear feedback (a high-pitched squeal), lower the gain or move the microphone further from the speakers.</p>
+
+            <h2>Taking care of studio equipment</h2>
+            <p>Rehearsal room gear is shared by many musicians. These are the rules that keep everything working:</p>
+            <ul>
+              <li><strong>Don't crank amps past safe levels</strong> — amps pushed too hard distort badly and blow speakers. Use the volume you need to hear the band clearly, not maximum.</li>
+              <li><strong>Don't rearrange the drum kit without asking</strong> — if you need to move a cymbal stand or reposition the kit, check with staff first. Return everything to its original position before you leave.</li>
+              <li><strong>Report broken gear immediately</strong> — if you find a loose cable, a broken connector, or a cracked drumhead, tell the staff. Don't attempt repairs yourself.</li>
+              <li><strong>Unplug cables before switching off amps</strong> — disconnect instrument cables from the amp before powering down, and coil cables neatly when done.</li>
+              <li><strong>Turn everything off when you're done</strong> — power down amps, PA system, and any monitors before leaving the room.</li>
+            </ul>
+
+            <h2>Frequently asked questions about rehearsal room equipment</h2>
+
+            <p><strong>What equipment does a rehearsal room typically include?</strong><br />
+            Most rehearsal rooms provide guitar and bass amplifiers, a full drum kit, a PA system, and microphones with stands. The specific gear varies by studio size and tier.</p>
+
+            <p><strong>What should I bring to a rehearsal room?</strong><br />
+            Always bring your own instrument (guitar, bass, or keyboard — studios don't lend these), instrument cables, a tuner, drumsticks (if you're the drummer), picks, and earplugs for hearing protection.</p>
+
+            <p><strong>What is the difference between Studio 1 and Studio 2 at Thunder Studio?</strong><br />
+            Studio 1 is the large room for 6-10 musicians, with two Marshall amps (guitar and bass), a full drum kit, PA system, and microphones. Studio 2 is the small room for 2-4 people — it has a guitar amp, PA system, and microphones, ideal for solo practice or small groups.</p>
+
+            <p><strong>How do I set up a Marshall amp in a rehearsal room?</strong><br />
+            Start with gain low, volume at midpoint, and EQ flat (bass, mid, treble all at 5). Then adjust from that neutral baseline. Never crank gain to maximum without first checking the room's acoustics — it can cause unwanted feedback and damage speakers.</p>
+
+            <p><strong>Do I need earplugs for rehearsal?</strong><br />
+            Yes, especially for drummers and anyone standing close to the kit. Rehearsal room volume typically runs 95-110 dB, which can cause cumulative hearing damage. Musicians' earplugs (flat-response plugs) reduce volume without distorting the sound significantly.</p>
+
+            <p><strong>What is the Control Room at Thunder Studio used for?</strong><br />
+            The <a href={`/${lang}/rooms/control-room`}>Control Room</a> has a mixing console, DAW workstation, studio monitors, and rack gear. It's designed for recording, mixing, and post-production — different from a rehearsal room which focuses on live band practice.</p>
+
+            <p>Want a broader overview of how rehearsal rooms work? Read <a href={`/${lang}/blog/what-is-a-rehearsal-room`}>What is a music rehearsal room?</a></p>
+
+            <h2>Ready to book a room?</h2>
+            <p>Thunder Studio has rooms for every band size, with pro-grade gear at Bang Khen, Bangkok. Open daily 10:00 AM to 10:00 PM. Contact us for rates and availability.</p>
+
+          </div>
+        )}
+
+        <div class="reveal mt-12 text-center">
+          <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+
+  <style>
+    .prose-blog h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      color: var(--color-onyx);
+    }
+    .prose-blog p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 1rem;
+    }
+    .prose-blog ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose-blog li {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 0.35rem;
+    }
+    .prose-blog strong {
+      color: var(--color-onyx);
+      font-weight: 600;
+    }
+    .prose-blog a {
+      color: var(--color-onyx);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(15, 14, 14, 0.3);
+    }
+    .prose-blog a:hover {
+      text-decoration-color: var(--color-onyx);
+    }
+  </style>
+</Base>

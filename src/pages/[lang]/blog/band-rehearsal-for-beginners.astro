@@ -1,0 +1,409 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const datePublished = '2026-08-13';
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+
+const title = lang === 'th'
+  ? 'ซ้อมวงครั้งแรก: คู่มือสำหรับมือใหม่'
+  : "Band Rehearsal for Beginners: A Complete First-Timer's Guide";
+const description = lang === 'th'
+  ? 'ไม่เคยเข้าห้องซ้อมวงมาก่อน? คู่มือนี้บอกทุกอย่าง ตั้งแต่จะเจออะไรในห้อง ต้องเตรียมอะไรไป ไปจนถึงมารยาทพื้นฐานที่ควรรู้'
+  : 'Never been to a rehearsal room before? This guide walks you through everything — what to expect, what to bring, how the session flows, and common mistakes to avoid.';
+---
+
+<Base {title} {description} {lang} ogImage={`${IMG}/common-area-1.webp`}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thunder Studio",
+      "url": "https://thundermusicstudio.com",
+    },
+    "image": `${IMG}/common-area-1.webp`,
+    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/blog/band-rehearsal-for-beginners`,
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.blog'), "item": `https://thundermusicstudio.com/${lang}/blog` },
+      { "@type": "ListItem", "position": 3, "name": lang === 'th' ? 'ซ้อมวงครั้งแรก คู่มือมือใหม่' : 'Band Rehearsal for Beginners' },
+    ],
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": lang === 'th' ? [
+      {
+        "@type": "Question",
+        "name": "ซ้อมวงครั้งแรก ต้องเอาอะไรไปบ้าง?",
+        "acceptedAnswer": { "@type": "Answer", "text": "เอาเครื่องดนตรีของตัวเอง สายแจ็ค จูนเนอร์ และน้ำดื่มไป ห้องซ้อมมีกลอง แอมป์ และ PA ให้แล้ว ไม่ต้องลากแอมป์หนักๆ ไปด้วย" }
+      },
+      {
+        "@type": "Question",
+        "name": "ห้องซ้อมวงใช้ยังไง เริ่มต้นตรงไหน?",
+        "acceptedAnswer": { "@type": "Answer", "text": "แจ้งชื่อที่จองกับทีมงาน จากนั้นจะพาเข้าห้องและอธิบายอุปกรณ์ให้ เสียบสาย จูนเครื่อง แล้วก็เล่นได้เลย ถ้ามีอะไรไม่แน่ใจถามทีมงานได้ตลอด" }
+      },
+      {
+        "@type": "Question",
+        "name": "มือใหม่ควรจองห้องซ้อมกี่ชั่วโมง?",
+        "acceptedAnswer": { "@type": "Answer", "text": "2 ชั่วโมงเหมาะสำหรับครั้งแรก มีเวลา setup อุ่นเครื่อง และซ้อมเพลงได้ 3-5 เพลง ถ้าวงยังไม่คล่อง อย่าจองน้อยกว่า 2 ชั่วโมง เพราะจะรีบมาก" }
+      },
+      {
+        "@type": "Question",
+        "name": "กังวลว่าจะเล่นไม่ดีพอ เข้าห้องซ้อมได้เลยไหม?",
+        "acceptedAnswer": { "@type": "Answer", "text": "ได้เลย ห้องซ้อมไม่ได้มีไว้สำหรับนักดนตรีมืออาชีพอย่างเดียว วงมือใหม่ใช้ห้องซ้อมเพื่อฝึกเล่นด้วยกัน ไม่มีใครตัดสิน มาเล่นและเรียนรู้ไปพร้อมกันได้เลย" }
+      },
+      {
+        "@type": "Question",
+        "name": "ห้องซ้อมวงต่างจากการซ้อมที่บ้านยังไง?",
+        "acceptedAnswer": { "@type": "Answer", "text": "ห้องซ้อมมีระบบกันเสียง เล่นได้เต็มที่โดยไม่รบกวนใคร มีอุปกรณ์คุณภาพดีให้ครบ และบังคับให้วงมีวินัยเรื่องเวลา ต่างจากซ้อมที่บ้านซึ่งมักจะเล่นเบาหรือหยุดกลางคันตลอด" }
+      },
+      {
+        "@type": "Question",
+        "name": "ซ้อมวงบ่อยแค่ไหนถึงจะเห็นผล?",
+        "acceptedAnswer": { "@type": "Answer", "text": "สำหรับมือใหม่ สัปดาห์ละครั้งหรือทุก 2 สัปดาห์เหมาะมาก สิ่งสำคัญกว่าความถี่คือทุกคนต้องซ้อมส่วนตัวระหว่างสัปดาห์ด้วย ไม่งั้นเวลาในห้องซ้อมจะหมดไปกับการเรียนเพลงแทนที่จะเล่นด้วยกัน" }
+      },
+    ] : [
+      {
+        "@type": "Question",
+        "name": "What should a beginner bring to band rehearsal?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Bring your instrument, a cable, a tuner, and a water bottle. The studio provides drums, amps, and PA, so you don't need to haul heavy gear. Spare strings or drumsticks are a smart add." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does a rehearsal room session work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Check in at the front desk, and staff will show you the room and explain the equipment. Plug in, tune up, and you're ready to play. Staff are available throughout if you have questions." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long should beginners book a rehearsal room for?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Two hours is ideal for a first session. It gives you time to set up, warm up, and run through 3-5 songs without feeling rushed. Booking less than 2 hours leaves very little room for anything to go wrong." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do we need to be good to use a rehearsal studio?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not at all. Rehearsal rooms are for practicing, not performing. Beginner bands use studios all the time to learn how to play together. There's no judgment — just a good space to make noise and improve." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is a rehearsal studio different from practicing at home?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Studios are soundproofed so you can play at full volume without disturbing anyone. They have proper gear already set up, which means better sound and a more realistic experience than a bedroom jam." }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should a beginner band rehearse?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Once a week or every two weeks is a good start. More important than frequency is that everyone practices their own parts between sessions — otherwise rehearsal time gets eaten up relearning songs instead of playing them together." }
+      },
+    ],
+  })} />
+
+  <article class="bg-clinical text-onyx">
+    <section class="pt-28 pb-12">
+      <div class="max-w-[720px] mx-auto px-6">
+        <nav class="reveal text-[13px] text-gray-500 mb-8">
+          <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+          <span class="mx-2">/</span>
+          <span class="text-onyx font-medium">{t('breadcrumb.blog')}</span>
+        </nav>
+
+        <div class="reveal">
+          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
+            {lang === 'th' ? 'ซ้อมวงครั้งแรก: คู่มือสำหรับมือใหม่' : "Band Rehearsal for Beginners: A Complete First-Timer's Guide"}
+          </h1>
+          <p class="text-[17px] text-gray-600 mt-5 leading-relaxed max-w-xl">{description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-6">
+      <div class="max-w-[900px] mx-auto px-6">
+        <img
+          src={`${IMG}/common-area-1.webp`}
+          alt={lang === 'th' ? 'ห้องซ้อมดนตรี Thunder Studio บางเขน กรุงเทพ' : 'Thunder Studio rehearsal room Bang Khen Bangkok'}
+          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-[720px] mx-auto px-6">
+        {lang === 'th' ? (
+          <div class="prose-blog">
+
+            <p>ถ้านี่เป็นครั้งแรกที่คุณจะเข้าห้องซ้อมวง ความรู้สึกประหม่าเป็นเรื่องปกติมาก ไม่รู้ว่าจะเจออะไร ไม่รู้ว่าต้องทำยังไง กังวลว่าจะเล่นผิด ลืมอะไรไปหรือเปล่า คู่มือนี้เขียนสำหรับคุณโดยเฉพาะ อ่านจบแล้วจะเดินเข้าห้องซ้อมได้อย่างมั่นใจ</p>
+
+            <h2>ใครที่ควรใช้ห้องซ้อมวง</h2>
+            <p>ห้องซ้อมไม่ได้มีไว้แค่สำหรับวงดนตรีที่จริงจังหรือนักดนตรีมืออาชีพ คนกลุ่มนี้ได้ประโยชน์จากการใช้ห้องซ้อมมากที่สุด:</p>
+            <ul>
+              <li><strong>วงดนตรีที่ซ้อมที่บ้านมาสักพักแล้ว</strong> แต่เริ่มรู้สึกว่าพื้นที่คับแคบ เสียงดังรบกวนเพื่อนบ้าน หรือเล่นได้ไม่เต็มที่ ห้องซ้อมแก้ปัญหาทั้งหมดนี้ได้ทันที</li>
+              <li><strong>นักดนตรีที่อยากได้เสียงจริง</strong> การซ้อมกีตาร์ผ่านหูฟังหรือลำโพงเล็กๆ ให้ความรู้สึกต่างจากการเล่นผ่านแอมป์จริงๆ มาก บางทีการได้ยินเสียงตัวเองในห้องจริงช่วยให้พัฒนาได้เร็วกว่า</li>
+              <li><strong>กลุ่มที่กำลังเตรียมสำหรับงาน</strong> ไม่ว่าจะเป็นงานเปิดตัว งานโรงเรียน หรือแค่อยากเล่นให้เพื่อนฟัง การซ้อมในห้องที่มีเสียงเหมือนเวทีจริงช่วยให้ไม่ตื่นเต้นมากในวันจริง</li>
+              <li><strong>นักดนตรีเดี่ยวที่อยากซ้อมเพลงใหม่อย่างจริงจัง</strong> บางครั้งการจองห้องซ้อมเล็กๆ คนเดียวก็เพียงพอ ได้สมาธิ ได้เสียง ไม่ต้องเป็นห่วงอะไร</li>
+            </ul>
+            <p>ยังไม่แน่ใจว่าห้องซ้อมทำงานยังไง? ลองอ่าน <a href={`/${lang}/blog/what-is-a-rehearsal-room`}>ห้องซ้อมดนตรีคืออะไร</a> ก่อนได้เลย</p>
+
+            <h2>ครั้งแรกจะเจออะไรบ้าง</h2>
+            <p>ขั้นตอนของการเข้าห้องซ้อมไม่ซับซ้อนเลย แต่รู้ไว้ก่อนจะทำให้ผ่อนคลายกว่ามาก:</p>
+            <ul>
+              <li><strong>มาถึง</strong> แจ้งชื่อที่จองกับทีมงานหน้าเคาน์เตอร์ จะมีการเช็คชื่อและยืนยันเวลาที่จอง</li>
+              <li><strong>เข้าห้อง</strong> ทีมงานจะพาไปห้องและอธิบายอุปกรณ์คร่าวๆ ถ้ายังไม่เคยใช้กลองหรือแอมป์รุ่นนั้น ถามได้เลย ไม่มีคำถามที่โง่เกินไปในสายตาทีมงาน</li>
+              <li><strong>เห็นอุปกรณ์</strong> จะมีกลองชุดเต็ม แอมป์กีตาร์ Marshall แอมป์เบส และระบบ PA พร้อมไมค์ อุปกรณ์เหล่านี้อยู่ในตำแหน่งที่วางไว้แล้ว ไม่ต้องย้ายมาก</li>
+              <li><strong>ตั้งค่าอุปกรณ์</strong> เสียบสายแจ็ค ปรับระดับเสียงบนแอมป์ให้พอดี เริ่มจาก volume ต่ำๆ ก่อนแล้วค่อยๆ เพิ่ม จูนเครื่องดนตรีก่อนเริ่มเล่นทุกครั้ง</li>
+              <li><strong>เริ่มเล่น</strong> อุ่นเครื่องก่อนสัก 5-10 นาที แล้วเริ่มซ้อมเพลงที่เตรียมไว้</li>
+              <li><strong>เก็บของ</strong> เมื่อเวลาหมดหรือใกล้หมด ให้เก็บอุปกรณ์ส่วนตัวออก คืนห้องในสภาพเดิม ถ้าของสตูดิโอหล่นหรือมีปัญหาอะไรให้แจ้งทีมงาน</li>
+            </ul>
+
+            <h2>ต้องเตรียมอะไรไปบ้าง</h2>
+            <p>ที่ Thunder Studio อุปกรณ์หลักมีให้ครบ แต่สิ่งที่ควรพกไปเองมีดังนี้:</p>
+            <ul>
+              <li><strong>เครื่องดนตรีของตัวเอง</strong> กีตาร์ เบส หรืออะไรก็ตามที่เล่น มือกลองไม่ต้องแบกกลองไป ใช้ชุดของสตูดิโอได้เลย</li>
+              <li><strong>สายแจ็ค</strong> เตรียมสำรองสักเส้น สายขาดในห้องซ้อมทำให้หยุดกลางคัน</li>
+              <li><strong>จูนเนอร์</strong> แอปมือถือก็ได้ หรือ clip-on tuner ซึ่งแม่นกว่าในห้องที่มีเสียงดัง</li>
+              <li><strong>น้ำดื่ม</strong> เล่นดนตรี 2 ชั่วโมงแล้วหิวน้ำเยอะมาก</li>
+              <li><strong>รายชื่อเพลง</strong> แม้แต่แค่จดในมือถือก็พอ รู้ว่าจะซ้อมอะไรล่วงหน้าประหยัดเวลาในห้องได้มาก</li>
+              <li><strong>ปิ๊ก (สำหรับกีตาร์/เบส)</strong> เตรียมหลายอัน หายง่ายมาก</li>
+              <li><strong>ไม้กลองสำรอง</strong> ถ้าเล่นกลองให้พกไม้สำรองไปด้วยเสมอ</li>
+            </ul>
+            <p><strong>สิ่งที่ไม่ต้องเอาไป:</strong> แอมป์ของตัวเอง (มีให้แล้ว), อาหารเข้าห้อง (ห้ามนำเข้าห้องซ้อม), คนที่ไม่ได้ซ้อมด้วย (พื้นที่จำกัด)</p>
+
+            <h2>มารยาทพื้นฐานในห้องซ้อม</h2>
+            <p>ห้องซ้อมเป็นพื้นที่ใช้ร่วมกัน มีกฎไม่เยอะ แต่รู้ไว้ทำให้ทุกคนอยู่ด้วยกันได้สบาย:</p>
+            <ul>
+              <li><strong>ควบคุมระดับเสียง</strong> อย่าเริ่มที่ volume สูงสุดทันที ค่อยๆ ปรับขึ้น เสียงที่ดีไม่จำเป็นต้องดังมาก ถ้าเสียงดังเกินจนคุยกันในห้องไม่ได้ ให้ลดลง</li>
+              <li><strong>เคารพเวลา</strong> เริ่มและหยุดตรงเวลา ห้องถัดไปอาจมีคนรอใช้อยู่ แจ้งทีมงานถ้าอยากต่อเวลา</li>
+              <li><strong>ดูแลอุปกรณ์</strong> อย่าวางของหนักบนกลอง ไม่โยนไม้กลองหรือดีดสายแรงเกินไปโดยไม่จำเป็น ถ้าอะไรพังให้แจ้งทีมงานตรงๆ</li>
+              <li><strong>ทำความสะอาดก่อนออก</strong> เก็บขยะ เก็บสายแจ็คของตัวเอง วางทุกอย่างกลับที่เดิม</li>
+              <li><strong>ระวังเสียงรบกวนห้องข้าง</strong> ในสตูดิโอหลายแห่งห้องซ้อมอยู่ใกล้กัน เสียงกระแทกหนักๆ หรือเสียงตะโกนออกไปนอกห้องยังได้ยิน</li>
+            </ul>
+
+            <h2>ความผิดพลาดที่มือใหม่มักเจอ</h2>
+            <p>ผ่านมาแล้วหลายร้อยวง เรารู้ว่ามือใหม่ส่วนใหญ่ทำสิ่งเดียวกันผิดพลาด:</p>
+            <ul>
+              <li><strong>ไม่ได้เตรียม setlist</strong> มาถึงแล้วค่อยนั่งถกกันว่าจะซ้อมอะไร เสียเวลาในห้องไปเยอะมาก กำหนดรายชื่อเพลงก่อนวันซ้อมอย่างน้อย 1 วัน</li>
+              <li><strong>มาสาย</strong> เวลาเริ่มนับตั้งแต่เวลาที่จอง ไม่ใช่เวลาที่พร้อม ถ้าจอง 14:00 แล้วมาถึง 14:15 คุณเหลือเวลาแค่ 1:45 ชั่วโมง</li>
+              <li><strong>เล่นดังเกินไปตั้งแต่ต้น</strong> ห้องซ้อมกันเสียง แต่ไม่ได้แปลว่าต้องเล่นดังสุดตลอดเวลา เสียงที่บาลานซ์ดีฟังง่ายกว่าและเมื่อยน้อยกว่า</li>
+              <li><strong>ไม่อัดเสียงเลย</strong> ตั้งมือถือแล้วกด record ทันทีที่เริ่มซ้อม ไม่ต้องคุณภาพดี แค่ฟังกลับได้ก็พัฒนาได้เยอะมาก</li>
+              <li><strong>ซ้อมเพลงเดียวนานเกินไป</strong> ถ้าเพลงหนึ่งยังติดอยู่ จดปัญหาไว้แล้วย้ายไปเพลงถัดไปก่อน กลับมาตอนปลายเซสชัน ไม่งั้นจะซ้อมได้แค่เพลงเดียวทั้งคืน</li>
+              <li><strong>ยังไม่รู้จักพาร์ทตัวเองดีพอ</strong> ห้องซ้อมวงไม่ใช่ที่เรียนเพลงใหม่ ถ้าจำทำนองหรือคอร์ดยังไม่ได้ ซ้อมเดี่ยวที่ <a href={`/${lang}/rooms/small-room`}>Studio 2</a> ก่อน แล้วค่อยมาซ้อมรวมวง</li>
+            </ul>
+
+            <h2>มือใหม่ควรซ้อมบ่อยแค่ไหน</h2>
+            <p>ขึ้นอยู่กับเป้าหมายและระดับฝีมือ ลองดูตามสถานการณ์นี้:</p>
+            <ul>
+              <li><strong>เพิ่งเริ่มเล่น ยังไม่มีเพลงชัดเจน</strong> ทุก 2-3 สัปดาห์ก็พอ เน้นให้ทุกคนกลับไปซ้อมส่วนตัวระหว่างนั้น</li>
+              <li><strong>มีเพลง 4-5 เพลงแล้ว อยากให้แน่นขึ้น</strong> สัปดาห์ละครั้ง ซ้อม 2 ชั่วโมง จะเห็นพัฒนาการชัดภายใน 1 เดือน</li>
+              <li><strong>มีงานแสดงที่ต้องเตรียม</strong> ซ้อมสัปดาห์ละ 2 ครั้งในช่วง 3-4 สัปดาห์ก่อนงาน แล้วลดเหลือครั้งเดียวตอนสัปดาห์ก่อนงานเพื่อไม่ให้เหนื่อย</li>
+            </ul>
+            <p>สิ่งสำคัญกว่าความถี่คือคุณภาพของการซ้อม ซ้อม 2 ชั่วโมงอย่างมีสมาธิดีกว่าซ้อม 4 ชั่วโมงโดยไม่มีเป้าหมาย ถ้ายังไม่แน่ใจเรื่องขนาดห้อง ลองอ่าน <a href={`/${lang}/blog/choosing-room-size`}>คู่มือเลือกขนาดห้องซ้อม</a> ก่อนจอง</p>
+
+            <h2>คำถามที่พบบ่อยจากมือใหม่</h2>
+
+            <p><strong>ซ้อมวงครั้งแรก ต้องเอาอะไรไปบ้าง?</strong><br />
+            เอาเครื่องดนตรีของตัวเอง สายแจ็ค จูนเนอร์ และน้ำดื่มไป ห้องมีกลอง แอมป์ และ PA ให้แล้ว ไม่ต้องแบกแอมป์หนักๆ ไปเลย</p>
+
+            <p><strong>ห้องซ้อมวงใช้ยังไง เริ่มต้นตรงไหน?</strong><br />
+            แจ้งชื่อที่จองกับทีมงาน จากนั้นจะพาเข้าห้องและอธิบายอุปกรณ์ให้ เสียบสาย จูนเครื่อง แล้วก็เล่นได้เลย ถ้าไม่แน่ใจอะไรถามทีมงานได้ตลอดเวลา</p>
+
+            <p><strong>มือใหม่ควรจองห้องซ้อมกี่ชั่วโมง?</strong><br />
+            2 ชั่วโมงเหมาะสำหรับครั้งแรก มีเวลา setup อุ่นเครื่อง และซ้อมได้ 3-5 เพลง ถ้าจองน้อยกว่า 2 ชั่วโมงจะรีบมากและไม่ค่อยได้ประโยชน์</p>
+
+            <p><strong>กังวลว่าเล่นไม่ดีพอ เข้าห้องซ้อมได้เลยไหม?</strong><br />
+            ได้เลย ห้องซ้อมไม่ได้มีไว้แค่สำหรับนักดนตรีที่เก่งแล้ว วงมือใหม่ใช้ห้องซ้อมเพื่อฝึกเล่นด้วยกัน ไม่มีใครตัดสิน มาเล่นและเรียนรู้ไปพร้อมกันได้เลย</p>
+
+            <p><strong>ห้องซ้อมวงต่างจากซ้อมที่บ้านยังไง?</strong><br />
+            ห้องซ้อมมีระบบกันเสียง เล่นได้เต็มที่โดยไม่รบกวนใคร อุปกรณ์คุณภาพดีมีให้ครบ และบังคับให้วงมีวินัยเรื่องเวลา ต่างจากซ้อมที่บ้านซึ่งมักเล่นเบาหรือหยุดกลางคัน</p>
+
+            <p><strong>ซ้อมวงบ่อยแค่ไหนถึงจะเห็นผล?</strong><br />
+            สัปดาห์ละครั้งหรือทุก 2 สัปดาห์เหมาะสำหรับมือใหม่ สิ่งสำคัญกว่าความถี่คือทุกคนต้องซ้อมส่วนตัวระหว่างสัปดาห์ด้วย ถ้าไม่งั้นเวลาในห้องจะหมดไปกับการเรียนเพลงแทน</p>
+
+            <h2>พร้อมแล้ว ขั้นต่อไปคืออะไร?</h2>
+            <p>ถ้าอ่านมาถึงตรงนี้ คุณรู้มากกว่าวงมือใหม่ส่วนใหญ่แล้ว ขั้นต่อไปง่ายมาก:</p>
+            <ul>
+              <li>เลือกห้องที่เหมาะกับขนาดวง: <a href={`/${lang}/rooms/large-room`}>Studio 1 (ห้องใหญ่)</a> สำหรับ 4+ คน หรือ <a href={`/${lang}/rooms/small-room`}>Studio 2 (ห้องเล็ก)</a> สำหรับ 2-3 คน</li>
+              <li>ยังไม่แน่ใจว่าห้องไหนเหมาะ? อ่าน <a href={`/${lang}/blog/choosing-room-size`}>คู่มือเลือกขนาดห้องซ้อม</a></li>
+              <li>พอรู้จักห้องซ้อมแล้ว ครั้งต่อไปอ่าน <a href={`/${lang}/blog/how-to-prepare-for-band-rehearsal`}>วิธีเตรียมตัวก่อนซ้อมวง</a> เพื่อให้ได้ประโยชน์สูงสุดจากทุกเซสชัน</li>
+            </ul>
+            <p>Thunder Studio เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ ติดต่อสอบถามราคาและจองได้เลย</p>
+
+          </div>
+        ) : (
+          <div class="prose-blog">
+
+            <p>If this is your first time booking a rehearsal room, feeling unsure is completely normal. You don't know what to expect, what to do when you get there, or what you might forget. This guide is written specifically for you. By the time you finish reading, you'll walk into your first session ready to play.</p>
+
+            <h2>Who actually needs a rehearsal room</h2>
+            <p>Rehearsal rooms aren't just for serious bands or professional musicians. These are the people who get the most out of them:</p>
+            <ul>
+              <li><strong>Bands who've outgrown bedroom practice</strong> — if you're running into noise complaints, cramped space, or you can never play at real volume, a rehearsal room solves all of that immediately.</li>
+              <li><strong>Musicians who want to hear their actual sound</strong> — playing guitar through headphones or a tiny speaker feels nothing like playing through a proper amp. Hearing yourself in a real room accelerates improvement faster than most people expect.</li>
+              <li><strong>Groups preparing for a gig</strong> — whether it's a school event, an open mic, or a private party, rehearsing in a room that sounds like a stage takes the edge off on the day itself.</li>
+              <li><strong>Solo musicians who want focused practice time</strong> — booking a small room by yourself gives you acoustic space, proper sound, and no distractions. Sometimes that's all you need.</li>
+            </ul>
+            <p>Not sure what a rehearsal room actually is? Read <a href={`/${lang}/blog/what-is-a-rehearsal-room`}>What is a music rehearsal room?</a> first — it covers the concept, equipment, and how it compares to practicing at home.</p>
+
+            <h2>What to expect on your first visit</h2>
+            <p>The flow of a rehearsal session is straightforward. Knowing it in advance makes the whole thing feel less daunting:</p>
+            <ul>
+              <li><strong>Arrive</strong> — check in at the front desk with the name on your booking. Staff confirm your time slot and room.</li>
+              <li><strong>Enter the room</strong> — someone will walk you in and briefly explain what's set up. If you've never used a particular amp or drum kit before, ask. There are no stupid questions here.</li>
+              <li><strong>See the equipment</strong> — a full drum kit, Marshall guitar amp, bass amp, PA system, and mic will already be in position. You don't need to move much.</li>
+              <li><strong>Set up</strong> — plug in your cables, set amp volumes low, and tune your instruments. Always start quiet and work up — it's easier to add volume than to recover from blowing everyone's ears out on the first chord.</li>
+              <li><strong>Play</strong> — warm up for 5-10 minutes, then work through the songs you planned.</li>
+              <li><strong>Pack up</strong> — when your time is up or close to it, collect your gear and leave the room as you found it. If anything broke or was already damaged when you arrived, let staff know.</li>
+            </ul>
+
+            <h2>What to bring — and what to leave at home</h2>
+            <p>Thunder Studio provides the core gear. Here's what you should bring yourself:</p>
+            <ul>
+              <li><strong>Your instrument</strong> — guitar, bass, violin, whatever you play. Drummers don't need to bring a kit — the studio's is already set up.</li>
+              <li><strong>Instrument cables</strong> — bring at least one spare. A dead cable mid-session can stop everything.</li>
+              <li><strong>Tuner</strong> — a phone app works fine, or a clip-on tuner for better accuracy in a loud room.</li>
+              <li><strong>Water</strong> — two hours of playing means you'll get through more than you think.</li>
+              <li><strong>A song list</strong> — even notes on your phone. Knowing what you're rehearsing in advance saves significant time.</li>
+              <li><strong>Picks (guitarists/bassists)</strong> — bring several. They vanish.</li>
+              <li><strong>Spare drumsticks</strong> — if you're drumming, always carry a backup pair.</li>
+            </ul>
+            <p><strong>What not to bring:</strong> your own amp (one is already there), food into the room (not permitted), guests who aren't playing (space is limited).</p>
+
+            <h2>Basic rehearsal etiquette</h2>
+            <p>Rehearsal rooms are shared spaces. The rules are minimal, but they matter for everyone using the building:</p>
+            <ul>
+              <li><strong>Manage your volume</strong> — don't open at maximum volume. Work up gradually. Good sound doesn't require being painfully loud. If you can't hold a conversation in the room, it's probably too loud.</li>
+              <li><strong>Respect the time</strong> — start and stop when your booking says. Another band may be waiting. If you want to extend, ask staff before your slot ends.</li>
+              <li><strong>Handle equipment carefully</strong> — don't rest heavy things on the drum kit, don't slam stands or throw sticks. If something breaks, report it honestly.</li>
+              <li><strong>Clean up before you leave</strong> — take your rubbish, coil your cables, return anything you moved to its original position.</li>
+              <li><strong>Watch wall and floor noise</strong> — studios often share walls. Heavy impacts and shouting travel in ways amplified sound doesn't.</li>
+            </ul>
+
+            <h2>Common first-timer mistakes</h2>
+            <p>After seeing hundreds of first sessions, these are the patterns that come up again and again:</p>
+            <ul>
+              <li><strong>No setlist</strong> — arriving without knowing what to rehearse and spending 20 minutes debating it. Decide the song list at least a day before.</li>
+              <li><strong>Arriving on time instead of early</strong> — your paid time starts at the booking hour, not when you're ready to play. Arriving at exactly 2pm means setup eats into your session. Come 10-15 minutes early.</li>
+              <li><strong>Starting too loud</strong> — blasting from the first note makes everything harder to hear, and you'll tire out faster. Start lower, balance the instruments, then adjust.</li>
+              <li><strong>Not recording the session</strong> — set your phone on a stand and hit record from minute one. You'll hear timing issues and balance problems you simply can't notice while playing.</li>
+              <li><strong>Getting stuck on one song</strong> — if a section isn't working after three tries, write down the problem and move on. Come back to it at the end. Otherwise one song eats the whole session.</li>
+              <li><strong>Not knowing your own part yet</strong> — rehearsal rooms are for playing together, not for learning songs individually. If you don't know your parts yet, book <a href={`/${lang}/rooms/small-room`}>Studio 2</a> for solo practice first, then come back for the full band session.</li>
+            </ul>
+
+            <h2>How often should beginners rehearse</h2>
+            <p>It depends on where you are and what you're working toward:</p>
+            <ul>
+              <li><strong>Just starting, no set repertoire yet</strong> — every 2-3 weeks is enough. Focus on individual practice between sessions so nobody shows up needing to re-learn everything.</li>
+              <li><strong>4-5 songs in progress, want to tighten them up</strong> — once a week, 2 hours per session. You'll notice clear improvement within a month.</li>
+              <li><strong>Preparing for a performance</strong> — twice a week for the 3-4 weeks before the date, then drop back to once per week in the final week to avoid burning out before the show.</li>
+            </ul>
+            <p>Quality beats quantity. Two focused hours does more than four hours of aimless noodling. Not sure which room fits your band size? Read the <a href={`/${lang}/blog/choosing-room-size`}>rehearsal room size guide</a> before you book.</p>
+
+            <h2>Frequently asked questions from first-timers</h2>
+
+            <p><strong>What should a beginner bring to band rehearsal?</strong><br />
+            Your instrument, a cable, a tuner, and water. The studio provides drums, amps, and a PA system — no need to haul heavy gear. Pack spare strings, picks, or drumsticks if you have them.</p>
+
+            <p><strong>How does a rehearsal room session actually work?</strong><br />
+            Check in at the desk with your booking name, get shown to the room, plug in, tune, and play. Staff are around the whole time if something isn't working or you have questions.</p>
+
+            <p><strong>How long should beginners book?</strong><br />
+            Two hours is the sweet spot for a first session. Enough time to set up, warm up, and run through 3-5 songs without it feeling rushed. Under 2 hours leaves very little room for anything to go sideways.</p>
+
+            <p><strong>Do we need to be good to use a rehearsal studio?</strong><br />
+            Not at all. Studios exist for practicing, not performing. Beginner bands use them all the time to figure out how to play together. There's no judgment — just a proper space to make noise and get better.</p>
+
+            <p><strong>How is a rehearsal studio different from practicing at home?</strong><br />
+            Studios are soundproofed, so you can play at full volume without complaints. The gear is already set up and sounds good. And booking a room creates a time commitment that home practice rarely has.</p>
+
+            <p><strong>How often should a beginner band rehearse to improve?</strong><br />
+            Once a week or every two weeks works well to start. More important is that everyone practices their parts solo between sessions. If nobody practices at home, the rehearsal room just becomes where you slowly learn songs — which is expensive.</p>
+
+            <h2>Ready to book your first session?</h2>
+            <p>You now know more than most first-timers who walk through the door. Here's what to do next:</p>
+            <ul>
+              <li>Pick the room that fits your band: <a href={`/${lang}/rooms/large-room`}>Studio 1 (large room)</a> for 4+ musicians, or <a href={`/${lang}/rooms/small-room`}>Studio 2 (small room)</a> for 2-3 people.</li>
+              <li>Still not sure which room to pick? Read the <a href={`/${lang}/blog/choosing-room-size`}>room size guide</a>.</li>
+              <li>Once you've got your first session under your belt, read <a href={`/${lang}/blog/how-to-prepare-for-band-rehearsal`}>how to prepare for band rehearsal</a> to start getting more out of every session.</li>
+            </ul>
+            <p>Thunder Studio is open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok. Contact us for rates and availability.</p>
+
+          </div>
+        )}
+
+        <div class="reveal mt-12 text-center">
+          <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+
+  <style>
+    .prose-blog h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      color: var(--color-onyx);
+    }
+    .prose-blog p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 1rem;
+    }
+    .prose-blog ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose-blog li {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 0.35rem;
+    }
+    .prose-blog strong {
+      color: var(--color-onyx);
+      font-weight: 600;
+    }
+    .prose-blog a {
+      color: var(--color-onyx);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(15, 14, 14, 0.3);
+    }
+    .prose-blog a:hover {
+      text-decoration-color: var(--color-onyx);
+    }
+  </style>
+</Base>

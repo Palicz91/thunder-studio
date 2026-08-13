@@ -1,0 +1,351 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const datePublished = '2026-08-13';
+const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+
+const title = lang === 'th'
+  ? 'มิกซ์เสียงและมาสเตอร์คืออะไร: สิ่งที่นักดนตรีต้องรู้'
+  : 'Mixing and Mastering: What Musicians Need to Know';
+const description = lang === 'th'
+  ? 'อธิบายความต่างระหว่าง mixing กับ mastering ตั้งแต่ต้น เข้าใจขั้นตอนหลังอัดเสียง เตรียม stems ยังไง และควรรู้อะไรก่อนจอง Control Room ที่บางเขน'
+  : 'A clear explanation of mixing and mastering for musicians: what each stage does, how they differ, what to prepare, and common mistakes to avoid before booking a session.';
+---
+
+<Base {title} {description} {lang} ogImage={`${IMG}/control-room-1.webp`}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thunder Studio",
+      "url": "https://thundermusicstudio.com",
+    },
+    "image": `${IMG}/control-room-1.webp`,
+    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/blog/mixing-mastering-guide`,
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": t('breadcrumb.blog'), "item": `https://thundermusicstudio.com/${lang}/blog` },
+      { "@type": "ListItem", "position": 3, "name": lang === 'th' ? 'มิกซ์เสียงและมาสเตอร์คืออะไร' : 'Mixing and Mastering Guide' },
+    ],
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": lang === 'th' ? [
+      { "@type": "Question", "name": "Mixing กับ mastering ต่างกันยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "Mixing คือการปรับสมดุลแต่ละ track ให้เข้ากัน เช่น ระดับเสียง, EQ, compression, reverb ส่วน mastering คือการขัดเสียงรวมสุดท้ายให้ดังสม่ำเสมอและพร้อมปล่อย ทำต่างกรรมต่างวาระ บน file คนละประเภทกัน" }},
+      { "@type": "Question", "name": "ข้ามขั้นตอน mastering ได้ไหม?", "acceptedAnswer": { "@type": "Answer", "text": "ข้ามได้ แต่เสียงที่อัพโหลดไปยัง Spotify หรือ YouTube จะดังน้อยกว่าเพลงอื่นในเพลย์ลิสต์ และเสียงจะฟังดูไม่ finished บน speaker ทุกรูปแบบ mastering ใช้เวลาไม่นาน คุ้มค่ากับผลที่ได้" }},
+      { "@type": "Question", "name": "ต้องส่งไฟล์แบบไหนให้ mixing engineer?", "acceptedAnswer": { "@type": "Answer", "text": "ส่ง stems แยกทีละ track ในรูปแบบ WAV 24-bit ไม่ใส่ effect master bus ไม่ normalize ไม่ compress รวม ระบุ tempo และ time signature มาด้วย ยิ่ง clean ยิ่งทำงานได้ดี" }},
+      { "@type": "Question", "name": "Mixing ใช้เวลานานแค่ไหนต่อเพลง?", "acceptedAnswer": { "@type": "Answer", "text": "เพลงวงร็อคทั่วไปที่มี 8-16 tracks ใช้เวลา mixing ประมาณ 4-8 ชั่วโมง ขึ้นอยู่กับความซับซ้อนของเพลงและจำนวน revision ที่ต้องการ mastering ต่อเพลงใช้เวลาประมาณ 1-2 ชั่วโมง" }},
+      { "@type": "Question", "name": "ทำ mixing เองบนแล็ปท็อปได้ไหม?", "acceptedAnswer": { "@type": "Answer", "text": "ทำได้ แต่ปัญหาหลักคือ speaker ของแล็ปท็อปและหูฟังทั่วไปให้ภาพเสียงที่บิดเบือน การ mix บน monitor ที่ flat response ในห้องที่ acoustic treatment ดีให้ผลต่างกันมาก" }},
+      { "@type": "Question", "name": "ราคา mixing mastering ที่ Thunder Studio เท่าไหร่?", "acceptedAnswer": { "@type": "Answer", "text": "ติดต่อสอบถามราคาได้ที่ 063-546-1924 หรือ LINE @thunderstudio ราคาขึ้นอยู่กับจำนวน track และ revision ที่ต้องการ" }},
+    ] : [
+      { "@type": "Question", "name": "What is the difference between mixing and mastering?", "acceptedAnswer": { "@type": "Answer", "text": "Mixing balances individual tracks — adjusting levels, EQ, compression, and effects so each element fits together. Mastering is the final stage applied to the complete stereo mix: polishing loudness, consistency, and preparing the file for release. They are separate processes done on different file types." }},
+      { "@type": "Question", "name": "Can I skip mastering?", "acceptedAnswer": { "@type": "Answer", "text": "You can, but your track will sound quieter than other songs on streaming playlists and will not translate consistently across speakers and headphones. Mastering takes relatively little time and makes a significant difference to how finished your music sounds." }},
+      { "@type": "Question", "name": "What files do I need to send for mixing?", "acceptedAnswer": { "@type": "Answer", "text": "Send individual stems as 24-bit WAV files. Do not apply master bus compression, normalize, or add limiter to the export. Include tempo and time signature. The cleaner the stems, the better the result." }},
+      { "@type": "Question", "name": "How long does mixing take per song?", "acceptedAnswer": { "@type": "Answer", "text": "A typical rock band song with 8-16 tracks takes around 4-8 hours to mix, depending on complexity and the number of revisions requested. Mastering usually takes 1-2 hours per track." }},
+      { "@type": "Question", "name": "Can I mix on my laptop myself?", "acceptedAnswer": { "@type": "Answer", "text": "You can, but laptop speakers and consumer headphones give a distorted picture of the sound. Mixing on flat-response studio monitors in an acoustically treated room produces significantly more accurate and consistent results." }},
+      { "@type": "Question", "name": "How much does mixing and mastering cost at Thunder Studio?", "acceptedAnswer": { "@type": "Answer", "text": "Contact us at 063-546-1924 or LINE @thunderstudio for rates. Pricing depends on the number of tracks and revisions required." }},
+    ],
+  })} />
+
+  <article class="bg-clinical text-onyx">
+    <section class="pt-28 pb-12">
+      <div class="max-w-[720px] mx-auto px-6">
+        <nav class="reveal text-[13px] text-gray-500 mb-8">
+          <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+          <span class="mx-2">/</span>
+          <span class="text-onyx font-medium">{t('breadcrumb.blog')}</span>
+        </nav>
+
+        <div class="reveal">
+          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
+            {lang === 'th' ? 'มิกซ์เสียงและมาสเตอร์คืออะไร: สิ่งที่นักดนตรีต้องรู้' : 'Mixing and Mastering: What Musicians Need to Know'}
+          </h1>
+          <p class="text-[17px] text-gray-600 mt-5 leading-relaxed max-w-xl">{description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-6">
+      <div class="max-w-[900px] mx-auto px-6">
+        <img
+          src={`${IMG}/control-room-1.webp`}
+          alt={lang === 'th' ? 'Control Room Thunder Studio สำหรับมิกซ์เสียงและมาสเตอร์ บางเขน' : 'Thunder Studio Control Room for mixing and mastering in Bangkok'}
+          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="max-w-[720px] mx-auto px-6">
+        {lang === 'th' ? (
+          <div class="prose-blog">
+
+            <div class="my-6 bg-gray-50 border border-gray-200 rounded-xl px-6 py-5">
+              <p class="!mb-0"><strong>สั้นๆ:</strong> Mixing คือการปรับสมดุลแต่ละ track ในเพลงให้เข้ากัน ทั้งระดับเสียง, EQ, compression และ effects ส่วน mastering คือขั้นตอนสุดท้ายที่ขัดเสียงรวมให้สมบูรณ์ ปรับ loudness และเตรียมไฟล์สำหรับการปล่อย ทั้งสองขั้นตอนนี้ต่างกันและทำต่างกรรมต่างวาระ</p>
+            </div>
+
+            <h2>Mixing คืออะไร</h2>
+            <p>หลังจากอัดเสียงทุก track เสร็จแล้ว ไฟล์ดิบที่ได้จะยังฟังดูไม่สมดุล กลองดังเกินไป เสียงร้องเบาเกินไป กีตาร์สองตัวทับกันจนแยกไม่ออก นั่นคือสิ่งที่ mixing แก้</p>
+            <p>Mixing engineer จะเปิดทุก track พร้อมกันใน DAW แล้วปรับ:</p>
+            <ul>
+              <li><strong>ระดับเสียง (Levels)</strong> ให้แต่ละ instrument ดังพอดีกัน</li>
+              <li><strong>Panning</strong> กระจายเสียงซ้ายขวาให้กว้างและไม่ทับซ้อน</li>
+              <li><strong>EQ</strong> ตัดความถี่ที่ไม่ต้องการออก เพิ่มความถี่ที่ทำให้เสียงชัดขึ้น</li>
+              <li><strong>Compression</strong> ควบคุม dynamic ให้เสียงสม่ำเสมอ ไม่หนักเบาเกินไป</li>
+              <li><strong>Effects</strong> ใส่ reverb, delay หรือ chorus ตามที่เพลงต้องการ</li>
+            </ul>
+            <p>ผลลัพธ์ของ mixing คือไฟล์ stereo mix เดียวที่ทุก track ฟังดูเป็นเพลงเดียวกัน ก่อนผ่าน mixing เสียงดิบจากห้องอัดจะฟังดูแห้ง ไม่สมดุล และแยกส่วนกัน</p>
+            <p>ที่ <a href={`/${lang}/rooms/control-room`}>Control Room</a> ของ Thunder Studio มีมิกซ์คอนโซล, studio monitors คุณภาพสูง และ DAW workstation พร้อมสำหรับงาน mixing</p>
+
+            <h2>Mastering คืออะไร</h2>
+            <p>Mastering คือขั้นตอนสุดท้ายก่อนปล่อยเพลง ทำบน stereo mix ที่ผ่าน mixing มาแล้ว ไม่ใช่บน individual tracks</p>
+            <p>Mastering engineer จะ:</p>
+            <ul>
+              <li><strong>ปรับ loudness</strong> ให้เพลงดังเหมาะกับมาตรฐาน streaming เช่น Spotify ที่ใช้ LUFS -14</li>
+              <li><strong>ทำให้สม่ำเสมอ</strong> ถ้ามีหลายเพลงในอัลบั้ม แต่ละเพลงจะดังและฟังดูใกล้เคียงกัน</li>
+              <li><strong>ตรวจสอบบน speaker หลายแบบ</strong> ให้เสียงดีทั้งบน Bluetooth speaker, หูฟัง และในรถ</li>
+              <li><strong>เตรียม format ที่ถูกต้อง</strong> สำหรับ platform ต่างๆ เช่น WAV สำหรับ master, MP3 สำหรับ streaming</li>
+            </ul>
+            <p>ความต่างจาก mixing คือ mastering ไม่แตะ track ของแต่ละ instrument แต่ปรับเพลงโดยรวม เหมือนขัดกระดาษทรายสุดท้ายก่อนส่งงาน</p>
+
+            <h2>เปรียบเทียบ Mixing vs Mastering</h2>
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold">ด้าน</th>
+                    <th class="px-5 py-3 font-semibold">Mixing</th>
+                    <th class="px-5 py-3 font-semibold">Mastering</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Input</td><td class="px-5 py-3 text-gray-700">หลาย tracks แยกกัน (stems)</td><td class="px-5 py-3 text-gray-700">Stereo mix ที่ผ่าน mixing แล้ว</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Output</td><td class="px-5 py-3 text-gray-700">Stereo mix ไฟล์เดียว</td><td class="px-5 py-3 text-gray-700">ไฟล์สำเร็จรูปพร้อมปล่อย</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">เครื่องมือ</td><td class="px-5 py-3 text-gray-700">Fader, EQ, compressor, reverb, delay</td><td class="px-5 py-3 text-gray-700">Multiband compressor, limiter, metering tools</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">ผู้ทำ</td><td class="px-5 py-3 text-gray-700">Mixing engineer</td><td class="px-5 py-3 text-gray-700">Mastering engineer</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">เวลา</td><td class="px-5 py-3 text-gray-700">4-8 ชั่วโมงต่อเพลง</td><td class="px-5 py-3 text-gray-700">1-2 ชั่วโมงต่อเพลง</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">จุดเน้น</td><td class="px-5 py-3 text-gray-700">สมดุลและพื้นที่เสียงของแต่ละ instrument</td><td class="px-5 py-3 text-gray-700">Loudness, consistency, format ที่ถูกต้อง</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>ขั้นตอนจากอัดเสียงถึงปล่อยเพลง</h2>
+            <p>งาน post-production มีลำดับขั้นตอนชัดเจน ข้ามขั้นไม่ได้:</p>
+            <ol class="list-decimal pl-6 mb-4 space-y-2 text-[1rem] leading-[1.85] text-[rgba(15,14,14,0.75)]">
+              <li><strong>Recording (Tracking)</strong> อัดเสียงแต่ละ instrument แยก track เก็บไว้</li>
+              <li><strong>Editing</strong> ตัดเสียงที่ไม่ต้องการออก จัดเวลา timing ให้แม่น ตัด noise</li>
+              <li><strong>Mixing</strong> ปรับสมดุล EQ compression effects ของทุก track ให้เป็นเพลงเดียวกัน</li>
+              <li><strong>Mastering</strong> ขัดเสียงรวมสุดท้าย ปรับ loudness เตรียม format</li>
+              <li><strong>Export สำหรับปล่อย</strong> WAV 16-bit 44.1kHz สำหรับ streaming, หรือตาม spec ของ platform</li>
+            </ol>
+            <p>อ่านเรื่องการเตรียมตัวก่อนเข้าห้องอัดได้ที่ <a href={`/${lang}/blog/recording-studio-guide`}>คู่มืออัดเสียงครั้งแรก</a></p>
+
+            <h2>เตรียมอะไรก่อน mixing session</h2>
+            <p>ถ้าจะเข้า session mixing ที่ Thunder Studio หรือส่งไฟล์ให้ engineer มีของที่ต้องเตรียม:</p>
+            <ul>
+              <li><strong>Stems แยก track</strong> ไฟล์ WAV 24-bit แต่ละ instrument แยกกัน ไม่ mix รวม ไม่ normalize ไม่ใส่ limiter บน master bus</li>
+              <li><strong>Reference tracks</strong> เพลงที่อยากให้เสียงออกมาคล้าย 2-3 เพลง ยิ่ง specific ยิ่งดี เช่น "อยากได้กลองแบบนี้ แต่กีตาร์แบบนั้น"</li>
+              <li><strong>Notes เรื่องเสียงที่ต้องการ</strong> บอก engineer ว่าเพลงนี้อยากได้ feel แบบไหน อยากเน้น instrument อะไร อยากให้เสียงร้องอยู่ตรงไหนใน mix</li>
+              <li><strong>Tempo และ time signature</strong> ระบุมาใน session file หรือใน notes</li>
+            </ul>
+
+            <h2>ข้อผิดพลาดที่นักดนตรีทำบ่อย</h2>
+            <ul>
+              <li><strong>ข้าม mastering</strong> หลายคนคิดว่า mixing เสร็จแล้วก็ปล่อยได้เลย แต่เพลงที่ไม่ผ่าน mastering จะดังน้อยกว่าเพลงอื่นใน playlist และฟังดูไม่ finished</li>
+              <li><strong>Mix เองด้วยหูฟังหรือ laptop speaker</strong> หูฟังทั่วไปให้เสียง bass มากหรือน้อยผิดจากความเป็นจริง laptop speaker ตัด low end ออกเกือบหมด ผลคือ mix ที่ฟังดีในหูฟังจะฟังไม่ดีบน speaker จริง</li>
+              <li><strong>ไม่ส่ง reference track</strong> engineer จะต้องเดาว่าคุณอยากได้เสียงแบบไหน เสียเวลา revision หลายรอบ</li>
+              <li><strong>คาดหวังว่า mixing จะแก้การบันทึกที่ไม่ดี</strong> mixing ปรับ balance ได้ แต่แก้ intonation ผิด, timing หลวม หรือเสียงห้องที่ไม่ดีไม่ได้ ต้องอัดใหม่</li>
+              <li><strong>ส่ง stems ที่ compress หนักหรือ clip</strong> ถ้า track ดังเกินจน waveform แบน engineer ไม่มีช่องว่างให้ปรับ ส่งไฟล์ที่ headroom เหลือพอ</li>
+            </ul>
+
+            <h2>คำถามที่ถามบ่อย</h2>
+            <p><strong>Mixing กับ mastering ต่างกันยังไง?</strong><br />Mixing ปรับแต่ละ track ให้เข้ากัน mastering ขัดเสียงรวมสุดท้าย ทำต่างกรรมต่างวาระบน file คนละประเภท</p>
+            <p><strong>ข้ามขั้นตอน mastering ได้ไหม?</strong><br />ข้ามได้แต่ไม่แนะนำ เพลงจะดังน้อยกว่าคนอื่นบน streaming และฟังดูไม่ finished บน speaker หลายแบบ mastering ใช้เวลาน้อย คุ้มกับผลลัพธ์ที่ได้</p>
+            <p><strong>ต้องส่งไฟล์แบบไหนให้ mixing engineer?</strong><br />Stems แยก track รูปแบบ WAV 24-bit ไม่ normalize ไม่ compress master bus ระบุ tempo และ time signature มาด้วย</p>
+            <p><strong>Mixing ใช้เวลานานแค่ไหนต่อเพลง?</strong><br />เพลงวงที่มี 8-16 tracks ใช้เวลาประมาณ 4-8 ชั่วโมง ขึ้นอยู่กับความซับซ้อนและจำนวน revision ที่ต้องการ</p>
+            <p><strong>ทำ mixing เองบนแล็ปท็อปได้ไหม?</strong><br />ทำได้ แต่ laptop speaker และหูฟังทั่วไปให้ภาพเสียงที่บิดเบือน mix บน monitor ที่ flat response ในห้องที่ acoustic ดีให้ผลต่างกันมาก</p>
+            <p><strong>ราคา mixing mastering ที่ Thunder Studio เท่าไหร่?</strong><br />ติดต่อสอบถามราคาได้ที่ 063-546-1924 หรือ LINE @thunderstudio ราคาขึ้นอยู่กับจำนวน track และ revision</p>
+
+            <p>ยังไม่ได้เลือกสตูดิโอ? อ่าน <a href={`/${lang}/blog/how-to-choose-recording-studio`}>วิธีเลือกสตูดิโอบันทึกเสียง</a> เพื่อเช็คอุปกรณ์ อคูสติก และสัญญาณเตือนก่อนจอง หรือดู<a href={`/${lang}/services`}>บริการทั้งหมด</a>ของ Thunder Studio</p>
+
+            <h2>พร้อมเริ่ม mixing แล้ว?</h2>
+            <p>Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> พร้อมมิกซ์คอนโซล, studio monitors และ DAW workstation สำหรับงาน mixing และ mastering ครบจบที่เดียว เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ</p>
+          </div>
+        ) : (
+          <div class="prose-blog">
+
+            <div class="my-6 bg-gray-50 border border-gray-200 rounded-xl px-6 py-5">
+              <p class="!mb-0"><strong>In short:</strong> Mixing balances the individual tracks in your recording — adjusting levels, EQ, compression, and effects so everything works together. Mastering is the final stage that polishes the complete stereo mix, sets loudness for streaming, and prepares files for release. They are separate processes, done in sequence, on different file types.</p>
+            </div>
+
+            <h2>What is mixing?</h2>
+            <p>After you finish recording, the raw tracks don't sound like a finished song. The drums might be overwhelming, the vocals too quiet, two guitars muddying each other. Mixing is the process that fixes this.</p>
+            <p>A mixing engineer opens all your individual tracks in a DAW and works through:</p>
+            <ul>
+              <li><strong>Levels</strong> — balancing each instrument so nothing dominates or disappears</li>
+              <li><strong>Panning</strong> — placing instruments across the stereo field so they have space</li>
+              <li><strong>EQ</strong> — cutting unwanted frequencies, boosting the characteristics that make each instrument clear</li>
+              <li><strong>Compression</strong> — controlling dynamics so performances feel consistent and controlled</li>
+              <li><strong>Effects</strong> — adding reverb, delay, chorus, or other treatments that serve the song</li>
+            </ul>
+            <p>The result of mixing is a single stereo mix file where all your tracks sound like one cohesive song. Before mixing, raw recorded tracks sound dry, imbalanced, and disconnected from each other.</p>
+            <p>Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> is set up for professional mixing with a mixing console, calibrated studio monitors, and a full DAW workstation.</p>
+
+            <h2>What is mastering?</h2>
+            <p>Mastering is the last step before you release music. It works on the complete stereo mix that came out of mixing — not on individual tracks.</p>
+            <p>A mastering engineer will:</p>
+            <ul>
+              <li><strong>Set loudness</strong> to match streaming platform standards (Spotify targets around -14 LUFS)</li>
+              <li><strong>Ensure consistency</strong> across an album so all songs feel equally loud and tonally matched</li>
+              <li><strong>Check across multiple playback systems</strong> so the song sounds good on Bluetooth speakers, headphones, and in a car</li>
+              <li><strong>Prepare the correct formats</strong> for different platforms: 16-bit WAV for streaming delivery, MP3 for web use</li>
+            </ul>
+            <p>The key difference from mixing: mastering does not touch individual instrument tracks. It works on the full mix as a single file — like a final polish before delivery.</p>
+
+            <h2>Mixing vs mastering comparison</h2>
+            <div class="my-8 border border-gray-300 rounded-xl overflow-hidden">
+              <table class="w-full text-[14px]">
+                <thead>
+                  <tr class="bg-onyx text-white text-left">
+                    <th class="px-5 py-3 font-semibold">Aspect</th>
+                    <th class="px-5 py-3 font-semibold">Mixing</th>
+                    <th class="px-5 py-3 font-semibold">Mastering</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Input</td><td class="px-5 py-3 text-gray-700">Individual instrument stems</td><td class="px-5 py-3 text-gray-700">Complete stereo mix</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Output</td><td class="px-5 py-3 text-gray-700">Single stereo mix file</td><td class="px-5 py-3 text-gray-700">Release-ready final file</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Tools used</td><td class="px-5 py-3 text-gray-700">Faders, EQ, compressor, reverb, delay</td><td class="px-5 py-3 text-gray-700">Multiband compressor, limiter, metering tools</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Who does it</td><td class="px-5 py-3 text-gray-700">Mixing engineer</td><td class="px-5 py-3 text-gray-700">Mastering engineer</td></tr>
+                  <tr class="border-t border-gray-200"><td class="px-5 py-3 font-medium">Typical time</td><td class="px-5 py-3 text-gray-700">4-8 hours per song</td><td class="px-5 py-3 text-gray-700">1-2 hours per song</td></tr>
+                  <tr class="border-t border-gray-200 bg-gray-50"><td class="px-5 py-3 font-medium">Focus</td><td class="px-5 py-3 text-gray-700">Balance and space between instruments</td><td class="px-5 py-3 text-gray-700">Loudness, consistency, correct format</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>The recording-to-release workflow</h2>
+            <p>Post-production follows a fixed sequence. Each step depends on the one before it:</p>
+            <ol class="list-decimal pl-6 mb-4 space-y-2 text-[1rem] leading-[1.85] text-[rgba(15,14,14,0.75)]">
+              <li><strong>Recording (Tracking)</strong> — capture each instrument on separate tracks</li>
+              <li><strong>Editing</strong> — remove unwanted sounds, fix timing issues, cut noise between takes</li>
+              <li><strong>Mixing</strong> — balance all tracks, apply EQ, compression, and effects</li>
+              <li><strong>Mastering</strong> — polish the complete mix, set loudness, prepare formats</li>
+              <li><strong>Export for release</strong> — 16-bit 44.1kHz WAV for streaming delivery, or to spec for each platform</li>
+            </ol>
+            <p>For everything you need before entering the studio, read the <a href={`/${lang}/blog/recording-studio-guide`}>first-time recording guide</a>.</p>
+
+            <h2>What to prepare for a mixing session</h2>
+            <p>Before a mixing session at Thunder Studio or before sending files to an engineer, gather the following:</p>
+            <ul>
+              <li><strong>Separate stems</strong> — 24-bit WAV files for each instrument, exported individually. No master bus compression, no normalization, no limiter on the stereo output.</li>
+              <li><strong>Reference tracks</strong> — 2-3 songs that sound like what you want your finished mix to sound like. The more specific the better: "I want the drums from this track but the guitar tone from this one."</li>
+              <li><strong>Notes on what you want</strong> — tell the engineer the feel you're going for, which instruments to prioritize, where you want the vocals to sit in the mix</li>
+              <li><strong>Tempo and time signature</strong> — note them in the session file or a separate text document</li>
+            </ul>
+
+            <h2>Common mistakes musicians make</h2>
+            <ul>
+              <li><strong>Skipping mastering</strong> — a track without mastering will sound quieter than everything else in a playlist and will not translate well across different playback systems</li>
+              <li><strong>Mixing on headphones or laptop speakers</strong> — consumer headphones often exaggerate or cut bass, and laptop speakers remove low end almost entirely. A mix that sounds right on headphones frequently sounds wrong on actual speakers</li>
+              <li><strong>Not providing reference tracks</strong> — without references, the engineer has to guess what you want. This leads to multiple revision rounds that slow everything down</li>
+              <li><strong>Expecting mixing to fix a bad recording</strong> — mixing can balance levels and add polish, but it cannot fix out-of-tune performances, loose timing, or poor room acoustics. Bad recordings need to be re-tracked.</li>
+              <li><strong>Sending heavily compressed or clipped stems</strong> — if your tracks are already slammed and the waveform is flat, the engineer has no dynamic range to work with. Leave headroom in your exports.</li>
+            </ul>
+
+            <h2>Frequently asked questions</h2>
+            <p><strong>What is the difference between mixing and mastering?</strong><br />Mixing balances individual tracks. Mastering polishes the final stereo mix. They are separate steps done on different file types, in sequence.</p>
+            <p><strong>Can I skip mastering?</strong><br />You can, but your track will sound quieter than others on streaming playlists and won't translate consistently across speakers and headphones. Mastering takes relatively little time and makes a meaningful difference.</p>
+            <p><strong>What files do I need to send for mixing?</strong><br />Individual stems as 24-bit WAV files. No master bus compression, no normalization, no limiter. Include tempo and time signature. The cleaner the stems, the better the result.</p>
+            <p><strong>How long does mixing take per song?</strong><br />A typical rock song with 8-16 tracks takes 4-8 hours to mix, depending on complexity and how many revisions are needed. Mastering usually takes 1-2 hours per track.</p>
+            <p><strong>Can I mix on my laptop myself?</strong><br />You can, but laptop speakers and consumer headphones give a distorted picture of the sound. Mixing on flat-response studio monitors in an acoustically treated room produces far more accurate and consistent results.</p>
+            <p><strong>How much does mixing and mastering cost at Thunder Studio?</strong><br />Contact us at 063-546-1924 or LINE @thunderstudio for rates. Pricing depends on the number of tracks and revisions required.</p>
+
+            <p>Haven't picked a studio yet? Read <a href={`/${lang}/blog/how-to-choose-recording-studio`}>how to choose a recording studio</a> to check acoustics, gear, and red flags before booking. Or browse all <a href={`/${lang}/services`}>Thunder Studio services</a>.</p>
+
+            <h2>Ready to mix?</h2>
+            <p>Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> handles recording, mixing, and mastering in one place — mixing console, studio monitors, and a full DAW workstation. Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok.</p>
+          </div>
+        )}
+
+        <div class="reveal mt-12 text-center">
+          <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
+            {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+
+  <style>
+    .prose-blog h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+      color: var(--color-onyx);
+    }
+    .prose-blog p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 1rem;
+    }
+    .prose-blog ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose-blog li {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(15, 14, 14, 0.75);
+      margin-bottom: 0.35rem;
+    }
+    .prose-blog strong {
+      color: var(--color-onyx);
+      font-weight: 600;
+    }
+    .prose-blog a {
+      color: var(--color-onyx);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(15, 14, 14, 0.3);
+    }
+    .prose-blog a:hover {
+      text-decoration-color: var(--color-onyx);
+    }
+  </style>
+</Base>
