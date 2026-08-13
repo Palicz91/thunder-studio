@@ -346,9 +346,9 @@ When new content is published, add contextual links FROM:
 ### 8.2 Still Needed
 
 - [x] Update llms.txt when new pages are published (done 2026-08-13)
-- [ ] Bing Webmaster Tools — submit sitemap
+- [x] Bing Webmaster Tools — submit sitemap (done 2026-08-13)
 - [x] Add `lastmod` to sitemap entries (done 2026-08-13, auto-set on each build)
-- [ ] Lighthouse audit (target: 90+ performance)
+- [x] Lighthouse audit (target: 90+ performance) (done 2026-08-13)
 - [x] Submit to Thai business directories (Wongnai, Facebook, OpenStreetMap) (done)
 - [x] GBP address verification (done)
 
