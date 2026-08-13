@@ -19,6 +19,10 @@ export default defineConfig({
     react(),
     sitemap({
       filter: (page) => page !== 'https://thundermusicstudio.com/',
+      serialize(item) {
+        item.lastmod = new Date();
+        return item;
+      },
     }),
   ],
   vite: {

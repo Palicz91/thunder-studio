@@ -195,7 +195,7 @@ LAYER 3 — CONTENT (3 blog posts) ✅
 
 ```
 LAYER 1 — COMMERCIAL (add 2)
-├── Pricing page (BLOCKED — needs rates) ★★★★★
+├── ~~Pricing page~~ (removed — owner decision: no public pricing)
 └── Services overview page (rehearsal + recording + mixing) ★★★
 
 LAYER 2 — CONTENT HUB (add 5)
@@ -214,7 +214,7 @@ LAYER 3 — VERTICALS/NICHES (add 2)
 
 | New page | Primary keyword | Vol | AI vol | Schema |
 |----------|----------------|-----|--------|--------|
-| Pricing | ห้องซ้อมดนตรี ราคา | 40 | 210 | Product + Offer + FAQPage |
+| ~~Pricing~~ | ~~ห้องซ้อมดนตรี ราคา~~ | — | — | Removed (owner: no public pricing) |
 | Services overview | ห้องซ้อมดนตรี กรุงเทพ | 50 | — | Article + FAQPage |
 | Pillar: "What is" | ห้องซ้อมดนตรี (supportive) | — | 16,140 | Article + FAQPage |
 | Guide: choose studio | สตูดิโอบันทึกเสียง | 110 | 8,850 | Article + HowTo + FAQPage |
@@ -232,15 +232,15 @@ LAYER 3 — VERTICALS/NICHES (add 2)
 
 | # | Page | Score | Phase | Dependencies | Status |
 |---|------|-------|-------|-------------|--------|
-| 1 | Pricing page | ★★★★★ | Blocked | Needs hourly rates from owner | Blocked |
-| 2 | "Music rehearsal rooms in Bangkok" guide | ★★★★★ | 1 (Month 1) | None — AI vol 20,840 | NEW |
-| 3 | "What is a rehearsal room" pillar | ★★★★★ | 1 (Month 1) | None — AI vol 16,140 | NEW |
-| 4 | "How to choose a recording studio" guide | ★★★★ | 1 (Month 1) | None — AI vol 8,850 | NEW |
-| 5 | Services overview page | ★★★ | 1 (Month 1) | None | NEW |
-| 6 | "Podcast studio Bangkok" guide | ★★★ | 2 (Month 2) | Services page should exist | NEW |
-| 7 | Equipment guide | ★★★ | 2 (Month 2) | None | NEW |
-| 8 | "Band rehearsal for beginners" | ★★★ | 2 (Month 2) | Pillar guide should exist | NEW |
-| 9 | "Mixing and mastering" guide | ★★ | 2 (Month 2) | Services page should exist | NEW |
+| ~~1~~ | ~~Pricing page~~ | — | — | — | Removed (owner decision: no public pricing) |
+| 2 | "Music rehearsal rooms in Bangkok" guide | ★★★★★ | 1 | None — AI vol 20,840 | ✅ Done (2026-08-13) |
+| 3 | "What is a rehearsal room" pillar | ★★★★★ | 1 | None — AI vol 16,140 | ✅ Done (2026-08-13) |
+| 4 | "How to choose a recording studio" guide | ★★★★ | 1 | None — AI vol 8,850 | ✅ Done (2026-08-13) |
+| 5 | Services overview page | ★★★ | 1 | None | ✅ Done (2026-08-13) |
+| 6 | "Podcast studio Bangkok" guide | ★★★ | 2 | Services page should exist | ✅ Done (2026-08-13) |
+| 7 | Equipment guide | ★★★ | 2 | None | ✅ Done (2026-08-13) |
+| 8 | "Band rehearsal for beginners" | ★★★ | 2 | Pillar guide should exist | ✅ Done (2026-08-13) |
+| 9 | "Mixing and mastering" guide | ★★ | 2 | Services page should exist | ✅ Done (2026-08-13) |
 
 ### 5.2 Phase Schedule
 
@@ -345,12 +345,12 @@ When new content is published, add contextual links FROM:
 
 ### 8.2 Still Needed
 
-- [ ] Update llms.txt when new pages are published
+- [x] Update llms.txt when new pages are published (done 2026-08-13)
 - [ ] Bing Webmaster Tools — submit sitemap
-- [ ] Add `lastmod` to sitemap entries
+- [x] Add `lastmod` to sitemap entries (done 2026-08-13, auto-set on each build)
 - [ ] Lighthouse audit (target: 90+ performance)
-- [ ] Submit to Thai business directories (Wongnai, Facebook, OpenStreetMap)
-- [ ] GBP address verification (owner action)
+- [x] Submit to Thai business directories (Wongnai, Facebook, OpenStreetMap) (done)
+- [x] GBP address verification (done)
 
 ### 8.3 Per New Page Checklist
 
