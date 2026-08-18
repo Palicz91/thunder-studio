@@ -60,7 +60,7 @@ const directions = [
       "closes": "22:00",
     },
     "telephone": "+66635461924",
-    "hasMap": "https://maps.google.com/maps?q=433+Baan+Phasorn+48+Song+Prapha+Don+Mueang+Bangkok+10210",
+    "hasMap": "https://maps.app.goo.gl/6j75idTgvQCsG9HL8",
   })} />
 
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -87,7 +87,7 @@ const directions = [
         <div>
           <div class="reveal border border-gray-300 rounded-2xl p-6">
             <div class="text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-3">{t('location.address.title')}</div>
-            <p class="text-[17px] font-semibold">{t('address')}</p>
+            <a href="https://maps.app.goo.gl/6j75idTgvQCsG9HL8" target="_blank" rel="noopener" class="text-[17px] font-semibold hover:underline">{t('address')}</a>
             <div class="mt-4 space-y-2 text-[14px] text-gray-700">
               <div><span class="text-gray-500">{t('contact.phone.label')}:</span> <a href={`tel:${t('phone').replace(/\s/g, '')}`} class="hover:underline">{t('phone')}</a></div>
               <div><span class="text-gray-500">{lang === 'th' ? 'อีเมล' : 'Email'}:</span> <a href={`mailto:${t('email')}`} class="hover:underline">{t('email')}</a></div>

@@ -283,7 +283,7 @@ const galleryImages = [
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{t('contact.address.label')}</span>
-            <span class="text-[15px] text-gray-700 leading-relaxed min-w-0">{t('address')}</span>
+            <a href="https://maps.app.goo.gl/6j75idTgvQCsG9HL8" target="_blank" rel="noopener" class="text-[15px] text-gray-700 leading-relaxed min-w-0 hover:underline">{t('address')}</a>
           </div>
           <div class="flex gap-5 py-5 border-b border-gray-300">
             <span class="text-[11px] font-semibold tracking-[0.12em] text-gray-500 w-24 shrink-0 pt-0.5">{lang === 'th' ? 'อีเมล' : 'Email'}</span>
@@ -381,7 +381,7 @@ const galleryImages = [
           <div class="mt-6 text-[13px] leading-[1.9] text-white/60">
             <div><span class="text-white/42">{t('contact.phone.label')} · </span><a href={`tel:${t('phone').replace(/\s/g, '')}`} class="hover:text-white transition-colors">{t('phone')}</a></div>
             <div><span class="text-white/42">{lang === 'th' ? 'อีเมล' : 'Email'} · </span><a href={`mailto:${t('email')}`} class="hover:text-white transition-colors">{t('email')}</a></div>
-            <div><span class="text-white/42">{t('contact.address.label')} · </span>{t('address')}</div>
+            <div><span class="text-white/42">{t('contact.address.label')} · </span><a href="https://maps.app.goo.gl/6j75idTgvQCsG9HL8" target="_blank" rel="noopener" class="hover:text-white transition-colors">{t('address')}</a></div>
           </div>
 
           <div class="flex gap-3.5 mt-5">
