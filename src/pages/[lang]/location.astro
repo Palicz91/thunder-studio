@@ -14,11 +14,11 @@ const lang = Astro.params.lang as Lang;
 const t = useTranslations(lang);
 
 const title = lang === 'th'
-  ? 'ที่ตั้งและการเดินทาง — Thunder Studio บางเขน กรุงเทพ'
-  : 'Location & Directions — Thunder Studio Bang Khen Bangkok';
+  ? 'ที่ตั้งและการเดินทาง — Thunder Studio ดอนเมือง กรุงเทพ'
+  : 'Location & Directions — Thunder Studio Don Mueang Bangkok';
 const description = lang === 'th'
-  ? 'Thunder Studio ตั้งอยู่ 288 ถ.พหลโยธิน บางเขน กรุงเทพ 10220 เปิดทุกวัน 10:00-22:00 มีที่จอดรถ'
-  : 'Thunder Studio at 288 Phahonyothin Rd, Bang Khen, Bangkok 10220. Open daily 10:00-22:00. Free parking.';
+  ? 'Thunder Studio ตั้งอยู่ 433 หมู่บ้านภัสสร 48 สรงประภา ดอนเมือง กรุงเทพ 10210 เปิดทุกวัน 10:00-22:00 มีที่จอดรถ'
+  : 'Thunder Studio at 433, Baan Phasorn 48, Song Prapha, Don Mueang, Bangkok 10210. Open daily 10:00-22:00. Free parking.';
 
 const faqs = [1, 2, 3].map(i => ({
   question: t(`location.faq.${i}.q`),
@@ -42,16 +42,16 @@ const directions = [
     "name": "Thunder Studio",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "288, 102-103 Phahonyothin Rd",
-      "addressLocality": "Bang Khen",
+      "streetAddress": "433, Baan Phasorn 48, Song Prapha",
+      "addressLocality": "Don Mueang",
       "addressRegion": "Bangkok",
-      "postalCode": "10220",
+      "postalCode": "10210",
       "addressCountry": "TH",
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 13.8748,
-      "longitude": 100.5689,
+      "latitude": 13.9280,
+      "longitude": 100.5930,
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
@@ -60,7 +60,7 @@ const directions = [
       "closes": "22:00",
     },
     "telephone": "+66635461924",
-    "hasMap": "https://maps.google.com/maps?q=288+Phahonyothin+Rd+Anusawari+Bang+Khen+Bangkok+10220",
+    "hasMap": "https://maps.google.com/maps?q=433+Baan+Phasorn+48+Song+Prapha+Don+Mueang+Bangkok+10210",
   })} />
 
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -106,7 +106,7 @@ const directions = [
 
         <div class="reveal rounded-2xl overflow-hidden border border-gray-300 h-[350px]" style="transition-delay: 150ms;">
           <iframe
-            src="https://maps.google.com/maps?q=288+Phahonyothin+Rd+Anusawari+Bang+Khen+Bangkok+10220&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.google.com/maps?q=433+Baan+Phasorn+48+Song+Prapha+Don+Mueang+Bangkok+10210&t=&z=16&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="100%"
             style="border:0;"
