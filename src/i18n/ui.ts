@@ -62,6 +62,7 @@ const translations: Record<string, Record<Lang, string>> = {
 
   'phone': { th: '063-546-1924', en: '063-546-1924' },
   'line': { th: '@093tfxmp', en: '@093tfxmp' },
+  'line.label': { th: 'Thunder Studio', en: 'Thunder Studio' },
   'address': { th: '288, 102-103 ถ.พหลโยธิน แขวงอนุสาวรีย์ เขตบางเขน กรุงเทพ 10220', en: '288, 102-103 Phahonyothin Rd, Anusawari, Bang Khen, Bangkok 10220' },
   'tax': { th: 'เลขประจำตัวผู้เสียภาษี: 0105586164737', en: 'Tax ID: 0105586164737' },
   'hours': { th: '10:00 – 22:00 ทุกวัน', en: '10:00 AM – 10:00 PM Daily' },
