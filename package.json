@@ -3,6 +3,11 @@
   "description": "Thunder Studio — music rehearsal rooms and recording studio website (Bangkok)",
   "author": "Thunder Venture Group",
   "license": "MIT",
+  "homepage": "https://thunderstudio.co",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Palicz91/thunder-studio.git"
+  },
   "type": "module",
   "version": "1.0.0",
   "engines": {

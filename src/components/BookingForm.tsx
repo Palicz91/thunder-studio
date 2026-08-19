@@ -45,7 +45,7 @@ export default function BookingForm({ lang, labels }: Props) {
       const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data as any).toString(),
+        body: new URLSearchParams(data as Record<string, string>).toString(),
         signal: controller.signal,
       });
 
