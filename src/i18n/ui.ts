@@ -73,7 +73,7 @@ const translations: Record<string, Record<Lang, string>> = {
   'footer.parent': { th: 'Thunder Venture Group', en: 'Thunder Venture Group' },
   'footer.privacy': { th: 'นโยบายความเป็นส่วนตัว', en: 'Privacy Policy' },
   'footer.terms': { th: 'ข้อกำหนดการใช้งาน', en: 'Terms & Conditions' },
-  'email': { th: 'info@thunderventuregroup.com', en: 'info@thunderventuregroup.com' },
+  'email': { th: 'studio@thunderventuregroup.com', en: 'studio@thunderventuregroup.com' },
 
   'room.select': { th: 'เลือกห้อง', en: 'Select Room' },
   'room.large': { th: 'Studio 1', en: 'Studio 1' },
