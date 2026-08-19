@@ -20,7 +20,7 @@ const description = lang === 'th'
   ? 'Thunder Studio ห้องซ้อมดนตรีและสตูดิโอบันทึกเสียงระดับมืออาชีพ ในย่านบางเขน กรุงเทพ โดย Thunder Venture Group'
   : 'Thunder Studio - professional music rehearsal rooms and recording studio in Bang Khen, Bangkok. Part of Thunder Venture Group.';
 
-const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+import { IMG_BASE as IMG } from '../../config';
 ---
 
 <Base {title} {description} {lang}>

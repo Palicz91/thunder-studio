@@ -23,14 +23,15 @@ const description = lang === 'th'
   : 'Professional music rehearsal rooms and recording studio in Bangkok. Marshall amps, full drum kits, PA systems.';
 
 const SB_COMPANY = 'thunderstudio';
-const SB_API_KEY = '5abee73c96dbd7a8df41edb745e30bda479aef41a53ca12e9aa3a8f801eca14b';
+const SB_API_KEY = import.meta.env.PUBLIC_SB_API_KEY ?? '';
 
 const faqs = [1, 2, 3, 4, 5, 6].map(i => ({
   question: t(`faq.${i}.q`),
   answer: t(`faq.${i}.a`),
 }));
 
-const SB = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+import { IMG_BASE as SB } from '../../config';
+
 const galleryImages = [
   { src: `${SB}/common-area-1.webp`, alt: lang === 'th' ? 'พื้นที่ส่วนกลาง' : 'Common area' },
   { src: `${SB}/hallway.webp`, alt: lang === 'th' ? 'โถงทางเข้า' : 'Entrance hallway' },

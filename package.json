@@ -1,7 +1,10 @@
 {
   "name": "thunder-studio",
+  "description": "Thunder Studio — music rehearsal rooms and recording studio website (Bangkok)",
+  "author": "Thunder Venture Group",
+  "license": "MIT",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "node": ">=22.12.0"
   },

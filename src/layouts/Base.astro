@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
+import { IMG_BASE } from '../config';
 
 import montserratLatin400 from '@fontsource/montserrat/files/montserrat-latin-400-normal.woff2';
 import montserratLatin700 from '@fontsource/montserrat/files/montserrat-latin-700-normal.woff2';
@@ -39,11 +40,11 @@ const altURL = new URL(altPath, Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content={lang === 'th' ? 'th_TH' : 'en_US'} />
-    <meta property="og:image" content={ogImage ?? 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/large-room-1.webp'} />
+    <meta property="og:image" content={ogImage ?? `${IMG_BASE}/large-room-1.webp`} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage ?? 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/large-room-1.webp'} />
+    <meta name="twitter:image" content={ogImage ?? `${IMG_BASE}/large-room-1.webp`} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -90,7 +91,7 @@ const altURL = new URL(altPath, Astro.site);
         "opens": "10:00",
         "closes": "22:00"
       },
-      "image": "https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images/large-room-1.webp",
+      "image": `${IMG_BASE}/large-room-1.webp`,
       "hasMap": "https://maps.app.goo.gl/6j75idTgvQCsG9HL8",
       "sameAs": [
         "https://www.facebook.com/thunderventurestudio",

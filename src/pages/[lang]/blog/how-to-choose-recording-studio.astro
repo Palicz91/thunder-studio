@@ -13,7 +13,7 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const t = useTranslations(lang);
 const datePublished = '2026-08-13';
-const IMG = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+import { IMG_BASE as IMG } from '../../../config';
 
 const title = lang === 'th'
   ? 'วิธีเลือกสตูดิโอบันทึกเสียง ดูอะไรบ้างก่อนจอง'

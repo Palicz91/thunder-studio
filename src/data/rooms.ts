@@ -1,4 +1,4 @@
-const IMG_BASE = 'https://qwhacqvkppragsulrkig.supabase.co/storage/v1/object/public/thunder-studio/images';
+import { IMG_BASE } from '../config';
 
 export interface Room {
   slug: string;
