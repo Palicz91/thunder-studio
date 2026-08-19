@@ -2,7 +2,6 @@ import { IMG_BASE } from '../config';
 
 export interface Room {
   slug: string;
-  calSlug: string;
   simplyBookEventId: number;
   name: { th: string; en: string };
   shortDescription: { th: string; en: string };
@@ -15,7 +14,6 @@ export interface Room {
 export const rooms: Room[] = [
   {
     slug: 'large-room',
-    calSlug: 'studio-1',
     simplyBookEventId: 2,
     name: { th: 'Studio 1', en: 'Studio 1' },
     shortDescription: { th: 'ห้องกว้างสำหรับวงเต็ม', en: 'Spacious room for full bands' },
@@ -41,7 +39,6 @@ export const rooms: Room[] = [
   },
   {
     slug: 'small-room',
-    calSlug: 'studio-2',
     simplyBookEventId: 3,
     name: { th: 'Studio 2', en: 'Studio 2' },
     shortDescription: { th: 'ห้องส่วนตัวขนาดกะทัดรัด', en: 'Compact private room' },
@@ -62,7 +59,6 @@ export const rooms: Room[] = [
   },
   {
     slug: 'control-room',
-    calSlug: 'control-room',
     simplyBookEventId: 4,
     name: { th: 'Control Room', en: 'Control Room' },
     shortDescription: { th: 'ห้องบันทึกเสียงและมิกซ์', en: 'Recording and mixing room' },

@@ -20,7 +20,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => page !== 'https://thundermusicstudio.com/',
       serialize(item) {
-        item.lastmod = new Date();
+        item.lastmod = new Date().toISOString();
         return item;
       },
     }),
