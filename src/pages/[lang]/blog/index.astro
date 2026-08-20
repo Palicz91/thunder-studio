@@ -1,0 +1,153 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import type { Lang } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'th' } }, { params: { lang: 'en' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+const title = lang === 'th'
+  ? 'บล็อก — Thunder Studio'
+  : 'Blog — Thunder Studio';
+const description = lang === 'th'
+  ? 'บทความเกี่ยวกับห้องซ้อมดนตรี สตูดิโอบันทึกเสียง มิกซ์เสียง และเคล็ดลับสำหรับนักดนตรีในกรุงเทพ'
+  : 'Articles about music rehearsal rooms, recording studios, mixing & mastering, and practical tips for musicians in Bangkok.';
+
+const blogPosts = [
+  {
+    slug: 'music-rehearsal-rooms-bangkok',
+    title: { th: 'ห้องซ้อมดนตรีในกรุงเทพ: คู่มือฉบับสมบูรณ์', en: 'Music Rehearsal Rooms in Bangkok: The Complete Guide' },
+    description: { th: 'รวมข้อมูลห้องซ้อมดนตรีในกรุงเทพ ย่านไหนมีห้องซ้อม อุปกรณ์แบบไหน เลือกยังไงให้เหมาะกับวง', en: 'Everything you need to know about music rehearsal rooms in Bangkok: where to find them, what equipment to expect, and how to choose.' },
+    datePublished: '2026-08-13',
+  },
+  {
+    slug: 'what-is-a-rehearsal-room',
+    title: { th: 'ห้องซ้อมดนตรีคืออะไร ทำไมต้องไปซ้อมที่สตูดิโอ', en: 'What Is a Music Rehearsal Room? Why Studios Beat Practice at Home' },
+    description: { th: 'ห้องซ้อมดนตรีคืออะไร มีอุปกรณ์อะไรบ้าง ต่างจากซ้อมที่บ้านยังไง', en: 'What is a music rehearsal room, what equipment does it have, and why is it better than practicing at home?' },
+    datePublished: '2026-08-13',
+  },
+  {
+    slug: 'how-to-prepare-for-band-rehearsal',
+    title: { th: 'เตรียมตัวอย่างไรก่อนเข้าห้องซ้อมวง', en: 'How to Prepare for Band Rehearsal — The Complete Guide' },
+    description: { th: 'เคล็ดลับเตรียมตัวก่อนเข้าห้องซ้อมดนตรี ตั้งแต่การเลือกเพลง เตรียมอุปกรณ์ ไปจนถึงการใช้เวลาซ้อมให้คุ้มค่า', en: 'Practical tips: setlist planning, gear prep, warm-up routines, and time management for rehearsal.' },
+    datePublished: '2026-08-06',
+  },
+  {
+    slug: 'band-rehearsal-for-beginners',
+    title: { th: 'ซ้อมวงครั้งแรก: คู่มือสำหรับมือใหม่', en: 'Band Rehearsal for Beginners: Your First Session Guide' },
+    description: { th: 'ไม่เคยเข้าห้องซ้อมวงมาก่อน? คู่มือนี้บอกทุกอย่าง ตั้งแต่จะเจออะไรในห้อง ต้องเตรียมอะไรไป', en: 'Never been to a rehearsal room? Everything you need to know — what to expect, what to bring, and common mistakes to avoid.' },
+    datePublished: '2026-08-13',
+  },
+  {
+    slug: 'choosing-room-size',
+    title: { th: 'เลือกห้องซ้อมขนาดไหนดี?', en: 'Which Rehearsal Room Size Do You Need?' },
+    description: { th: 'เปรียบเทียบ Studio 2 Studio 1 และ Control Room เลือกให้ตรงกับจำนวนคนและรูปแบบการซ้อม', en: 'Compare small rooms, large rooms, and recording studios. Pick the right size for your group.' },
+    datePublished: '2026-08-07',
+  },
+  {
+    slug: 'rehearsal-room-equipment-guide',
+    title: { th: 'อุปกรณ์ในห้องซ้อมดนตรี: มีอะไรบ้าง', en: 'Rehearsal Room Equipment Guide: What\'s Provided vs. What to Bring' },
+    description: { th: 'ห้องซ้อมดนตรีมีอุปกรณ์อะไรให้บ้าง ต้องเตรียมอะไรไปเองก่อนเข้าซ้อม', en: 'What equipment does a rehearsal room provide? What to bring yourself, with a room-by-room comparison.' },
+    datePublished: '2026-08-13',
+  },
+  {
+    slug: 'recording-studio-guide',
+    title: { th: 'อัดเสียงครั้งแรก เตรียมตัวยังไงก่อนเข้าสตูดิโอ', en: 'First Time Recording? How to Prepare for the Studio' },
+    description: { th: 'คู่มือสำหรับคนที่ยังไม่เคยอัดเสียง ตั้งแต่ซ้อมเพลงให้พร้อม เลือกห้องอัด เตรียมอุปกรณ์', en: 'A practical guide for first-time recording: song preparation, choosing the right setup, and session tips.' },
+    datePublished: '2026-08-07',
+  },
+  {
+    slug: 'how-to-choose-recording-studio',
+    title: { th: 'วิธีเลือกสตูดิโอบันทึกเสียง', en: 'How to Choose a Recording Studio: What to Check Before Booking' },
+    description: { th: 'เลือกสตูดิโอบันทึกเสียงยังไงให้ได้เงินคุ้ม ตั้งแต่เช็คอะคูสติก อุปกรณ์ วิศวกรเสียง ราคา', en: 'A practical guide: acoustics, equipment, engineer skill, rates, red flags, and questions to ask.' },
+    datePublished: '2026-08-13',
+  },
+  {
+    slug: 'mixing-mastering-guide',
+    title: { th: 'มิกซ์เสียงและมาสเตอร์คืออะไร', en: 'Mixing & Mastering Guide: What Musicians Need to Know' },
+    description: { th: 'อธิบายความต่างระหว่าง mixing กับ mastering เข้าใจขั้นตอนหลังอัดเสียง เตรียม stems ยังไง', en: 'A clear explanation of mixing and mastering: what each stage does, how they differ, and what to prepare.' },
+    datePublished: '2026-08-13',
+  },
+  {
+    slug: 'podcast-studio-bangkok',
+    title: { th: 'สตูดิโอพอดแคสต์กรุงเทพ: อัดพอดแคสต์ที่ไหนดี', en: 'Podcast Studio Bangkok: Where to Record Your Podcast' },
+    description: { th: 'คู่มือเลือกสตูดิโอพอดแคสต์ในกรุงเทพ เปรียบเทียบห้องอัด สตูดิโอบันทึกเสียง และ home studio', en: 'A practical guide to finding a podcast studio in Bangkok. Compare studios, home setups, and professional options.' },
+    datePublished: '2026-08-13',
+  },
+];
+---
+
+<Base {title} {description} {lang}>
+  <SiteHeader {lang} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t('breadcrumb.home'), "item": `https://thundermusicstudio.com/${lang}` },
+      { "@type": "ListItem", "position": 2, "name": lang === 'th' ? 'บล็อก' : 'Blog' },
+    ],
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": title,
+    "description": description,
+    "url": `https://thundermusicstudio.com/${lang}/blog`,
+    "isPartOf": { "@type": "WebSite", "name": "Thunder Studio", "url": "https://thundermusicstudio.com" },
+    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
+  })} />
+
+  <section class="pt-28 pb-16 bg-clinical text-onyx">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <nav class="reveal text-[13px] text-gray-500 mb-8">
+        <a href={`/${lang}`} class="hover:text-onyx transition-colors">{t('breadcrumb.home')}</a>
+        <span class="mx-2">/</span>
+        <span class="text-onyx font-medium">{lang === 'th' ? 'บล็อก' : 'Blog'}</span>
+      </nav>
+
+      <h1 class="reveal text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">
+        {lang === 'th' ? 'บล็อก' : 'Blog'}
+      </h1>
+      <p class="reveal text-base text-gray-600 mt-4 max-w-xl" style="transition-delay: 80ms;">
+        {lang === 'th'
+          ? 'บทความเกี่ยวกับห้องซ้อมดนตรี สตูดิโอบันทึกเสียง มิกซ์เสียง และเคล็ดลับสำหรับนักดนตรี'
+          : 'Articles about rehearsal rooms, recording studios, mixing & mastering, and practical tips for musicians.'}
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-12">
+        {blogPosts.map((post, idx) => (
+          <a href={`/${lang}/blog/${post.slug}`} class="reveal group block rounded-2xl border border-gray-300 overflow-hidden hover:shadow-lg transition-shadow" style={`transition-delay: ${idx * 60}ms;`}>
+            <div class="p-6">
+              <div class="flex items-center gap-3 text-[12px] text-gray-500 mb-3">
+                <time datetime={post.datePublished}>{post.datePublished}</time>
+              </div>
+              <h2 class="text-lg font-bold text-onyx group-hover:text-gray-700 transition-colors leading-snug">{post.title[lang]}</h2>
+              <p class="text-[14px] text-gray-600 mt-2 leading-relaxed line-clamp-2">{post.description[lang]}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-onyx py-14 text-center">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <h2 class="reveal text-2xl font-bold">{t('hero.cta.book')}</h2>
+      <a href={`/${lang}/#booking`} class="reveal inline-block mt-5 bg-white text-onyx rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-white/90 transition-colors" style="transition-delay: 80ms;">
+        {t('hero.cta.book')}
+      </a>
+    </div>
+  </section>
+
+  <SiteFooter {lang} />
+  <ScrollReveal />
+</Base>

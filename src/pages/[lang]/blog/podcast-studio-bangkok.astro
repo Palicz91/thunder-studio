@@ -19,8 +19,8 @@ const title = lang === 'th'
   ? 'สตูดิโอพอดแคสต์กรุงเทพ: อัดพอดแคสต์ที่ไหนดี'
   : 'Podcast Studio in Bangkok: Where to Record Your Podcast';
 const description = lang === 'th'
-  ? 'คู่มือเลือกสตูดิโอพอดแคสต์ในกรุงเทพ เปรียบเทียบห้องอัดพอดแคสต์ สตูดิโอบันทึกเสียง และ home studio พร้อมแนะนำ Control Room ที่ Thunder Studio บางเขน'
-  : 'A practical guide to finding a podcast studio in Bangkok. Compare podcast studios, music recording studios, and home setups — including Thunder Studio\'s Control Room in Bang Khen.';
+  ? 'คู่มือเลือกสตูดิโอพอดแคสต์ในกรุงเทพ เปรียบเทียบห้องอัดพอดแคสต์ สตูดิโอบันทึกเสียง และ home studio พร้อมแนะนำ Control Room ที่ Thunder Studio ดอนเมือง'
+  : 'A practical guide to finding a podcast studio in Bangkok. Compare podcast studios, music recording studios, and home setups — including Thunder Studio\'s Control Room in Don Mueang.';
 ---
 
 <Base {title} {description} {lang} ogImage={`${IMG}/control-room-1.webp`}>
@@ -33,7 +33,7 @@ const description = lang === 'th'
     "description": description,
     "datePublished": datePublished,
     "dateModified": datePublished,
-    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "author": { "@type": "Person", "name": "Theorn N.", "worksFor": { "@type": "Organization", "name": "Thunder Studio" } },
     "publisher": {
       "@type": "Organization",
       "name": "Thunder Studio",
@@ -58,14 +58,14 @@ const description = lang === 'th'
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": lang === 'th' ? [
-      { "@type": "Question", "name": "อัดพอดแคสต์ในกรุงเทพที่ไหนดี?", "acceptedAnswer": { "@type": "Answer", "text": "Thunder Studio มี Control Room ที่บางเขน กรุงเทพ พร้อมมิกซ์คอนโซล DAW workstation และห้องที่ treatment อะคูสติกแล้ว เหมาะสำหรับอัดพอดแคสต์คุณภาพสูง ติดต่อสอบถามได้ที่ LINE @thunderstudio หรือ 063-546-1924" }},
+      { "@type": "Question", "name": "อัดพอดแคสต์ในกรุงเทพที่ไหนดี?", "acceptedAnswer": { "@type": "Answer", "text": "Thunder Studio มี Control Room ที่ดอนเมือง กรุงเทพ พร้อมมิกซ์คอนโซล DAW workstation และห้องที่ treatment อะคูสติกแล้ว เหมาะสำหรับอัดพอดแคสต์คุณภาพสูง ติดต่อสอบถามได้ที่ LINE @thunderstudio หรือ 063-546-1924" }},
       { "@type": "Question", "name": "สตูดิโอพอดแคสต์กับสตูดิโอดนตรีต่างกันยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "สตูดิโอพอดแคสต์เน้น vocal recording และ noise isolation ส่วนสตูดิโอดนตรีออกแบบมารองรับเครื่องดนตรีหลายชิ้นพร้อมกัน แต่ห้องอัดเสียงคุณภาพดีอย่าง Control Room ใช้อัดพอดแคสต์ได้เป็นอย่างดี เพราะมีอะคูสติกและอุปกรณ์ที่ครบ" }},
       { "@type": "Question", "name": "ต้องใช้ไมค์อะไรอัดพอดแคสต์?", "acceptedAnswer": { "@type": "Answer", "text": "ไมค์ dynamic เช่น Shure SM7B เหมาะสำหรับห้องที่อะคูสติกไม่ดี เพราะรับเสียงรบกวนน้อย ไมค์ condenser ให้รายละเอียดเสียงมากกว่า แต่ต้องใช้ในห้องที่ treatment ดีแล้ว สตูดิโออย่าง Control Room มีทั้งสองแบบ" }},
       { "@type": "Question", "name": "อัดพอดแคสต์คนเดียวหรืออัดสัมภาษณ์แขกรับเชิญต่างกันยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "การอัดคนเดียวต้องการห้องและไมค์ตัวเดียว ส่วนการสัมภาษณ์แขกในสตูดิโอต้องการไมค์หลายตัวและมิกซ์คอนโซลที่รับ input ได้หลายช่อง Control Room ของ Thunder Studio รองรับได้ทั้งสองรูปแบบ" }},
       { "@type": "Question", "name": "เตรียมตัวยังไงก่อนอัดพอดแคสต์ในสตูดิโอ?", "acceptedAnswer": { "@type": "Answer", "text": "เตรียม script หรือ outline ให้พร้อม ทดลองพูดเนื้อหาอย่างน้อย 1 รอบก่อนวันอัด ถ้ามีแขกรับเชิญให้ส่งหัวข้อล่วงหน้า และแจ้งสตูดิโอว่าต้องการอัดกี่คน เพื่อเตรียมไมค์ให้ครบ" }},
       { "@type": "Question", "name": "อัดพอดแคสต์ที่ home studio กับสตูดิโอจริงต่างกันมากไหม?", "acceptedAnswer": { "@type": "Answer", "text": "ต่างกันมากในเรื่องเสียงรบกวนและอะคูสติก home studio ส่วนใหญ่มีเสียง echo และ background noise ที่ฟังดูไม่เป็นมืออาชีพ สตูดิโอที่ treatment ดีแล้วให้เสียงคลีนและ production value สูงกว่าชัดเจน" }},
     ] : [
-      { "@type": "Question", "name": "Where is the best place to record a podcast in Bangkok?", "acceptedAnswer": { "@type": "Answer", "text": "Thunder Studio's Control Room in Bang Khen, Bangkok offers professional podcast recording with a mixing console, DAW workstation, and treated acoustic space. Contact LINE @thunderstudio or call 063-546-1924 for availability and rates." }},
+      { "@type": "Question", "name": "Where is the best place to record a podcast in Bangkok?", "acceptedAnswer": { "@type": "Answer", "text": "Thunder Studio's Control Room in Don Mueang, Bangkok offers professional podcast recording with a mixing console, DAW workstation, and treated acoustic space. Contact LINE @thunderstudio or call 063-546-1924 for availability and rates." }},
       { "@type": "Question", "name": "What is the difference between a podcast studio and a music recording studio?", "acceptedAnswer": { "@type": "Answer", "text": "A podcast studio focuses on vocal recording and noise isolation. A music recording studio is designed for multiple instruments recorded simultaneously. However, a well-equipped recording studio like a control room works excellently for podcasting because it already has the acoustics and gear you need." }},
       { "@type": "Question", "name": "What microphone do I need for a podcast?", "acceptedAnswer": { "@type": "Answer", "text": "Dynamic microphones like the Shure SM7B are forgiving in rooms with imperfect acoustics and reject background noise well. Condenser microphones capture more detail but require a properly treated room. A professional studio has both types and can advise which suits your voice and content." }},
       { "@type": "Question", "name": "Can I record a podcast interview with a guest in the same studio?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In-person podcast interviews require multiple microphones and a mixing console with enough input channels. Thunder Studio's Control Room supports multi-mic setups for solo hosts, two-person interviews, and panel discussions." }},
@@ -84,7 +84,7 @@ const description = lang === 'th'
         </nav>
 
         <div class="reveal">
-          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <div class="flex items-center gap-3 text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4"><span>{datePublished}</span><span class="text-gray-300">|</span><span>{lang === "th" ? "โดย Theorn N." : "By Theorn N."}</span></div>
           <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
             {lang === 'th' ? 'สตูดิโอพอดแคสต์กรุงเทพ: อัดพอดแคสต์ที่ไหนดี' : 'Podcast Studio in Bangkok: Where to Record Your Podcast'}
           </h1>
@@ -98,7 +98,7 @@ const description = lang === 'th'
         <img
           src={`${IMG}/control-room-1.webp`}
           alt={lang === 'th' ? 'Control Room Thunder Studio ห้องอัดพอดแคสต์กรุงเทพ' : 'Thunder Studio Control Room podcast recording Bangkok'}
-          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          width="900" height="420" class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
           fetchpriority="high"
         />
       </div>
@@ -108,7 +108,7 @@ const description = lang === 'th'
       <div class="max-w-[720px] mx-auto px-6">
         {lang === 'th' ? (
           <div class="prose-blog">
-            <p>ถ้าอยากอัดพอดแคสต์ในกรุงเทพที่เสียงออกมาดี ต้องการห้องที่ treatment อะคูสติกแล้วและไมค์คุณภาพสูง Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> ที่บางเขน พร้อมมิกซ์คอนโซล DAW workstation และ studio monitors รองรับการอัดพอดแคสต์ได้ทุกรูปแบบ ตั้งแต่คนเดียวไปถึงสัมภาษณ์แขกหลายคน</p>
+            <p>ถ้าอยากอัดพอดแคสต์ในกรุงเทพที่เสียงออกมาดี ต้องการห้องที่ treatment อะคูสติกแล้วและไมค์คุณภาพสูง Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> ที่ดอนเมือง พร้อมมิกซ์คอนโซล DAW workstation และ studio monitors รองรับการอัดพอดแคสต์ได้ทุกรูปแบบ ตั้งแต่คนเดียวไปถึงสัมภาษณ์แขกหลายคน</p>
 
             <h2>สตูดิโอพอดแคสต์คืออะไร</h2>
             <p>สตูดิโอพอดแคสต์คือห้องบันทึกเสียงที่ออกแบบมาสำหรับ vocal recording โดยเฉพาะ จุดสำคัญไม่ใช่แค่อุปกรณ์ แต่คืออะคูสติกของห้อง ห้องที่ไม่ได้ treatment จะมีเสียง echo ที่ฟังดูไม่เป็นมืออาชีพ แม้จะใช้ไมค์แพงแค่ไหนก็ตาม</p>
@@ -170,7 +170,7 @@ const description = lang === 'th'
 
             <h2>คำถามที่พบบ่อย</h2>
 
-            <p><strong>อัดพอดแคสต์ในกรุงเทพที่ไหนดี?</strong><br />Thunder Studio มี Control Room ที่บางเขน กรุงเทพ พร้อมมิกซ์คอนโซล DAW workstation และห้องที่ treatment อะคูสติกแล้ว เหมาะสำหรับอัดพอดแคสต์คุณภาพสูง ติดต่อสอบถามได้ที่ LINE @thunderstudio หรือ 063-546-1924</p>
+            <p><strong>อัดพอดแคสต์ในกรุงเทพที่ไหนดี?</strong><br />Thunder Studio มี Control Room ที่ดอนเมือง กรุงเทพ พร้อมมิกซ์คอนโซล DAW workstation และห้องที่ treatment อะคูสติกแล้ว เหมาะสำหรับอัดพอดแคสต์คุณภาพสูง ติดต่อสอบถามได้ที่ LINE @thunderstudio หรือ 063-546-1924</p>
 
             <p><strong>สตูดิโอพอดแคสต์กับสตูดิโอดนตรีต่างกันยังไง?</strong><br />สตูดิโอพอดแคสต์เน้น vocal recording และ noise isolation ส่วนสตูดิโอดนตรีออกแบบมารองรับเครื่องดนตรีหลายชิ้นพร้อมกัน แต่ห้องอัดเสียงคุณภาพดีอย่าง Control Room ใช้อัดพอดแคสต์ได้เป็นอย่างดี เพราะมีอะคูสติกและอุปกรณ์ที่ครบ</p>
 
@@ -185,11 +185,11 @@ const description = lang === 'th'
             <p>ยังไม่แน่ใจว่าจะเลือกสตูดิโอไหน? อ่าน <a href={`/${lang}/blog/how-to-choose-recording-studio`}>วิธีเลือกสตูดิโอบันทึกเสียง</a> เพื่อดูว่าควรเช็คอะไรก่อนจอง</p>
 
             <h2>พร้อมอัดพอดแคสต์แล้ว?</h2>
-            <p>Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> ที่บางเขน กรุงเทพ พร้อมมิกซ์คอนโซล DAW workstation และ studio monitors เหมาะทั้งอัดพอดแคสต์ สัมภาษณ์แขก และทำ voice-over เปิดทุกวัน 10:00-22:00 ติดต่อสอบถามราคาได้ที่ LINE @thunderstudio หรือจองด้านล่าง</p>
+            <p>Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> ที่ดอนเมือง กรุงเทพ พร้อมมิกซ์คอนโซล DAW workstation และ studio monitors เหมาะทั้งอัดพอดแคสต์ สัมภาษณ์แขก และทำ voice-over เปิดทุกวัน 10:00-22:00 ติดต่อสอบถามราคาได้ที่ LINE @thunderstudio หรือจองด้านล่าง</p>
           </div>
         ) : (
           <div class="prose-blog">
-            <p>To record a podcast in Bangkok with professional sound quality, you need a room with proper acoustic treatment and quality microphones. Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> in Bang Khen offers a mixing console, DAW workstation, and studio monitors — covering solo hosts, two-person interviews, and full panel recordings.</p>
+            <p>To record a podcast in Bangkok with professional sound quality, you need a room with proper acoustic treatment and quality microphones. Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> in Don Mueang offers a mixing console, DAW workstation, and studio monitors — covering solo hosts, two-person interviews, and full panel recordings.</p>
 
             <h2>What is a podcast studio?</h2>
             <p>A podcast studio is a recording space designed specifically for vocal recording. The key factor isn't just the equipment — it's the room's acoustics. An untreated room produces echo that sounds unprofessional, regardless of how expensive your microphone is.</p>
@@ -251,7 +251,7 @@ const description = lang === 'th'
 
             <h2>Frequently asked questions</h2>
 
-            <p><strong>Where is the best place to record a podcast in Bangkok?</strong><br />Thunder Studio's Control Room in Bang Khen, Bangkok offers professional podcast recording with a mixing console, DAW workstation, and treated acoustic space. Contact LINE @thunderstudio or call 063-546-1924 for availability and rates.</p>
+            <p><strong>Where is the best place to record a podcast in Bangkok?</strong><br />Thunder Studio's Control Room in Don Mueang, Bangkok offers professional podcast recording with a mixing console, DAW workstation, and treated acoustic space. Contact LINE @thunderstudio or call 063-546-1924 for availability and rates.</p>
 
             <p><strong>What is the difference between a podcast studio and a music recording studio?</strong><br />A podcast studio focuses on vocal recording and noise isolation. A music recording studio is designed for multiple instruments recorded simultaneously. However, a well-equipped recording studio like a control room works excellently for podcasting because it already has the acoustics and gear you need.</p>
 
@@ -266,13 +266,32 @@ const description = lang === 'th'
             <p>Not sure which studio to choose? Read <a href={`/${lang}/blog/how-to-choose-recording-studio`}>How to choose a recording studio</a> to see what to check before you book.</p>
 
             <h2>Ready to record your podcast?</h2>
-            <p>Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> in Bang Khen, Bangkok has a mixing console, DAW workstation, and studio monitors — set up for podcast recording, interviews, and voice-over work. Open daily 10:00 AM to 10:00 PM. Contact us for rates via LINE @thunderstudio or book below.</p>
+            <p>Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> in Don Mueang, Bangkok has a mixing console, DAW workstation, and studio monitors — set up for podcast recording, interviews, and voice-over work. Open daily 10:00 AM to 10:00 PM. Contact us for rates via LINE @thunderstudio or book below.</p>
           </div>
         )}
 
         <div class="reveal mt-12 text-center">
           <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
             {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-clinical text-onyx py-16 border-t border-gray-200">
+      <div class="max-w-[720px] mx-auto px-6">
+        <h2 class="reveal text-2xl font-bold tracking-[-0.02em] mb-8">
+          {lang === 'th' ? 'บทความที่เกี่ยวข้อง' : 'Related Articles'}
+        </h2>
+        <div class="grid gap-4">
+          <a href={`/${lang}/blog/recording-studio-guide`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'อัดเสียงครั้งแรก' : 'First Time Recording Guide'}</h3>
+          </a>
+          <a href={`/${lang}/blog/how-to-choose-recording-studio`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'วิธีเลือกสตูดิโอบันทึกเสียง' : 'How to Choose a Recording Studio'}</h3>
+          </a>
+          <a href={`/${lang}/blog/mixing-mastering-guide`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'มิกซ์เสียงและมาสเตอร์คืออะไร' : 'Mixing & Mastering Guide'}</h3>
           </a>
         </div>
       </div>

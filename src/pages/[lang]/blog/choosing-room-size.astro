@@ -33,7 +33,7 @@ const description = lang === 'th'
     "description": description,
     "datePublished": datePublished,
     "dateModified": datePublished,
-    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "author": { "@type": "Person", "name": "Theorn N.", "worksFor": { "@type": "Organization", "name": "Thunder Studio" } },
     "publisher": {
       "@type": "Organization",
       "name": "Thunder Studio",
@@ -78,7 +78,7 @@ const description = lang === 'th'
         </nav>
 
         <div class="reveal">
-          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <div class="flex items-center gap-3 text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4"><span>{datePublished}</span><span class="text-gray-300">|</span><span>{lang === "th" ? "โดย Theorn N." : "By Theorn N."}</span></div>
           <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
             {lang === 'th' ? 'เลือกห้องซ้อมขนาดไหนดี?' : 'Which rehearsal room size do you need?'}
           </h1>
@@ -92,7 +92,7 @@ const description = lang === 'th'
         <img
           src={`${IMG}/small-room-1.webp`}
           alt={lang === 'th' ? 'ห้องซ้อมดนตรี Thunder Studio' : 'Thunder Studio rehearsal rooms'}
-          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          width="900" height="420" class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
           fetchpriority="high"
         />
       </div>
@@ -187,7 +187,7 @@ const description = lang === 'th'
             <p>หาห้องซ้อมในกรุงเทพ? อ่านคู่มือฉบับเต็มได้ที่ <a href={`/${lang}/blog/music-rehearsal-rooms-bangkok`}>ห้องซ้อมดนตรีในกรุงเทพ</a> รวมข้อมูลย่านไหนมีห้องซ้อม อุปกรณ์อะไรบ้าง และเคล็ดลับสำหรับคนจองครั้งแรก</p>
 
             <h2>พร้อมจองแล้ว?</h2>
-            <p>Thunder Studio มี <a href={`/${lang}/rooms/small-room`}>Studio 2</a> สำหรับซ้อมเดี่ยว <a href={`/${lang}/rooms/large-room`}>Studio 1</a> สำหรับวงเต็ม และ <a href={`/${lang}/rooms/control-room`}>Control Room</a> สำหรับอัดเสียง ทุกห้องพร้อมอุปกรณ์ครบ เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ</p>
+            <p>Thunder Studio มี <a href={`/${lang}/rooms/small-room`}>Studio 2</a> สำหรับซ้อมเดี่ยว <a href={`/${lang}/rooms/large-room`}>Studio 1</a> สำหรับวงเต็ม และ <a href={`/${lang}/rooms/control-room`}>Control Room</a> สำหรับอัดเสียง ทุกห้องพร้อมอุปกรณ์ครบ เปิดทุกวัน 10:00-22:00 ที่ดอนเมือง กรุงเทพ</p>
           </div>
         ) : (
           <div class="prose-blog">
@@ -276,13 +276,32 @@ const description = lang === 'th'
             <p>Looking for rehearsal rooms in Bangkok? Read the full guide: <a href={`/${lang}/blog/music-rehearsal-rooms-bangkok`}>Music rehearsal rooms in Bangkok</a> — which areas have studios, what equipment to expect, and tips for first-time visitors.</p>
 
             <h2>Ready to book?</h2>
-            <p>Thunder Studio has <a href={`/${lang}/rooms/small-room`}>Studio 2</a> for solo practice, <a href={`/${lang}/rooms/large-room`}>Studio 1</a> for full bands, and a <a href={`/${lang}/rooms/control-room`}>Control Room</a> for recording. All rooms come fully equipped. Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok.</p>
+            <p>Thunder Studio has <a href={`/${lang}/rooms/small-room`}>Studio 2</a> for solo practice, <a href={`/${lang}/rooms/large-room`}>Studio 1</a> for full bands, and a <a href={`/${lang}/rooms/control-room`}>Control Room</a> for recording. All rooms come fully equipped. Open daily 10:00 AM to 10:00 PM in Don Mueang, Bangkok.</p>
           </div>
         )}
 
         <div class="reveal mt-12 text-center">
           <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
             {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-clinical text-onyx py-16 border-t border-gray-200">
+      <div class="max-w-[720px] mx-auto px-6">
+        <h2 class="reveal text-2xl font-bold tracking-[-0.02em] mb-8">
+          {lang === 'th' ? 'บทความที่เกี่ยวข้อง' : 'Related Articles'}
+        </h2>
+        <div class="grid gap-4">
+          <a href={`/${lang}/blog/what-is-a-rehearsal-room`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'ห้องซ้อมดนตรีคืออะไร' : 'What Is a Rehearsal Room?'}</h3>
+          </a>
+          <a href={`/${lang}/blog/rehearsal-room-equipment-guide`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'อุปกรณ์ในห้องซ้อมดนตรี' : 'Rehearsal Room Equipment Guide'}</h3>
+          </a>
+          <a href={`/${lang}/blog/music-rehearsal-rooms-bangkok`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'ห้องซ้อมดนตรีในกรุงเทพ' : 'Rehearsal Rooms in Bangkok'}</h3>
           </a>
         </div>
       </div>

@@ -1,0 +1,168 @@
+# Thunder Studio — Full Reference
+
+> Professional music rehearsal rooms and recording studio in Don Mueang, Bangkok, Thailand.
+
+Thunder Studio is a music rehearsal and recording facility located in Don Mueang, Bangkok. Part of Thunder Venture Group Co., Ltd. (Tax ID: 0105586164737). Open daily 10:00-22:00.
+
+## Entity Summary
+
+- Type: Music rehearsal studio and recording facility
+- Location: Don Mueang, Bangkok, Thailand
+- Parent company: Thunder Venture Group
+- Languages: Thai, English
+- Website: https://thundermusicstudio.com
+- Booking: Online (SimplyBook.me), LINE @thunderstudio, phone
+
+## Rooms
+
+### Studio 1 — Large Rehearsal Room
+- Capacity: 6-10 people
+- Use case: Full bands, pre-gig rehearsals, weekly band practice
+- Equipment:
+  - Marshall guitar amplifiers
+  - Full drum kit (kick, snare, toms, hi-hat, cymbals)
+  - PA system with mixing capability
+  - Microphones and stands (vocal + instrument)
+- Soundproofing: Full perimeter soundproofing
+- Ceiling: High ceiling for better acoustics
+- [Details](https://thundermusicstudio.com/en/rooms/large-room)
+
+### Studio 2 — Small Rehearsal Room
+- Capacity: 2-4 people
+- Use case: Solo practice, duos, acoustic sessions, small groups
+- Equipment:
+  - Guitar amplifier
+  - PA system
+  - Microphones and stands
+- Soundproofing: Full perimeter soundproofing
+- [Details](https://thundermusicstudio.com/en/rooms/small-room)
+
+### Control Room — Recording Studio
+- Capacity: 2-3 people
+- Use case: Recording, mixing, mastering, podcast recording
+- Equipment:
+  - Mixing console
+  - Rack gear (outboard processing)
+  - Studio monitors (reference speakers)
+  - DAW workstation (digital audio workstation)
+- Acoustic treatment: Professional treatment for accurate monitoring
+- [Details](https://thundermusicstudio.com/en/rooms/control-room)
+
+## Services
+
+| Service | Room | Description |
+|---------|------|-------------|
+| Band rehearsal (full) | Studio 1 | 6-10 person rehearsal with full backline |
+| Solo/duo practice | Studio 2 | Private soundproofed room for 2-4 people |
+| Recording | Control Room | Multi-track recording with mixing console |
+| Mixing | Control Room | Post-production audio mixing |
+| Mastering | Control Room | Final audio mastering for release |
+| Podcast recording | Control Room | Podcast and voice-over recording |
+
+## What's Included vs. What to Bring
+
+Included in every room: Amplifiers, drum kit (Studio 1), PA system, microphones, stands, cables.
+Bring yourself: Your own guitar or bass, spare strings, picks, drumsticks (optional backup), tuner.
+
+## Booking Process
+
+1. Choose your room (Studio 1, Studio 2, or Control Room)
+2. Select date and time slot on the website or contact via LINE
+3. Confirm booking (online or via staff)
+4. Arrive 10 minutes early for setup
+5. Session runs for your booked duration
+
+Booking channels:
+- Website: https://thundermusicstudio.com (SimplyBook.me integration)
+- LINE: @thunderstudio
+- Phone: 063-546-1924
+- Email: theorn.n@thunderventuregroup.com
+
+## Location
+
+433, Baan Phasorn 48, Song Prapha, Don Mueang, Bangkok 10210, Thailand
+
+Coordinates: 13.9280, 100.5930
+Google Maps: https://maps.app.goo.gl/6j75idTgvQCsG9HL8
+
+Getting there:
+- By car: Accessible from Vibhavadi Rangsit Road and Don Mueang Tollway. Free parking on-site.
+- By BTS/MRT: Nearest station is Saphan Mai BTS, then taxi/Grab (~10 min).
+- By taxi/Grab: Tell driver "Baan Phasorn 48, Song Prapha Road, Don Mueang"
+
+## Hours
+
+Open daily: 10:00 AM - 10:00 PM (Monday through Sunday, including holidays)
+
+## Contact
+
+- Phone: 063-546-1924
+- Email: theorn.n@thunderventuregroup.com
+- LINE: @thunderstudio
+- Facebook: https://www.facebook.com/thunderventurestudio
+- Instagram: https://www.instagram.com/thunderventure.studio
+
+## FAQ
+
+Q: Do I need to bring my own equipment?
+A: Core equipment (amps, drums, PA, mics) is provided in every room. Just bring your own guitar or bass.
+
+Q: How do I book?
+A: Book online at thundermusicstudio.com, via LINE @thunderstudio, or call 063-546-1924.
+
+Q: What are the opening hours?
+A: Open daily 10:00 AM to 10:00 PM, including weekends and holidays.
+
+Q: How many people can use each room?
+A: Studio 1 fits 6-10 people (full band). Studio 2 fits 2-4 people (solo/duo). Control Room fits 2-3 people.
+
+Q: Can I record in the rehearsal rooms?
+A: Rehearsal rooms are designed for practice, not recording. Use the Control Room for professional recording with mixing console and DAW.
+
+Q: Is parking available?
+A: Yes, free parking is available on-site.
+
+Q: Can I do podcast recording?
+A: Yes, the Control Room is suitable for podcast recording with professional microphones, acoustic treatment, and a DAW workstation.
+
+Q: What's the difference between mixing and mastering?
+A: Mixing balances individual tracks (levels, EQ, effects) into a stereo mix. Mastering is the final step that optimizes the mixed audio for distribution (loudness, consistency, format).
+
+## Blog Articles
+
+1. [Music Rehearsal Rooms in Bangkok: The Complete Guide](https://thundermusicstudio.com/en/blog/music-rehearsal-rooms-bangkok) — Where to find rehearsal rooms in Bangkok, what equipment to expect, how to choose the right room.
+
+2. [What Is a Music Rehearsal Room?](https://thundermusicstudio.com/en/blog/what-is-a-rehearsal-room) — Definition, types of rooms, home vs. studio comparison, equipment overview, etiquette.
+
+3. [How to Prepare for Band Rehearsal](https://thundermusicstudio.com/en/blog/how-to-prepare-for-band-rehearsal) — Setlist planning, gear prep, warm-up routines, time management.
+
+4. [Band Rehearsal for Beginners](https://thundermusicstudio.com/en/blog/band-rehearsal-for-beginners) — First-timer's guide: what to expect, what to bring, session flow, common mistakes.
+
+5. [Choosing the Right Room Size](https://thundermusicstudio.com/en/blog/choosing-room-size) — Compare small rooms, large rooms, and recording studios by group size and use case.
+
+6. [Rehearsal Room Equipment Guide](https://thundermusicstudio.com/en/blog/rehearsal-room-equipment-guide) — Standard studio gear, what to bring, room-by-room comparison.
+
+7. [First Time Recording? How to Prepare](https://thundermusicstudio.com/en/blog/recording-studio-guide) — Song prep, studio setup choice, gear to bring, session tips.
+
+8. [How to Choose a Recording Studio](https://thundermusicstudio.com/en/blog/how-to-choose-recording-studio) — 8 criteria: acoustics, equipment, engineer, location, rates, portfolio, reviews, vibe.
+
+9. [Mixing & Mastering Guide](https://thundermusicstudio.com/en/blog/mixing-mastering-guide) — What each stage does, how they differ, what to prepare, common mistakes.
+
+10. [Podcast Studio Bangkok](https://thundermusicstudio.com/en/blog/podcast-studio-bangkok) — Podcast recording in Bangkok: equipment, studio vs. home, preparation tips.
+
+## Pages
+
+- [Homepage](https://thundermusicstudio.com/en/) — Rooms, booking, gallery, contact
+- [Studio 1](https://thundermusicstudio.com/en/rooms/large-room) — Large rehearsal room details
+- [Studio 2](https://thundermusicstudio.com/en/rooms/small-room) — Small rehearsal room details
+- [Control Room](https://thundermusicstudio.com/en/rooms/control-room) — Recording studio details
+- [Services](https://thundermusicstudio.com/en/services) — All services overview
+- [About](https://thundermusicstudio.com/en/about) — Our story and Thunder Venture Group
+- [Location](https://thundermusicstudio.com/en/location) — Directions, parking, hours
+- [Blog](https://thundermusicstudio.com/en/blog) — All articles
+
+## Company
+
+Thunder Venture Group Co., Ltd.
+Tax ID: 0105586164737
+Website: https://thunderventuregroup.com

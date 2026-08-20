@@ -1,8 +1,9 @@
 # Thunder Studio
 
 > Professional music rehearsal rooms and recording studio in Bangkok, Thailand.
+> For the full reference, see [llms-full.txt](https://thundermusicstudio.com/llms-full.txt).
 
-Thunder Studio is a music rehearsal and recording facility located in Bang Khen, Bangkok. Part of [Thunder Venture Group](https://thunderventuregroup.com). Open daily 10:00-22:00.
+Thunder Studio is a music rehearsal and recording facility located in Don Mueang, Bangkok. Part of [Thunder Venture Group](https://thunderventuregroup.com). Open daily 10:00-22:00.
 
 ## Rooms
 
@@ -38,7 +39,7 @@ Thunder Studio is a music rehearsal and recording facility located in Bang Khen,
 - Email: theorn.n@thunderventuregroup.com
 
 ## Location
-288, 102-103 Phahonyothin Rd, Anusawari, Bang Khen, Bangkok 10220, Thailand
+433, Baan Phasorn 48, Song Prapha, Don Mueang, Bangkok 10210, Thailand
 - [Directions & map](https://thundermusicstudio.com/en/location)
 
 ## Social

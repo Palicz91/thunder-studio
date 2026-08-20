@@ -362,6 +362,31 @@ const galleryImages = [
     })} />
   </section>
 
+  <!-- BLOG -->
+  <section class="bg-clinical text-onyx">
+    <div class="max-w-[1200px] mx-auto px-6 py-20 md:py-28">
+      <div class="flex items-end justify-between mb-14">
+        <h2 class="reveal text-4xl md:text-5xl font-bold tracking-[-0.02em] uppercase">{lang === 'th' ? 'บทความ' : 'Articles'}</h2>
+        <a href={`/${lang}/blog`} class="reveal text-[13px] font-semibold tracking-[0.1em] text-gray-500 hover:text-onyx transition-colors">{lang === 'th' ? 'ดูทั้งหมด →' : 'View all →'}</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          { slug: 'what-is-a-rehearsal-room', img: `${SB}/common-area-1.webp`, title: lang === 'th' ? 'ห้องซ้อมดนตรีคืออะไร' : 'What Is a Music Rehearsal Room?', desc: lang === 'th' ? 'ห้องซ้อมดนตรีคืออะไร มีอุปกรณ์อะไรบ้าง ต่างจากซ้อมที่บ้านยังไง' : 'What is a rehearsal room, what equipment does it have, and why is it better than home?' },
+          { slug: 'music-rehearsal-rooms-bangkok', img: `${SB}/large-room-1.webp`, title: lang === 'th' ? 'ห้องซ้อมดนตรีในกรุงเทพ' : 'Music Rehearsal Rooms in Bangkok', desc: lang === 'th' ? 'รวมข้อมูลห้องซ้อมดนตรีในกรุงเทพ วิธีเลือก และเคล็ดลับสำหรับครั้งแรก' : 'Complete guide to Bangkok rehearsal rooms: areas, equipment, and first-visit tips.' },
+          { slug: 'recording-studio-guide', img: `${SB}/control-room-1.webp`, title: lang === 'th' ? 'คู่มือบันทึกเสียงสำหรับมือใหม่' : 'Recording Studio Guide for Beginners', desc: lang === 'th' ? 'เตรียมตัวบันทึกเสียงครั้งแรก ตั้งแต่เลือกสตูดิโอจนถึงเข้ามิกซ์' : 'First-time recording preparation: studio setup, gear prep, and session tips.' },
+        ].map((post, idx) => (
+          <a href={`/${lang}/blog/${post.slug}`} class="reveal group block rounded-2xl border border-gray-300 overflow-hidden hover:shadow-lg transition-shadow" style={`transition-delay: ${idx * 100}ms;`}>
+            <img src={post.img} alt={post.title} width="400" height="200" class="w-full h-48 object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+            <div class="p-5">
+              <h3 class="text-lg font-bold leading-snug">{post.title}</h3>
+              <p class="text-[14px] text-gray-600 mt-2 line-clamp-2">{post.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="bg-onyx border-t border-white/10 relative overflow-hidden grain">
     <div class="relative max-w-[1200px] mx-auto px-6 pt-16 pb-7">

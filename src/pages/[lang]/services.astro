@@ -18,28 +18,51 @@ const title = lang === 'th'
   ? 'บริการทั้งหมด — ห้องซ้อม ห้องอัดเสียง มิกซ์เสียง | Thunder Studio'
   : 'Our Services — Rehearsal, Recording, Mixing & Mastering | Thunder Studio';
 const description = lang === 'th'
-  ? 'บริการของ Thunder Studio: ห้องซ้อมดนตรีสำหรับวงเต็มและกลุ่มเล็ก ห้องอัดเสียง มิกซ์เสียง และมาสเตอร์ ครบจบในที่เดียว บางเขน กรุงเทพ'
-  : 'Thunder Studio services: band rehearsal rooms for full bands and small groups, recording studio, mixing, and mastering — all under one roof in Bang Khen, Bangkok.';
+  ? 'บริการของ Thunder Studio: ห้องซ้อมดนตรีสำหรับวงเต็มและกลุ่มเล็ก ห้องอัดเสียง มิกซ์เสียง และมาสเตอร์ ครบจบในที่เดียว ดอนเมือง กรุงเทพ'
+  : 'Thunder Studio services: band rehearsal rooms for full bands and small groups, recording studio, mixing, and mastering — all under one roof in Don Mueang, Bangkok.';
 ---
 
 <Base {title} {description} {lang} ogImage={`${IMG}/hallway.webp`}>
   <SiteHeader {lang} />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": title,
-    "description": description,
-    "author": { "@type": "Organization", "name": "Thunder Studio" },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Thunder Studio",
-      "url": "https://thundermusicstudio.com",
+  <script type="application/ld+json" set:html={JSON.stringify([
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": lang === 'th' ? 'ห้องซ้อมดนตรี — วงเต็ม' : 'Band Rehearsal — Full Band',
+      "description": lang === 'th' ? 'ห้องซ้อมขนาดใหญ่ รองรับ 6-10 คน พร้อม Marshall amps กลองชุดเต็ม PA system' : 'Spacious rehearsal room for 6-10 people with Marshall amps, full drum kit, PA system',
+      "provider": { "@type": "MusicVenue", "name": "Thunder Studio", "url": "https://thundermusicstudio.com" },
+      "areaServed": { "@type": "City", "name": "Bangkok" },
+      "url": `https://thundermusicstudio.com/${lang}/rooms/large-room`,
     },
-    "image": `${IMG}/hallway.webp`,
-    "mainEntityOfPage": `https://thundermusicstudio.com/${lang}/services`,
-    "inLanguage": lang === 'th' ? 'th-TH' : 'en-US',
-  })} />
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": lang === 'th' ? 'ห้องซ้อม — เดี่ยวและกลุ่มเล็ก' : 'Practice Room — Solo & Small Groups',
+      "description": lang === 'th' ? 'ห้องซ้อมส่วนตัวขนาดกะทัดรัด รองรับ 2-4 คน กันเสียงรอบด้าน' : 'Compact private room for 2-4 people, fully soundproofed',
+      "provider": { "@type": "MusicVenue", "name": "Thunder Studio", "url": "https://thundermusicstudio.com" },
+      "areaServed": { "@type": "City", "name": "Bangkok" },
+      "url": `https://thundermusicstudio.com/${lang}/rooms/small-room`,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": lang === 'th' ? 'บันทึกเสียง' : 'Recording',
+      "description": lang === 'th' ? 'ห้องบันทึกเสียงพร้อม mixing console, DAW workstation และ studio monitors' : 'Recording room with mixing console, DAW workstation, and studio monitors',
+      "provider": { "@type": "MusicVenue", "name": "Thunder Studio", "url": "https://thundermusicstudio.com" },
+      "areaServed": { "@type": "City", "name": "Bangkok" },
+      "url": `https://thundermusicstudio.com/${lang}/rooms/control-room`,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": lang === 'th' ? 'มิกซ์เสียง & มาสเตอร์' : 'Mixing & Mastering',
+      "description": lang === 'th' ? 'มิกซ์และมาสเตอร์ต่อเนื่องจากการอัดใน Control Room เดียวกัน' : 'Mix and master in the same Control Room right after recording',
+      "provider": { "@type": "MusicVenue", "name": "Thunder Studio", "url": "https://thundermusicstudio.com" },
+      "areaServed": { "@type": "City", "name": "Bangkok" },
+      "url": `https://thundermusicstudio.com/${lang}/rooms/control-room`,
+    },
+  ])} />
 
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
@@ -57,12 +80,12 @@ const description = lang === 'th'
       { "@type": "Question", "name": "Thunder Studio มีบริการอะไรบ้าง?", "acceptedAnswer": { "@type": "Answer", "text": "มีห้องซ้อมดนตรี 2 ห้อง (Studio 1 สำหรับวงเต็ม 6-10 คน และ Studio 2 สำหรับกลุ่มเล็ก 2-4 คน) พร้อม Control Room สำหรับอัดเสียง มิกซ์ และมาสเตอร์" }},
       { "@type": "Question", "name": "จองห้องยังไง?", "acceptedAnswer": { "@type": "Answer", "text": "จองผ่านเว็บไซต์หรือ LINE @thunderstudio แจ้งจำนวนคนและช่วงเวลาที่ต้องการ" }},
       { "@type": "Question", "name": "ต้องเอาอุปกรณ์ไปเองไหม?", "acceptedAnswer": { "@type": "Answer", "text": "อุปกรณ์หลักมีให้ในห้อง ทั้ง Marshall amps กลองชุด PA system และไมค์ เอาเฉพาะกีตาร์หรือเบสของตัวเองมาก็พอ" }},
-      { "@type": "Question", "name": "เปิดกี่โมง?", "acceptedAnswer": { "@type": "Answer", "text": "เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ มีที่จอดรถ" }},
+      { "@type": "Question", "name": "เปิดกี่โมง?", "acceptedAnswer": { "@type": "Answer", "text": "เปิดทุกวัน 10:00-22:00 ที่ดอนเมือง กรุงเทพ มีที่จอดรถ" }},
     ] : [
       { "@type": "Question", "name": "What services does Thunder Studio offer?", "acceptedAnswer": { "@type": "Answer", "text": "Two rehearsal rooms (Studio 1 for full bands of 6-10, Studio 2 for small groups of 2-4) plus a Control Room for recording, mixing, and mastering." }},
       { "@type": "Question", "name": "How do I book?", "acceptedAnswer": { "@type": "Answer", "text": "Book through the website or LINE @thunderstudio. Share your group size and preferred time slot." }},
       { "@type": "Question", "name": "Do I need to bring equipment?", "acceptedAnswer": { "@type": "Answer", "text": "Core equipment is included: Marshall amps, drum kit, PA system, and mics. Just bring your own guitar or bass." }},
-      { "@type": "Question", "name": "What are the opening hours?", "acceptedAnswer": { "@type": "Answer", "text": "Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok. Parking available." }},
+      { "@type": "Question", "name": "What are the opening hours?", "acceptedAnswer": { "@type": "Answer", "text": "Open daily 10:00 AM to 10:00 PM in Don Mueang, Bangkok. Parking available." }},
     ],
   })} />
 
@@ -82,8 +105,8 @@ const description = lang === 'th'
       </h1>
       <p class="text-base md:text-lg text-white/60 mt-4 max-w-xl leading-relaxed">
         {lang === 'th'
-          ? 'Thunder Studio มีห้องซ้อมดนตรี 2 ขนาด ห้องบันทึกเสียง และบริการมิกซ์มาสเตอร์ อุปกรณ์ครบ กันเสียงรอบด้าน ครบจบในอาคารเดียว ที่บางเขน กรุงเทพ'
-          : 'Thunder Studio offers two rehearsal rooms, a recording studio, and mixing & mastering services — fully equipped, fully soundproofed, all under one roof in Bang Khen, Bangkok.'}
+          ? 'Thunder Studio มีห้องซ้อมดนตรี 2 ขนาด ห้องบันทึกเสียง และบริการมิกซ์มาสเตอร์ อุปกรณ์ครบ กันเสียงรอบด้าน ครบจบในอาคารเดียว ที่ดอนเมือง กรุงเทพ'
+          : 'Thunder Studio offers two rehearsal rooms, a recording studio, and mixing & mastering services — fully equipped, fully soundproofed, all under one roof in Don Mueang, Bangkok.'}
       </p>
     </div>
   </section>
@@ -110,13 +133,13 @@ const description = lang === 'th'
             </a>
           </div>
         </div>
-        <img src={`${IMG}/large-room-1.webp`} alt={lang === 'th' ? 'Studio 1 ห้องซ้อมใหญ่' : 'Studio 1 large rehearsal room'} class="w-full h-[280px] object-cover rounded-2xl border border-gray-300" loading="lazy" />
+        <img src={`${IMG}/large-room-1.webp`} alt={lang === 'th' ? 'Studio 1 ห้องซ้อมใหญ่' : 'Studio 1 large rehearsal room'} width="600" height="280" class="w-full h-[280px] object-cover rounded-2xl border border-gray-300" loading="lazy" />
       </div>
 
       <hr class="my-16 border-gray-200" />
 
       <div class="reveal grid md:grid-cols-2 gap-10 items-center">
-        <img src={`${IMG}/small-room-1.webp`} alt={lang === 'th' ? 'Studio 2 ห้องซ้อมเล็ก' : 'Studio 2 small rehearsal room'} class="w-full h-[280px] object-cover rounded-2xl border border-gray-300 md:order-first" loading="lazy" />
+        <img src={`${IMG}/small-room-1.webp`} alt={lang === 'th' ? 'Studio 2 ห้องซ้อมเล็ก' : 'Studio 2 small rehearsal room'} width="600" height="280" class="w-full h-[280px] object-cover rounded-2xl border border-gray-300 md:order-first" loading="lazy" />
         <div>
           <h2 class="text-2xl md:text-3xl font-bold tracking-[-0.02em]">
             {lang === 'th' ? 'ห้องซ้อม — เดี่ยวและกลุ่มเล็ก' : 'Practice Room — Solo & Small Groups'}
@@ -158,13 +181,13 @@ const description = lang === 'th'
             </a>
           </div>
         </div>
-        <img src={`${IMG}/control-room-1.webp`} alt={lang === 'th' ? 'Control Room ห้องอัดเสียง' : 'Control Room recording studio'} class="w-full h-[280px] object-cover rounded-2xl border border-gray-300" loading="lazy" />
+        <img src={`${IMG}/control-room-1.webp`} alt={lang === 'th' ? 'Control Room ห้องอัดเสียง' : 'Control Room recording studio'} width="600" height="280" class="w-full h-[280px] object-cover rounded-2xl border border-gray-300" loading="lazy" />
       </div>
 
       <hr class="my-16 border-gray-200" />
 
       <div class="reveal grid md:grid-cols-2 gap-10 items-center">
-        <img src={`${IMG}/control-room-1.webp`} alt={lang === 'th' ? 'มิกซ์เสียงที่ Thunder Studio' : 'Mixing at Thunder Studio'} class="w-full h-[280px] object-cover rounded-2xl border border-gray-300 md:order-first" loading="lazy" />
+        <img src={`${IMG}/control-room-1.webp`} alt={lang === 'th' ? 'มิกซ์เสียงที่ Thunder Studio' : 'Mixing at Thunder Studio'} width="600" height="280" class="w-full h-[280px] object-cover rounded-2xl border border-gray-300 md:order-first" loading="lazy" />
         <div>
           <h2 class="text-2xl md:text-3xl font-bold tracking-[-0.02em]">
             {lang === 'th' ? 'มิกซ์เสียง & มาสเตอร์' : 'Mixing & Mastering'}
@@ -230,7 +253,7 @@ const description = lang === 'th'
 
           <p><strong>ต้องเอาอุปกรณ์ไปเองไหม?</strong><br />อุปกรณ์หลักมีให้ในห้อง ทั้ง Marshall amps กลองชุด PA system และไมค์ เอาเฉพาะกีตาร์หรือเบสของตัวเองมาก็พอ</p>
 
-          <p><strong>เปิดกี่โมง?</strong><br />เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ มีที่จอดรถ ดู<a href={`/${lang}/location`}>แผนที่</a>ได้เลย</p>
+          <p><strong>เปิดกี่โมง?</strong><br />เปิดทุกวัน 10:00-22:00 ที่ดอนเมือง กรุงเทพ มีที่จอดรถ ดู<a href={`/${lang}/location`}>แผนที่</a>ได้เลย</p>
         </div>
       ) : (
         <div class="reveal space-y-4">
@@ -240,7 +263,7 @@ const description = lang === 'th'
 
           <p><strong>Do I need to bring equipment?</strong><br />Core equipment is included: Marshall amps, drum kit, PA system, and mics. Just bring your own guitar or bass.</p>
 
-          <p><strong>What are the opening hours?</strong><br />Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok. Parking available. See the <a href={`/${lang}/location`}>location page</a> for directions.</p>
+          <p><strong>What are the opening hours?</strong><br />Open daily 10:00 AM to 10:00 PM in Don Mueang, Bangkok. Parking available. See the <a href={`/${lang}/location`}>location page</a> for directions.</p>
         </div>
       )}
 

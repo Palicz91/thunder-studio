@@ -19,7 +19,7 @@ const title = lang === 'th'
   ? 'มิกซ์เสียงและมาสเตอร์คืออะไร: สิ่งที่นักดนตรีต้องรู้'
   : 'Mixing and Mastering: What Musicians Need to Know';
 const description = lang === 'th'
-  ? 'อธิบายความต่างระหว่าง mixing กับ mastering ตั้งแต่ต้น เข้าใจขั้นตอนหลังอัดเสียง เตรียม stems ยังไง และควรรู้อะไรก่อนจอง Control Room ที่บางเขน'
+  ? 'อธิบายความต่างระหว่าง mixing กับ mastering ตั้งแต่ต้น เข้าใจขั้นตอนหลังอัดเสียง เตรียม stems ยังไง และควรรู้อะไรก่อนจอง Control Room ที่ดอนเมือง'
   : 'A clear explanation of mixing and mastering for musicians: what each stage does, how they differ, what to prepare, and common mistakes to avoid before booking a session.';
 ---
 
@@ -33,7 +33,7 @@ const description = lang === 'th'
     "description": description,
     "datePublished": datePublished,
     "dateModified": datePublished,
-    "author": { "@type": "Organization", "name": "Thunder Studio" },
+    "author": { "@type": "Person", "name": "Theorn N.", "worksFor": { "@type": "Organization", "name": "Thunder Studio" } },
     "publisher": {
       "@type": "Organization",
       "name": "Thunder Studio",
@@ -84,7 +84,7 @@ const description = lang === 'th'
         </nav>
 
         <div class="reveal">
-          <span class="inline-block text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4">{datePublished}</span>
+          <div class="flex items-center gap-3 text-[11px] font-semibold tracking-[0.14em] text-gray-500 mb-4"><span>{datePublished}</span><span class="text-gray-300">|</span><span>{lang === "th" ? "โดย Theorn N." : "By Theorn N."}</span></div>
           <h1 class="text-3xl md:text-[42px] font-bold tracking-[-0.02em] leading-tight">
             {lang === 'th' ? 'มิกซ์เสียงและมาสเตอร์คืออะไร: สิ่งที่นักดนตรีต้องรู้' : 'Mixing and Mastering: What Musicians Need to Know'}
           </h1>
@@ -97,8 +97,8 @@ const description = lang === 'th'
       <div class="max-w-[900px] mx-auto px-6">
         <img
           src={`${IMG}/control-room-1.webp`}
-          alt={lang === 'th' ? 'Control Room Thunder Studio สำหรับมิกซ์เสียงและมาสเตอร์ บางเขน' : 'Thunder Studio Control Room for mixing and mastering in Bangkok'}
-          class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
+          alt={lang === 'th' ? 'Control Room Thunder Studio สำหรับมิกซ์เสียงและมาสเตอร์ ดอนเมือง' : 'Thunder Studio Control Room for mixing and mastering in Bangkok'}
+          width="900" height="420" class="reveal w-full h-[300px] md:h-[420px] object-cover rounded-2xl border border-gray-300"
           fetchpriority="high"
         />
       </div>
@@ -198,7 +198,7 @@ const description = lang === 'th'
             <p>ยังไม่ได้เลือกสตูดิโอ? อ่าน <a href={`/${lang}/blog/how-to-choose-recording-studio`}>วิธีเลือกสตูดิโอบันทึกเสียง</a> เพื่อเช็คอุปกรณ์ อคูสติก และสัญญาณเตือนก่อนจอง หรือดู<a href={`/${lang}/services`}>บริการทั้งหมด</a>ของ Thunder Studio</p>
 
             <h2>พร้อมเริ่ม mixing แล้ว?</h2>
-            <p>Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> พร้อมมิกซ์คอนโซล, studio monitors และ DAW workstation สำหรับงาน mixing และ mastering ครบจบที่เดียว เปิดทุกวัน 10:00-22:00 ที่บางเขน กรุงเทพ</p>
+            <p>Thunder Studio มี <a href={`/${lang}/rooms/control-room`}>Control Room</a> พร้อมมิกซ์คอนโซล, studio monitors และ DAW workstation สำหรับงาน mixing และ mastering ครบจบที่เดียว เปิดทุกวัน 10:00-22:00 ที่ดอนเมือง กรุงเทพ</p>
           </div>
         ) : (
           <div class="prose-blog">
@@ -292,13 +292,32 @@ const description = lang === 'th'
             <p>Haven't picked a studio yet? Read <a href={`/${lang}/blog/how-to-choose-recording-studio`}>how to choose a recording studio</a> to check acoustics, gear, and red flags before booking. Or browse all <a href={`/${lang}/services`}>Thunder Studio services</a>.</p>
 
             <h2>Ready to mix?</h2>
-            <p>Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> handles recording, mixing, and mastering in one place — mixing console, studio monitors, and a full DAW workstation. Open daily 10:00 AM to 10:00 PM in Bang Khen, Bangkok.</p>
+            <p>Thunder Studio's <a href={`/${lang}/rooms/control-room`}>Control Room</a> handles recording, mixing, and mastering in one place — mixing console, studio monitors, and a full DAW workstation. Open daily 10:00 AM to 10:00 PM in Don Mueang, Bangkok.</p>
           </div>
         )}
 
         <div class="reveal mt-12 text-center">
           <a href={`/${lang}/#booking`} class="inline-block bg-onyx text-white rounded-xl px-8 py-4 text-[15px] font-semibold hover:bg-onyx/80 transition-colors">
             {t('hero.cta.book')}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-clinical text-onyx py-16 border-t border-gray-200">
+      <div class="max-w-[720px] mx-auto px-6">
+        <h2 class="reveal text-2xl font-bold tracking-[-0.02em] mb-8">
+          {lang === 'th' ? 'บทความที่เกี่ยวข้อง' : 'Related Articles'}
+        </h2>
+        <div class="grid gap-4">
+          <a href={`/${lang}/blog/recording-studio-guide`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'อัดเสียงครั้งแรก' : 'First Time Recording Guide'}</h3>
+          </a>
+          <a href={`/${lang}/blog/how-to-choose-recording-studio`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'วิธีเลือกสตูดิโอบันทึกเสียง' : 'How to Choose a Recording Studio'}</h3>
+          </a>
+          <a href={`/${lang}/blog/podcast-studio-bangkok`} class="reveal block rounded-xl border border-gray-300 p-5 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-onyx">{lang === 'th' ? 'สตูดิโอพอดแคสต์กรุงเทพ' : 'Podcast Studio Bangkok'}</h3>
           </a>
         </div>
       </div>
